@@ -1,0 +1,3 @@
+git clone git://bitbucket.org/mgn1993/dotvim.git ~/.vim
+
+ln -s ~/.vim/vimrc ~/.vimrc
