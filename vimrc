@@ -170,6 +170,9 @@ noremap <C-H> <C-W>h
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-L> <C-W>l
+
+inoremap <C-B> <Left>
+inoremap <C-F> <Right>
 "map <Leader><C-H> <ESC>:help <C-R><C-A><CR>
 "map <C-H> <ESC>:help <C-R><C-W><CR>
 
@@ -248,7 +251,7 @@ augroup END
 
 augroup SourceVimrc
 	autocmd!
-	autocmd FileWritePost .vimrc source %
+	autocmd FileWritePost *vimrc source %
 augroup END
 
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
