@@ -1,8 +1,4 @@
 "vimrc by gmoshkin
-autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
-                        \     edit $MYVIMRC |
-                        \ endif
-
 syntax enable
 
 filetype plugin indent on
@@ -241,6 +237,14 @@ endfunction
 "}}}
 
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
+
+augroup VimDefault
+    autocmd!
+    autocmd VimEnter * nested |
+      \ if argc() == 0 && bufname("%") == "" |
+      \     edit $MYVIMRC |
+      \ endif
+augroup END
 
 augroup FiletypeTabs
 	autocmd!
