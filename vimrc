@@ -1,4 +1,9 @@
 "vimrc by gmoshkin
+
+execute pathogen#infect()
+
+Helptags
+
 syntax enable
 
 filetype plugin indent on
@@ -109,25 +114,25 @@ set backspace=indent,eol,start
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 
 "{{{
-"map <F2> <ESC>:w<CR>
-map <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
-map <F3> <ESC>:tabnew<CR>
-map <F4> <ESC>:e .<CR>
-map <F5> <ESC>:cprev<CR>
-map <F6> <ESC>:cnext<CR>
-map <F7> <ESC>:noh<CR>
-map <S-F7> <ESC>/ $<CR>
-map <F8> <ESC>:cfirst<CR>
-map <S-F8> <ESC>:clast<CR>
-map <F9> <ESC>:make!<CR>:copen<CR>
-map <S-F9> <ESC>:make! clean<CR>
-map <F10> <ESC>:echo GetSyntaxInfo()<CR>
-map <F12> <ESC>:source $MYVIMRC<CR>
+"noremap <F2> <ESC>:w<CR>
+noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
+noremap <F3> <ESC>:tabnew<CR>
+noremap <F4> <ESC>:e .<CR>
+noremap <F5> <ESC>:cprev<CR>
+noremap <F6> <ESC>:cnext<CR>
+noremap <F7> <ESC>:noh<CR>
+noremap <S-F7> <ESC>/ $<CR>
+noremap <F8> <ESC>:cfirst<CR>
+noremap <S-F8> <ESC>:clast<CR>
+noremap <F9> <ESC>:make!<CR>:copen<CR>
+noremap <S-F9> <ESC>:make! clean<CR>
+noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
+noremap <F12> <ESC>:source $MYVIMRC<CR>
 
-"map <C-N> <ESC>:tabnext<CR>
-"map <C-P> <ESC>:tabprev<CR>
-map <C-N> <ESC>:bnext<CR>
-map <C-P> <ESC>:bprev<CR>
+"noremap <C-N> <ESC>:tabnext<CR>
+"noremap <C-P> <ESC>:tabprev<CR>
+noremap <C-N> <ESC>:bnext<CR>
+noremap <C-P> <ESC>:bprev<CR>
 
 noremap <C-S> <ESC>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
@@ -145,26 +150,26 @@ noremap <S-Down> <C-E>
 inoremap <S-Up> <C-O><C-Y>
 inoremap <S-Down> <C-O><C-E>
 
-map <C-Up> <C-Y>
-map <C-Down> <C-E>
-imap <C-Up> <C-O><C-Y>
-imap <C-Down> <C-O><C-E>
+noremap <C-Up> <C-Y>
+noremap <C-Down> <C-E>
+inoremap <C-Up> <C-O><C-Y>
+inoremap <C-Down> <C-O><C-E>
 
-map <C-]> <ESC>:tjump <C-R><C-W><CR>
+noremap <C-]> <ESC>:tjump <C-R><C-W><CR>
 
-map <M-Left> <C-W><
-map <M-Right> <C-W>>
-map <M-Up> <C-W>+
-map <M-Down> <C-W>-
+noremap <M-Left> <C-W><
+noremap <M-Right> <C-W>>
+noremap <M-Up> <C-W>+
+noremap <M-Down> <C-W>-
 
-map <Leader>y "+y
-vmap <Leader>y "+y
-map <Leader>Y "+Y
-vmap <Leader>Y "+Y
-map <Leader>p "+p
-vmap <Leader>p "+p
-map <Leader>P "+P
-vmap <Leader>P "+P
+noremap <Leader>y "+y
+vnoremap <Leader>y "+y
+noremap <Leader>Y "+Y
+vnoremap <Leader>Y "+Y
+noremap <Leader>p "+p
+vnoremap <Leader>p "+p
+noremap <Leader>P "+P
+vnoremap <Leader>P "+P
 
 noremap <C-H> <C-W>h
 noremap <C-J> <C-W>j
@@ -173,15 +178,20 @@ noremap <C-L> <C-W>l
 
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
-"map <Leader><C-H> <ESC>:help <C-R><C-A><CR>
-"map <C-H> <ESC>:help <C-R><C-W><CR>
+"noremap <Leader><C-H> <ESC>:help <C-R><C-A><CR>
+"noremap <C-H> <ESC>:help <C-R><C-W><CR>
 
-map ZA zA
-map ZM zM
-map ZR zR
-map ZO zO
-map ZC zC
-map ZN zN
+noremap ZA zA
+noremap ZM zM
+noremap ZR zR
+noremap ZO zO
+noremap ZC zC
+noremap ZN zN
+
+noremap <Leader>V <ESC>ggVG
+
+noremap ; :
+noremap : ;
 "}}}
 
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
@@ -237,7 +247,7 @@ endfunction
 "}}}
 
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
-
+"{{{
 augroup FiletypeTabs
 	autocmd!
 	autocmd BufNewFile,BufRead *.py set tabstop=4 | set expandtab
@@ -251,11 +261,11 @@ augroup END
 
 augroup SourceVimrc
 	autocmd!
-	autocmd FileWritePost *vimrc source %
+	autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source %
 augroup END
-
+"}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
-
+"{{{
 let g:pymode = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_run = 1
@@ -269,3 +279,12 @@ let g:pymode_rope_completion = 1
 let g:pymode_rope_goto_definition_bind = '<C-c>g'
 let g:pymode_rope_goto_definition_cmd = 'new'
 let g:pymode_options_colorcolumn = 0
+"}}}
+"""""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
+"{{{
+let g:slime_target = "tmux"
+let g:slime_no_mappings = 1
+xnoremap <leader>s <Plug>SlimeRegionSend
+nnoremap <leader>s <Plug>SlimeMotionSend
+nnoremap <leader>ss <Plug>SlimeLineSend
+"}}}
