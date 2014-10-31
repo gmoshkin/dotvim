@@ -52,18 +52,6 @@ highlight CursorLine cterm=bold,underline
 "set colorcolumn=81
 "highlight 81st column
 
-autocmd BufRead *	normal zR
-" Folds are open by default
-
-autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
-"autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl	setf glsl
-" OpenGL Shader Languauge
-
-augroup VimrcFiletype
-    autocmd!
-    autocmd Filetype vim setlocal foldmethod=marker
-augroup END
-
 set splitright
 "opens new windows to the right from the old ones
 
@@ -167,6 +155,9 @@ vmap <Leader>p "+p
 map <Leader>P "+P
 vmap <Leader>P "+P
 
+noremap <Leader>o o<ESC>
+noremap <Leader>O O<ESC>
+
 noremap <C-H> <C-W>h
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
@@ -238,6 +229,24 @@ endfunction
 "}}}
 
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
+
+" Folds are open by default
+augroup OpenFolds
+    autocmd!
+    autocmd BufRead * normal zR
+augroup END
+
+" OpenGL Shader Languauge
+augroup GLSLFileType
+    autocmd!
+    autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
+    "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl	setf glsl
+augroup END
+
+augroup VimrcFiletype
+    autocmd!
+    autocmd Filetype vim setlocal foldmethod=marker
+augroup END
 
 augroup VimDefault
     autocmd!
