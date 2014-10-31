@@ -1,8 +1,9 @@
 "vimrc by gmoshkin
 
-execute pathogen#infect()
+filetype off
 
-Helptags
+call pathogen#helptags()
+call pathogen#infect()
 
 syntax enable
 
@@ -55,18 +56,6 @@ highlight CursorLine cterm=bold,underline
 "highlight ColorColumn ctermbg=grey
 "set colorcolumn=81
 "highlight 81st column
-
-autocmd BufRead *	normal zR
-" Folds are open by default
-
-autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
-"autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl	setf glsl
-" OpenGL Shader Languauge
-
-augroup VimrcFiletype
-    autocmd!
-    autocmd Filetype vim setlocal foldmethod=marker
-augroup END
 
 set splitright
 "opens new windows to the right from the old ones
@@ -171,6 +160,9 @@ vnoremap <Leader>p "+p
 noremap <Leader>P "+P
 vnoremap <Leader>P "+P
 
+noremap <Leader>o o<ESC>
+noremap <Leader>O O<ESC>
+
 noremap <C-H> <C-W>h
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
@@ -248,6 +240,32 @@ endfunction
 
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
+
+" Folds are open by default
+augroup OpenFolds
+    autocmd!
+    autocmd BufRead * normal zR
+augroup END
+
+" OpenGL Shader Languauge
+augroup GLSLFileType
+    autocmd!
+    autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
+    "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl	setf glsl
+augroup END
+
+augroup VimrcFiletype
+    autocmd!
+    autocmd Filetype vim setlocal foldmethod=marker
+augroup END
+
+augroup VimDefault
+    autocmd!
+    autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
+                            \     edit $MYVIMRC |
+                            \ endif
+augroup END
+
 augroup FiletypeTabs
 	autocmd!
 	autocmd BufNewFile,BufRead *.py set tabstop=4 | set expandtab
