@@ -1,5 +1,8 @@
 "vimrc by gmoshkin
 
+set cursorline
+"highlight the screen line of the cursor
+
 filetype off
 
 call pathogen#infect()
@@ -8,49 +11,21 @@ Helptags
 syntax enable
 
 filetype plugin indent on
-"This switches on three very clever mechanisms:"{{{
-"1. Filetype detection.
-"   Whenever you start editing a file, Vim will try to figure out what kind of
-"   file this is.  When you edit "main.c", Vim will see the ".c" extension and
-"   recognize this as a "c" filetype.  When you edit a file that starts with
-"   "#!/bin/sh", Vim will recognize it as a "sh" filetype.
-"   The filetype detection is used for syntax highlighting and the other two
-"   items below.
-"   See |filetypes|.
-"
-"2. Using filetype plugin files
-"   Many different filetypes are edited with different options.  For example,
-"   when you edit a "c" file, it's very useful to set the 'cindent' option to
-"   automatically indent the lines.  These commonly useful option settings are
-"   included with Vim in filetype plugins.  You can also add your own, see
-"   |write-filetype-plugin|.
-"
-"3. Using indent files
-"   When editing programs, the indent of a line can often be computed
-"   automatically.  Vim comes with these indent rules for a number of
-"   filetypes.  See |:filetype-indent-on| and 'indentexpr'."}}}
 
-set foldmethod=syntax
-"   manual - Folds are created manually."{{{
-"   indent - Lines with equal indent form a fold.
-"   expr   - 'foldexpr' gives the fold level of a line.
-"   marker - Markers are used to specify folds.
-"   syntax - Syntax highlighting items specify folds.
-"   diff   - Fold text that is not changed."}}}
+if (!exists("b:foldmethod_set"))
+    set foldmethod=syntax
+endif
 
-"colorscheme aldmeris
-"Oblivion-like colorscheme
-
-"let g:c_space_errors = 1
-highlight ClosingSpace ctermbg=red
-match ClosingSpace /\s\+$/
+let g:c_space_errors = 1
+"highlight ClosingSpace ctermbg=100
+"match ClosingSpace /\s\+$/
 "highlight space characters in the end of lines
 
 "highlight OverLength cterm=NONE ctermbg=NONE ctermfg=NONE guibg=#592929
 "match OverLength /\%81v.\+/
 "highlight text in 81+ columns
 
-highlight CursorLine cterm=bold,underline
+"highlight CursorLine cterm=bold,underline
 "this one should probably be in a colorscheme file
 
 "highlight ColorColumn ctermbg=grey
@@ -65,9 +40,6 @@ set scrolloff=1
 
 set showbreak=~
 "string to put before wrapped screen lines
-
-set cursorline
-"highlight the screen line of the cursor
 
 set display=
 "Include "lastline" to show the last line even if it doesn't fit
@@ -101,12 +73,13 @@ set backspace=indent,eol,start
 "character before where Insert mode started.
 
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
-
 "{{{
 "noremap <F2> <ESC>:w<CR>
 noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
-noremap <F3> <ESC>:tabnew<CR>
-noremap <F4> <ESC>:e .<CR>
+"noremap <F3> <ESC>:tabnew<CR>
+noremap <F3> <ESC>:NERDTreeToggle<CR>
+"noremap <F4> <ESC>:e .<CR>
+noremap <F4> <ESC>:TagbarToggle<CR>
 noremap <F5> <ESC>:cprev<CR>
 noremap <F6> <ESC>:cnext<CR>
 noremap <F7> <ESC>:noh<CR>
@@ -115,7 +88,11 @@ noremap <F8> <ESC>:cfirst<CR>
 noremap <S-F8> <ESC>:clast<CR>
 noremap <F9> <ESC>:make!<CR>:copen<CR>
 noremap <S-F9> <ESC>:make! clean<CR>
+"noremap <C-F9> <ESC>yl:let @0 = GetPrevChar(@0)<CR>phx
+noremap <silent> <C-F9> :<C-U>call PutPrevChar()<CR>
 noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
+"noremap <C-F10> <ESC>yl:let @0 = GetNextChar(@0)<CR>phx
+noremap <silent> <C-F10> :<C-U>call PutNextChar()<CR>
 noremap <F12> <ESC>:source $MYVIMRC<CR>
 
 "noremap <C-N> <ESC>:tabnext<CR>
@@ -139,10 +116,10 @@ noremap <S-Down> <C-E>
 inoremap <S-Up> <C-O><C-Y>
 inoremap <S-Down> <C-O><C-E>
 
-noremap <C-Up> <C-Y>
-noremap <C-Down> <C-E>
-inoremap <C-Up> <C-O><C-Y>
-inoremap <C-Down> <C-O><C-E>
+map <C-Up> [m
+map <C-Down> ]m
+imap <C-Up> <C-O>[m
+imap <C-Down> <C-O>]m
 
 noremap <C-]> <ESC>:tjump <C-R><C-W><CR>
 
@@ -162,6 +139,7 @@ vnoremap <Leader>P "+P
 
 noremap <Leader>o o<ESC>
 noremap <Leader>O O<ESC>
+noremap <Leader>V <ESC>ggVG
 
 noremap <C-H> <C-W>h
 noremap <C-J> <C-W>j
@@ -170,8 +148,6 @@ noremap <C-L> <C-W>l
 
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
-"noremap <Leader><C-H> <ESC>:help <C-R><C-A><CR>
-"noremap <C-H> <ESC>:help <C-R><C-W><CR>
 
 noremap ZA zA
 noremap ZM zM
@@ -180,14 +156,12 @@ noremap ZO zO
 noremap ZC zC
 noremap ZN zN
 
-noremap <Leader>V <ESC>ggVG
+noremap Y y$
 
 noremap ; :
 noremap : ;
 "}}}
-
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
-
 "{{{
 function! SetTabStop()
 	if search("	", 'n')
@@ -231,13 +205,42 @@ function! Spaces(n)
 endfunction
 
 function! GetSyntaxInfo()
-	"let id = synID(line("."),col("."),0)
-	let stack = synstack(line("."),col("."))
-	"return join([synIDattr(id,"name"), synIDattr(id,"fg","cterm"), synIDattr(id,"bg","cterm")])
-	return join(map(stack, "synIDattr(v:val,\"name\")"))
+	"let id = synID(line("."), col("."), 0)
+	let stack = synstack(line("."), col("."))
+	"return join([synIDattr(id, "name"), synIDattr(id, "fg", "cterm"), synIDattr(id, "bg", "cterm")])
+	return join(map(stack, "synIDattr(v:val, \"name\")"))
+endfunction
+
+function! GetNextChar(c)
+    return nr2char(char2nr(a:c) + 1)
+endfunction
+
+function! GetPrevChar(c)
+    return nr2char(char2nr(a:c) - 1)
+endfunction
+
+function! PutNextChar()
+    let i = v:count1
+    normal mu
+    normal yl
+    while i > 0
+        execute 'normal r' . GetNextChar(@0)
+        normal `u
+        let i = i - 1
+    endwhile
+endfunction
+
+function! PutPrevChar()
+    let i = v:count1
+    normal mu
+    normal yl
+    while i > 0
+        execute 'normal r' . GetPrevChar(@0)
+        normal `u
+        let i = i - 1
+    endwhile
 endfunction
 "}}}
-
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
 
@@ -256,7 +259,8 @@ augroup END
 
 augroup VimrcFiletype
     autocmd!
-    autocmd Filetype vim setlocal foldmethod=marker
+    autocmd Filetype vim setlocal foldmethod=marker |
+                       \ let b:foldmethod_set = 1
 augroup END
 
 augroup VimDefault
@@ -284,18 +288,6 @@ augroup END
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
-let g:pymode = 1
-let g:pymode_doc_bind = 'K'
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-let g:pymode_breakpoint_cmd = ''
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_rope_completion = 1
-let g:pymode_rope_goto_definition_bind = '<C-c>g'
-let g:pymode_rope_goto_definition_cmd = 'new'
 let g:pymode_options_colorcolumn = 0
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
@@ -305,4 +297,36 @@ let g:slime_no_mappings = 1
 xnoremap <leader>s <Plug>SlimeRegionSend
 nnoremap <leader>s <Plug>SlimeMotionSend
 nnoremap <leader>ss <Plug>SlimeLineSend
+"}}}
+""""""""""""""""""""""""""""""""""" TAGBAR """""""""""""""""""""""""""""""""""""
+"{{{
+let g:tagbar_width = 30
+"}}}
+""""""""""""""""""""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""
+"{{{
+let g:airline_theme='badwolf'
+let g:airline_left_sep='⟫'
+let g:airline_left_alt_sep='⟩'
+let g:airline_right_sep='⟪'
+let g:airline_right_alt_sep='⟨'
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.readonly = '( •_•)>⌐■-■'"⌐⟥⟤'"😎
+"}}}
+"""""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
+"{{{
+colorscheme solarized
+let g:solarized_termcolors = 256
+set background=dark
+"}}}
+""""""""""""""""""""""""""""""""" NERDCOMMENTER """"""""""""""""""""""""""""""""
+"{{{
+"set 'NERDSpaceDelims'
 "}}}
