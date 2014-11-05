@@ -5,8 +5,24 @@ set cursorline
 
 filetype off
 
-call pathogen#infect()
-Helptags
+"call pathogen#infect()
+"Helptags
+
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'jpalardy/vim-slime'
+Plugin 'klen/python-mode'
 
 syntax enable
 
