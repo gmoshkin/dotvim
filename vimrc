@@ -52,6 +52,7 @@ set tags=./tags,./TAGS,tags,TAGS,~/tags
 set expandtab
 "replace tabs with spaces
 
+set hidden
 set number
 set tabstop=4
 set shiftwidth=4

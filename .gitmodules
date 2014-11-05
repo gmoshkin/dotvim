@@ -1,3 +1,6 @@
 [submodule "nerdcommenter"]
     path = bundle/nerdcommenter
     url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "fugitive"]
+    path = bundle/vim-fugitive
+    url = http://stackoverflow.com/questions/102384/using-vims-tabs-like-buffers.git
