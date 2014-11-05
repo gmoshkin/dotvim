@@ -25,6 +25,7 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 
 call vundle#end()
+
 syntax enable
 
 filetype plugin indent on
@@ -284,7 +285,7 @@ augroup VimDefault
     autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
                             \     edit $MYVIMRC |
                             \ endif
-    autocmd VimEnter * PluginInstall
+    "autocmd VimEnter * PluginInstall
 augroup END
 
 augroup FiletypeTabs
