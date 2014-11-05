@@ -1,13 +1,14 @@
 "vimrc by gmoshkin
 
-set cursorline
-"highlight the screen line of the cursor
-
 filetype off
 
+""""""""""""""""""""""""""""""""""" PATHOGEN """""""""""""""""""""""""""""""""""
+"{{{
 "call pathogen#infect()
 "Helptags
-
+"}}}
+"""""""""""""""""""""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""
+"{{{
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -25,7 +26,9 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 
 call vundle#end()
-
+"}}}
+"""""""""""""""""""""""""""""""""""" OPTIONS """""""""""""""""""""""""""""""""""
+"{{{
 syntax enable
 
 filetype plugin indent on
@@ -46,6 +49,9 @@ let g:c_space_errors = 1
 "highlight ColorColumn ctermbg=grey
 "set colorcolumn=81
 "highlight 81st column
+
+set cursorline
+"highlight the screen line of the cursor
 
 set splitright
 "opens new windows to the right from the old ones
@@ -87,11 +93,12 @@ set backspace=indent,eol,start
 "character in front of the cursor.  The threee items, separated by commas, tell
 "Vim to delete the white space at the start oof the line, a line break and the
 "character before where Insert mode started.
-
+"}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
 "noremap <F2> <ESC>:w<CR>
-noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
+"noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
+noremap <F2> <ESC>:NERDTreeFind<CR>
 "noremap <F3> <ESC>:tabnew<CR>
 noremap <F3> <ESC>:NERDTreeToggle<CR>
 "noremap <F4> <ESC>:e .<CR>
@@ -114,7 +121,7 @@ noremap <F12> <ESC>:source $MYVIMRC<CR>
 "noremap <C-N> <ESC>:tabnext<CR>
 "noremap <C-P> <ESC>:tabprev<CR>
 noremap <C-N> <ESC>:bnext<CR>
-noremap <M-N> <ESC>:bprev<CR>
+noremap <C-P> <ESC>:bprev<CR>
 "noremap <C-P> <ESC>:bprev<CR>
 
 noremap <C-S> <ESC>:update<CR>
@@ -172,6 +179,9 @@ noremap ZR zR
 noremap ZO zO
 noremap ZC zC
 noremap ZN zN
+
+noremap Q ZQ
+noremap ZB <ESC>:bdelete<CR>
 
 noremap Y y$
 
@@ -322,31 +332,52 @@ let g:tagbar_width = 30
 "}}}
 """"""""""""""""""""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""
 "{{{
-let g:airline_theme='badwolf'
-let g:airline_left_sep='⟫'
-let g:airline_left_alt_sep='⟩'
-let g:airline_right_sep='⟪'
-let g:airline_right_alt_sep='⟨'
+"let g:airline_theme = 'badwolf'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
+let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
+"let g:airline_left_sep='⟫'
+"let g:airline_left_alt_sep='⟩'
+"let g:airline_right_sep='⟪'
+"let g:airline_right_alt_sep='⟨'
 
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.readonly = '( •_•)>⌐■-■'"⌐⟥⟤'"😎
+"if !exists('g:airline_symbols')
+    "let g:airline_symbols = {}
+"endif
+
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.whitespace = 'Ξ'
+"let g:airline_symbols.readonly = '( •_•)>⌐■-■'"⌐⟥⟤'"😎
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
 if (&term != 'xterm')
     colorscheme solarized
-    let g:solarized_termcolors = 256
+    "let g:solarized_termcolors = 256
+    "let g:solarized_contrast="low"
     set background=dark
 endif
 "}}}
 """"""""""""""""""""""""""""""""" NERDCOMMENTER """"""""""""""""""""""""""""""""
 "{{{
-"set 'NERDSpaceDelims'
+let g:NERDSpaceDelims = 1
+"}}}
+""""""""""""""""""""""""""""""""""""" CTRLP """"""""""""""""""""""""""""""""""""
+"{{{
+let g:ctrlp_map = '<CR>'
 "}}}
