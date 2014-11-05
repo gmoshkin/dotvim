@@ -5,9 +5,26 @@ set cursorline
 
 filetype off
 
-call pathogen#infect()
-Helptags
+"call pathogen#infect()
+"Helptags
 
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'jpalardy/vim-slime'
+Plugin 'klen/python-mode'
+
+call vundle#end()
 syntax enable
 
 filetype plugin indent on
@@ -24,9 +41,6 @@ let g:c_space_errors = 1
 "highlight OverLength cterm=NONE ctermbg=NONE ctermfg=NONE guibg=#592929
 "match OverLength /\%81v.\+/
 "highlight text in 81+ columns
-
-"highlight CursorLine cterm=bold,underline
-"this one should probably be in a colorscheme file
 
 "highlight ColorColumn ctermbg=grey
 "set colorcolumn=81
@@ -99,7 +113,8 @@ noremap <F12> <ESC>:source $MYVIMRC<CR>
 "noremap <C-N> <ESC>:tabnext<CR>
 "noremap <C-P> <ESC>:tabprev<CR>
 noremap <C-N> <ESC>:bnext<CR>
-noremap <C-P> <ESC>:bprev<CR>
+noremap <M-N> <ESC>:bprev<CR>
+"noremap <C-P> <ESC>:bprev<CR>
 
 noremap <C-S> <ESC>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
@@ -269,6 +284,7 @@ augroup VimDefault
     autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
                             \     edit $MYVIMRC |
                             \ endif
+    autocmd VimEnter * PluginInstall
 augroup END
 
 augroup FiletypeTabs
@@ -323,9 +339,11 @@ let g:airline_symbols.readonly = '( •_•)>⌐■-■'"⌐⟥⟤'"😎
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
-colorscheme solarized
-let g:solarized_termcolors = 256
-set background=dark
+if (&term != 'xterm')
+    colorscheme solarized
+    let g:solarized_termcolors = 256
+    set background=dark
+endif
 "}}}
 """"""""""""""""""""""""""""""""" NERDCOMMENTER """"""""""""""""""""""""""""""""
 "{{{

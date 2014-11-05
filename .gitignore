@@ -1,3 +1,5 @@
 .netrwhist
 somefile
 *.swp
+bundle/*
+!bundle/Vundle.vim

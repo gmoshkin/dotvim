@@ -1,12 +1,4 @@
-[submodule "nerdcommenter"]
-    path = bundle/nerdcommenter
-    url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "nerdtree"]
-    path = bundle/nerdtree
-    url = https://github.com/scrooloose/nerdtree
-[submodule "fugitive"]
-    path = bundle/vim-fugitive
-    url = http://stackoverflow.com/questions/102384/using-vims-tabs-like-buffers.git
-[submodule "airline"]
-    path = bundle/vim-airline
-    url = https://github.com/bling/vim-airline.git
+
+[submodule "bundle/Vundle.vim"]
+	path = bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim
