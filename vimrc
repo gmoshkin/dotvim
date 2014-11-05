@@ -25,6 +25,7 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 
 call vundle#end()
+
 syntax enable
 
 filetype plugin indent on
