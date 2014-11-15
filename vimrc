@@ -24,6 +24,7 @@ Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
 "}}}
@@ -80,6 +81,10 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set hlsearch
+set mouse=a
+
+set laststatus=2
+"always display status line
 
 set incsearch
 "Display the match for a search pattern when halfway typing it.
@@ -104,7 +109,9 @@ noremap <F3> <ESC>:NERDTreeToggle<CR>
 "noremap <F4> <ESC>:e .<CR>
 noremap <F4> <ESC>:TagbarToggle<CR>
 noremap <F5> <ESC>:cprev<CR>
+noremap <S-F5> <ESC>:lprev<CR>
 noremap <F6> <ESC>:cnext<CR>
+noremap <S-F6> <ESC>:lnext<CR>
 noremap <F7> <ESC>:noh<CR>
 noremap <S-F7> <ESC>/ $<CR>
 noremap <F8> <ESC>:cfirst<CR>
@@ -112,10 +119,10 @@ noremap <S-F8> <ESC>:clast<CR>
 noremap <F9> <ESC>:make!<CR>:copen<CR>
 noremap <S-F9> <ESC>:make! clean<CR>
 "noremap <C-F9> <ESC>yl:let @0 = GetPrevChar(@0)<CR>phx
-noremap <silent> <C-F9> :<C-U>call PutPrevChar()<CR>
+noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
 noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
 "noremap <C-F10> <ESC>yl:let @0 = GetNextChar(@0)<CR>phx
-noremap <silent> <C-F10> :<C-U>call PutNextChar()<CR>
+noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
 noremap <F12> <ESC>:source $MYVIMRC<CR>
 
 "noremap <C-N> <ESC>:tabnext<CR>
@@ -130,10 +137,10 @@ vnoremap <C-S> <C-C>:update<CR>
 "on ubuntu this one requires the following record in .bashrc file:
 "stty -ixon
 
-noremap <S-Left> zh
-noremap <S-Right> zl
-inoremap <S-Left> <C-O>zh
-inoremap <S-Right> <C-O>zl
+noremap <S-Left> @='3zh'<CR>
+noremap <S-Right> @='3zl'<CR>
+inoremap <S-Left> <C-O>3zh
+inoremap <S-Right> <C-O>3zl
 
 noremap <S-Up> <C-Y>
 noremap <S-Down> <C-E>
@@ -181,7 +188,7 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
-noremap ZB <ESC>:bdelete<CR>
+noremap ZB <ESC>:NERDTreeClose<CR>:bdelete<CR>
 
 noremap Y y$
 
@@ -191,51 +198,51 @@ noremap : ;
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
 function! SetTabStop()
-	if search("	", 'n')
-		setlocal noexpandtab
-	else
-		let ts = CheckTabStop()
-		if ts
-			setlocal expandtab
-			execute "setlocal tabstop=" . ts
-			execute "setlocal shiftwidth=" . ts
-		endif
-	endif
+    if search("    ", 'n')
+        setlocal noexpandtab
+    else
+        let ts = CheckTabStop()
+        if ts
+            setlocal expandtab
+            execute "setlocal tabstop=" . ts
+            execute "setlocal shiftwidth=" . ts
+        endif
+    endif
 endfunction
 
 function! CheckTabStop()
-	for n in [2, 3, 4, 8]
-		1
-		"if search("^" . Spaces(n) . "\\S", 'n')
-		if SearchSpacesOutOfComments(n)
-			return n
-		endif
-	endfor
-	return 0
+    for n in [2, 3, 4, 8]
+        1
+        "if search("^" . Spaces(n) . "\\S", 'n')
+        if SearchSpacesOutOfComments(n)
+            return n
+        endif
+    endfor
+    return 0
 endfunction
 
 function! SearchSpacesOutOfComments(n)
-	while search("^" . Spaces(a:n) . "\\S", 'W')
-		if synIDattr(synID(line("."),col("."),0),"name") !=# "cComment"
-			return 1
-		endif
-	endwhile
-	return 0
+    while search("^" . Spaces(a:n) . "\\S", 'W')
+        if synIDattr(synID(line("."),col("."),0),"name") !=# "cComment"
+            return 1
+        endif
+    endwhile
+    return 0
 endfunction
 
 function! Spaces(n)
-	if a:n == 1
-		return " "
-	else
-		return " " . Spaces(a:n - 1)
-	endif
+    if a:n == 1
+        return " "
+    else
+        return " " . Spaces(a:n - 1)
+    endif
 endfunction
 
 function! GetSyntaxInfo()
-	"let id = synID(line("."), col("."), 0)
-	let stack = synstack(line("."), col("."))
-	"return join([synIDattr(id, "name"), synIDattr(id, "fg", "cterm"), synIDattr(id, "bg", "cterm")])
-	return join(map(stack, "synIDattr(v:val, \"name\")"))
+    "let id = synID(line("."), col("."), 0)
+    let stack = synstack(line("."), col("."))
+    "return join([synIDattr(id, "name"), synIDattr(id, "fg", "cterm"), synIDattr(id, "bg", "cterm")])
+    return join(map(stack, "synIDattr(v:val, \"name\")"))
 endfunction
 
 function! GetNextChar(c)
@@ -281,7 +288,7 @@ augroup END
 augroup GLSLFileType
     autocmd!
     autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
-    "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl	setf glsl
+    "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl    setf glsl
 augroup END
 
 augroup VimrcFiletype
@@ -299,24 +306,25 @@ augroup VimDefault
 augroup END
 
 augroup FiletypeTabs
-	autocmd!
-	autocmd BufNewFile,BufRead *.py set tabstop=4 | set expandtab
-	autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
+    autocmd!
+    autocmd BufNewFile,BufRead *.py set tabstop=4 | set expandtab
+    autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
 augroup END
 
 augroup VimFoldmethod
-	autocmd!
-	autocmd FileType vim set foldmethod=marker
+    autocmd!
+    autocmd FileType vim set foldmethod=marker
 augroup END
 
 augroup SourceVimrc
-	autocmd!
-	autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source %
+    autocmd!
+    autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source %
 augroup END
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
-let g:pymode_options_colorcolumn = 0
+let g:pymode_options_colorcolumn = 1
+let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
@@ -366,7 +374,7 @@ let g:airline_mode_map = {
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
-if (&term != 'xterm')
+if (&term != 'xterm' || &term != 'xterm-color')
     colorscheme solarized
     "let g:solarized_termcolors = 256
     "let g:solarized_contrast="low"
@@ -380,4 +388,15 @@ let g:NERDSpaceDelims = 1
 """"""""""""""""""""""""""""""""""""" CTRLP """"""""""""""""""""""""""""""""""""
 "{{{
 let g:ctrlp_map = '<CR>'
+"}}}
+""""""""""""""""""""""""""""""""" INDENT GUIDE """""""""""""""""""""""""""""""""
+"{{{
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
+augroup IndetGuideColor
+    autocmd!
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermfg=242 ctermbg=0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermfg=242 ctermbg=0
+augroup END
 "}}}
