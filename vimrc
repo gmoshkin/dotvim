@@ -25,6 +25,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'matchit.zip'
 
 call vundle#end()
 "}}}
@@ -82,6 +83,7 @@ set autoindent
 set smartindent
 set hlsearch
 set mouse=a
+set colorcolumn=81
 
 set laststatus=2
 "always display status line
@@ -90,9 +92,10 @@ set incsearch
 "Display the match for a search pattern when halfway typing it.
 
 set showcmd
-"Display an incomplete command in the lower right corner of the Vim window, left of the ruler.
+"Display an incomplete command in the lower right corner of the Vim window,
+"left of the ruler.
 
-if (&term != 'xterm' || &term != 'xterm-color')
+if (&term != 'xterm' && &term != 'xterm-color')
     set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\:,Э\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>
 endif
 set backspace=indent,eol,start
@@ -151,6 +154,8 @@ inoremap <S-Down> <C-O><C-E>
 
 map <C-Up> [m
 map <C-Down> ]m
+vmap <C-Up> [m
+vmap <C-Down> ]m
 imap <C-Up> <C-O>[m
 imap <C-Down> <C-O>]m
 
@@ -376,7 +381,7 @@ let g:airline_mode_map = {
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
-if (&term != 'xterm' || &term != 'xterm-color')
+if (&term != 'xterm' && &term != 'xterm-color')
     colorscheme solarized
     "let g:solarized_termcolors = 256
     "let g:solarized_contrast="low"
