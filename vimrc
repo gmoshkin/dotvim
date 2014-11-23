@@ -26,6 +26,8 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'matchit.zip'
+Plugin 'tpope/vim-endwise'
+Plugin 'Raimondi/delimitMate'
 
 call vundle#end()
 "}}}
@@ -195,7 +197,7 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
-noremap ZB <ESC>:NERDTreeClose<CR>:bdelete<CR>
+noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
 
 noremap Y y$
 
@@ -205,16 +207,16 @@ noremap : ;
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
 function! SetTabStop()
-    if search("    ", 'n')
-        setlocal noexpandtab
-    else
+    " if search("    ", 'n')
+        " setlocal noexpandtab
+    " else
         let ts = CheckTabStop()
         if ts
             setlocal expandtab
             execute "setlocal tabstop=" . ts
             execute "setlocal shiftwidth=" . ts
         endif
-    endif
+    " endif
 endfunction
 
 function! CheckTabStop()
@@ -349,6 +351,8 @@ let g:tagbar_width = 30
 "{{{
 "let g:airline_theme = 'badwolf'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#checks = [ 'indent' ]
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline_powerline_fonts = 1
 
 let g:airline_mode_map = {
