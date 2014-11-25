@@ -204,12 +204,17 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
-noremap ZB <ESC>:call DeleteBuffer()<CR>
+" noremap ZB <ESC>:call DeleteBuffer()<CR>
+noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
 
 noremap Y y$
 
 noremap ; :
 noremap : ;
+
+map <Space> <Plug>(easymotion-prefix)
+map f <Plug>(easymotion-f)
+map F <Plug>(easymotion-F)
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -297,14 +302,14 @@ function! DeleteBuffer()
     if nerdtree_open
         NERDTreeClose
     endif
-    if tagbar_winnr != -3
+    if tagbar_winnr != -1
         call tagbar#CloseWindow()
     endif
     bdelete
     if nerdtree_open
         NERDTree
     endif
-    if tagbar_winnr != -3
+    if tagbar_winnr != -1
         call tagbar#OpenWindow()
     endif
 endfunction
@@ -379,6 +384,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'indent' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#csv#column_display = 'Name'
 
 let g:airline_mode_map = {
             \ '__' : '-',
@@ -443,4 +449,8 @@ let g:multi_cursor_next_key='<C-J>'
 let g:multi_cursor_prev_key='<C-K>'
 let g:multi_cursor_skip_key='<C-L>'
 let g:multi_cursor_quit_key='<Esc>'
+"}}}
+""""""""""""""""""""""""""""""""" NEOCOMPLETE """"""""""""""""""""""""""""""""""
+"{{{
+let g:neocomplete#enable_at_startup = 1
 "}}}
