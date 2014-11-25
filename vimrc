@@ -22,12 +22,19 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
-Plugin 'jpalardy/vim-slime'
+" Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'matchit.zip'
 Plugin 'tpope/vim-endwise'
 Plugin 'Raimondi/delimitMate'
+Plugin 'godlygeek/tabular'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tommcdo/vim-exchange'
 
 call vundle#end()
 "}}}
@@ -181,10 +188,10 @@ noremap <Leader>o o<ESC>
 noremap <Leader>O O<ESC>
 noremap <Leader>V <ESC>ggVG
 
-noremap <C-H> <C-W>h
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-L> <C-W>l
+" noremap <C-H> <C-W>h
+" noremap <C-J> <C-W>j
+" noremap <C-K> <C-W>k
+" noremap <C-L> <C-W>l
 
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
@@ -197,7 +204,7 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
-noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
+noremap ZB <ESC>:call DeleteBuffer()<CR>
 
 noremap Y y$
 
@@ -283,6 +290,24 @@ function! PutPrevChar()
         let i = i - 1
     endwhile
 endfunction
+
+function! DeleteBuffer()
+    let nerdtree_open = nerdtree#isTreeOpen()
+    let tagbar_winnr = bufwinnr("__Tagbar__")
+    if nerdtree_open
+        NERDTreeClose
+    endif
+    if tagbar_winnr != -3
+        call tagbar#CloseWindow()
+    endif
+    bdelete
+    if nerdtree_open
+        NERDTree
+    endif
+    if tagbar_winnr != -3
+        call tagbar#OpenWindow()
+    endif
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -337,11 +362,11 @@ let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
-let g:slime_target = "tmux"
-let g:slime_no_mappings = 1
-xnoremap <leader>s <Plug>SlimeRegionSend
-nnoremap <leader>s <Plug>SlimeMotionSend
-nnoremap <leader>ss <Plug>SlimeLineSend
+" let g:slime_target = "tmux"
+" let g:slime_no_mappings = 1
+" xnoremap <leader>s <Plug>SlimeRegionSend
+" nnoremap <leader>s <Plug>SlimeMotionSend
+" nnoremap <leader>ss <Plug>SlimeLineSend
 "}}}
 """"""""""""""""""""""""""""""""""" TAGBAR """""""""""""""""""""""""""""""""""""
 "{{{
@@ -410,4 +435,12 @@ augroup IndetGuideColor
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermfg=242 ctermbg=0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermfg=242 ctermbg=0
 augroup END
+"}}}
+""""""""""""""""""""""""""""""" MULTIPLE CURSORS """""""""""""""""""""""""""""""
+"{{{
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-J>'
+let g:multi_cursor_prev_key='<C-K>'
+let g:multi_cursor_skip_key='<C-L>'
+let g:multi_cursor_quit_key='<Esc>'
 "}}}
