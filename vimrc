@@ -1,5 +1,10 @@
 "vimrc by gmoshkin
 
+if has("gui_win32")
+	" set guifont=Meslo_LG_M_Regular_for_Powerline:h10:cANSI
+    set guifont=Consolas:h10:cANSI
+endif
+
 filetype off
 
 """"""""""""""""""""""""""""""""""" PATHOGEN """""""""""""""""""""""""""""""""""
@@ -9,8 +14,19 @@ filetype off
 "}}}
 """""""""""""""""""""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""
 "{{{
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("win32")
+    cd C:\Users\ion
+    set visualbell t_vb=
+    "this stops the noisy beeping every time I press a button
+    language English
+
+    set runtimepath+=~/vimfiles/bundle/Vundle.vim
+    let path='~/vimfiles/bundle'
+    call vundle#begin(path)
+else
+    set runtimepath+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
@@ -32,7 +48,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
+if !has("win32")
+    Plugin 'Shougo/neocomplete.vim'
+endif
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tommcdo/vim-exchange'
 
@@ -104,8 +123,12 @@ set showcmd
 "Display an incomplete command in the lower right corner of the Vim window,
 "left of the ruler.
 
-if (&term != 'xterm' && &term != 'xterm-color')
-    set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\:,Э\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>
+if has("win32")
+    set langmap=�q,�w,�e,�r,�t,�y,�u,�i,�o,�p,�[,�],�a,�s,�d,�f,�g,�h,�j,�k,�l,�\\;,�',�z,�x,�c,�v,�b,�n,�m,�\\,,�.,�Q,�W,�E,�R,�T,�Y,�U,�I,�O,�P,�{,�},�A,�S,�D,�F,�G,�H,�J,�K,�L,�\:,�\",�Z,�X,�C,�V,�B,�N,�M,�<,�>
+else
+    if (&term != 'xterm' && &term != 'xterm-color')
+        set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\:,Э\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>
+    endif
 endif
 set backspace=indent,eol,start
 "This specifies where in Insert mode the <BS>> is allowed to delete the
@@ -383,7 +406,9 @@ let g:tagbar_width = 30
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'indent' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_powerline_fonts = 1
+if !has("win32")
+    let g:airline_powerline_fonts = 1
+endif
 
 let g:airline_mode_map = {
             \ '__' : '-',
