@@ -1,5 +1,10 @@
 "vimrc by gmoshkin
 
+if has("gui_win32")
+	" set guifont=Meslo_LG_M_Regular_for_Powerline:h10:cANSI
+    set guifont=Consolas:h10:cANSI
+endif
+
 filetype off
 
 """"""""""""""""""""""""""""""""""" PATHOGEN """""""""""""""""""""""""""""""""""
@@ -9,8 +14,19 @@ filetype off
 "}}}
 """""""""""""""""""""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""
 "{{{
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("win32")
+    cd C:\Users\ion
+    set visualbell t_vb=
+    "this stops the noisy beeping every time I press a button
+    language English
+
+    set runtimepath+=~/vimfiles/bundle/Vundle.vim
+    let path='~/vimfiles/bundle'
+    call vundle#begin(path)
+else
+    set runtimepath+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
@@ -22,11 +38,22 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
-Plugin 'jpalardy/vim-slime'
+" Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'matchit.zip'
 Plugin 'tpope/vim-endwise'
 Plugin 'Raimondi/delimitMate'
+Plugin 'godlygeek/tabular'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" Plugin 'Shougo/neocomplete.vim'
+if !has("win32") && v:version > 703
+    Plugin 'Shougo/neocomplete.vim'
+endif
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tommcdo/vim-exchange'
 
 call vundle#end()
 "}}}
@@ -62,7 +89,7 @@ set splitright
 set scrolloff=1
 "number of screen lines to show around the cursor
 
-set showbreak=~
+" set showbreak=~
 "string to put before wrapped screen lines
 
 set display=
@@ -84,6 +111,7 @@ set autoindent
 set smartindent
 set hlsearch
 set mouse=a
+set colorcolumn=81
 
 set laststatus=2
 "always display status line
@@ -92,10 +120,15 @@ set incsearch
 "Display the match for a search pattern when halfway typing it.
 
 set showcmd
-"Display an incomplete command in the lower right corner of the Vim window, left of the ruler.
+"Display an incomplete command in the lower right corner of the Vim window,
+"left of the ruler.
 
-if (&term != 'xterm' || &term != 'xterm-color')
-    set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\:,Э\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>
+if has("win32")
+    set langmap=�q,�w,�e,�r,�t,�y,�u,�i,�o,�p,�[,�],�a,�s,�d,�f,�g,�h,�j,�k,�l,�\\;,�',�z,�x,�c,�v,�b,�n,�m,�\\,,�.,�Q,�W,�E,�R,�T,�Y,�U,�I,�O,�P,�{,�},�A,�S,�D,�F,�G,�H,�J,�K,�L,�\:,�\",�Z,�X,�C,�V,�B,�N,�M,�<,�>
+else
+    if (&term != 'xterm' && &term != 'xterm-color')
+        set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\:,Э\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>
+    endif
 endif
 set backspace=indent,eol,start
 "This specifies where in Insert mode the <BS>> is allowed to delete the
@@ -153,6 +186,8 @@ inoremap <S-Down> <C-O><C-E>
 
 map <C-Up> [m
 map <C-Down> ]m
+vmap <C-Up> [m
+vmap <C-Down> ]m
 imap <C-Up> <C-O>[m
 imap <C-Down> <C-O>]m
 
@@ -181,10 +216,10 @@ noremap <Leader>mi <ESC>:make! install<CR>
 noremap <Leader>mc <ESC>:make! clean<CR>
 noremap <Leader>M <ESC>:make!<CR>:make! install<CR>
 
-noremap <C-H> <C-W>h
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-L> <C-W>l
+" noremap <C-H> <C-W>h
+" noremap <C-J> <C-W>j
+" noremap <C-K> <C-W>k
+" noremap <C-L> <C-W>l
 
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
@@ -197,12 +232,19 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
+" noremap ZB <ESC>:call DeleteBuffer()<CR>
 noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
 
 noremap Y y$
 
 noremap ; :
 noremap : ;
+
+map <Space> <Plug>(easymotion-prefix)
+map f <Plug>(easymotion-f)
+map F <Plug>(easymotion-F)
+
+noremap gA <ESC>:echo GetSyntaxInfo()<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -283,6 +325,24 @@ function! PutPrevChar()
         let i = i - 1
     endwhile
 endfunction
+
+function! DeleteBuffer()
+    let nerdtree_open = nerdtree#isTreeOpen()
+    let tagbar_winnr = bufwinnr("__Tagbar__")
+    if nerdtree_open
+        NERDTreeClose
+    endif
+    if tagbar_winnr != -1
+        call tagbar#CloseWindow()
+    endif
+    bdelete
+    if nerdtree_open
+        NERDTree
+    endif
+    if tagbar_winnr != -1
+        call tagbar#OpenWindow()
+    endif
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -337,11 +397,11 @@ let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
-let g:slime_target = "tmux"
-let g:slime_no_mappings = 1
-xnoremap <leader>s <Plug>SlimeRegionSend
-nnoremap <leader>s <Plug>SlimeMotionSend
-nnoremap <leader>ss <Plug>SlimeLineSend
+" let g:slime_target = "tmux"
+" let g:slime_no_mappings = 1
+" xnoremap <leader>s <Plug>SlimeRegionSend
+" nnoremap <leader>s <Plug>SlimeMotionSend
+" nnoremap <leader>ss <Plug>SlimeLineSend
 "}}}
 """"""""""""""""""""""""""""""""""" TAGBAR """""""""""""""""""""""""""""""""""""
 "{{{
@@ -353,7 +413,10 @@ let g:tagbar_width = 30
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'indent' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#csv#column_display = 'Name'
+if !has("win32")
+    let g:airline_powerline_fonts = 1
+endif
 
 let g:airline_mode_map = {
             \ '__' : '-',
@@ -385,7 +448,7 @@ let g:airline_mode_map = {
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
-if (&term != 'xterm' || &term != 'xterm-color')
+if (&term != 'xterm' && &term != 'xterm-color')
     colorscheme solarized
     "let g:solarized_termcolors = 256
     "let g:solarized_contrast="low"
@@ -410,4 +473,16 @@ augroup IndetGuideColor
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermfg=242 ctermbg=0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermfg=242 ctermbg=0
 augroup END
+"}}}
+""""""""""""""""""""""""""""""" MULTIPLE CURSORS """""""""""""""""""""""""""""""
+"{{{
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-J>'
+let g:multi_cursor_prev_key='<C-K>'
+let g:multi_cursor_skip_key='<C-L>'
+let g:multi_cursor_quit_key='<Esc>'
+"}}}
+""""""""""""""""""""""""""""""""" NEOCOMPLETE """"""""""""""""""""""""""""""""""
+"{{{
+let g:neocomplete#enable_at_startup = 1
 "}}}
