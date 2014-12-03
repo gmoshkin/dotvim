@@ -215,6 +215,11 @@ noremap <Leader>o o<ESC>
 noremap <Leader>O O<ESC>
 noremap <Leader>V <ESC>ggVG
 
+noremap <Leader>mm <ESC>:make!<CR>:copen<CR>
+noremap <Leader>mi <ESC>:make! install<CR>
+noremap <Leader>mc <ESC>:make! clean<CR>
+noremap <Leader>M <ESC>:make!<CR>:make! install<CR>
+
 " noremap <C-H> <C-W>h
 " noremap <C-J> <C-W>j
 " noremap <C-K> <C-W>k
@@ -240,8 +245,8 @@ noremap ; :
 noremap : ;
 
 map <Space> <Plug>(easymotion-prefix)
-map f <Plug>(easymotion-f)
-map F <Plug>(easymotion-F)
+" map f <Plug>(easymotion-f)
+" map F <Plug>(easymotion-F)
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
