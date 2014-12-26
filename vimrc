@@ -47,7 +47,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " Plugin 'Shougo/neocomplete.vim'
-if !has("win32")
+if has("lua") && v:version > 703 && !has("win32")
     Plugin 'Shougo/neocomplete.vim'
 endif
 Plugin 'Lokaltog/vim-easymotion'
@@ -247,6 +247,8 @@ noremap : ;
 map <Space> <Plug>(easymotion-prefix)
 " map f <Plug>(easymotion-f)
 " map F <Plug>(easymotion-F)
+
+noremap gA <ESC>:echo GetSyntaxInfo()<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{

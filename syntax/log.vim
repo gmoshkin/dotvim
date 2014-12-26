@@ -13,10 +13,13 @@ highlight logClosingNumber ctermfg=red
 syntax match logClosingNumber /[0-9]\+/ contained
 syntax match logScore /score.*/ contains=ClosingNumber
 
-highlight logIteration ctermfg=6
-syntax match logIteration /Iteration [0-9]*\./
+highlight logIteration ctermfg=4
+syntax match logIteration /Iteration [0-9]*\..*/
 
-highlight logExploit ctermfg=10
+" highlight logDateTime ctermfg=6
+" syntax match logDateTime /Iteration [0-9]*\. .*/
+
+highlight logExploit ctermfg=2
 syntax match logExploit /exploit_[0-9]*_[0-9]*/
 
 highlight logErroDetected ctermfg=1
