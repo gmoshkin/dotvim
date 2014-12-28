@@ -216,8 +216,9 @@ noremap <Leader>O O<ESC>
 noremap <Leader>V <ESC>ggVG
 
 noremap <Leader>mm <ESC>:make!<CR>:copen<CR>
-noremap <Leader>mi <ESC>:make! install<CR>
-noremap <Leader>mc <ESC>:make! clean<CR>
+noremap <Leader>mi <ESC>:make! install<CR>:copen<CR>
+noremap <Leader>mc <ESC>:make! clean<CR>:copen<CR>
+noremap <Leader>md <ESC>:make! depend<CR>:copen<CR>
 noremap <Leader>M <ESC>:make!<CR>:make! install<CR>
 
 " noremap <C-H> <C-W>h
