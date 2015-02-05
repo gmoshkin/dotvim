@@ -369,10 +369,10 @@ augroup GLSLFileType
     "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl    setf glsl
 augroup END
 
-augroup VimrcFiletype
+augroup Foldmethod
     autocmd!
-    autocmd Filetype vim setlocal foldmethod=marker |
-                       \ let b:foldmethod_set = 1
+    autocmd Filetype vim,scheme setlocal foldmethod=marker |
+                              \ let b:foldmethod_set = 1
 augroup END
 
 augroup VimDefault
@@ -385,18 +385,18 @@ augroup END
 
 augroup FiletypeTabs
     autocmd!
-    autocmd BufNewFile,BufRead *.py set tabstop=4 | set expandtab
+    autocmd BufNewFile,BufRead *.py set ts=4 | set sw=4 | set expandtab
+    autocmd BufNewFile,BufRead *.rkt set ts=2 | set sw=2 | set expandtab
     autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
-augroup END
-
-augroup VimFoldmethod
-    autocmd!
-    autocmd FileType vim set foldmethod=marker
 augroup END
 
 augroup SourceVimrc
     autocmd!
     autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source %
+augroup END
+
+augroup RacketRun
+  autocmd FileType scheme noremap <Leader>r <ESC>:!racket %:p<CR>
 augroup END
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
@@ -480,7 +480,7 @@ let g:indent_guides_guide_size = 1
 augroup IndetGuideColor
     autocmd!
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermfg=242 ctermbg=0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermfg=242 ctermbg=0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermfg=242 ctermbg=23
 augroup END
 "}}}
 """"""""""""""""""""""""""""""" MULTIPLE CURSORS """""""""""""""""""""""""""""""
@@ -494,4 +494,8 @@ let g:multi_cursor_quit_key='<Esc>'
 """"""""""""""""""""""""""""""""" NEOCOMPLETE """"""""""""""""""""""""""""""""""
 "{{{
 let g:neocomplete#enable_at_startup = 1
+"}}}
+""""""""""""""""""""""""""""""""" DELIMITMATE """"""""""""""""""""""""""""""""""
+"{{{
+au FileType scheme let b:delimitMate_quotes = "\""
 "}}}

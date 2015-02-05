@@ -2,3 +2,32 @@ snippet def "(define (name params ...) body)"
 (define (${1:function_name} ${2:parameters})
 	${3:body})
 endsnippet
+
+snippet defloop "(define (loop params ...) body)"
+(define (${1:loop} ${2:src} ${3:res})
+	${4:body})
+endsnippet
+
+snippet lamb "(lambda (params ...) body)"
+(lambda (${1:params}) ${2:body})
+endsnippet
+
+snippet map "(map func lst)"
+(map ${1:func} ${2:lst})
+endsnippet
+
+snippet mapl "(map (lambda (x) body) lst)"
+(map (lambda (${1:x}) ${2:body}) ${3:lst})
+endsnippet
+
+snippet let "(let ((name value) ... ) body)"
+(let
+	((${1:name} ${2:value}))
+	${3:body})
+endsnippet
+
+snippet let* "(let* ((name value) ... ) body)"
+(let*
+	((${1:name} ${2:value}))
+	${3:body})
+endsnippet
