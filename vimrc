@@ -52,6 +52,7 @@ if has("lua") && v:version > 703 && !has("win32")
 endif
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tommcdo/vim-exchange'
+Plugin 'calebsmith/vim-lambdify'
 
 call vundle#end()
 "}}}
@@ -215,12 +216,6 @@ noremap <Leader>o o<ESC>
 noremap <Leader>O O<ESC>
 noremap <Leader>V <ESC>ggVG
 
-noremap <Leader>mm <ESC>:make!<CR>:copen<CR>
-noremap <Leader>mi <ESC>:make! install<CR>:copen<CR>
-noremap <Leader>mc <ESC>:make! clean<CR>:copen<CR>
-noremap <Leader>md <ESC>:make! depend<CR>:copen<CR>
-noremap <Leader>M <ESC>:make!<CR>:make! install<CR>
-
 " noremap <C-H> <C-W>h
 " noremap <C-J> <C-W>j
 " noremap <C-K> <C-W>k
@@ -348,6 +343,21 @@ function! DeleteBuffer()
         call tagbar#OpenWindow()
     endif
 endfunction
+
+function! SetLaTeXKeyMappings()
+    noremap <buffer> <Leader>m <ESC>:!pdflatex %:p<CR>
+    noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
+    inoremap <buffer> <C-S> <C-O>:update<CR><C-O>:!pdflatex %:p<CR>
+    vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
+endfunction
+
+function! SetMakeKeyMappings()
+    noremap <buffer> <Leader>mm <ESC>:make!<CR>:copen<CR>
+    noremap <buffer> <Leader>mi <ESC>:make! install<CR>:copen<CR>
+    noremap <buffer> <Leader>mc <ESC>:make! clean<CR>:copen<CR>
+    noremap <buffer> <Leader>md <ESC>:make! depend<CR>:copen<CR>
+    noremap <buffer> <Leader>M <ESC>:make!<CR>:make! install<CR>
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -397,7 +407,19 @@ augroup SourceVimrc
 augroup END
 
 augroup RacketRun
-  autocmd FileType scheme noremap <Leader>r <ESC>:!racket %:p<CR>
+  autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
+augroup END
+
+augroup LaTeXMake
+  autocmd FileType tex call SetLaTeXKeyMappings()
+augroup END
+
+augroup Make
+  autocmd FileType c,cpp call SetMakeKeyMappings()
+augroup END
+
+augroup VimHelp
+  autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
 augroup END
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
