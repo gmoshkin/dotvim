@@ -53,6 +53,7 @@ endif
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'calebsmith/vim-lambdify'
+Plugin 'tpope/vim-abolish'
 
 call vundle#end()
 "}}}
