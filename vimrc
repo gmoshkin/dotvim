@@ -100,7 +100,7 @@ set tags=./tags,./TAGS,tags,TAGS,~/tags
 "list of paths to search for tag files
 "the last one is added by me
 
-set expandtab
+" set expandtab
 "replace tabs with spaces
 
 set hidden
@@ -111,7 +111,8 @@ set autoindent
 set smartindent
 set hlsearch
 set mouse=a
-set colorcolumn=81
+" set colorcolumn=81
+let &colorcolumn = join(range(81,300), ',')
 
 set laststatus=2
 "always display status line
@@ -258,6 +259,8 @@ function! SetTabStop()
             setlocal expandtab
             execute "setlocal tabstop=" . ts
             execute "setlocal shiftwidth=" . ts
+        else
+            setlocal noexpandtab
         endif
     " endif
 endfunction
@@ -397,8 +400,8 @@ augroup END
 
 augroup FiletypeTabs
     autocmd!
-    autocmd BufNewFile,BufRead *.py set ts=4 | set sw=4 | set expandtab
-    autocmd BufNewFile,BufRead *.rkt set ts=2 | set sw=2 | set expandtab
+    autocmd BufNewFile,BufRead *.py setlocal ts=4 | setlocal sw=4 | setlocal expandtab
+    autocmd BufNewFile,BufRead *.rkt setlocal ts=2 | setlocal sw=2 | setlocal expandtab
     autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
 augroup END
 
