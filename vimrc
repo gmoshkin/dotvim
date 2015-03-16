@@ -425,6 +425,11 @@ augroup END
 augroup VimHelp
   autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
 augroup END
+
+augroup NERDTreeIndentGuide
+	" this one is which you're most likely to use?
+	autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
+augroup end
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
