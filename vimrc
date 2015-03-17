@@ -36,7 +36,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
-" Plugin 'jpalardy/vim-slime'
+Plugin 'jpalardy/vim-slime'
 Plugin 'klen/python-mode'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'matchit.zip'
@@ -438,11 +438,11 @@ let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
-" let g:slime_target = "tmux"
-" let g:slime_no_mappings = 1
-" xnoremap <leader>s <Plug>SlimeRegionSend
-" nnoremap <leader>s <Plug>SlimeMotionSend
-" nnoremap <leader>ss <Plug>SlimeLineSend
+let g:slime_target = "tmux"
+let g:slime_no_mappings = 1
+xnoremap <leader>s <Plug>SlimeRegionSend
+nnoremap <leader>s <Plug>SlimeMotionSend
+nnoremap <leader>ss <Plug>SlimeLineSend
 "}}}
 """"""""""""""""""""""""""""""""""" TAGBAR """""""""""""""""""""""""""""""""""""
 "{{{
