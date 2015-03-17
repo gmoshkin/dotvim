@@ -460,9 +460,9 @@ let g:pymode_rope_complete_on_dot = 0
 "{{{
 let g:slime_target = "tmux"
 let g:slime_no_mappings = 1
-xnoremap <leader>s <Plug>SlimeRegionSend
-nnoremap <leader>s <Plug>SlimeMotionSend
-nnoremap <leader>ss <Plug>SlimeLineSend
+xmap <Leader>s <Plug>SlimeRegionSend
+nmap <Leader>s <Plug>SlimeMotionSend
+nmap <Leader>ss <Plug>SlimeLineSend
 "}}}
 """"""""""""""""""""""""""""""""""" TAGBAR """""""""""""""""""""""""""""""""""""
 "{{{
