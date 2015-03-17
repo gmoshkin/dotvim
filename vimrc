@@ -142,6 +142,11 @@ set backspace=indent,eol,start
 "character in front of the cursor.  The threee items, separated by commas, tell
 "Vim to delete the white space at the start oof the line, a line break and the
 "character before where Insert mode started.
+
+set t_ut=
+"fixes the problem with the terminal's background color "bleeding" into Vim's
+"http://sunaku.github.io/vim-256color-bce.html
+
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
@@ -362,6 +367,18 @@ function! SetMakeKeyMappings()
     noremap <buffer> <Leader>md <ESC>:make! depend<CR>:copen<CR>
     noremap <buffer> <Leader>M <ESC>:make!<CR>:make! install<CR>
 endfunction
+
+function! SetIndentGuideColors()
+    hi indentguidesodd  ctermfg=242 ctermbg=0
+    hi indentguideseven ctermfg=242 ctermbg=23
+endfunction
+
+function! Crutch()
+    AirlineRefresh
+    " Fix color mixup after resourcing vimrc
+    call SetIndentGuideColors()
+    " Fix indent guides disapearing after resourcing vimrc
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -407,7 +424,8 @@ augroup END
 
 augroup SourceVimrc
     autocmd!
-    autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source %
+    autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source % |
+                                                         \ call Crutch()
 augroup END
 
 augroup RacketRun
@@ -434,7 +452,9 @@ augroup end
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
 let g:pymode_options_colorcolumn = 1
+let g:pymode_doc = 0
 let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
+let g:pymode_rope_complete_on_dot = 0
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
@@ -486,6 +506,7 @@ let g:airline_mode_map = {
 "let g:airline_symbols.paste = 'ρ'
 "let g:airline_symbols.whitespace = 'Ξ'
 "let g:airline_symbols.readonly = '( •_•)>⌐■-■'"⌐⟥⟤'"😎
+
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
@@ -511,8 +532,7 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 augroup IndetGuideColor
     autocmd!
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermfg=242 ctermbg=0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermfg=242 ctermbg=23
+    autocmd VimEnter,Colorscheme * :call SetIndentGuideColors()
 augroup END
 "}}}
 """"""""""""""""""""""""""""""" MULTIPLE CURSORS """""""""""""""""""""""""""""""
