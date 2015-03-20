@@ -252,6 +252,8 @@ map <Space> <Plug>(easymotion-prefix)
 " map F <Plug>(easymotion-F)
 
 noremap gA <ESC>:echo GetSyntaxInfo()<CR>
+
+vnoremap / y<ESC>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -369,8 +371,8 @@ function! SetMakeKeyMappings()
 endfunction
 
 function! SetIndentGuideColors()
-    hi indentguidesodd  ctermfg=242 ctermbg=0
-    hi indentguideseven ctermfg=242 ctermbg=23
+    hi indentguidesodd  ctermfg=12 ctermbg=0
+    hi indentguideseven ctermfg=12 ctermbg=23
 endfunction
 
 function! Crutch()
