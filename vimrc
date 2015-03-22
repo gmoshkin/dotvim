@@ -238,11 +238,6 @@ noremap <Leader>o o<ESC>
 noremap <Leader>O O<ESC>
 noremap <Leader>V <ESC>ggVG
 
-" noremap <C-H> <C-W>h
-" noremap <C-J> <C-W>j
-" noremap <C-K> <C-W>k
-" noremap <C-L> <C-W>l
-
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 
