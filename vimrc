@@ -147,10 +147,10 @@ if &term =~ '^screen' && exists('$TMUX')
 	set t_ut=
 	"fixes the problem with the terminal's background color "bleeding" into
 	"Vim's http://sunaku.github.io/vim-256color-bce.html
-	set <F1>=[11;*~
-	set <F2>=[12;*~
-	set <F3>=[13;*~
-	set <F4>=[14;*~
+	" set <F1>=[11;*~
+	" set <F2>=[12;*~
+	" set <F3>=[13;*~
+	" set <F4>=[14;*~
 	set <F5>=[15;*~
 	set <F6>=[17;*~
 	set <F7>=[18;*~
@@ -390,6 +390,20 @@ function! Crutch()
 	" Fix color mixup after resourcing vimrc
 	call SetIndentGuideColors()
 	" Fix indent guides disapearing after resourcing vimrc
+endfunction
+
+" Function called before entering multiple cursors' mode
+function! Multiple_cursors_before()
+	if exists(':NeoCompleteLock') == 2
+		exe 'NeoCompleteLock'
+	endif
+endfunction
+
+" Function called after leaving multiple cursors' mode
+function! Multiple_cursors_after()
+	if exists(':NeoCompleteUnlock') == 2
+		exe 'NeoCompleteUnlock'
+	endif
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
