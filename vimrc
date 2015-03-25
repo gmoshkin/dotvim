@@ -55,13 +55,12 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'tpope/vim-abolish'
 Plugin 'bufkill.vim'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 "}}}
 """""""""""""""""""""""""""""""""""" OPTIONS """""""""""""""""""""""""""""""""""
 "{{{
-syntax enable
-
 filetype plugin indent on
 
 if (!exists("b:foldmethod_set"))
@@ -484,7 +483,7 @@ augroup end
 let g:pymode_options_colorcolumn = 1
 let g:pymode_doc = 0
 let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
-let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope = 0
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
@@ -581,3 +580,5 @@ let g:neocomplete#enable_at_startup = 1
 "{{{
 au FileType scheme let b:delimitMate_quotes = "\""
 "}}}
+
+syntax enable
