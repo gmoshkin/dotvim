@@ -54,6 +54,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'tpope/vim-abolish'
+Plugin 'bufkill.vim'
 
 call vundle#end()
 "}}}
@@ -143,7 +144,8 @@ set backspace=indent,eol,start
 "Vim to delete the white space at the start oof the line, a line break and the
 "character before where Insert mode started.
 
-if &term =~ '^screen' && exists('$TMUX')
+" if &term =~ '^screen' && exists('$TMUX')
+if exists('$TMUX')
 	set t_ut=
 	"fixes the problem with the terminal's background color "bleeding" into
 	"Vim's http://sunaku.github.io/vim-256color-bce.html
@@ -250,7 +252,8 @@ noremap ZN zN
 
 noremap Q ZQ
 " noremap ZB <ESC>:call DeleteBuffer()<CR>
-noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
+" noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
+noremap ZB <ESC>:BD<CR>
 
 noremap Y y$
 
@@ -404,6 +407,7 @@ function! Multiple_cursors_after()
 	if exists(':NeoCompleteUnlock') == 2
 		exe 'NeoCompleteUnlock'
 	endif
+	set cursorline
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
