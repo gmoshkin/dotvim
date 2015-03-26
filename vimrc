@@ -266,6 +266,14 @@ map <Space> <Plug>(easymotion-prefix)
 noremap gA <ESC>:echo GetSyntaxInfo()<CR>
 
 vnoremap / y<ESC>
+
+cnoremap <C-A> <Home>
+cnoremap <C-B> <Left>
+cnoremap <C-Z> <S-Left>
+cnoremap <C-F> <Right>
+cnoremap <C-X> <S-Right>
+cnoremap <C-G> <C-F>
+cnoremap <C-D> <Del>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -579,6 +587,12 @@ let g:neocomplete#enable_at_startup = 1
 """"""""""""""""""""""""""""""""" DELIMITMATE """"""""""""""""""""""""""""""""""
 "{{{
 au FileType scheme let b:delimitMate_quotes = "\""
+"}}}
+"""""""""""""""""""""""""""""""""" JEDI-VIM """"""""""""""""""""""""""""""""""""
+"{{{
+let g:jedi#popup_on_dot=0
+let g:jedi#show_call_signatures=2
+let g:jedi#use_tabs_not_buffers=0
 "}}}
 
 syntax enable
