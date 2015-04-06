@@ -56,6 +56,8 @@ Plugin 'calebsmith/vim-lambdify'
 Plugin 'tpope/vim-abolish'
 Plugin 'bufkill.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'DrawIt'
+Plugin 'AnsiEsc.vim'
 
 call vundle#end()
 "}}}
@@ -492,6 +494,10 @@ let g:pymode_options_colorcolumn = 1
 let g:pymode_doc = 0
 let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
 let g:pymode_rope = 0
+let g:pymode_lint_options_pep8 = {
+	\ 'max_line_length': 80,
+	\ 'ignore': 'E104'
+	\ }
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
@@ -593,6 +599,10 @@ au FileType scheme let b:delimitMate_quotes = "\""
 let g:jedi#popup_on_dot=0
 let g:jedi#show_call_signatures=2
 let g:jedi#use_tabs_not_buffers=0
+" this is a crtoch for the cursor not going to end of line in insert mode bug
+if version < 704 && g:jedi#show_call_signatures != 1
+	autocmd! InsertEnter
+endif
 "}}}
 
 syntax enable
