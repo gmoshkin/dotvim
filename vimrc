@@ -267,7 +267,7 @@ map <Space> <Plug>(easymotion-prefix)
 
 noremap gA <ESC>:echo GetSyntaxInfo()<CR>
 
-vnoremap / y<ESC>
+vnoremap / y<ESC>/0
 
 cnoremap <C-A> <Home>
 cnoremap <C-B> <Left>
