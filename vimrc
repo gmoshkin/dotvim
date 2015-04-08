@@ -276,6 +276,8 @@ cnoremap <C-F> <Right>
 cnoremap <C-X> <S-Right>
 cnoremap <C-G> <C-F>
 cnoremap <C-D> <Del>
+
+noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -418,6 +420,11 @@ function! Multiple_cursors_after()
 	endif
 	set cursorline
 endfunction
+
+function FoldArgumentsOntoMultipleLines()
+	substitute@,\s*@,\r@ge
+	normal v``="
+endfunction"
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
