@@ -421,10 +421,10 @@ function! Multiple_cursors_after()
 	set cursorline
 endfunction
 
-function FoldArgumentsOntoMultipleLines()
+function! FoldArgumentsOntoMultipleLines()
 	substitute@,\s*@,\r@ge
 	normal v``="
-endfunction"
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -475,24 +475,34 @@ augroup SourceVimrc
 augroup END
 
 augroup RacketRun
-  autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
+	autocmd!
+	autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
 augroup END
 
 augroup LaTeXMake
-  autocmd FileType tex call SetLaTeXKeyMappings()
+	autocmd!
+	autocmd FileType tex call SetLaTeXKeyMappings()
 augroup END
 
 augroup Make
-  autocmd FileType c,cpp call SetMakeKeyMappings()
+	autocmd!
+	autocmd FileType c,cpp call SetMakeKeyMappings()
 augroup END
 
 augroup VimHelp
-  autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
+	autocmd!
+	autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
 augroup END
 
 augroup NERDTreeIndentGuide
+	autocmd!
 	" this one is which you're most likely to use?
 	autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
+augroup end
+
+augroup LogFileType
+	autocmd!
+	autocmd FileType log AnsiEsc
 augroup end
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
