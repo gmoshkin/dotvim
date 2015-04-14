@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *grind setf log
+au BufNewFile,BufRead *grind,*.log setf log
