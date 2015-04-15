@@ -106,7 +106,15 @@ set tags=./tags,./TAGS,tags,TAGS,~/tags
 "replace tabs with spaces
 
 set hidden
+"Allow hidden buffers
+
 set number
+"Line numbers
+
+set autoread
+"Automaticaly read buffer, when it's changed outside of vim and not changed
+"in vim
+
 set tabstop=4
 set shiftwidth=4
 set autoindent
@@ -114,7 +122,9 @@ set smartindent
 set hlsearch
 set mouse=a
 " set colorcolumn=81
+"
 let &colorcolumn = join(range(81,300), ',')
+"Color columns from 81 to 300
 
 set laststatus=2
 "always display status line
@@ -252,8 +262,6 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
-" noremap ZB <ESC>:call DeleteBuffer()<CR>
-" noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
 noremap ZB <ESC>:BD<CR>
 
 noremap Y y$
@@ -359,24 +367,6 @@ function! PutPrevChar()
 		normal `u
 		let i = i - 1
 	endwhile
-endfunction
-
-function! DeleteBuffer()
-	let nerdtree_open = nerdtree#isTreeOpen()
-	let tagbar_winnr = bufwinnr("__Tagbar__")
-	if nerdtree_open
-		NERDTreeClose
-	endif
-	if tagbar_winnr != -1
-		call tagbar#CloseWindow()
-	endif
-	bdelete
-	if nerdtree_open
-		NERDTree
-	endif
-	if tagbar_winnr != -1
-		call tagbar#OpenWindow()
-	endif
 endfunction
 
 function! SetLaTeXKeyMappings()
@@ -580,6 +570,10 @@ endif
 """"""""""""""""""""""""""""""""" NERDCOMMENTER """"""""""""""""""""""""""""""""
 "{{{
 let g:NERDSpaceDelims = 1
+"}}}
+""""""""""""""""""""""""""""""""""" NERDTREE """""""""""""""""""""""""""""""""""
+"{{{
+let NERDTreeAutoDeleteBuffer=1
 "}}}
 """"""""""""""""""""""""""""""""""""" CTRLP """"""""""""""""""""""""""""""""""""
 "{{{
