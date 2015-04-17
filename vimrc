@@ -106,7 +106,15 @@ set tags=./tags,./TAGS,tags,TAGS,~/tags
 "replace tabs with spaces
 
 set hidden
+"Allow hidden buffers
+
 set number
+"Line numbers
+
+set autoread
+"Automaticaly read buffer, when it's changed outside of vim and not changed
+"in vim
+
 set tabstop=4
 set shiftwidth=4
 set autoindent
@@ -114,7 +122,9 @@ set smartindent
 set hlsearch
 set mouse=a
 " set colorcolumn=81
+"
 let &colorcolumn = join(range(81,300), ',')
+"Color columns from 81 to 300
 
 set laststatus=2
 "always display status line
@@ -252,8 +262,6 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
-" noremap ZB <ESC>:call DeleteBuffer()<CR>
-" noremap ZB <ESC>:TagbarClose<CR>:NERDTreeClose<CR>:bdelete<CR>
 noremap ZB <ESC>:BD<CR>
 
 noremap Y y$
@@ -267,7 +275,7 @@ map <Space> <Plug>(easymotion-prefix)
 
 noremap gA <ESC>:echo GetSyntaxInfo()<CR>
 
-vnoremap / y<ESC>
+vnoremap / y<ESC>/0
 
 cnoremap <C-A> <Home>
 cnoremap <C-B> <Left>
@@ -278,6 +286,8 @@ cnoremap <C-G> <C-F>
 cnoremap <C-D> <Del>
 
 noremap <Leader>t <Esc>:Tabularize<CR>
+
+noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -361,24 +371,6 @@ function! PutPrevChar()
 	endwhile
 endfunction
 
-function! DeleteBuffer()
-	let nerdtree_open = nerdtree#isTreeOpen()
-	let tagbar_winnr = bufwinnr("__Tagbar__")
-	if nerdtree_open
-		NERDTreeClose
-	endif
-	if tagbar_winnr != -1
-		call tagbar#CloseWindow()
-	endif
-	bdelete
-	if nerdtree_open
-		NERDTree
-	endif
-	if tagbar_winnr != -1
-		call tagbar#OpenWindow()
-	endif
-endfunction
-
 function! SetLaTeXKeyMappings()
 	noremap <buffer> <Leader>m <ESC>:!pdflatex %:p<CR>
 	noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
@@ -419,6 +411,11 @@ function! Multiple_cursors_after()
 		exe 'NeoCompleteUnlock'
 	endif
 	set cursorline
+endfunction
+
+function! FoldArgumentsOntoMultipleLines()
+	substitute@,\s*@,\r@ge
+	normal v``="
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
@@ -470,24 +467,34 @@ augroup SourceVimrc
 augroup END
 
 augroup RacketRun
-  autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
+	autocmd!
+	autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
 augroup END
 
 augroup LaTeXMake
-  autocmd FileType tex call SetLaTeXKeyMappings()
+	autocmd!
+	autocmd FileType tex call SetLaTeXKeyMappings()
 augroup END
 
 augroup Make
-  autocmd FileType c,cpp call SetMakeKeyMappings()
+	autocmd!
+	autocmd FileType c,cpp call SetMakeKeyMappings()
 augroup END
 
 augroup VimHelp
-  autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
+	autocmd!
+	autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
 augroup END
 
 augroup NERDTreeIndentGuide
+	autocmd!
 	" this one is which you're most likely to use?
 	autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
+augroup end
+
+augroup LogFileType
+	autocmd!
+	autocmd FileType log AnsiEsc
 augroup end
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
@@ -565,6 +572,10 @@ endif
 """"""""""""""""""""""""""""""""" NERDCOMMENTER """"""""""""""""""""""""""""""""
 "{{{
 let g:NERDSpaceDelims = 1
+"}}}
+""""""""""""""""""""""""""""""""""" NERDTREE """""""""""""""""""""""""""""""""""
+"{{{
+let NERDTreeAutoDeleteBuffer=1
 "}}}
 """"""""""""""""""""""""""""""""""""" CTRLP """"""""""""""""""""""""""""""""""""
 "{{{
