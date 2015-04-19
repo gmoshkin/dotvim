@@ -58,6 +58,7 @@ Plugin 'bufkill.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'DrawIt'
 Plugin 'AnsiEsc.vim'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 call vundle#end()
 "}}}
@@ -121,9 +122,9 @@ set autoindent
 set smartindent
 set hlsearch
 set mouse=a
-" set colorcolumn=81
+set colorcolumn=81
 "
-let &colorcolumn = join(range(81,300), ',')
+" let &colorcolumn = join(range(81,300), ',')
 "Color columns from 81 to 300
 
 set laststatus=2
@@ -372,7 +373,9 @@ function! PutPrevChar()
 endfunction
 
 function! SetLaTeXKeyMappings()
-	noremap <buffer> <Leader>m <ESC>:!pdflatex %:p<CR>
+	noremap <buffer> <Leader>mp <ESC>:!pdflatex %:p<CR>
+	noremap <buffer> <Leader>mb
+			\ <ESC>:execute '!bibtex '.split(expand('%:p'), '\.')[0].'.aux'<CR>
 	noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
 	inoremap <buffer> <C-S> <C-O>:update<CR><C-O>:!pdflatex %:p<CR>
 	vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
