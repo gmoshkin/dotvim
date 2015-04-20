@@ -292,6 +292,8 @@ cnoremap <C-D> <Del>
 noremap <Leader>t <Esc>:Tabularize<CR>
 
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
+
+noremap cog <ESC>:IndentGuidesToggle<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
