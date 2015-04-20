@@ -439,12 +439,14 @@ augroup OpenFolds
 augroup END
 
 " OpenGL Shader Languauge
+" FIXME move to ftdetect
 augroup GLSLFileType
 	autocmd!
 	autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
 	"autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl    setf glsl
 augroup END
 
+" FIXME move to ftplugin
 augroup Foldmethod
 	autocmd!
 	autocmd Filetype vim,scheme setlocal foldmethod=marker |
@@ -466,38 +468,45 @@ augroup END
 	" autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
 " augroup END
 
+" FIXME move to ftplugin
 augroup SourceVimrc
 	autocmd!
 	autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source % |
 														 \ call Crutch()
 augroup END
 
+" FIXME move to ftplugin
 augroup RacketRun
 	autocmd!
 	autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
 augroup END
 
+" FIXME move to ftplugin
 augroup LaTeXMake
 	autocmd!
 	autocmd FileType tex call SetLaTeXKeyMappings()
 augroup END
 
+" FIXME move to ftplugin
 augroup Make
 	autocmd!
 	autocmd FileType c,cpp call SetMakeKeyMappings()
 augroup END
 
+" FIXME move to ftplugin
 augroup VimHelp
 	autocmd!
 	autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
 augroup END
 
+" FIXME move to ftplugin
 augroup NERDTreeIndentGuide
 	autocmd!
 	" this one is which you're most likely to use?
 	autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
 augroup end
 
+" FIXME move to ftplugin
 augroup LogFileType
 	autocmd!
 	autocmd FileType log AnsiEsc
