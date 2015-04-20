@@ -459,12 +459,12 @@ augroup VimDefault
 	"autocmd VimEnter * PluginInstall
 augroup END
 
-augroup FiletypeTabs
-	autocmd!
-	autocmd BufNewFile,BufRead *.py setlocal ts=4 | setlocal sw=4 | setlocal expandtab
-	autocmd BufNewFile,BufRead *.rkt setlocal ts=2 | setlocal sw=2 | setlocal expandtab
-	autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
-augroup END
+" augroup FiletypeTabs
+	" autocmd!
+	" autocmd BufNewFile,BufRead *.py setlocal ts=4 | setlocal sw=4 | setlocal expandtab
+	" autocmd BufNewFile,BufRead *.rkt setlocal ts=2 | setlocal sw=2 | setlocal expandtab
+	" autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
+" augroup END
 
 augroup SourceVimrc
 	autocmd!
