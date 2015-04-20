@@ -74,17 +74,6 @@ if (!exists("b:foldmethod_set"))
 endif
 
 let g:c_space_errors = 1
-"highlight ClosingSpace ctermbg=100
-"match ClosingSpace /\s\+$/
-"highlight space characters in the end of lines
-
-"highlight OverLength cterm=NONE ctermbg=NONE ctermfg=NONE guibg=#592929
-"match OverLength /\%81v.\+/
-"highlight text in 81+ columns
-
-"highlight ColorColumn ctermbg=grey
-"set colorcolumn=81
-"highlight 81st column
 
 set cursorline
 "highlight the screen line of the cursor
@@ -95,9 +84,6 @@ set splitright
 set scrolloff=1
 "number of screen lines to show around the cursor
 
-" set showbreak=~
-"string to put before wrapped screen lines
-
 set display=
 "Include "lastline" to show the last line even if it doesn't fit
 "Include "uhex" to show unprintable characters as a hex number
@@ -105,9 +91,6 @@ set display=
 set tags=./tags,./TAGS,tags,TAGS,~/tags
 "list of paths to search for tag files
 "the last one is added by me
-
-" set expandtab
-"replace tabs with spaces
 
 set hidden
 "Allow hidden buffers
