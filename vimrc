@@ -376,9 +376,9 @@ function! SetLaTeXKeyMappings()
 	noremap <buffer> <Leader>mp <ESC>:!pdflatex %:p<CR>
 	noremap <buffer> <Leader>mb
 			\ <ESC>:execute '!bibtex '.split(expand('%:p'), '\.')[0].'.aux'<CR>
-	noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
-	inoremap <buffer> <C-S> <C-O>:update<CR><C-O>:!pdflatex %:p<CR>
-	vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
+	" noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
+	" inoremap <buffer> <C-S> <C-O>:update<CR><C-O>:!pdflatex %:p<CR>
+	" vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
 endfunction
 
 function! SetMakeKeyMappings()
@@ -424,10 +424,10 @@ endfunction
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
 
-augroup Text
-	autocmd!
-	autocmd FileType text setlocal spell
-augroup END
+" augroup Text
+	" autocmd!
+	" autocmd FileType text setlocal spell
+" augroup END
 
 " Folds are open by default
 augroup OpenFolds
@@ -620,6 +620,15 @@ let g:jedi#use_tabs_not_buffers=0
 " this is a crtoch for the cursor not going to end of line in insert mode bug
 if version < 704 && g:jedi#show_call_signatures != 1
 	autocmd! InsertEnter
+endif
+"}}}
+"""""""""""""""""""""""""""""""""" LATEX-BOX """""""""""""""""""""""""""""""""""
+"{{{
+let g:LatexBox_quickfix = 4
+let g:LatexBox_show_warnings = 0
+if len(serverlist())
+	let g:LatexBox_latexmk_async = 1
+	let g:LatexBox_latexmk_preview_continuously = 1
 endif
 "}}}
 
