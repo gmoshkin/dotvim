@@ -161,7 +161,6 @@ if exists('$TMUX')
 	set <F12>=[24;*~
 	"allows to use modifiers (e.g. Shift, Ctrl) with these function keys
 endif
-
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
@@ -277,9 +276,25 @@ noremap <Leader>t <Esc>:Tabularize<CR>
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
 noremap cog <ESC>:IndentGuidesToggle<CR>
+
+noremap cof <ESC>:call ToggleAutoFormat()<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
+function! ToggleAutoFormat()
+	if !exists('b:auto_format_enabled')
+		let b:auto_format_enabled = 0
+	endif
+	if b:auto_format_enabled
+		setlocal formatoptions-=a
+		echo 'autoformat disabled'
+	else
+		setlocal formatoptions+=a
+		echo 'autoformat enabled'
+	endif
+	let b:auto_format_enabled = !b:auto_format_enabled
+endfunction
+
 function! SetTabStop()
 	" if search("    ", 'n')
 		" setlocal noexpandtab
