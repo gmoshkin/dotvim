@@ -62,6 +62,7 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-sleuth'
+Plugin 'chrisbra/csv.vim'
 
 call vundle#end()
 "}}}
