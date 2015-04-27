@@ -279,6 +279,8 @@ noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
+
+map c<space> <plug>NERDCommenterToggle
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
