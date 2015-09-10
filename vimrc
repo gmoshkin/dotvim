@@ -44,7 +44,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'Raimondi/delimitMate'
 Plugin 'godlygeek/tabular'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'SirVer/ultisnips'
+if v:version > 703
+	Plugin 'SirVer/ultisnips'
+endif
 Plugin 'honza/vim-snippets'
 " Plugin 'Shougo/neocomplete.vim'
 if has("lua") && v:version > 703 && !has("win32")
@@ -109,7 +111,8 @@ set autoindent
 set smartindent
 set hlsearch
 set mouse=a
-set colorcolumn=81
+set textwidth=80
+set colorcolumn=+1
 "
 " let &colorcolumn = join(range(81,300), ',')
 "Color columns from 81 to 300
@@ -279,6 +282,8 @@ noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
+
+noremap coa <ESC>:call ToggleColorColumn()<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -294,6 +299,20 @@ function! ToggleAutoFormat()
 		echo 'autoformat enabled'
 	endif
 	let b:auto_format_enabled = !b:auto_format_enabled
+endfunction
+
+function! ToggleColorColumn()
+	if !exists('b:colorcolumn_enabled')
+		let b:colorcolumn_enabled = 1
+	endif
+	if b:colorcolumn_enabled
+		setlocal colorcolumn=
+		echo 'colorcolumn disabled'
+	else
+		setlocal colorcolumn=+1
+		echo 'colorcolumn enabled'
+	endif
+	let b:colorcolumn_enabled = !b:colorcolumn_enabled
 endfunction
 
 function! SetTabStop()
@@ -394,8 +413,8 @@ function! SetMakeKeyMappings()
 endfunction
 
 function! SetIndentGuideColors()
-    hi indentguidesodd  ctermfg=12 ctermbg=0
-    hi indentguideseven ctermfg=12 ctermbg=23
+	hi indentguidesodd  ctermfg=12 ctermbg=0
+	hi indentguideseven ctermfg=12 ctermbg=23
 endfunction
 
 function! Crutch()
