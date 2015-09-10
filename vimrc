@@ -284,6 +284,8 @@ noremap cog <ESC>:IndentGuidesToggle<CR>
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
 
 noremap coa <ESC>:call ToggleColorColumn()<CR>
+
+map c<space> <plug>NERDCommenterToggle
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
