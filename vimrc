@@ -396,8 +396,8 @@ function! SetMakeKeyMappings()
 endfunction
 
 function! SetIndentGuideColors()
-    hi indentguidesodd  ctermfg=12 ctermbg=0
-    hi indentguideseven ctermfg=12 ctermbg=23
+	hi indentguidesodd  ctermfg=12 ctermbg=0
+	hi indentguideseven ctermfg=12 ctermbg=23
 endfunction
 
 function! Crutch()
