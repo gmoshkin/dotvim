@@ -106,11 +106,15 @@ set autoread
 "in vim
 
 set tabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
+" set shiftwidth=4
+" set expandtab
+" set autoindent
+" set smartindent
+"Indent stuff
+
 set hlsearch
 set mouse=a
+
 set textwidth=80
 set colorcolumn=+1
 "
