@@ -1,8 +1,8 @@
 "vimrc by gmoshkin
 
 if has("gui_win32")
-	" set guifont=Meslo_LG_M_Regular_for_Powerline:h10:cANSI
-	set guifont=Consolas:h10:cANSI
+    " set guifont=Meslo_LG_M_Regular_for_Powerline:h10:cANSI
+    set guifont=Consolas:h10:cANSI
 endif
 
 filetype off
@@ -15,15 +15,15 @@ filetype off
 """""""""""""""""""""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""
 "{{{
 if has("win32")
-	cd C:\Users\ion
-	language English
+    cd C:\Users\ion
+    language English
 
-	set runtimepath+=~/vimfiles/bundle/Vundle.vim
-	let path='~/vimfiles/bundle'
-	call vundle#begin(path)
+    set runtimepath+=~/vimfiles/bundle/Vundle.vim
+    let path='~/vimfiles/bundle'
+    call vundle#begin(path)
 else
-	set runtimepath+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
+    set runtimepath+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 endif
 
 Plugin 'gmarik/Vundle.vim'
@@ -45,12 +45,12 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'godlygeek/tabular'
 Plugin 'terryma/vim-multiple-cursors'
 if v:version > 703
-	Plugin 'SirVer/ultisnips'
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
 endif
-Plugin 'honza/vim-snippets'
 " Plugin 'Shougo/neocomplete.vim'
 if has("lua") && v:version > 703 && !has("win32")
-	Plugin 'Shougo/neocomplete.vim'
+    Plugin 'Shougo/neocomplete.vim'
 endif
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tommcdo/vim-exchange'
@@ -73,7 +73,7 @@ call vundle#end()
 filetype plugin indent on
 
 if (!exists("b:foldmethod_set"))
-	set foldmethod=syntax
+    set foldmethod=syntax
 endif
 
 let g:c_space_errors = 1
@@ -106,11 +106,15 @@ set autoread
 "in vim
 
 set tabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
+" set shiftwidth=4
+" set expandtab
+" set autoindent
+" set smartindent
+"Indent stuff
+
 set hlsearch
 set mouse=a
+
 set textwidth=80
 set colorcolumn=+1
 "
@@ -128,16 +132,16 @@ set showcmd
 "left of the ruler.
 
 if has("win32")
-	set langmap=Èq,ˆw,Ûe,Ír,Ât,Ìy,„u,¯i,˘o,Áp,ı[,˙],Ùa,˚s,‚d,‡f,Ôg,h,Ój,Îk,‰l,Ê\\;,˝',ˇz,˜x,Òc,Ïv,Ëb,Ún,¸m,·\\,,˛.,…Q,÷W,”E, R,≈T,ÕY,√U,ÿI,ŸO,«P,’{,⁄},‘A,€S,¬D,¿F,œG,–H,ŒJ,ÀK,ƒL,∆\:,›\",ﬂZ,◊X,—C,ÃV,»B,“N,‹M,¡<,ﬁ>
+    set langmap=Èq,ˆw,Ûe,Ír,Ât,Ìy,„u,¯i,˘o,Áp,ı[,˙],Ùa,˚s,‚d,‡f,Ôg,h,Ój,Îk,‰l,Ê\\;,˝',ˇz,˜x,Òc,Ïv,Ëb,Ún,¸m,·\\,,˛.,…Q,÷W,”E, R,≈T,ÕY,√U,ÿI,ŸO,«P,’{,⁄},‘A,€S,¬D,¿F,œG,–H,ŒJ,ÀK,ƒL,∆\:,›\",ﬂZ,◊X,—C,ÃV,»B,“N,‹M,¡<,ﬁ>
 else
-	if (&term != 'xterm' && &term != 'xterm-color')
-		set langmap=–πq,—Üw,—Ée,–∫r,–µt,–Ωy,–≥u,—ài,—âo,–∑p,—Ö[,—ä],—Ña,—ãs,–≤d,–∞f,–øg,—Äh,–æj,–ªk,–¥l,–∂\\;,—ç',—èz,—áx,—Åc,–ºv,–∏b,—Çn,—åm,–±\\,,—é.,–ôQ,–¶W,–£E,–öR,–ïT,–ùY,–ìU,–®I,–©O,–óP,–•{,–™},–§A,–´S,–íD,–êF,–üG,–†H,–ûJ,–õK,–îL,–ñ\:,–≠\",–ØZ,–ßX,–°C,–úV,–òB,–¢N,–¨M,–ë<,–Æ>
-	endif
+    if (&term != 'xterm' && &term != 'xterm-color')
+        set langmap=–πq,—Üw,—Ée,–∫r,–µt,–Ωy,–≥u,—ài,—âo,–∑p,—Ö[,—ä],—Ña,—ãs,–≤d,–∞f,–øg,—Äh,–æj,–ªk,–¥l,–∂\\;,—ç',—èz,—áx,—Åc,–ºv,–∏b,—Çn,—åm,–±\\,,—é.,–ôQ,–¶W,–£E,–öR,–ïT,–ùY,–ìU,–®I,–©O,–óP,–•{,–™},–§A,–´S,–íD,–êF,–üG,–†H,–ûJ,–õK,–îL,–ñ\:,–≠\",–ØZ,–ßX,–°C,–úV,–òB,–¢N,–¨M,–ë<,–Æ>
+    endif
 endif
 
 if has("win32") || has("gui")
-	set visualbell t_vb=
-	"this stops the noisy beeping every time I press a button
+    set visualbell t_vb=
+    "this stops the noisy beeping every time I press a button
 endif
 
 set backspace=indent,eol,start
@@ -292,248 +296,249 @@ map c<space> <plug>NERDCommenterToggle
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
 function! ToggleAutoFormat()
-	if !exists('b:auto_format_enabled')
-		let b:auto_format_enabled = 0
-	endif
-	if b:auto_format_enabled
-		setlocal formatoptions-=a
-		echo 'autoformat disabled'
-	else
-		setlocal formatoptions+=a
-		echo 'autoformat enabled'
-	endif
-	let b:auto_format_enabled = !b:auto_format_enabled
+    if !exists('b:auto_format_enabled')
+        let b:auto_format_enabled = 0
+    endif
+    if b:auto_format_enabled
+        setlocal formatoptions-=a
+        echo 'autoformat disabled'
+    else
+        setlocal formatoptions+=a
+        echo 'autoformat enabled'
+    endif
+    let b:auto_format_enabled = !b:auto_format_enabled
 endfunction
 
 function! ToggleColorColumn()
-	if !exists('b:colorcolumn_enabled')
-		let b:colorcolumn_enabled = 1
-	endif
-	if b:colorcolumn_enabled
-		setlocal colorcolumn=
-		echo 'colorcolumn disabled'
-	else
-		setlocal colorcolumn=+1
-		echo 'colorcolumn enabled'
-	endif
-	let b:colorcolumn_enabled = !b:colorcolumn_enabled
+    if !exists('b:colorcolumn_enabled')
+        let b:colorcolumn_enabled = 1
+    endif
+    if b:colorcolumn_enabled
+        setlocal colorcolumn=
+        echo 'colorcolumn disabled'
+    else
+        setlocal colorcolumn=+1
+        echo 'colorcolumn enabled'
+    endif
+    let b:colorcolumn_enabled = !b:colorcolumn_enabled
 endfunction
 
-function! SetTabStop()
-	" if search("    ", 'n')
-		" setlocal noexpandtab
-	" else
-		let ts = CheckTabStop()
-		if ts
-			setlocal expandtab
-			execute "setlocal tabstop=" . ts
-			execute "setlocal shiftwidth=" . ts
-		else
-			setlocal noexpandtab
-		endif
-	" endif
-endfunction
+""" Obsolette due to vim-slueth usage
+" function! SetTabStop()
+    " " if search("    ", 'n')
+        " " setlocal noexpandtab
+    " " else
+        " let ts = CheckTabStop()
+        " if ts
+            " setlocal expandtab
+            " execute "setlocal tabstop=" . ts
+            " execute "setlocal shiftwidth=" . ts
+        " else
+            " setlocal noexpandtab
+        " endif
+    " " endif
+" endfunction
 
-function! CheckTabStop()
-	for n in [2, 3, 4, 8]
-		1
-		"if search("^" . Spaces(n) . "\\S", 'n')
-		if SearchSpacesOutOfComments(n)
-			return n
-		endif
-	endfor
-	return 0
-endfunction
+" function! CheckTabStop()
+    " for n in [2, 3, 4, 8]
+        " 1
+        " "if search("^" . Spaces(n) . "\\S", 'n')
+        " if SearchSpacesOutOfComments(n)
+            " return n
+        " endif
+    " endfor
+    " return 0
+" endfunction
 
-function! SearchSpacesOutOfComments(n)
-	while search("^" . Spaces(a:n) . "\\S", 'W')
-		if synIDattr(synID(line("."),col("."),0),"name") !=# "cComment"
-			return 1
-		endif
-	endwhile
-	return 0
-endfunction
+" function! SearchSpacesOutOfComments(n)
+    " while search("^" . Spaces(a:n) . "\\S", 'W')
+        " if synIDattr(synID(line("."),col("."),0),"name") !=# "cComment"
+            " return 1
+        " endif
+    " endwhile
+    " return 0
+" endfunction
 
-function! Spaces(n)
-	if a:n == 1
-		return " "
-	else
-		return " " . Spaces(a:n - 1)
-	endif
-endfunction
+" function! Spaces(n)
+    " if a:n == 1
+        " return " "
+    " else
+        " return " " . Spaces(a:n - 1)
+    " endif
+" endfunction
 
 function! GetSyntaxInfo()
-	"let id = synID(line("."), col("."), 0)
-	let stack = synstack(line("."), col("."))
-	"return join([synIDattr(id, "name"), synIDattr(id, "fg", "cterm"), synIDattr(id, "bg", "cterm")])
-	return join(map(stack, "synIDattr(v:val, \"name\")"))
+    "let id = synID(line("."), col("."), 0)
+    let stack = synstack(line("."), col("."))
+    "return join([synIDattr(id, "name"), synIDattr(id, "fg", "cterm"), synIDattr(id, "bg", "cterm")])
+    return join(map(stack, "synIDattr(v:val, \"name\")"))
 endfunction
 
 function! GetNextChar(c)
-	return nr2char(char2nr(a:c) + 1)
+    return nr2char(char2nr(a:c) + 1)
 endfunction
 
 function! GetPrevChar(c)
-	return nr2char(char2nr(a:c) - 1)
+    return nr2char(char2nr(a:c) - 1)
 endfunction
 
 function! PutNextChar()
-	let i = v:count1
-	normal mu
-	normal yl
-	while i > 0
-		execute 'normal r' . GetNextChar(@0)
-		normal `u
-		let i = i - 1
-	endwhile
+    let i = v:count1
+    normal mu
+    normal yl
+    while i > 0
+        execute 'normal r' . GetNextChar(@0)
+        normal `u
+        let i = i - 1
+    endwhile
 endfunction
 
 function! PutPrevChar()
-	let i = v:count1
-	normal mu
-	normal yl
-	while i > 0
-		execute 'normal r' . GetPrevChar(@0)
-		normal `u
-		let i = i - 1
-	endwhile
+    let i = v:count1
+    normal mu
+    normal yl
+    while i > 0
+        execute 'normal r' . GetPrevChar(@0)
+        normal `u
+        let i = i - 1
+    endwhile
 endfunction
 
 function! SetLaTeXKeyMappings()
-	noremap <buffer> <Leader>mp <ESC>:!pdflatex %:p<CR>
-	noremap <buffer> <Leader>mb
-			\ <ESC>:execute '!bibtex '.split(expand('%:p'), '\.')[0].'.aux'<CR>
-	" noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
-	" inoremap <buffer> <C-S> <C-O>:update<CR><C-O>:!pdflatex %:p<CR>
-	" vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
+    noremap <buffer> <Leader>mp <ESC>:!pdflatex %:p<CR>
+    noremap <buffer> <Leader>mb
+            \ <ESC>:execute '!bibtex '.split(expand('%:p'), '\.')[0].'.aux'<CR>
+    " noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
+    " inoremap <buffer> <C-S> <C-O>:update<CR><C-O>:!pdflatex %:p<CR>
+    " vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
 endfunction
 
 function! SetMakeKeyMappings()
-	noremap <buffer> <Leader>mm <ESC>:make!<CR>:copen<CR>
-	noremap <buffer> <Leader>mi <ESC>:make! install<CR>:copen<CR>
-	noremap <buffer> <Leader>mc <ESC>:make! clean<CR>:copen<CR>
-	noremap <buffer> <Leader>md <ESC>:make! depend<CR>:copen<CR>
-	noremap <buffer> <Leader>M <ESC>:make!<CR>:make! install<CR>
+    noremap <buffer> <Leader>mm <ESC>:make!<CR>:copen<CR>
+    noremap <buffer> <Leader>mi <ESC>:make! install<CR>:copen<CR>
+    noremap <buffer> <Leader>mc <ESC>:make! clean<CR>:copen<CR>
+    noremap <buffer> <Leader>md <ESC>:make! depend<CR>:copen<CR>
+    noremap <buffer> <Leader>M <ESC>:make!<CR>:make! install<CR>
 endfunction
 
 function! SetIndentGuideColors()
-	hi indentguidesodd  ctermfg=12 ctermbg=0
-	hi indentguideseven ctermfg=12 ctermbg=23
+    hi indentguidesodd  ctermfg=12 ctermbg=0
+    hi indentguideseven ctermfg=12 ctermbg=23
 endfunction
 
 function! Crutch()
-	AirlineRefresh
-	" Fix color mixup after resourcing vimrc
-	call SetIndentGuideColors()
-	" Fix indent guides disapearing after resourcing vimrc
+    AirlineRefresh
+    " Fix color mixup after resourcing vimrc
+    call SetIndentGuideColors()
+    " Fix indent guides disapearing after resourcing vimrc
 endfunction
 
 " Function called before entering multiple cursors' mode
 function! Multiple_cursors_before()
-	if exists(':NeoCompleteLock') == 2
-		exe 'NeoCompleteLock'
-	endif
+    if exists(':NeoCompleteLock') == 2
+        exe 'NeoCompleteLock'
+    endif
 endfunction
 
 " Function called after leaving multiple cursors' mode
 function! Multiple_cursors_after()
-	if exists(':NeoCompleteUnlock') == 2
-		exe 'NeoCompleteUnlock'
-	endif
-	set cursorline
+    if exists(':NeoCompleteUnlock') == 2
+        exe 'NeoCompleteUnlock'
+    endif
+    set cursorline
 endfunction
 
 function! FoldArgumentsOntoMultipleLines()
-	substitute@,\s*@,\r@ge
-	normal v``="
+    substitute@,\s*@,\r@ge
+    normal v``="
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
 
 " augroup Text
-	" autocmd!
-	" autocmd FileType text setlocal spell
+    " autocmd!
+    " autocmd FileType text setlocal spell
 " augroup END
 
 " Folds are open by default
 augroup OpenFolds
-	autocmd!
-	autocmd BufRead * normal zR
+    autocmd!
+    autocmd BufRead * normal zR
 augroup END
 
 " OpenGL Shader Languauge
 " FIXME move to ftdetect
 augroup GLSLFileType
-	autocmd!
-	autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
-	"autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl    setf glsl
+    autocmd!
+    autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
+    "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl    setf glsl
 augroup END
 
 " FIXME move to ftplugin
 augroup Foldmethod
-	autocmd!
-	autocmd Filetype vim,scheme setlocal foldmethod=marker |
-							  \ let b:foldmethod_set = 1
+    autocmd!
+    autocmd Filetype vim,scheme setlocal foldmethod=marker |
+                              \ let b:foldmethod_set = 1
 augroup END
 
 augroup VimDefault
-	autocmd!
-	autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
-							\     edit $MYVIMRC |
-							\ endif
-	"autocmd VimEnter * PluginInstall
+    autocmd!
+    autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
+                            \     edit $MYVIMRC |
+                            \ endif
+    "autocmd VimEnter * PluginInstall
 augroup END
 
 " augroup FiletypeTabs
-	" autocmd!
-	" autocmd BufNewFile,BufRead *.py setlocal ts=4 | setlocal sw=4 | setlocal expandtab
-	" autocmd BufNewFile,BufRead *.rkt setlocal ts=2 | setlocal sw=2 | setlocal expandtab
-	" autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
+    " autocmd!
+    " autocmd BufNewFile,BufRead *.py setlocal ts=4 | setlocal sw=4 | setlocal expandtab
+    " autocmd BufNewFile,BufRead *.rkt setlocal ts=2 | setlocal sw=2 | setlocal expandtab
+    " autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
 " augroup END
 
 " FIXME move to ftplugin
 augroup SourceVimrc
-	autocmd!
-	autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source % |
-														 \ call Crutch()
+    autocmd!
+    autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source % |
+                                                         \ call Crutch()
 augroup END
 
 " FIXME move to ftplugin
 augroup RacketRun
-	autocmd!
-	autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
+    autocmd!
+    autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
 augroup END
 
 " FIXME move to ftplugin
 augroup LaTeXMake
-	autocmd!
-	autocmd FileType tex call SetLaTeXKeyMappings()
+    autocmd!
+    autocmd FileType tex call SetLaTeXKeyMappings()
 augroup END
 
 " FIXME move to ftplugin
 augroup Make
-	autocmd!
-	autocmd FileType c,cpp call SetMakeKeyMappings()
+    autocmd!
+    autocmd FileType c,cpp call SetMakeKeyMappings()
 augroup END
 
 " FIXME move to ftplugin
 augroup VimHelp
-	autocmd!
-	autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
+    autocmd!
+    autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
 augroup END
 
 " FIXME move to ftplugin
 augroup NERDTreeIndentGuide
-	autocmd!
-	" this one is which you're most likely to use?
-	autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
+    autocmd!
+    " this one is which you're most likely to use?
+    autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
 augroup end
 
 " FIXME move to ftplugin
 augroup LogFileType
-	autocmd!
-	autocmd FileType log AnsiEsc
+    autocmd!
+    autocmd FileType log AnsiEsc
 augroup end
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
@@ -543,9 +548,9 @@ let g:pymode_doc = 0
 let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
 let g:pymode_rope = 0
 let g:pymode_lint_options_pep8 = {
-	\ 'max_line_length': 80,
-	\ 'ignore': 'E104'
-	\ }
+    \ 'max_line_length': 80,
+    \ 'ignore': 'E104'
+    \ }
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
@@ -567,29 +572,29 @@ let g:airline#extensions#whitespace#checks = [ 'indent' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#csv#column_display = 'Name'
 if !has("win32")
-	let g:airline_powerline_fonts = 1
+    let g:airline_powerline_fonts = 1
 endif
 
 let g:airline_mode_map = {
-			\ '__' : '-',
-			\ 'n'  : 'N',
-			\ 'i'  : 'I',
-			\ 'R'  : 'R',
-			\ 'c'  : 'C',
-			\ 'v'  : 'V',
-			\ 'V'  : 'V',
-			\ '' : 'V',
-			\ 's'  : 'S',
-			\ 'S'  : 'S',
-			\ '' : 'S',
-			\ }
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
 "let g:airline_left_sep='‚ü´'
 "let g:airline_left_alt_sep='‚ü©'
 "let g:airline_right_sep='‚ü™'
 "let g:airline_right_alt_sep='‚ü®'
 
 "if !exists('g:airline_symbols')
-	"let g:airline_symbols = {}
+    "let g:airline_symbols = {}
 "endif
 
 "let g:airline_symbols.branch = '‚éá'
@@ -602,10 +607,10 @@ let g:airline_mode_map = {
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
 if (&term != 'xterm' && &term != 'xterm-color')
-	colorscheme solarized
-	"let g:solarized_termcolors = 256
-	"let g:solarized_contrast="low"
-	set background=dark
+    colorscheme solarized
+    "let g:solarized_termcolors = 256
+    "let g:solarized_contrast="low"
+    set background=dark
 endif
 "}}}
 """"""""""""""""""""""""""""""""" NERDCOMMENTER """"""""""""""""""""""""""""""""
@@ -626,8 +631,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 augroup IndetGuideColor
-	autocmd!
-	autocmd VimEnter,Colorscheme * :call SetIndentGuideColors()
+    autocmd!
+    autocmd VimEnter,Colorscheme * :call SetIndentGuideColors()
 augroup END
 "}}}
 """"""""""""""""""""""""""""""" MULTIPLE CURSORS """""""""""""""""""""""""""""""
@@ -655,7 +660,7 @@ let g:jedi#show_call_signatures=2
 let g:jedi#use_tabs_not_buffers=0
 " this is a crtoch for the cursor not going to end of line in insert mode bug
 if version < 704 && g:jedi#show_call_signatures != 1
-	autocmd! InsertEnter
+    autocmd! InsertEnter
 endif
 "}}}
 """""""""""""""""""""""""""""""""" LATEX-BOX """""""""""""""""""""""""""""""""""
@@ -663,8 +668,8 @@ endif
 let g:LatexBox_quickfix = 4
 let g:LatexBox_show_warnings = 0
 if len(serverlist())
-	let g:LatexBox_latexmk_async = 1
-	let g:LatexBox_latexmk_preview_continuously = 1
+    let g:LatexBox_latexmk_async = 1
+    let g:LatexBox_latexmk_preview_continuously = 1
 endif
 "}}}
 
