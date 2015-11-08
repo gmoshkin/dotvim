@@ -147,7 +147,7 @@ set backspace=indent,eol,start
 "character before where Insert mode started.
 
 " if &term =~ '^screen' && exists('$TMUX')
-if exists('$TMUX')
+if exists('$TMUX') || exists('$SSH_CLIENT') || exists('$SSH_TTY')
 	set t_ut=
 	"fixes the problem with the terminal's background color "bleeding" into
 	"Vim's http://sunaku.github.io/vim-256color-bce.html
@@ -284,6 +284,8 @@ noremap cog <ESC>:IndentGuidesToggle<CR>
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
 
 noremap coa <ESC>:call ToggleColorColumn()<CR>
+
+noremap cop <ESC>:set paste!<CR>
 
 map c<space> <plug>NERDCommenterToggle
 "}}}
