@@ -414,10 +414,10 @@ function! SetLaTeXKeyMappings()
 endfunction
 
 function! SetMakeKeyMappings()
-    noremap <buffer> <Leader>mm <ESC>:make!<CR>:copen<CR>
-    noremap <buffer> <Leader>mi <ESC>:make! install<CR>:copen<CR>
-    noremap <buffer> <Leader>mc <ESC>:make! clean<CR>:copen<CR>
-    noremap <buffer> <Leader>md <ESC>:make! depend<CR>:copen<CR>
+    noremap <buffer> <Leader>mm <ESC>:make!<CR>
+    noremap <buffer> <Leader>mi <ESC>:make! install<CR>
+    noremap <buffer> <Leader>mc <ESC>:make! clean<CR>
+    noremap <buffer> <Leader>md <ESC>:make! depend<CR>
     noremap <buffer> <Leader>M <ESC>:make!<CR>:make! install<CR>
 endfunction
 
