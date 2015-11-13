@@ -245,6 +245,9 @@ noremap <Leader>o o<ESC>
 noremap <Leader>O O<ESC>
 noremap <Leader>V <ESC>ggVG
 
+noremap <Leader>g <ESC>:Ggrep <CR>
+vnoremap <Leader>g y<ESC>:Ggrep 0<CR>
+
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 
