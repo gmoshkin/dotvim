@@ -152,22 +152,22 @@ set backspace=indent,eol,start
 
 " if &term =~ '^screen' && exists('$TMUX')
 if exists('$TMUX') || exists('$SSH_CLIENT') || exists('$SSH_TTY')
-	set t_ut=
-	"fixes the problem with the terminal's background color "bleeding" into
-	"Vim's http://sunaku.github.io/vim-256color-bce.html
-	" set <F1>=[11;*~
-	" set <F2>=[12;*~
-	" set <F3>=[13;*~
-	" set <F4>=[14;*~
-	set <F5>=[15;*~
-	set <F6>=[17;*~
-	set <F7>=[18;*~
-	set <F8>=[19;*~
-	set <F9>=[20;*~
-	set <F10>=[21;*~
-	set <F11>=[23;*~
-	set <F12>=[24;*~
-	"allows to use modifiers (e.g. Shift, Ctrl) with these function keys
+    set t_ut=
+    "fixes the problem with the terminal's background color "bleeding" into
+    "Vim's http://sunaku.github.io/vim-256color-bce.html
+    " set <F1>=[11;*~
+    " set <F2>=[12;*~
+    " set <F3>=[13;*~
+    " set <F4>=[14;*~
+    set <F5>=[15;*~
+    set <F6>=[17;*~
+    set <F7>=[18;*~
+    set <F8>=[19;*~
+    set <F9>=[20;*~
+    set <F10>=[21;*~
+    set <F11>=[23;*~
+    set <F12>=[24;*~
+    "allows to use modifiers (e.g. Shift, Ctrl) with these function keys
 endif
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
