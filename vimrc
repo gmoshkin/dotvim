@@ -282,7 +282,8 @@ cnoremap <C-X> <S-Right>
 cnoremap <C-G> <C-F>
 cnoremap <C-D> <Del>
 
-noremap <Leader>t <Esc>:Tabularize<CR>
+noremap <Leader>t <Esc>:call TabularizeChar()<CR>
+noremap <Leader>T <Esc>:Tabularize<CR>
 
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
@@ -454,6 +455,11 @@ endfunction
 function! FoldArgumentsOntoMultipleLines()
     substitute@,\s*@,\r@ge
     normal v``="
+endfunction
+
+function! TabularizeChar()
+    let c = getchar()
+    execute 'Tabularize/'.nr2char(c)
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
