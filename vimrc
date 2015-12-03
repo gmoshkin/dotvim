@@ -26,24 +26,38 @@ else
     call vundle#begin()
 endif
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'bling/vim-airline'
-Plugin 'majutsushi/tagbar'
-Plugin 'jpalardy/vim-slime'
-Plugin 'klen/python-mode'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'matchit.zip'
-Plugin 'tpope/vim-endwise'
+Plugin 'AnsiEsc.vim'
+Plugin 'DrawIt'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'bufkill.vim'
+Plugin 'calebsmith/vim-lambdify'
+Plugin 'chrisbra/csv.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'jpalardy/vim-slime'
+Plugin 'kien/ctrlp.vim'
+Plugin 'klen/python-mode'
+Plugin 'majutsushi/tagbar'
+Plugin 'matchit.zip'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-expand-region'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 if v:version > 703
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
@@ -52,19 +66,6 @@ endif
 if has("lua") && v:version > 703 && !has("win32")
     Plugin 'Shougo/neocomplete.vim'
 endif
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'calebsmith/vim-lambdify'
-Plugin 'tpope/vim-abolish'
-Plugin 'bufkill.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'DrawIt'
-Plugin 'AnsiEsc.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-sleuth'
-Plugin 'chrisbra/csv.vim'
 
 call vundle#end()
 "}}}
@@ -130,6 +131,9 @@ set incsearch
 set showcmd
 "Display an incomplete command in the lower right corner of the Vim window,
 "left of the ruler.
+
+set spell
+"Spellcheck
 
 if has("win32")
     set langmap=éq,öw,óe,êr,åt,íy,ãu,øi,ùo,çp,õ[,ú],ôa,ûs,âd,àf,ïg,ðh,îj,ëk,äl,æ\\;,ý',ÿz,÷x,ñc,ìv,èb,òn,üm,á\\,,þ.,ÉQ,ÖW,ÓE,ÊR,ÅT,ÍY,ÃU,ØI,ÙO,ÇP,Õ{,Ú},ÔA,ÛS,ÂD,ÀF,ÏG,ÐH,ÎJ,ËK,ÄL,Æ\:,Ý\",ßZ,×X,ÑC,ÌV,ÈB,ÒN,ÜM,Á<,Þ>
@@ -542,12 +546,6 @@ augroup NERDTreeIndentGuide
     autocmd!
     " this one is which you're most likely to use?
     autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
-augroup end
-
-" FIXME move to ftplugin
-augroup LogFileType
-    autocmd!
-    autocmd FileType log AnsiEsc
 augroup end
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""

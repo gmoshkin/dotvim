@@ -11,4 +11,6 @@
 	This downloads the submodules (i.e. Vundle)
 
 #Issues:
-- vim-easymotion stops rendering proper colors after sourcing vimrc again
+- **vim-easymotion** stops rendering proper colors after sourcing **vimrc** again
+- **vim-multiple-cursors** stops working after sourcing **vimrc** again
+- **vim-expand-region** conflicts with **vim-fugitive**
