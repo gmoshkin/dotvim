@@ -550,6 +550,12 @@ augroup NERDTreeIndentGuide
     " this one is which you're most likely to use?
     autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
 augroup end
+
+augroup CSVIndentGuide
+    autocmd!
+    autocmd BufEnter *.csv IndentGuidesDisable
+    autocmd BufLeave *.csv IndentGuidesEnable
+augroup END
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
