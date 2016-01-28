@@ -425,7 +425,7 @@ function! SetLaTeXKeyMappings()
 endfunction
 
 function! SetMakeKeyMappings()
-    noremap <buffer> <Leader>mm <ESC>:make!<CR>
+    noremap <buffer> <Leader>mm <ESC>:make!<CR>:clist<CR>
     noremap <buffer> <Leader>mi <ESC>:make! install<CR>
     noremap <buffer> <Leader>mc <ESC>:make! clean<CR>
     noremap <buffer> <Leader>md <ESC>:make! depend<CR>
