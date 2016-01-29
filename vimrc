@@ -471,6 +471,17 @@ function! TabularizeChar()
     let c = getchar()
     execute 'Tabularize/'.nr2char(c)
 endfunction
+
+function! SetVimDir()
+    for f in split(&runtimepath, ',')
+        if f =~ '.*/vimfiles$' && !exists('g:myVimDir')
+            let g:myVimDir = f
+        endif
+        if f =~ '.*/\.vim$'
+            let g:myVimDir = f
+        endif
+    endfor
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -691,5 +702,25 @@ if len(serverlist())
     let g:LatexBox_latexmk_preview_continuously = 1
 endif
 "}}}
+"""""""""""""""""""""""""""""""""" AUTOUPDATE """"""""""""""""""""""""""""""""""
+"{{{
+call SetVimDir()
+python << END
+import vim
+import datetime
 
+updateLog = vim.eval("g:myVimDir") + '/last_plugin_update'
+try:
+    with open(updateLog, 'r') as f:
+        date = datetime.datetime.strptime(f.readline(), '%Y %m %d\n')
+except IOError:
+    date = None
+today = datetime.datetime.now()
+if not date or (today - date).days > 6:
+    vim.command('PluginUpdate')
+    with open(updateLog, 'w') as f:
+        print >> f, datetime.datetime.strftime(today, '%Y %m %d')
+END
+"}}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
