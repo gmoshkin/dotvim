@@ -1,5 +1,5 @@
 .netrwhist
-somefile
+last_plugin_update
 *.swp
 bundle/*
 !bundle/Vundle.vim
