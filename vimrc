@@ -110,8 +110,8 @@ set autoread
 "in vim
 
 set tabstop=4
-" set shiftwidth=4
-" set expandtab
+set shiftwidth=4
+set expandtab
 " set autoindent
 " set smartindent
 "Indent stuff
@@ -218,8 +218,8 @@ vnoremap <C-S> <C-C>:update<CR>
 "on ubuntu this one requires the following record in .bashrc file:
 "stty -ixon
 
-noremap <S-Left> @='3zh'<CR>
-noremap <S-Right> @='3zl'<CR>
+noremap <silent> <S-Left> @='3zh'<CR>
+noremap <silent> <S-Right> @='3zl'<CR>
 inoremap <S-Left> <C-O>3zh
 inoremap <S-Right> <C-O>3zl
 
