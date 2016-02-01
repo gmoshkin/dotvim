@@ -702,6 +702,14 @@ if len(serverlist())
     let g:LatexBox_latexmk_preview_continuously = 1
 endif
 "}}}
+"""""""""""""""""""""""""""""""""""" VIM-GO """"""""""""""""""""""""""""""""""""
+"{{{
+let g:go_fmt_autosave = 0
+let g:go_fmt_options = join([
+            \ '-tabs=' . (&expandtab ? 'false' : 'true'),
+            \ '-tabwidth=' . &tabstop
+            \])
+"}}}
 """""""""""""""""""""""""""""""""" AUTOUPDATE """"""""""""""""""""""""""""""""""
 "{{{
 call SetVimDir()
