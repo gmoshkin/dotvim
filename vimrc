@@ -33,6 +33,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bufkill.vim'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'chrisbra/csv.vim'
@@ -596,7 +598,7 @@ let g:tagbar_width = 30
 "}}}
 """"""""""""""""""""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""
 "{{{
-"let g:airline_theme = 'badwolf'
+let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'indent' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
