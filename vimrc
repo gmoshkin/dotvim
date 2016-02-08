@@ -32,7 +32,7 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bufkill.vim'
@@ -142,6 +142,8 @@ set spell
 
 set nowrap
 "Do not wrap lines, that exceed screen width
+
+set updatetime=250
 
 if has("win32")
     set langmap=éq,öw,óe,êr,åt,íy,ãu,øi,ùo,çp,õ[,ú],ôa,ûs,âd,àf,ïg,ðh,îj,ëk,äl,æ\\;,ý',ÿz,÷x,ñc,ìv,èb,òn,üm,á\\,,þ.,ÉQ,ÖW,ÓE,ÊR,ÅT,ÍY,ÃU,ØI,ÙO,ÇP,Õ{,Ú},ÔA,ÛS,ÂD,ÀF,ÏG,ÐH,ÎJ,ËK,ÄL,Æ\:,Ý\",ßZ,×X,ÑC,ÌV,ÈB,ÒN,ÜM,Á<,Þ>
