@@ -31,6 +31,13 @@ Plugin 'DrawIt'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
+if has("lua") && v:version > 703 && !has("win32")
+    Plugin 'Shougo/neocomplete.vim'
+endif
+Plugin 'Shougo/vimproc.vim'
+if v:version > 703
+    Plugin 'SirVer/ultisnips'
+endif
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
@@ -42,6 +49,9 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
+if v:version > 703
+    Plugin 'honza/vim-snippets'
+endif
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
@@ -63,14 +73,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-if v:version > 703
-    Plugin 'SirVer/ultisnips'
-    Plugin 'honza/vim-snippets'
-endif
-" Plugin 'Shougo/neocomplete.vim'
-if has("lua") && v:version > 703 && !has("win32")
-    Plugin 'Shougo/neocomplete.vim'
-endif
 
 call vundle#end()
 "}}}
