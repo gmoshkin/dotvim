@@ -532,13 +532,6 @@ augroup END
 " augroup END
 
 " FIXME move to ftplugin
-augroup SourceVimrc
-    autocmd!
-    autocmd FileWritePost,BufWritePost ~/.vim/vimrc,.vimrc source % |
-                                                         \ call Crutch()
-augroup END
-
-" FIXME move to ftplugin
 augroup RacketRun
     autocmd!
     autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
