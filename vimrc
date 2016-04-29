@@ -35,7 +35,7 @@ if has("lua") && v:version > 703 && !has("win32")
     Plugin 'Shougo/neocomplete.vim'
 endif
 Plugin 'Shougo/vimproc.vim'
-if v:version > 703
+if v:version > 703 && has("python")
     Plugin 'SirVer/ultisnips'
 endif
 Plugin 'altercation/vim-colors-solarized'
