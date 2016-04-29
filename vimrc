@@ -711,7 +711,8 @@ let g:go_fmt_options = join([
 "}}}
 """""""""""""""""""""""""""""""""" AUTOUPDATE """"""""""""""""""""""""""""""""""
 "{{{
-call SetVimDir()
+if has("python")
+    call SetVimDir()
 python << END
 import vim
 import datetime
@@ -728,6 +729,7 @@ if not date or (today - date).days > 6:
     with open(updateLog, 'w') as f:
         print >> f, datetime.datetime.strftime(today, '%Y %m %d')
 END
+endif
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
