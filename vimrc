@@ -42,6 +42,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'benmills/vimux'
 Plugin 'bufkill.vim'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'chrisbra/csv.vim'
@@ -57,7 +58,7 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'klen/python-mode'
 Plugin 'majutsushi/tagbar'
 Plugin 'matchit.zip'
@@ -141,7 +142,7 @@ set showcmd
 "Display an incomplete command in the lower right corner of the Vim window,
 "left of the ruler.
 
-set spell
+" set spell
 "Spellcheck
 
 set nowrap
@@ -710,6 +711,11 @@ let g:go_fmt_options = join([
             \ '-tabs=' . (&expandtab ? 'false' : 'true'),
             \ '-tabwidth=' . &tabstop
             \])
+"}}}
+""""""""""""""""""""""""""""""""""" GITGUTTER """"""""""""""""""""""""""""""""""
+"{{{
+" Doesn't work :(
+" noremap gs <Plug>GitGutterPreviewHunk
 "}}}
 """""""""""""""""""""""""""""""""" AUTOUPDATE """"""""""""""""""""""""""""""""""
 "{{{
