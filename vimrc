@@ -267,6 +267,8 @@ noremap <Leader>V <ESC>ggVG
 noremap <Leader>g <ESC>:Ggrep <CR>
 vnoremap <Leader>g y<ESC>:Ggrep 0<CR>
 
+noremap <Leader>w <ESC>:Gwrite<CR>
+
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 
