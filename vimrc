@@ -26,15 +26,15 @@ else
     call vundle#begin()
 endif
 
-Plugin 'AnsiEsc.vim'
-Plugin 'DrawIt'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+" Plugin 'AnsiEsc.vim'
+" Plugin 'DrawIt'
+" Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 if has("lua") && v:version > 703 && !has("win32")
     Plugin 'Shougo/neocomplete.vim'
 endif
-Plugin 'Shougo/vimproc.vim'
+" Plugin 'Shougo/vimproc.vim'
 if v:version > 703 && has("python")
     Plugin 'SirVer/ultisnips'
 endif
@@ -42,32 +42,32 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'benmills/vimux'
+" Plugin 'benmills/vimux'
 Plugin 'bufkill.vim'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'chrisbra/csv.vim'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'duff/vim-scratch'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 if v:version > 703
     Plugin 'honza/vim-snippets'
 endif
 Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'jpalardy/vim-slime'
+" Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
+" Plugin 'junegunn/limelight.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 Plugin 'majutsushi/tagbar'
 Plugin 'matchit.zip'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'terryma/vim-expand-region'
+" Plugin 'terryma/vim-expand-region'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-endwise'
@@ -76,6 +76,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 
 call vundle#end()
 "}}}
@@ -131,6 +133,8 @@ set colorcolumn=+1
 "
 " let &colorcolumn = join(range(81,300), ',')
 "Color columns from 81 to 300
+
+set formatoptions-=t
 
 set laststatus=2
 "always display status line
@@ -193,33 +197,32 @@ endif
 "{{{
 "noremap <F2> <ESC>:w<CR>
 "noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
-noremap <F2> <ESC>:NERDTreeFind<CR>
+" noremap <F2> <ESC>:NERDTreeFind<CR>
 "noremap <F3> <ESC>:tabnew<CR>
-noremap <F3> <ESC>:NERDTreeToggle<CR>
+" noremap <F3> <ESC>:NERDTreeToggle<CR>
 "noremap <F4> <ESC>:e .<CR>
-noremap <F4> <ESC>:TagbarToggle<CR>
-noremap <F5> <ESC>:cprev<CR>
-noremap <S-F5> <ESC>:lprev<CR>
-noremap <F6> <ESC>:cnext<CR>
-noremap <S-F6> <ESC>:lnext<CR>
+" noremap <F4> <ESC>:TagbarToggle<CR>
+" noremap <F5> <ESC>:cprev<CR>
+" noremap <S-F5> <ESC>:lprev<CR>
+" noremap <F6> <ESC>:cnext<CR>
+" noremap <S-F6> <ESC>:lnext<CR>
 noremap <F7> <ESC>:noh<CR>
 noremap <S-F7> <ESC>/ $<CR>
-noremap <F8> <ESC>:cfirst<CR>
-noremap <S-F8> <ESC>:clast<CR>
-noremap <F9> <ESC>:make!<CR>:copen<CR>
-noremap <S-F9> <ESC>:make! clean<CR>
+" noremap <F8> <ESC>:cfirst<CR>
+" noremap <S-F8> <ESC>:clast<CR>
+" noremap <F9> <ESC>:make!<CR>:copen<CR>
+" noremap <S-F9> <ESC>:make! clean<CR>
 "noremap <C-F9> <ESC>yl:let @0 = GetPrevChar(@0)<CR>phx
 noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
 noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
 "noremap <C-F10> <ESC>yl:let @0 = GetNextChar(@0)<CR>phx
 noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
-noremap <F12> <ESC>:source $MYVIMRC<CR>
+" noremap <F12> <ESC>:source $MYVIMRC<CR>
 
 "noremap <C-N> <ESC>:tabnext<CR>
 "noremap <C-P> <ESC>:tabprev<CR>
 noremap <C-N> <ESC>:bnext<CR>
 noremap <C-P> <ESC>:bprev<CR>
-"noremap <C-P> <ESC>:bprev<CR>
 
 noremap <C-S> <ESC>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
@@ -260,12 +263,10 @@ vnoremap <Leader>p "+p
 noremap <Leader>P "+P
 vnoremap <Leader>P "+P
 
-noremap <Leader>o o<ESC>
-noremap <Leader>O O<ESC>
 noremap <Leader>V <ESC>ggVG
 
-noremap <Leader>g <ESC>:Ggrep <CR>
-vnoremap <Leader>g y<ESC>:Ggrep 0<CR>
+" noremap <Leader>g <ESC>:Ggrep <CR>
+" vnoremap <Leader>g y<ESC>:Ggrep 0<CR>
 
 noremap <Leader>w <ESC>:Gwrite<CR>
 
@@ -294,6 +295,7 @@ map <Space> <Plug>(easymotion-prefix)
 noremap gA <ESC>:echo GetSyntaxInfo()<CR>
 
 vnoremap / y<ESC>/0
+vnoremap <CR> y<ESC>/0<CR>
 
 cnoremap <C-A> <Home>
 cnoremap <C-B> <Left>
@@ -303,8 +305,24 @@ cnoremap <C-X> <S-Right>
 cnoremap <C-G> <C-F>
 cnoremap <C-D> <Del>
 
+noremap <Leader>b <Esc>:BuffergatorOpen<CR>
+noremap <Leader>B <Esc>:BuffergatorClose<CR>
+noremap [b <Esc>:BuffergatorMruCyclePrev<CR>
+noremap ]b <Esc>:BuffergatorMruCycleNext<CR>
+
 noremap <Leader>t <Esc>:call TabularizeChar()<CR>
 noremap <Leader>T <Esc>:Tabularize<CR>
+
+noremap <Leader>to <Esc>:TagbarOpen<CR>
+noremap <Leader>tc <Esc>:TagbarClose<CR>
+noremap <Leader>tj <Esc>:TagbarOpen -j<CR>
+noremap <Leader>tO <Esc>:TagbarOpenAutoClose<CR>
+
+noremap <Leader>no <Esc>:NERDTree<CR>
+noremap <Leader>nt <Esc>:NERDTreeToggle<CR>
+noremap <Leader>nc <Esc>:NERDTreeClose<CR>
+noremap <Leader>nf <Esc>:NERDTreeFind<CR>
+noremap <Leader>nj <Esc>:NERDTreeFocus<CR>
 
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
@@ -523,13 +541,13 @@ augroup Foldmethod
                               \ let b:foldmethod_set = 1
 augroup END
 
-augroup VimDefault
-    autocmd!
-    autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
-                            \     edit $MYVIMRC |
-                            \ endif
-    "autocmd VimEnter * PluginInstall
-augroup END
+" augroup VimDefault
+    " autocmd!
+    " autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
+                            " \     edit $MYVIMRC |
+                            " \ endif
+    " "autocmd VimEnter * PluginInstall
+" augroup END
 
 " augroup FiletypeTabs
     " autocmd!
@@ -740,6 +758,10 @@ if not date or (today - date).days > 6:
         print >> f, datetime.datetime.strftime(today, '%Y %m %d')
 END
 endif
+"}}}
+""""""""""""""""""""""""""""""""" BUFFERGATOR """"""""""""""""""""""""""""""""""
+"{{{
+let g:buffergator_suppress_keymaps = 1
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
