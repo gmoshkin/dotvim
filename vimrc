@@ -7,6 +7,15 @@ endif
 
 filetype off
 
+" check if python is really supported
+let g:has_python = 1
+try
+    python print 'Python is supported'
+catch
+    echo 'Python is not supported'
+    let g:has_python = 0
+endtry
+
 """"""""""""""""""""""""""""""""""" PATHOGEN """""""""""""""""""""""""""""""""""
 "{{{
 "call pathogen#infect()
@@ -35,7 +44,7 @@ if has("lua") && v:version > 703 && !has("win32")
     Plugin 'Shougo/neocomplete.vim'
 endif
 " Plugin 'Shougo/vimproc.vim'
-if v:version > 703 && has("python")
+if v:version > 703 && has("python") && g:has_python
     Plugin 'SirVer/ultisnips'
 endif
 Plugin 'altercation/vim-colors-solarized'
@@ -739,7 +748,7 @@ let g:go_fmt_options = join([
 "}}}
 """""""""""""""""""""""""""""""""" AUTOUPDATE """"""""""""""""""""""""""""""""""
 "{{{
-if has("python")
+if has("python") && g:has_python
     call SetVimDir()
 python << END
 import vim
