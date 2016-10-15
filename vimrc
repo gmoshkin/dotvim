@@ -10,9 +10,10 @@ filetype off
 " check if python is really supported
 let g:has_python = 1
 try
-    python print 'Python is supported'
+    python 0
+    echomsg 'Python is supported'
 catch
-    echo 'Python is not supported'
+    echomsg 'Python is not supported'
     let g:has_python = 0
 endtry
 
@@ -85,7 +86,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 
 call vundle#end()
@@ -335,6 +336,9 @@ noremap <Leader>nj <Esc>:NERDTreeFocus<CR>
 
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
+noremap <Leader>qo <ESC>:belowright copen<CR>
+noremap <Leader>qc <ESC>:belowright cclose<CR>
+
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
@@ -344,6 +348,8 @@ noremap coa <ESC>:call ToggleColorColumn()<CR>
 noremap cop <ESC>:set paste!<CR>
 
 map c<space> <plug>NERDCommenterToggle
+
+noremap <C-Space> <ESC>:CtrlPBuffer<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -520,6 +526,10 @@ function! SetVimDir()
         endif
     endfor
 endfunction
+
+function! GoToError(errorNumber)
+    execute 'cc '.a:errorNumber
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -539,7 +549,7 @@ augroup END
 " FIXME move to ftdetect
 augroup GLSLFileType
     autocmd!
-    autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.cs,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
+    autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
     "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl    setf glsl
 augroup END
 
@@ -600,6 +610,11 @@ augroup CSVIndentGuide
     autocmd!
     autocmd BufEnter *.csv IndentGuidesDisable
     autocmd BufLeave *.csv IndentGuidesEnable
+augroup END
+
+augroup QuickFix
+    autocmd!
+    autocmd FileType qf noremap <buffer> <silent> <CR> <ESC>:call GoToError(line('.'))<CR>
 augroup END
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
@@ -684,6 +699,8 @@ let NERDTreeAutoDeleteBuffer=1
 "}}}
 """"""""""""""""""""""""""""""""""""" CTRLP """"""""""""""""""""""""""""""""""""
 "{{{
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_match_window = 'max:30'
 let g:ctrlp_map = '<CR>'
 "}}}
 """"""""""""""""""""""""""""""""" INDENT GUIDE """""""""""""""""""""""""""""""""
