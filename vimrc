@@ -201,6 +201,10 @@ if exists('$TMUX') || exists('$SSH_CLIENT') || exists('$SSH_TTY')
     set <F11>=[23;*~
     set <F12>=[24;*~
     "allows to use modifiers (e.g. Shift, Ctrl) with these function keys
+    set <xUp>=[1;*A
+    set <xDown>=[1;*B
+    set <xRight>=[1;*C
+    set <xLeft>=[1;*D
 endif
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
