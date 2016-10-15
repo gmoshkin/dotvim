@@ -11,9 +11,9 @@ filetype off
 let g:has_python = 1
 try
     python 0
-    echomsg 'Python is supported'
+    " echomsg 'Python is supported'
 catch
-    echomsg 'Python is not supported'
+    " echomsg 'Python is not supported'
     let g:has_python = 0
 endtry
 
