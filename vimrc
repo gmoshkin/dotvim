@@ -121,8 +121,10 @@ set tags=./tags,./TAGS,tags,TAGS,~/tags
 set hidden
 "Allow hidden buffers
 
-set number
 "Line numbers
+set number
+set relativenumber
+
 
 set autoread
 "Automaticaly read buffer, when it's changed outside of vim and not changed
