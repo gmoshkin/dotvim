@@ -322,7 +322,11 @@ cnoremap <C-X> <S-Right>
 cnoremap <C-G> <C-F>
 cnoremap <C-D> <Del>
 
-noremap <Leader>b <Esc>:BuffergatorOpen<CR>
+noremap <Leader>b <ESC>:CtrlPBuffer<CR>
+noremap <Leader>m <ESC>:CtrlPMRU<CR>
+noremap <Leader>f <ESC>:CtrlP<CR>
+
+" noremap <Leader>b <Esc>:BuffergatorOpen<CR>
 noremap <Leader>B <Esc>:BuffergatorClose<CR>
 noremap [b <Esc>:BuffergatorMruCyclePrev<CR>
 noremap ]b <Esc>:BuffergatorMruCycleNext<CR>
