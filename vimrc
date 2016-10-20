@@ -360,6 +360,11 @@ noremap cop <ESC>:set paste!<CR>
 map c<space> <plug>NERDCommenterToggle
 
 noremap <C-Space> <ESC>:CtrlPBuffer<CR>
+
+vnoremap <F2> <ESC>:execute join(getline("'<", "'>"), '<BAR>')<CR>
+
+noremap g> <ESC>:call ShiftLine(line('.'), 1)<CR>
+noremap g< <ESC>:call ShiftLine(line('.'), -1)<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -539,6 +544,27 @@ endfunction
 
 function! GoToError(errorNumber)
     execute 'cc '.a:errorNumber
+endfunction
+
+function! FooBar(type, ...)
+    echo a:type
+endfunction
+
+function! ShiftLine(linenr, spaces)
+    let line = getline(a:linenr)
+    let tmp = split(line, '\v^\s*\zs')
+    if len(tmp) < 2
+        if a:spaces > 0
+            call setline(a:linenr, repeat(' ', a:spaces) . line)
+        endif
+    else
+        if a:spaces > 0
+            call setline(a:linenr, join(tmp, repeat(' ', a:spaces)))
+        else
+            let indent = substitute(tmp[0], '\v {-,' . -a:spaces . '}$', '', '')
+            call setline(a:linenr, indent . tmp[1])
+        endif
+    endif
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
