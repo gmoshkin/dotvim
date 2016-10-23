@@ -53,7 +53,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'benmills/vimux'
-Plugin 'bufkill.vim'
+Plugin 'gmoshkin/bufkill.vim'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'chrisbra/csv.vim'
 " Plugin 'davidhalter/jedi-vim'
@@ -301,7 +301,6 @@ noremap ZC zC
 noremap ZN zN
 
 noremap Q ZQ
-noremap ZB <ESC>:BD<CR>
 
 noremap Y y$
 
@@ -805,6 +804,12 @@ let g:go_fmt_options = join([
 """"""""""""""""""""""""""""""""" BUFFERGATOR """"""""""""""""""""""""""""""""""
 "{{{
 let g:buffergator_suppress_keymaps = 1
+"}}}
+
+""""""""""""""""""""""""""""""""""" BUFFKILL """""""""""""""""""""""""""""""""""
+"{{{
+let g:BufKillKeyMappings = 0
+let g:BufKillBwKey = 'ZB'
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
