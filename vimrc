@@ -684,7 +684,7 @@ let g:tagbar_width = 30
 "{{{
 let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#whitespace#checks = [ 'indent' ]
+let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#csv#column_display = 'Name'
 if !has("win32")
@@ -710,7 +710,14 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
-call airline#parts#define_minwidth('ffenc', 90)
+let g:airline#extensions#default#section_truncate_width = {
+  \ 'b': 79,
+  \ 'x': 90,
+  \ 'y': 120,
+  \ 'z': 120,
+  \ 'warning': 80,
+  \ 'error': 80,
+  \ }
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
