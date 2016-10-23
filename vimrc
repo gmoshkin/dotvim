@@ -70,6 +70,7 @@ Plugin 'junegunn/goyo.vim'
 " Plugin 'junegunn/limelight.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'klen/python-mode'
+Plugin 'Konfekt/FastFold'
 Plugin 'majutsushi/tagbar'
 Plugin 'matchit.zip'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -793,28 +794,6 @@ let g:go_fmt_options = join([
 "{{{
 " Doesn't work :(
 " noremap gs <Plug>GitGutterPreviewHunk
-"}}}
-"""""""""""""""""""""""""""""""""" AUTOUPDATE """"""""""""""""""""""""""""""""""
-"{{{
-if has("python") && g:has_python
-    call SetVimDir()
-python << END
-import vim
-import datetime
-
-updateLog = vim.eval("g:myVimDir") + '/last_plugin_update'
-try:
-    with open(updateLog, 'r') as f:
-        date = datetime.datetime.strptime(f.readline(), '%Y %m %d\n')
-except IOError:
-    date = None
-today = datetime.datetime.now()
-if not date or (today - date).days > 6:
-    vim.command('PluginUpdate')
-    with open(updateLog, 'w') as f:
-        print >> f, datetime.datetime.strftime(today, '%Y %m %d')
-END
-endif
 "}}}
 """"""""""""""""""""""""""""""""" BUFFERGATOR """"""""""""""""""""""""""""""""""
 "{{{
