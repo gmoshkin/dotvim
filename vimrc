@@ -711,11 +711,11 @@ endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#default#section_truncate_width = {
-  \ 'b': 79,
+  \ 'b': 100,
   \ 'x': 90,
   \ 'y': 120,
-  \ 'z': 120,
-  \ 'warning': 80,
+  \ 'z': 80,
+  \ 'warning': 90,
   \ 'error': 80,
   \ }
 "}}}
