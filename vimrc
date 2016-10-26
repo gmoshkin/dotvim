@@ -67,6 +67,7 @@ if v:version > 703
     Plugin 'honza/vim-snippets'
 endif
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'vim-utils/vim-man'
 " Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'junegunn/limelight.vim'
@@ -369,6 +370,8 @@ vnoremap <F2> <ESC>:execute join(getline("'<", "'>"), '<BAR>')<CR>
 
 noremap g> <ESC>:call ShiftLine(line('.'), 1)<CR>
 noremap g< <ESC>:call ShiftLine(line('.'), -1)<CR>
+
+noremap K <ESC>:Man <C-R><C-W><CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -646,12 +649,6 @@ augroup NERDTreeIndentGuide
     autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
 augroup end
 
-augroup CSVIndentGuide
-    autocmd!
-    autocmd BufEnter *.csv IndentGuidesDisable
-    autocmd BufLeave *.csv IndentGuidesEnable
-augroup END
-
 augroup QuickFix
     autocmd!
     autocmd FileType qf noremap <buffer> <silent> <CR> <ESC>:call GoToError(line('.'))<CR>
@@ -747,6 +744,7 @@ let g:ctrlp_map = '<CR>'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
+let g:indent_guides_exclude_filetypes = ['help', 'neoman', 'csv', 'man']
 augroup IndetGuideColor
     autocmd!
     autocmd VimEnter,Colorscheme * :call SetIndentGuideColors()
