@@ -715,7 +715,7 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'x': 90,
   \ 'y': 120,
   \ 'z': 80,
-  \ 'warning': 90,
+  \ 'warning': 100,
   \ 'error': 80,
   \ }
 "}}}
