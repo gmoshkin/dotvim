@@ -298,6 +298,10 @@ noremap <Leader>w <ESC>:Gwrite<CR>
 
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
+inoremap <C-D> <Del>
+inoremap <S-Tab> <C-D>
+inoremap <ESC>b <C-O>b
+inoremap <ESC>f <C-O>w
 
 noremap ZA zA
 noremap ZM zM
@@ -326,6 +330,8 @@ cnoremap <C-F> <Space><BS><Right>
 cnoremap <C-X> <S-Right>
 cnoremap <C-G> <C-F>
 cnoremap <C-D> <Del>
+cnoremap <ESC>b <C-Left>
+cnoremap <ESC>f <C-Right>
 
 noremap <Leader>b <ESC>:CtrlPBuffer<CR>
 noremap <Leader>m <ESC>:CtrlPMRU<CR>
