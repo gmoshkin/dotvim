@@ -75,6 +75,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kana/vim-textobj-function'
 Plugin 'kana/vim-textobj-user'
 " Plugin 'klen/python-mode'
+Plugin 'luochen1990/rainbow'
 Plugin 'Konfekt/FastFold'
 Plugin 'majutsushi/tagbar'
 Plugin 'matchit.zip'
@@ -809,6 +810,10 @@ let g:buffergator_suppress_keymaps = 1
 "{{{
 let g:BufKillKeyMappings = 0
 let g:BufKillBwKey = 'ZB'
+"}}}
+""""""""""""""""""""""""""""""""""" RAINBOW """"""""""""""""""""""""""""""""""""
+"{{{
+let g:rainbow_active = 1
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
