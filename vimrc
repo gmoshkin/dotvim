@@ -177,6 +177,9 @@ set updatetime=250
 " Show a menu of alternatives when completing with <TAB> in the cmd line
 set wildmenu
 
+" Disable the annoying as fuck preview window when using omni-complete
+set completeopt-=preview
+
 if has("win32")
     set langmap=éq,öw,óe,êr,åt,íy,ãu,øi,ùo,çp,õ[,ú],ôa,ûs,âd,àf,ïg,ðh,îj,ëk,äl,æ\\;,ý',ÿz,÷x,ñc,ìv,èb,òn,üm,á\\,,þ.,ÉQ,ÖW,ÓE,ÊR,ÅT,ÍY,ÃU,ØI,ÙO,ÇP,Õ{,Ú},ÔA,ÛS,ÂD,ÀF,ÏG,ÐH,ÎJ,ËK,ÄL,Æ\:,Ý\",ßZ,×X,ÑC,ÌV,ÈB,ÒN,ÜM,Á<,Þ>
 else
