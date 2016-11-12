@@ -395,9 +395,11 @@ function! ToggleAutoFormat()
     endif
     if b:auto_format_enabled
         setlocal formatoptions-=a
+        setlocal formatoptions-=t
         echo 'autoformat disabled'
     else
         setlocal formatoptions+=a
+        setlocal formatoptions+=t
         echo 'autoformat enabled'
     endif
     let b:auto_format_enabled = !b:auto_format_enabled
