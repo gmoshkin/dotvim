@@ -300,11 +300,14 @@ noremap <Leader>V <ESC>ggVG
 
 noremap <Leader>w <ESC>:Gwrite<CR>
 
+inoremap <C-A> <C-O>^
 inoremap <C-B> <Left>
-inoremap <C-F> <Right>
 inoremap <C-D> <Del>
+inoremap <C-E> <C-O>$
+inoremap <C-F> <Right>
 inoremap <S-Tab> <C-D>
 inoremap <ESC>b <C-O>b
+inoremap <ESC>e <C-O>e
 inoremap <ESC>f <C-O>w
 
 noremap ZA zA
