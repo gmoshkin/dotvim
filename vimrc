@@ -369,6 +369,8 @@ noremap coa <ESC>:call ToggleColorColumn()<CR>
 
 noremap cop <ESC>:set paste!<CR>
 
+noremap coR <ESC>:RainbowToggle<CR>
+
 map c<space> <plug>NERDCommenterToggle
 
 noremap <C-Space> <ESC>:CtrlPBuffer<CR>
@@ -819,7 +821,7 @@ let g:BufKillBwKey = 'ZB'
 "}}}
 """"""""""""""""""""""""""""""""""" RAINBOW """"""""""""""""""""""""""""""""""""
 "{{{
-let g:rainbow_active = 1
+let g:rainbow_active = 0
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
