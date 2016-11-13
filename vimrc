@@ -177,6 +177,9 @@ set updatetime=250
 " Show a menu of alternatives when completing with <TAB> in the cmd line
 set wildmenu
 
+" Disable the annoying as fuck preview window when using omni-complete
+set completeopt-=preview
+
 if has("win32")
     set langmap=éq,öw,óe,êr,åt,íy,ãu,øi,ùo,çp,õ[,ú],ôa,ûs,âd,àf,ïg,ðh,îj,ëk,äl,æ\\;,ý',ÿz,÷x,ñc,ìv,èb,òn,üm,á\\,,þ.,ÉQ,ÖW,ÓE,ÊR,ÅT,ÍY,ÃU,ØI,ÙO,ÇP,Õ{,Ú},ÔA,ÛS,ÂD,ÀF,ÏG,ÐH,ÎJ,ËK,ÄL,Æ\:,Ý\",ßZ,×X,ÑC,ÌV,ÈB,ÒN,ÜM,Á<,Þ>
 else
@@ -297,11 +300,14 @@ noremap <Leader>V <ESC>ggVG
 
 noremap <Leader>w <ESC>:Gwrite<CR>
 
+inoremap <C-A> <C-O>^
 inoremap <C-B> <Left>
-inoremap <C-F> <Right>
 inoremap <C-D> <Del>
+inoremap <C-E> <C-O>$
+inoremap <C-F> <Right>
 inoremap <S-Tab> <C-D>
 inoremap <ESC>b <C-O>b
+inoremap <ESC>e <C-O>e
 inoremap <ESC>f <C-O>w
 
 noremap ZA zA
@@ -391,9 +397,11 @@ function! ToggleAutoFormat()
     endif
     if b:auto_format_enabled
         setlocal formatoptions-=a
+        setlocal formatoptions-=t
         echo 'autoformat disabled'
     else
         setlocal formatoptions+=a
+        setlocal formatoptions+=t
         echo 'autoformat enabled'
     endif
     let b:auto_format_enabled = !b:auto_format_enabled
