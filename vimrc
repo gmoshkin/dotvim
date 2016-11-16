@@ -370,6 +370,11 @@ noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 noremap <Leader>qo <ESC>:belowright copen<CR>
 noremap <Leader>qc <ESC>:belowright cclose<CR>
 
+noremap <Leader>cs <ESC>:CodeQuery Symbol<CR>:cclose<CR>:belowright copen<CR>
+noremap <Leader>cc <ESC>:CodeQuery Class<CR>:cclose<CR>:belowright copen<CR>
+noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:cclose<CR>:belowright copen<CR>
+noremap <Leader>cm <ESC>:CodeQuery Member<CR>:cclose<CR>:belowright copen<CR>
+
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
@@ -833,6 +838,10 @@ let g:BufKillBwKey = 'ZB'
 """"""""""""""""""""""""""""""""""" RAINBOW """"""""""""""""""""""""""""""""""""
 "{{{
 let g:rainbow_active = 0
+"}}}
+"""""""""""""""""""""""""""""""""" CODEQUERY """""""""""""""""""""""""""""""""""
+"{{{
+let g:codequery_trigger_build_db_when_db_not_found = 0
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
