@@ -630,6 +630,15 @@ function! SetQfMappings()
     noremap <buffer> <silent> <CR> <ESC>:call GoToError(line('.'))<CR>
     noremap <buffer> <silent> <leader>/ <ESC>:QfFilter 
 endfunction
+
+function! ExecLines(ls, le) abort
+    let lines = []
+    for l in range(a:ls, a:le)
+        call add(lines, getline(l))
+    endfor
+    let command = join(lines, "\n")
+    exec command
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -706,6 +715,7 @@ augroup NERDTreeIndentGuide
     autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
 augroup end
 
+" FIXME move to ftplugin
 augroup QuickFix
     autocmd!
     autocmd FileType qf call SetQfMappings()
