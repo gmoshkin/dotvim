@@ -375,6 +375,10 @@ noremap <Leader>cc <ESC>:CodeQuery Class<CR>:cclose<CR>:belowright copen<CR>
 noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:cclose<CR>:belowright copen<CR>
 noremap <Leader>cm <ESC>:CodeQuery Member<CR>:cclose<CR>:belowright copen<CR>
 
+noremap <Leader>gw <ESC>:Gwrite<CR>
+noremap <Leader>gs <ESC>:Gstatus<CR>
+noremap <Leader>gc <ESC>:Gcommit<CR>
+
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
