@@ -133,7 +133,7 @@ set hidden
 
 "Line numbers
 set number
-set relativenumber
+set norelativenumber
 
 
 set autoread
@@ -308,9 +308,9 @@ inoremap <C-D> <Del>
 inoremap <C-E> <C-O>$
 inoremap <C-F> <Right>
 inoremap <S-Tab> <C-D>
-inoremap <ESC>b <C-O>b
+" inoremap <ESC>b <C-O>b
 inoremap <ESC>e <C-O>e
-inoremap <ESC>f <C-O>w
+" inoremap <ESC>f <C-O>w
 
 noremap ZA zA
 noremap ZM zM
