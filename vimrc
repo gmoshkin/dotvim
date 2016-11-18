@@ -645,6 +645,34 @@ function! ExecLines(ls, le) abort
     let command = join(lines, "\n")
     exec command
 endfunction
+
+function! GetRainbowColors()
+    if !exists('b:rainbow_conf')
+        RainbowToggleOn
+        RainbowToggleOff
+    endif
+    let colors = b:rainbow_conf.ctermfgs
+    echo colors
+endfunction
+
+function! SetRainbowColor(n, color)
+    if !exists('b:rainbow_conf')
+        RainbowToggleOn
+        RainbowToggleOff
+    endif
+    if a:n < 0 || a:n > 3
+        return
+    endif
+    let b:rainbow_conf.ctermfgs[a:n] = a:color
+    echo 'set '.a:n.' color to "'.a:color.'"'
+endfunction
+
+function! SetRainbowColors()
+    SetRainbowColor(0, '1')
+    SetRainbowColor(1, '6')
+    SetRainbowColor(2, '5')
+    SetRainbowColor(3, '4')
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
