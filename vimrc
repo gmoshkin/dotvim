@@ -399,6 +399,8 @@ noremap g> <ESC>:call ShiftLine(line('.'), 1)<CR>
 noremap g< <ESC>:call ShiftLine(line('.'), -1)<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
+
+noremap g/ <ESC>/\c
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
