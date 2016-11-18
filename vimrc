@@ -758,6 +758,7 @@ augroup END
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
+command! -range ExecFunction call ExecLines(<line1>, <line2>)
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
