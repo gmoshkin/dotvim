@@ -393,9 +393,10 @@ map c<space> <plug>NERDCommenterToggle
 
 noremap <C-Space> <ESC>:CtrlPBuffer<CR>
 
-noremap g> <ESC>:call ShiftLine(line('.'), 1)<CR>
-noremap g< <ESC>:call ShiftLine(line('.'), -1)<CR>
-
+noremap <silent> g> :<C-U>set operatorfunc=ShiftRightOperatorFunc<CR>g@
+noremap <silent> g>> :<C-U>set operatorfunc=ShiftRightOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+noremap <silent> g< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<CR>g@
+noremap <silent> g<< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
 noremap K <ESC>:Man <C-R><C-W><CR>
 
 noremap g/ <ESC>/\c
@@ -529,7 +530,7 @@ function! ShiftLine(linenr, spaces)
     let line = getline(a:linenr)
     let tmp = split(line, '\v^\s*\zs')
     if len(tmp) < 2
-        if a:spaces > 0
+        if a:spaces > 0 && len(line) > 0
             call setline(a:linenr, repeat(' ', a:spaces) . line)
         endif
     else
@@ -540,6 +541,20 @@ function! ShiftLine(linenr, spaces)
             call setline(a:linenr, indent . tmp[1])
         endif
     endif
+endfunction
+
+function! ShiftLines(ls, le, spaces)
+    for l in range(a:ls, a:le)
+        call ShiftLine(l, a:spaces)
+    endfor
+endfunction
+
+function! ShiftRightOperatorFunc(type)
+    call ShiftLines(line("'["), line("']"), 1)
+endfunction
+
+function! ShiftLeftOperatorFunc(type)
+    call ShiftLines(line("'["), line("']"), -1)
 endfunction
 
 " Stole it from codequery plugin
