@@ -7,15 +7,15 @@ function! ExecLines(ls, le) abort
     exec command
 endfunction
 
-function! ExecuteOperator(type)
+function! ExecuteOperatorFunc(type)
     call ExecLines(line("'["), line("']"))
 endfunction
 
 command! -range ExecFunction call ExecLines(<line1>, <line2>)
 
-vnoremap <leader>e :ExecFunction<CR>
-noremap <leader>ee <ESC>:execute getline('.')<CR>
-noremap <silent> <leader>e :set operatorfunc=ExecuteOperator<CR>g@
+vnoremap <silent> <leader>e :ExecFunction<CR>
+noremap <silent> <leader>ee :<C-U>set operatorfunc=ExecuteOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+noremap <silent> <leader>e :<C-U>set operatorfunc=ExecuteOperatorFunc<CR>g@
 
 noremap K <ESC>:help <C-R><C-W><CR>
 vnoremap K "hy:help <C-R>h<CR>
