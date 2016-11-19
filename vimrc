@@ -432,50 +432,6 @@ function! ToggleColorColumn()
     let b:colorcolumn_enabled = !b:colorcolumn_enabled
 endfunction
 
-""" Obsolette due to vim-slueth usage
-" function! SetTabStop()
-    " " if search("    ", 'n')
-        " " setlocal noexpandtab
-    " " else
-        " let ts = CheckTabStop()
-        " if ts
-            " setlocal expandtab
-            " execute "setlocal tabstop=" . ts
-            " execute "setlocal shiftwidth=" . ts
-        " else
-            " setlocal noexpandtab
-        " endif
-    " " endif
-" endfunction
-
-" function! CheckTabStop()
-    " for n in [2, 3, 4, 8]
-        " 1
-        " "if search("^" . Spaces(n) . "\\S", 'n')
-        " if SearchSpacesOutOfComments(n)
-            " return n
-        " endif
-    " endfor
-    " return 0
-" endfunction
-
-" function! SearchSpacesOutOfComments(n)
-    " while search("^" . Spaces(a:n) . "\\S", 'W')
-        " if synIDattr(synID(line("."),col("."),0),"name") !=# "cComment"
-            " return 1
-        " endif
-    " endwhile
-    " return 0
-" endfunction
-
-" function! Spaces(n)
-    " if a:n == 1
-        " return " "
-    " else
-        " return " " . Spaces(a:n - 1)
-    " endif
-" endfunction
-
 function! GetSyntaxInfo()
     "let id = synID(line("."), col("."), 0)
     let stack = synstack(line("."), col("."))
@@ -764,13 +720,13 @@ endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#default#section_truncate_width = {
-  \ 'b': 100,
-  \ 'x': 90,
-  \ 'y': 120,
-  \ 'z': 80,
-  \ 'warning': 100,
-  \ 'error': 80,
-  \ }
+    \ 'b': 100,
+    \ 'x': 90,
+    \ 'y': 120,
+    \ 'z': 80,
+    \ 'warning': 100,
+    \ 'error': 80,
+    \ }
 "}}}
 """""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
 "{{{
