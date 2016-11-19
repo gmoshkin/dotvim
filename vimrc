@@ -379,6 +379,9 @@ noremap <Leader>gw <ESC>:Gwrite<CR>
 noremap <Leader>gs <ESC>:Gstatus<CR>
 noremap <Leader>gc <ESC>:Gcommit<CR>
 
+vnoremap <Leader>e :ExecFunction<CR>
+noremap <Leader>ee <ESC>:execute getline('.')<CR>
+
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
@@ -392,8 +395,6 @@ noremap coR <ESC>:RainbowToggle<CR>
 map c<space> <plug>NERDCommenterToggle
 
 noremap <C-Space> <ESC>:CtrlPBuffer<CR>
-
-vnoremap <F2> <ESC>:execute join(getline("'<", "'>"), '<BAR>')<CR>
 
 noremap g> <ESC>:call ShiftLine(line('.'), 1)<CR>
 noremap g< <ESC>:call ShiftLine(line('.'), -1)<CR>
