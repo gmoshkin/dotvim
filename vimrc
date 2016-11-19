@@ -569,15 +569,6 @@ function! FilterQfResults(args) abort
     call setqflist(qf_list)
 endfunction
 
-function! ExecLines(ls, le) abort
-    let lines = []
-    for l in range(a:ls, a:le)
-        call add(lines, getline(l))
-    endfor
-    let command = join(lines, "\n")
-    exec command
-endfunction
-
 function! GetRainbowColors()
     if !exists('b:rainbow_conf')
         RainbowToggleOn
@@ -671,7 +662,6 @@ augroup END
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
-command! -range ExecFunction call ExecLines(<line1>, <line2>)
 command! GoToFileLineColumn call GoToFileLineColumn()
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
 command! -nargs=* Help call Help(<f-args>)
