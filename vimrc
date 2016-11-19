@@ -370,10 +370,10 @@ noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 noremap <Leader>qo <ESC>:belowright copen<CR>
 noremap <Leader>qc <ESC>:belowright cclose<CR>
 
-noremap <Leader>cs <ESC>:CodeQuery Symbol<CR>:cclose<CR>:belowright copen<CR>
-noremap <Leader>cc <ESC>:CodeQuery Class<CR>:cclose<CR>:belowright copen<CR>
-noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:cclose<CR>:belowright copen<CR>
-noremap <Leader>cm <ESC>:CodeQuery Member<CR>:cclose<CR>:belowright copen<CR>
+noremap <Leader>cs <ESC>:CodeQuery Symbol<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
+noremap <Leader>cc <ESC>:CodeQuery Class<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
+noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
+noremap <Leader>cm <ESC>:CodeQuery Member<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
 
 noremap <Leader>gw <ESC>:Gwrite<CR>
 noremap <Leader>gs <ESC>:Gstatus<CR>
@@ -699,6 +699,21 @@ function! EchoArgs(...)
         echo a:000
     else
         echo "no args"
+    endif
+endfunction
+
+function! CodeQueryJump(...)
+    if a:0 > 0
+        execute "CodeQuery ".a:1
+        cclose
+    endif
+    let qflist = getqflist()
+    if len(qflist) == 0
+        echo "No match"
+    elseif len(qflist) == 1
+        cc 1
+    else
+        belowright copen
     endif
 endfunction
 "}}}
