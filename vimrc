@@ -633,7 +633,7 @@ function! FilterQfResults(args) abort
 endfunction
 
 function! SetQfMappings()
-    noremap <buffer> <silent> <CR> <ESC>:call GoToError(line('.'))<CR>
+    noremap <buffer> <silent> <CR> <ESC>:call GoToError(line('.'))<CR>:cclose<CR>
     noremap <buffer> <silent> <leader>/ <ESC>:QfFilter 
 endfunction
 
