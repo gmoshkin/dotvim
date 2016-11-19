@@ -648,6 +648,15 @@ function! CodeQueryJump(...)
         belowright copen
     endif
 endfunction
+
+function! Help(...)
+    execute "help ".join(a:000, " ")
+    if winnr('$') > 2
+        execute (winnr() + 1) . "close"
+    else
+        wincmd _
+    endif
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -665,6 +674,8 @@ command! -nargs=* QfFilter call FilterQfResults(<q-args>)
 command! -range ExecFunction call ExecLines(<line1>, <line2>)
 command! GoToFileLineColumn call GoToFileLineColumn()
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
+command! -nargs=* Help call Help(<f-args>)
+command! -nargs=* H call Help(<f-args>)
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
