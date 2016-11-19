@@ -600,10 +600,10 @@ function! SetRainbowColor(n, color)
 endfunction
 
 function! SetRainbowColors()
-    SetRainbowColor(0, '1')
-    SetRainbowColor(1, '6')
-    SetRainbowColor(2, '5')
-    SetRainbowColor(3, '4')
+    call SetRainbowColor(0, '1')
+    call SetRainbowColor(1, '6')
+    call SetRainbowColor(2, '5')
+    call SetRainbowColor(3, '4')
 endfunction
 
 function! GoToFileLineColumn(...)
