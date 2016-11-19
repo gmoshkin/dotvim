@@ -673,6 +673,34 @@ function! SetRainbowColors()
     SetRainbowColor(2, '5')
     SetRainbowColor(3, '4')
 endfunction
+
+function! GoToFileLineColumn(...)
+    if exists("a:1")
+        let str = a:1
+    else
+        let str = expand("<cWORD>")
+    endif
+    let vals = split(str, ":")
+    if len(vals) > 0
+        let f = vals[0]
+        " echo f
+        execute "edit ".f
+        if len(vals) > 2
+            let l = vals[1]
+            let c = vals[2]
+            " echo l . ":" . c
+            call cursor(l, c)
+        endif
+    endif
+endfunction
+
+function! EchoArgs(...)
+    if exists("a:000")
+        echo a:000
+    else
+        echo "no args"
+    endif
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -759,6 +787,8 @@ augroup END
 "{{{
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
 command! -range ExecFunction call ExecLines(<line1>, <line2>)
+command! GoToFileLineColumn call GoToFileLineColumn()
+command! -nargs=* EchoArgs call EchoArgs(<f-args>)
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
