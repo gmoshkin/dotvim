@@ -888,7 +888,7 @@ let NERDTreeAutoDeleteBuffer=1
 "{{{
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'max:30'
-let g:ctrlp_map = '<CR>'
+let g:ctrlp_map = ''
 "}}}
 """"""""""""""""""""""""""""""""" INDENT GUIDE """""""""""""""""""""""""""""""""
 "{{{
