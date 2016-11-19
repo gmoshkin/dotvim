@@ -379,9 +379,6 @@ noremap <Leader>gw <ESC>:Gwrite<CR>
 noremap <Leader>gs <ESC>:Gstatus<CR>
 noremap <Leader>gc <ESC>:Gcommit<CR>
 
-vnoremap <Leader>e :ExecFunction<CR>
-noremap <Leader>ee <ESC>:execute getline('.')<CR>
-
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
@@ -516,23 +513,6 @@ function! PutPrevChar()
     endwhile
 endfunction
 
-function! SetLaTeXKeyMappings()
-    noremap <buffer> <Leader>mp <ESC>:!pdflatex %:p<CR>
-    noremap <buffer> <Leader>mb
-            \ <ESC>:execute '!bibtex '.split(expand('%:p'), '\.')[0].'.aux'<CR>
-    " noremap <buffer> <C-S> <ESC>:update<CR>:!pdflatex %:p<CR>
-    " inoremap <buffer> <C-S> <C-O>:update<CR><C-O>:!pdflatex %:p<CR>
-    " vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
-endfunction
-
-function! SetMakeKeyMappings()
-    noremap <buffer> <Leader>mm <ESC>:make!<CR>:clist<CR>
-    noremap <buffer> <Leader>mi <ESC>:make! install<CR>
-    noremap <buffer> <Leader>mc <ESC>:make! clean<CR>
-    noremap <buffer> <Leader>md <ESC>:make! depend<CR>
-    noremap <buffer> <Leader>M <ESC>:make!<CR>:make! install<CR>
-endfunction
-
 function! SetIndentGuideColors()
     hi indentguidesodd  ctermfg=12 ctermbg=0
     hi indentguideseven ctermfg=12 ctermbg=23
@@ -633,11 +613,6 @@ function! FilterQfResults(args) abort
     call setqflist(qf_list)
 endfunction
 
-function! SetQfMappings()
-    noremap <buffer> <silent> <CR> <ESC>:call GoToError(line('.'))<CR>:cclose<CR>
-    noremap <buffer> <silent> <leader>/ <ESC>:QfFilter 
-endfunction
-
 function! ExecLines(ls, le) abort
     let lines = []
     for l in range(a:ls, a:le)
@@ -721,83 +696,12 @@ endfunction
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
 
-" augroup Text
-    " autocmd!
-    " autocmd FileType text setlocal spell
-" augroup END
-
 " Folds are open by default
 augroup OpenFolds
     autocmd!
     autocmd BufRead * normal zR
 augroup END
 
-" OpenGL Shader Languauge
-" FIXME move to ftdetect
-augroup GLSLFileType
-    autocmd!
-    autocmd BufNewFile,BufRead *.vp,*.fp,*.gp,*.vs,*.fs,*.gs,*.tcs,*.tes,*.vert,*.frag,*.geom,*.tess,*.shd,*.gls,*.glsl set ft=glsl440
-    "autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl    setf glsl
-augroup END
-
-" FIXME move to ftplugin
-augroup Foldmethod
-    autocmd!
-    autocmd Filetype vim,scheme setlocal foldmethod=marker |
-                              \ let b:foldmethod_set = 1
-augroup END
-
-" augroup VimDefault
-    " autocmd!
-    " autocmd VimEnter * nested if argc() == 0 && bufname("%") == "" |
-                            " \     edit $MYVIMRC |
-                            " \ endif
-    " "autocmd VimEnter * PluginInstall
-" augroup END
-
-" augroup FiletypeTabs
-    " autocmd!
-    " autocmd BufNewFile,BufRead *.py setlocal ts=4 | setlocal sw=4 | setlocal expandtab
-    " autocmd BufNewFile,BufRead *.rkt setlocal ts=2 | setlocal sw=2 | setlocal expandtab
-    " autocmd BufNewFile,BufRead *.vim,*.c,*.cpp,*.glsl execute SetTabStop()
-" augroup END
-
-" FIXME move to ftplugin
-augroup RacketRun
-    autocmd!
-    autocmd FileType scheme noremap <buffer> <Leader>r <ESC>:!racket %:p<CR>
-augroup END
-
-" FIXME move to ftplugin
-augroup LaTeXMake
-    autocmd!
-    autocmd FileType tex call SetLaTeXKeyMappings()
-augroup END
-
-" FIXME move to ftplugin
-augroup Make
-    autocmd!
-    autocmd FileType c,cpp call SetMakeKeyMappings()
-augroup END
-
-" FIXME move to ftplugin
-augroup VimHelp
-    autocmd!
-    autocmd FileType help noremap <buffer> <CR> <ESC><C-]>
-augroup END
-
-" FIXME move to ftplugin
-augroup NERDTreeIndentGuide
-    autocmd!
-    " this one is which you're most likely to use?
-    autocmd FileType nerdtree setlocal ts=2 | setlocal sw=2
-augroup end
-
-" FIXME move to ftplugin
-augroup QuickFix
-    autocmd!
-    autocmd FileType qf call SetQfMappings()
-augroup END
 "}}}
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
