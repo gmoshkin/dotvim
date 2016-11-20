@@ -14,7 +14,7 @@ endfunction
 command! -range ExecFunction call ExecLines(<line1>, <line2>)
 
 vnoremap <silent> <leader>e :ExecFunction<CR>
-noremap <silent> <leader>ee :<C-U>set operatorfunc=ExecuteOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+noremap <silent> <leader>ee :<C-U>set operatorfunc=ExecuteOperatorFunc<BAR>:call feedkeys(v:count1.'g@_')<CR>
 noremap <silent> <leader>e :<C-U>set operatorfunc=ExecuteOperatorFunc<CR>g@
 
 noremap K <ESC>:help <C-R><C-W><CR>
