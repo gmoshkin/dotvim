@@ -658,7 +658,11 @@ endfunction
 function! Help(...)
     execute "help ".join(a:000, " ")
     if winnr('$') > 2
-        execute (winnr() + 1) . "close"
+        let wn = winnr()
+        wincmd j
+        if wn != winnr()
+            execute (winnr()) . "close"
+        endif
     else
         wincmd _
     endif
