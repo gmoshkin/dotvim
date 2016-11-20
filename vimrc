@@ -397,6 +397,7 @@ noremap <silent> g> :<C-U>set operatorfunc=ShiftRightOperatorFunc<CR>g@
 noremap <silent> g>> :<C-U>set operatorfunc=ShiftRightOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
 noremap <silent> g< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<CR>g@
 noremap <silent> g<< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+
 noremap K <ESC>:Man <C-R><C-W><CR>
 
 noremap g/ <ESC>/\c
@@ -666,6 +667,72 @@ function! Help(...)
     else
         wincmd _
     endif
+endfunction
+
+" Stolen from klen/python-mode
+function! SearchParensPair()
+    let line = line('.')
+    let col = col('.')
+
+    " Skip strings and comments and don't look too far
+    let skip = "line('.') < " . (line - 50) . " ? 1 :" . 'synIDattr(synID(line("."), col("."), 0), "name") =~? ' . '"string\\|comment\\|doctest"'
+
+    " Search for parentheses
+    call cursor(line, col)
+    let parlnum = searchpair('(', '', ')', 'bW', skip)
+    let parcol = col('.')
+
+    " Search for brackets
+    call cursor(line, col)
+    let par2lnum = searchpair('\[', '', '\]', 'bW', skip)
+    let par2col = col('.')
+
+    " Search for braces
+    call cursor(line, col)
+    let par3lnum = searchpair('{', '', '}', 'bW', skip)
+    let par3col = col('.')
+
+    " Get the closest match
+    if par2lnum > parlnum || (par2lnum == parlnum && par2col > parcol)
+        let parlnum = par2lnum
+        let parcol = par2col
+    endif
+    if par3lnum > parlnum || (par3lnum == parlnum && par3col > parcol)
+        let parlnum = par3lnum
+        let parcol = par3col
+    endif
+
+    " Put the cursor on the match
+    if parlnum > 0
+        call cursor(parlnum, parcol)
+    endif
+    return parlnum
+endfunction
+
+" Stolen from klen/python-mode
+function! Cindent(lnum)
+    " First line has indent 0
+    if a:lnum == 1
+        return 0
+    endif
+    " If we can find an open parenthesis/bracket/brace, line up with it.
+    call cursor(a:lnum, 1)
+    let parlnum = SearchParensPair()
+    if parlnum > 0
+        let parcol = col('.')
+        let closing_paren = match(getline(a:lnum), '^\s*[])}]') != -1
+        if match(getline(parlnum), '[([{]\s*$', parcol - 1) != -1
+            if closing_paren
+                return indent(parlnum)
+            else
+                return indent(parlnum) + &shiftwidth
+            endif
+        else
+            return parcol
+        endif
+    endif
+    " In all other cases, line up with the start of the previous statement.
+    return cindent(a:lnum)
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
