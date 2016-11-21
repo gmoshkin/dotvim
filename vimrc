@@ -750,8 +750,8 @@ augroup END
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
 command! GoToFileLineColumn call GoToFileLineColumn()
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
-command! -nargs=* Help call Help(<f-args>)
-command! -nargs=* H call Help(<f-args>)
+command! -nargs=* -complete=help Help call Help(<f-args>)
+command! -nargs=* -complete=help H call Help(<f-args>)
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
