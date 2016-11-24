@@ -70,7 +70,7 @@ if v:version > 703
 endif
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-utils/vim-man'
-" Plugin 'jpalardy/vim-slime'
+Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'junegunn/limelight.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
