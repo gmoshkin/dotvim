@@ -770,6 +770,7 @@ command! GoToFileLineColumn call GoToFileLineColumn()
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
 command! -nargs=* -complete=help Help call Help(<f-args>)
 command! -nargs=* -complete=help H call Help(<f-args>)
+command! Vimrc edit $MYVIMRC
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
