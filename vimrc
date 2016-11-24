@@ -380,9 +380,10 @@ noremap <Leader>cc <ESC>:CodeQuery Class<CR>:belowright copen<CR>:call CodeQuery
 noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
 noremap <Leader>cm <ESC>:CodeQuery Member<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
 
-noremap <Leader>gw <ESC>:Gwrite<CR>
-noremap <Leader>gs <ESC>:Gstatus<CR>
+noremap <Leader>gb <ESC>:Gblame<CR>
 noremap <Leader>gc <ESC>:Gcommit<CR>
+noremap <Leader>gs <ESC>:Gstatus<CR>
+noremap <Leader>gw <ESC>:Gwrite<CR>
 
 noremap cog <ESC>:IndentGuidesToggle<CR>
 
