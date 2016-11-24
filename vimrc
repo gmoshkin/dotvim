@@ -694,7 +694,8 @@ function! SearchParensPair()
     let col = col('.')
 
     " Skip strings and comments and don't look too far
-    let skip = "line('.') < " . (line - 50) . " ? 1 :" . 'synIDattr(synID(line("."), col("."), 0), "name") =~? ' . '"string\\|comment\\|doctest"'
+    let maxlines = 20
+    let skip = "line('.') < " . (line - 10) . " ? 1 :" . 'synIDattr(synID(line("."), col("."), 0), "name") =~? ' . '"string\\|comment\\|doctest"'
 
     " Search for parentheses
     call cursor(line, col)
@@ -707,19 +708,19 @@ function! SearchParensPair()
     let par2col = col('.')
 
     " Search for braces
-    call cursor(line, col)
-    let par3lnum = searchpair('{', '', '}', 'bW', skip)
-    let par3col = col('.')
+    " call cursor(line, col)
+    " let par3lnum = searchpair('{', '', '}', 'bW', skip)
+    " let par3col = col('.')
 
     " Get the closest match
     if par2lnum > parlnum || (par2lnum == parlnum && par2col > parcol)
         let parlnum = par2lnum
         let parcol = par2col
     endif
-    if par3lnum > parlnum || (par3lnum == parlnum && par3col > parcol)
-        let parlnum = par3lnum
-        let parcol = par3col
-    endif
+    " if par3lnum > parlnum || (par3lnum == parlnum && par3col > parcol)
+    "     let parlnum = par3lnum
+    "     let parcol = par3col
+    " endif
 
     " Put the cursor on the match
     if parlnum > 0
