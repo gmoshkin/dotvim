@@ -769,6 +769,17 @@ function! AddREPToPath()
         let &path = &path . newEntry
     endif
 endfunction
+
+function! SetCursorMode(mode)
+    let g:cursor_modes = {
+      \ 'd' : '1',
+      \ 'n' : '1',
+      \ 'i' : '5',
+      \ 'r' : '3',
+      \ }
+    silent execute '!echo -ne "\e['.g:cursor_modes[a:mode].' q"'
+    redraw!
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -782,6 +793,12 @@ augroup END
 augroup REPPath
     autocmd!
     autocmd BufNew */REP/sources/* call AddREPToPath()
+augroup END
+
+augroup SetCursor
+    autocmd VimEnter,InsertLeave * call SetCursorMode('n')
+    autocmd InsertEnter,InsertChange * call SetCursorMode(v:insertmode)
+    autocmd VimLeave * call SetCursorMode('d')
 augroup END
 "}}}
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
