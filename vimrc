@@ -402,6 +402,11 @@ noremap <silent> g> :<C-U>set operatorfunc=ShiftRightOperatorFunc<CR>g@
 noremap <silent> g>> :<C-U>set operatorfunc=ShiftRightOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
 noremap <silent> g< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<CR>g@
 noremap <silent> g<< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+" TODO: think of a better way to do this
+noremap <silent> g2> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<CR>g@
+noremap <silent> g2>> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+noremap <silent> g2< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<CR>g@
+noremap <silent> g2<< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
 
@@ -561,6 +566,14 @@ endfunction
 
 function! ShiftLeftOperatorFunc(type)
     call ShiftLines(line("'["), line("']"), -1)
+endfunction
+
+function! ShiftRight2OperatorFunc(type)
+    call ShiftLines(line("'["), line("']"), 2)
+endfunction
+
+function! ShiftLeft2OperatorFunc(type)
+    call ShiftLines(line("'["), line("']"), -2)
 endfunction
 
 " Stole it from codequery plugin
