@@ -286,6 +286,10 @@ noremap <M-Left> <C-W><
 noremap <M-Right> <C-W>>
 noremap <M-Up> <C-W>+
 noremap <M-Down> <C-W>-
+noremap <ESC>< <C-W><
+noremap <ESC>> <C-W>>
+noremap <ESC>+ <C-W>+
+noremap <ESC>- <C-W>-
 
 noremap <Leader>y "+y
 vnoremap <Leader>y "+y
