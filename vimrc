@@ -746,7 +746,7 @@ endfunction
 " Folds are open by default
 augroup OpenFolds
     autocmd!
-    autocmd BufRead * normal zR
+    autocmd BufEnter * normal zR
 augroup END
 
 "}}}
