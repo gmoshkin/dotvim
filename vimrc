@@ -739,6 +739,15 @@ function! Cindent(lnum)
     " In all other cases, line up with the start of the previous statement.
     return cindent(a:lnum)
 endfunction
+
+function! AddREPToPath()
+    let filePath = expand("%:p")
+    let subDir = matchstr(filePath, ".*REP/sources/[^/]*/")
+    if &path !~# subDir
+        let newEntry = ','.subDir.'**,'
+        let &path = &path . newEntry
+    endif
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -749,6 +758,10 @@ augroup OpenFolds
     autocmd BufEnter * normal zR
 augroup END
 
+augroup REPPath
+    autocmd!
+    autocmd BufNew */REP/sources/* call AddREPToPath()
+augroup END
 "}}}
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
