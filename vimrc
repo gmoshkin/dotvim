@@ -409,6 +409,12 @@ noremap <silent> g2>> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<BAR>:execut
 noremap <silent> g2< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<CR>g@
 noremap <silent> g2<< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
 
+vnoremap <silent> g> :<C-U>call ShiftLines(line("'<"), line("'>"), 1)<CR>
+vnoremap <silent> g< :<C-U>call ShiftLines(line("'<"), line("'>"), -1)<CR>
+
+vnoremap <silent> g2> :<C-U>call ShiftLines(line("'<"), line("'>"), 2)<CR>
+vnoremap <silent> g2< :<C-U>call ShiftLines(line("'<"), line("'>"), -2)<CR>
+
 noremap K <ESC>:Man <C-R><C-W><CR>
 
 noremap g/ <ESC>/\c
