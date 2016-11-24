@@ -80,7 +80,6 @@ Plugin 'klen/python-mode'
 Plugin 'luochen1990/rainbow'
 Plugin 'Konfekt/FastFold'
 Plugin 'majutsushi/tagbar'
-Plugin 'matchit.zip'
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
@@ -110,6 +109,8 @@ if (!exists("b:foldmethod_set"))
 endif
 
 let g:c_space_errors = 1
+
+packadd! matchit
 
 set cursorline
 "highlight the screen line of the cursor
