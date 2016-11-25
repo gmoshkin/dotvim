@@ -780,6 +780,14 @@ function! SetCursorMode(mode)
     silent execute '!echo -ne "\e['.g:cursor_modes[a:mode].' q"'
     redraw!
 endfunction
+
+function! GetLines(ls, le)
+    let result = []
+    for l in range(a:ls, a:le)
+        call add(result, getline(l))
+    endfor
+    return result
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{

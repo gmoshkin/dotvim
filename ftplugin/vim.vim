@@ -1,8 +1,5 @@
 function! ExecLines(ls, le) abort
-    let lines = []
-    for l in range(a:ls, a:le)
-        call add(lines, getline(l))
-    endfor
+    let lines = GetLines(a:ls, a:le)
     let command = join(lines, "\n")
     exec command
 endfunction
