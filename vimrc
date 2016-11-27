@@ -387,7 +387,8 @@ noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:belowright copen<CR>:call Code
 noremap <Leader>cm <ESC>:CodeQuery Member<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
 
 noremap <Leader>gb <ESC>:Gblame<CR>
-noremap <Leader>gc <ESC>:Gcommit<CR>
+noremap <Leader>gcc <ESC>:Gcommit<CR>
+noremap <Leader>gca <ESC>:Gcommit --amend<CR>
 noremap <Leader>gs <ESC>:Gstatus<CR>
 noremap <Leader>gw <ESC>:Gwrite<CR>
 
