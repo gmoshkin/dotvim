@@ -291,14 +291,20 @@ noremap <ESC>> <C-W>>
 noremap <ESC>+ <C-W>+
 noremap <ESC>- <C-W>-
 
-noremap <Leader>y "+y
-vnoremap <Leader>y "+y
-noremap <Leader>Y "+Y
-vnoremap <Leader>Y "+Y
-noremap <Leader>p "+p
-vnoremap <Leader>p "+p
-noremap <Leader>P "+P
-vnoremap <Leader>P "+P
+noremap gy "+y
+noremap gY "+Y
+noremap gp "+p
+noremap gP "+P
+vnoremap gy "+y
+vnoremap gY "+Y
+vnoremap gp "+p
+vnoremap gP "+P
+
+" remap the origianl gp and gP commands to <leader>p/P
+noremap <leader>p gp
+noremap <leader>P gP
+vnoremap <leader>p gp
+vnoremap <leader>P gP
 
 noremap <Leader>V <ESC>ggVG
 
