@@ -840,7 +840,7 @@ augroup END
 
 augroup REPPath
     autocmd!
-    autocmd BufNew */REP/sources/* call AddREPToPath()
+    autocmd BufNew,BufRead */REP/sources/* call AddREPToPath()
 augroup END
 
 augroup SetCursor
