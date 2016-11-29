@@ -654,15 +654,23 @@ function! GoToFileLineColumn(...)
     else
         let str = expand("<cWORD>")
     endif
-    let vals = split(str, ":")
+    " echo 'str = '.str
+    let fileLineCol = matchstr(str, '\f\+\(:\d\+:\d\+\)\?')
+    " echo 'fileLineCol = '.fileLineCol
+    let vals = split(fileLineCol, ":")
     if len(vals) > 0
-        let f = vals[0]
-        " echo f
-        execute "edit ".f
+        let fileName = vals[0]
+        let path = findfile(fileName)
+        " echo 'path = '.path
+        if len(path) == 0
+            echom 'No such file "'.fileName.'" in path'
+            return
+        endif
+        execute "edit ".path
         if len(vals) > 2
             let l = vals[1]
             let c = vals[2]
-            " echo l . ":" . c
+            " echo 'l:c = '.l . ":" . c
             call cursor(l, c)
         endif
     endif
@@ -852,7 +860,7 @@ augroup END
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
-command! GoToFileLineColumn call GoToFileLineColumn()
+command! -nargs=* GoToFileLineColumn call GoToFileLineColumn(<q-args>)
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
 command! -nargs=* -complete=help Help call Help(<f-args>)
 command! -nargs=* -complete=help H call Help(<f-args>)
