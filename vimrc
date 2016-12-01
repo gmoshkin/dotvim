@@ -428,6 +428,8 @@ vnoremap <silent> g2< :<C-U>call ShiftLines(line("'<"), line("'>"), -2)<CR>
 noremap K <ESC>:Man <C-R><C-W><CR>
 
 noremap g/ <ESC>/\c
+
+noremap <leader>gf :<C-U>wincmd w <BAR> GoToFileLineColumn <C-R><C-A><CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
