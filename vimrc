@@ -430,6 +430,9 @@ noremap K <ESC>:Man <C-R><C-W><CR>
 noremap g/ <ESC>/\c
 
 noremap <leader>gf :<C-U>wincmd w <BAR> GoToFileLineColumn <C-R><C-A><CR>
+
+vnoremap <leader>gp y:<C-U>1wincmd w <BAR> call Visual(@")<CR>
+noremap <leader>gp yi(:<C-U>1wincmd w <BAR> call Visual(@")<CR>
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -837,6 +840,27 @@ function! StageLines(ls, le)
     silent undo
     silent write
     call cursor(orig_line, orig_col)
+endfunction
+
+function! Strip(input_string)
+    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
+function! Visual(...)
+    if a:0 == 0
+        return
+    elseif a:0 == 1
+        let pos = map(split(a:1, ','), 'Strip(v:val)')
+    elseif a:0 == 4
+        let pos = [a:1, a:2, a:3, a:4]
+    endif
+    if len(pos) >= 2
+        call cursor(pos[0], pos[1])
+        normal v
+        if len(pos) >= 4
+            call cursor(pos[2], pos[3])
+        endif
+    endif
 endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
