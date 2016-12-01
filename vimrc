@@ -226,214 +226,6 @@ if exists('$TMUX') || exists('$SSH_CLIENT') || exists('$SSH_TTY')
     set <xLeft>=[1;*D
 endif
 "}}}
-"""""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
-"{{{
-"noremap <F2> <ESC>:w<CR>
-"noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
-" noremap <F2> <ESC>:NERDTreeFind<CR>
-"noremap <F3> <ESC>:tabnew<CR>
-" noremap <F3> <ESC>:NERDTreeToggle<CR>
-"noremap <F4> <ESC>:e .<CR>
-" noremap <F4> <ESC>:TagbarToggle<CR>
-" noremap <F5> <ESC>:cprev<CR>
-" noremap <S-F5> <ESC>:lprev<CR>
-" noremap <F6> <ESC>:cnext<CR>
-" noremap <S-F6> <ESC>:lnext<CR>
-noremap <F7> <ESC>:noh<CR>
-noremap <S-F7> <ESC>/ $<CR>
-" noremap <F8> <ESC>:cfirst<CR>
-" noremap <S-F8> <ESC>:clast<CR>
-" noremap <F9> <ESC>:make!<CR>:copen<CR>
-" noremap <S-F9> <ESC>:make! clean<CR>
-"noremap <C-F9> <ESC>yl:let @0 = GetPrevChar(@0)<CR>phx
-noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
-noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
-"noremap <C-F10> <ESC>yl:let @0 = GetNextChar(@0)<CR>phx
-noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
-" noremap <F12> <ESC>:source $MYVIMRC<CR>
-
-"noremap <C-N> <ESC>:tabnext<CR>
-"noremap <C-P> <ESC>:tabprev<CR>
-noremap <C-N> <ESC>:bnext<CR>
-noremap <C-P> <ESC>:bprev<CR>
-
-noremap <C-S> <ESC>:update<CR>
-inoremap <C-S> <C-O>:update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-"on ubuntu this one requires the following record in .bashrc file:
-"stty -ixon
-
-noremap <silent> <S-Left> @='3zh'<CR>
-noremap <silent> <S-Right> @='3zl'<CR>
-inoremap <S-Left> <C-O>3zh
-inoremap <S-Right> <C-O>3zl
-
-noremap <S-Up> <C-Y>
-noremap <S-Down> <C-E>
-inoremap <S-Up> <C-O><C-Y>
-inoremap <S-Down> <C-O><C-E>
-
-map <C-Up> [m
-map <C-Down> ]m
-vmap <C-Up> [m
-vmap <C-Down> ]m
-imap <C-Up> <C-O>[m
-imap <C-Down> <C-O>]m
-
-noremap <C-]> <ESC>:tjump <C-R><C-W><CR>
-
-noremap <M-Left> <C-W><
-noremap <M-Right> <C-W>>
-noremap <M-Up> <C-W>+
-noremap <M-Down> <C-W>-
-noremap <ESC>< <C-W><
-noremap <ESC>> <C-W>>
-noremap <ESC>+ <C-W>+
-noremap <ESC>- <C-W>-
-
-noremap gy "+y
-noremap gY "+Y
-noremap gp "+p
-noremap gP "+P
-vnoremap gy "+y
-vnoremap gY "+Y
-vnoremap gp "+p
-vnoremap gP "+P
-
-" remap the origianl gp and gP commands to <leader>p/P
-noremap <leader>p gp
-noremap <leader>P gP
-vnoremap <leader>p gp
-vnoremap <leader>P gP
-
-noremap <Leader>V <ESC>ggVG
-
-" noremap <Leader>g <ESC>:Ggrep <CR>
-" vnoremap <Leader>g y<ESC>:Ggrep 0<CR>
-
-noremap <Leader>w <ESC>:Gwrite<CR>
-
-inoremap <C-A> <C-O>^
-inoremap <C-B> <Left>
-inoremap <C-D> <Del>
-inoremap <C-E> <C-O>$
-inoremap <C-F> <Right>
-inoremap <S-Tab> <C-D>
-" inoremap <ESC>b <C-O>b
-inoremap <ESC>e <C-O>e
-" inoremap <ESC>f <C-O>w
-
-noremap ZA zA
-noremap ZM zM
-noremap ZR zR
-noremap ZO zO
-noremap ZC zC
-noremap ZN zN
-
-noremap Q ZQ
-
-noremap Y y$
-
-noremap ; :
-noremap : ;
-
-map <Space> <Plug>(easymotion-prefix)
-" map f <Plug>(easymotion-f)
-" map F <Plug>(easymotion-F)
-
-noremap gA <ESC>:echo GetSyntaxInfo()<CR>
-
-cnoremap <C-A> <Home>
-cnoremap <C-B> <Space><BS><Left>
-cnoremap <C-Z> <S-Left>
-cnoremap <C-F> <Space><BS><Right>
-cnoremap <C-X> <S-Right>
-cnoremap <C-G> <C-F>
-cnoremap <C-D> <Del>
-cnoremap <ESC>b <C-Left>
-cnoremap <ESC>f <C-Right>
-
-noremap <Leader>fb <ESC>:CtrlPBuffer<CR>
-noremap <Leader>fm <ESC>:CtrlPMRU<CR>
-noremap <Leader>ff <ESC>:CtrlP<CR>
-
-" noremap <Leader>b <Esc>:BuffergatorOpen<CR>
-noremap <Leader>B <Esc>:BuffergatorClose<CR>
-noremap [b <Esc>:BuffergatorMruCyclePrev<CR>
-noremap ]b <Esc>:BuffergatorMruCycleNext<CR>
-
-noremap <Leader>t <Esc>:call TabularizeChar()<CR>
-noremap <Leader>T <Esc>:Tabularize<CR>
-
-noremap <Leader>to <Esc>:TagbarOpen<CR>
-noremap <Leader>tc <Esc>:TagbarClose<CR>
-noremap <Leader>tj <Esc>:TagbarOpen -j<CR>
-noremap <Leader>tO <Esc>:TagbarOpenAutoClose<CR>
-
-noremap <Leader>no <Esc>:NERDTree<CR>
-noremap <Leader>nt <Esc>:NERDTreeToggle<CR>
-noremap <Leader>nc <Esc>:NERDTreeClose<CR>
-noremap <Leader>nf <Esc>:NERDTreeFind<CR>
-noremap <Leader>nj <Esc>:NERDTreeFocus<CR>
-
-noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
-
-noremap <Leader>qo <ESC>:belowright copen<CR>
-noremap <Leader>qc <ESC>:belowright cclose<CR>
-
-noremap <Leader>cs <ESC>:CodeQuery Symbol<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-noremap <Leader>cc <ESC>:CodeQuery Class<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-noremap <Leader>cm <ESC>:CodeQuery Member<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-
-noremap <Leader>gb <ESC>:Gblame<CR>
-noremap <Leader>gcc <ESC>:Gcommit<CR>
-noremap <Leader>gca <ESC>:Gcommit --amend<CR>
-noremap <Leader>gs <ESC>:Gstatus<CR>
-noremap <Leader>gw <ESC>:Gwrite<CR>
-
-noremap <Leader>hl :StageLine<CR>:GitGutter<CR>
-xnoremap <Leader>hl :StageLine<CR>:GitGutter<CR>
-
-noremap cog <ESC>:IndentGuidesToggle<CR>
-
-noremap cof <ESC>:call ToggleAutoFormat()<CR>
-
-noremap coa <ESC>:call ToggleColorColumn()<CR>
-
-noremap cop <ESC>:set paste!<CR>
-
-noremap coR <ESC>:RainbowToggle<CR>
-
-map c<space> <plug>NERDCommenterToggle
-
-noremap <C-Space> <ESC>:CtrlPBuffer<CR>
-
-noremap <silent> g> :<C-U>set operatorfunc=ShiftRightOperatorFunc<CR>g@
-noremap <silent> g>> :<C-U>set operatorfunc=ShiftRightOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-noremap <silent> g< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<CR>g@
-noremap <silent> g<< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-" TODO: think of a better way to do this
-noremap <silent> g2> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<CR>g@
-noremap <silent> g2>> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-noremap <silent> g2< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<CR>g@
-noremap <silent> g2<< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-
-vnoremap <silent> g> :<C-U>call ShiftLines(line("'<"), line("'>"), 1)<CR>
-vnoremap <silent> g< :<C-U>call ShiftLines(line("'<"), line("'>"), -1)<CR>
-
-vnoremap <silent> g2> :<C-U>call ShiftLines(line("'<"), line("'>"), 2)<CR>
-vnoremap <silent> g2< :<C-U>call ShiftLines(line("'<"), line("'>"), -2)<CR>
-
-noremap K <ESC>:Man <C-R><C-W><CR>
-
-noremap g/ <ESC>/\c
-
-noremap <leader>gf :<C-U>wincmd w <BAR> GoToFileLineColumn <C-R><C-A><CR>
-
-vnoremap <leader>gp y:<C-U>1wincmd w <BAR> call Visual(@")<CR>
-noremap <leader>gp yi(:<C-U>1wincmd w <BAR> call Visual(@")<CR>
-"}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
 function! ToggleAutoFormat()
@@ -892,6 +684,214 @@ command! -nargs=* -complete=help Help call Help(<f-args>)
 command! -nargs=* -complete=help H call Help(<f-args>)
 command! Vimrc edit $MYVIMRC
 command! -range StageLine call StageLines(<line1>, <line2>)
+"}}}
+"""""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
+"{{{
+"noremap <F2> <ESC>:w<CR>
+"noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
+" noremap <F2> <ESC>:NERDTreeFind<CR>
+"noremap <F3> <ESC>:tabnew<CR>
+" noremap <F3> <ESC>:NERDTreeToggle<CR>
+"noremap <F4> <ESC>:e .<CR>
+" noremap <F4> <ESC>:TagbarToggle<CR>
+" noremap <F5> <ESC>:cprev<CR>
+" noremap <S-F5> <ESC>:lprev<CR>
+" noremap <F6> <ESC>:cnext<CR>
+" noremap <S-F6> <ESC>:lnext<CR>
+noremap <F7> <ESC>:noh<CR>
+noremap <S-F7> <ESC>/ $<CR>
+" noremap <F8> <ESC>:cfirst<CR>
+" noremap <S-F8> <ESC>:clast<CR>
+" noremap <F9> <ESC>:make!<CR>:copen<CR>
+" noremap <S-F9> <ESC>:make! clean<CR>
+"noremap <C-F9> <ESC>yl:let @0 = GetPrevChar(@0)<CR>phx
+noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
+noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
+"noremap <C-F10> <ESC>yl:let @0 = GetNextChar(@0)<CR>phx
+noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
+" noremap <F12> <ESC>:source $MYVIMRC<CR>
+
+"noremap <C-N> <ESC>:tabnext<CR>
+"noremap <C-P> <ESC>:tabprev<CR>
+noremap <C-N> <ESC>:bnext<CR>
+noremap <C-P> <ESC>:bprev<CR>
+
+noremap <C-S> <ESC>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+"on ubuntu this one requires the following record in .bashrc file:
+"stty -ixon
+
+noremap <silent> <S-Left> @='3zh'<CR>
+noremap <silent> <S-Right> @='3zl'<CR>
+inoremap <S-Left> <C-O>3zh
+inoremap <S-Right> <C-O>3zl
+
+noremap <S-Up> <C-Y>
+noremap <S-Down> <C-E>
+inoremap <S-Up> <C-O><C-Y>
+inoremap <S-Down> <C-O><C-E>
+
+map <C-Up> [m
+map <C-Down> ]m
+vmap <C-Up> [m
+vmap <C-Down> ]m
+imap <C-Up> <C-O>[m
+imap <C-Down> <C-O>]m
+
+noremap <C-]> <ESC>:tjump <C-R><C-W><CR>
+
+noremap <M-Left> <C-W><
+noremap <M-Right> <C-W>>
+noremap <M-Up> <C-W>+
+noremap <M-Down> <C-W>-
+noremap <ESC>< <C-W><
+noremap <ESC>> <C-W>>
+noremap <ESC>+ <C-W>+
+noremap <ESC>- <C-W>-
+
+noremap gy "+y
+noremap gY "+Y
+noremap gp "+p
+noremap gP "+P
+vnoremap gy "+y
+vnoremap gY "+Y
+vnoremap gp "+p
+vnoremap gP "+P
+
+" remap the origianl gp and gP commands to <leader>p/P
+noremap <leader>p gp
+noremap <leader>P gP
+vnoremap <leader>p gp
+vnoremap <leader>P gP
+
+noremap <Leader>V <ESC>ggVG
+
+" noremap <Leader>g <ESC>:Ggrep <CR>
+" vnoremap <Leader>g y<ESC>:Ggrep 0<CR>
+
+noremap <Leader>w <ESC>:Gwrite<CR>
+
+inoremap <C-A> <C-O>^
+inoremap <C-B> <Left>
+inoremap <C-D> <Del>
+inoremap <C-E> <C-O>$
+inoremap <C-F> <Right>
+inoremap <S-Tab> <C-D>
+" inoremap <ESC>b <C-O>b
+inoremap <ESC>e <C-O>e
+" inoremap <ESC>f <C-O>w
+
+noremap ZA zA
+noremap ZM zM
+noremap ZR zR
+noremap ZO zO
+noremap ZC zC
+noremap ZN zN
+
+noremap Q ZQ
+
+noremap Y y$
+
+noremap ; :
+noremap : ;
+
+map <Space> <Plug>(easymotion-prefix)
+" map f <Plug>(easymotion-f)
+" map F <Plug>(easymotion-F)
+
+noremap gA <ESC>:echo GetSyntaxInfo()<CR>
+
+cnoremap <C-A> <Home>
+cnoremap <C-B> <Space><BS><Left>
+cnoremap <C-Z> <S-Left>
+cnoremap <C-F> <Space><BS><Right>
+cnoremap <C-X> <S-Right>
+cnoremap <C-G> <C-F>
+cnoremap <C-D> <Del>
+cnoremap <ESC>b <C-Left>
+cnoremap <ESC>f <C-Right>
+
+noremap <Leader>fb <ESC>:CtrlPBuffer<CR>
+noremap <Leader>fm <ESC>:CtrlPMRU<CR>
+noremap <Leader>ff <ESC>:CtrlP<CR>
+
+" noremap <Leader>b <Esc>:BuffergatorOpen<CR>
+noremap <Leader>B <Esc>:BuffergatorClose<CR>
+noremap [b <Esc>:BuffergatorMruCyclePrev<CR>
+noremap ]b <Esc>:BuffergatorMruCycleNext<CR>
+
+noremap <Leader>t <Esc>:call TabularizeChar()<CR>
+noremap <Leader>T <Esc>:Tabularize<CR>
+
+noremap <Leader>to <Esc>:TagbarOpen<CR>
+noremap <Leader>tc <Esc>:TagbarClose<CR>
+noremap <Leader>tj <Esc>:TagbarOpen -j<CR>
+noremap <Leader>tO <Esc>:TagbarOpenAutoClose<CR>
+
+noremap <Leader>no <Esc>:NERDTree<CR>
+noremap <Leader>nt <Esc>:NERDTreeToggle<CR>
+noremap <Leader>nc <Esc>:NERDTreeClose<CR>
+noremap <Leader>nf <Esc>:NERDTreeFind<CR>
+noremap <Leader>nj <Esc>:NERDTreeFocus<CR>
+
+noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
+
+noremap <Leader>qo <ESC>:belowright copen<CR>
+noremap <Leader>qc <ESC>:belowright cclose<CR>
+
+noremap <Leader>cs <ESC>:CodeQuery Symbol<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
+noremap <Leader>cc <ESC>:CodeQuery Class<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
+noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
+noremap <Leader>cm <ESC>:CodeQuery Member<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
+
+noremap <Leader>gb <ESC>:Gblame<CR>
+noremap <Leader>gcc <ESC>:Gcommit<CR>
+noremap <Leader>gca <ESC>:Gcommit --amend<CR>
+noremap <Leader>gs <ESC>:Gstatus<CR>
+noremap <Leader>gw <ESC>:Gwrite<CR>
+
+noremap <Leader>hl :StageLine<CR>:GitGutter<CR>
+xnoremap <Leader>hl :StageLine<CR>:GitGutter<CR>
+
+noremap cog <ESC>:IndentGuidesToggle<CR>
+
+noremap cof <ESC>:call ToggleAutoFormat()<CR>
+
+noremap coa <ESC>:call ToggleColorColumn()<CR>
+
+noremap cop <ESC>:set paste!<CR>
+
+noremap coR <ESC>:RainbowToggle<CR>
+
+map c<space> <plug>NERDCommenterToggle
+
+noremap <C-Space> <ESC>:CtrlPBuffer<CR>
+
+noremap <silent> g> :<C-U>set operatorfunc=ShiftRightOperatorFunc<CR>g@
+noremap <silent> g>> :<C-U>set operatorfunc=ShiftRightOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+noremap <silent> g< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<CR>g@
+noremap <silent> g<< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+" TODO: think of a better way to do this
+noremap <silent> g2> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<CR>g@
+noremap <silent> g2>> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+noremap <silent> g2< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<CR>g@
+noremap <silent> g2<< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+
+vnoremap <silent> g> :<C-U>call ShiftLines(line("'<"), line("'>"), 1)<CR>
+vnoremap <silent> g< :<C-U>call ShiftLines(line("'<"), line("'>"), -1)<CR>
+
+vnoremap <silent> g2> :<C-U>call ShiftLines(line("'<"), line("'>"), 2)<CR>
+vnoremap <silent> g2< :<C-U>call ShiftLines(line("'<"), line("'>"), -2)<CR>
+
+noremap K <ESC>:Man <C-R><C-W><CR>
+
+noremap g/ <ESC>/\c
+
+noremap <leader>gf :<C-U>wincmd w <BAR> GoToFileLineColumn <C-R><C-A><CR>
+
+vnoremap <leader>gp y:<C-U>1wincmd w <BAR> call Visual(@")<CR>
+noremap <leader>gp yi(:<C-U>1wincmd w <BAR> call Visual(@")<CR>
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
