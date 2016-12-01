@@ -852,18 +852,10 @@ noremap <Leader>hl :StageLine<CR>:GitGutter<CR>
 xnoremap <Leader>hl :StageLine<CR>:GitGutter<CR>
 
 noremap cog <ESC>:IndentGuidesToggle<CR>
-
 noremap cof <ESC>:call ToggleAutoFormat()<CR>
-
 noremap coa <ESC>:call ToggleColorColumn()<CR>
-
 noremap cop <ESC>:set paste!<CR>
-
 noremap coR <ESC>:RainbowToggle<CR>
-
-map c<space> <plug>NERDCommenterToggle
-
-noremap <C-Space> <ESC>:CtrlPBuffer<CR>
 
 noremap <silent> g> :<C-U>set operatorfunc=ShiftRightOperatorFunc<CR>g@
 noremap <silent> g>> :<C-U>set operatorfunc=ShiftRightOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
@@ -1031,11 +1023,6 @@ let g:go_fmt_options = join([
             \ '-tabs=' . (&expandtab ? 'false' : 'true'),
             \ '-tabwidth=' . &tabstop
             \])
-"}}}
-""""""""""""""""""""""""""""""""""" GITGUTTER """"""""""""""""""""""""""""""""""
-"{{{
-" Doesn't work :(
-" noremap gs <Plug>GitGutterPreviewHunk
 "}}}
 """"""""""""""""""""""""""""""""" BUFFERGATOR """"""""""""""""""""""""""""""""""
 "{{{
