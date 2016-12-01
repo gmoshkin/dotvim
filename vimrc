@@ -697,9 +697,14 @@ command! -range StageLine call StageLines(<line1>, <line2>)
 "{{{
 noremap <F7> <ESC>:noh<CR>
 noremap <S-F7> <ESC>/\s\+$<CR>
+
+" put your testing shit in here XXX
+noremap <F8> :<C-U>echo (v:count ? v:count : '').'wincmd w'<CR>
+
 noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
-noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
 noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
+
+noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
 
 noremap <C-N> <ESC>:bnext<CR>
 noremap <C-P> <ESC>:bprev<CR>
@@ -787,8 +792,6 @@ noremap : ;
 map <Space> <Plug>(easymotion-prefix)
 " map f <Plug>(easymotion-f)
 " map F <Plug>(easymotion-F)
-
-noremap gA <ESC>:echo GetSyntaxInfo()<CR>
 
 cnoremap <C-A> <Home>
 cnoremap <C-B> <Space><BS><Left>
