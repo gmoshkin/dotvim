@@ -654,6 +654,14 @@ function! Visual(...)
         endif
     endif
 endfunction
+
+function! GoToWindow(...)
+    if a:0 == 0 || a:1 == 0
+        wincmd w
+    else
+        execute a:1."wincmd w"
+    endif
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -868,7 +876,8 @@ noremap K <ESC>:Man <C-R><C-W><CR>
 
 noremap g/ <ESC>/\c
 
-noremap <leader>gf :<C-U>wincmd w <BAR> GoToFileLineColumn <C-R><C-A><CR>
+noremap <leader>gf :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-F><CR>
+noremap <leader>gF :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-A><CR>
 
 vnoremap <leader>gp y:<C-U>1wincmd w <BAR> call Visual(@")<CR>
 noremap <leader>gp yi(:<C-U>1wincmd w <BAR> call Visual(@")<CR>
