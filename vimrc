@@ -687,17 +687,6 @@ command! -range StageLine call StageLines(<line1>, <line2>)
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
-"noremap <F2> <ESC>:w<CR>
-"noremap <F2> <ESC>[[{jyf)<C-O><C-O>:echo @0<CR>
-" noremap <F2> <ESC>:NERDTreeFind<CR>
-"noremap <F3> <ESC>:tabnew<CR>
-" noremap <F3> <ESC>:NERDTreeToggle<CR>
-"noremap <F4> <ESC>:e .<CR>
-" noremap <F4> <ESC>:TagbarToggle<CR>
-" noremap <F5> <ESC>:cprev<CR>
-" noremap <S-F5> <ESC>:lprev<CR>
-" noremap <F6> <ESC>:cnext<CR>
-" noremap <S-F6> <ESC>:lnext<CR>
 noremap <F7> <ESC>:noh<CR>
 noremap <S-F7> <ESC>/ $<CR>
 " noremap <F8> <ESC>:cfirst<CR>
@@ -707,12 +696,8 @@ noremap <S-F7> <ESC>/ $<CR>
 "noremap <C-F9> <ESC>yl:let @0 = GetPrevChar(@0)<CR>phx
 noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
 noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
-"noremap <C-F10> <ESC>yl:let @0 = GetNextChar(@0)<CR>phx
 noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
-" noremap <F12> <ESC>:source $MYVIMRC<CR>
 
-"noremap <C-N> <ESC>:tabnext<CR>
-"noremap <C-P> <ESC>:tabprev<CR>
 noremap <C-N> <ESC>:bnext<CR>
 noremap <C-P> <ESC>:bprev<CR>
 
