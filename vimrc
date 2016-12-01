@@ -688,12 +688,7 @@ command! -range StageLine call StageLines(<line1>, <line2>)
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
 noremap <F7> <ESC>:noh<CR>
-noremap <S-F7> <ESC>/ $<CR>
-" noremap <F8> <ESC>:cfirst<CR>
-" noremap <S-F8> <ESC>:clast<CR>
-" noremap <F9> <ESC>:make!<CR>:copen<CR>
-" noremap <S-F9> <ESC>:make! clean<CR>
-"noremap <C-F9> <ESC>yl:let @0 = GetPrevChar(@0)<CR>phx
+noremap <S-F7> <ESC>/\s\+$<CR>
 noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
 noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
 noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
