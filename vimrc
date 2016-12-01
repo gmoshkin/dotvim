@@ -496,8 +496,8 @@ function! CodeQueryJump(...)
     endif
 endfunction
 
-function! Help(...)
-    execute "help ".join(a:000, " ")
+function! OpenFullWindow(...)
+    execute join(a:000, " ")
     if winnr('$') > 2
         let wn = winnr()
         wincmd j
@@ -688,10 +688,11 @@ augroup END
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
 command! -nargs=* GoToFileLineColumn call GoToFileLineColumn(<q-args>)
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
-command! -nargs=* -complete=help Help call Help(<f-args>)
-command! -nargs=* -complete=help H call Help(<f-args>)
+command! -nargs=* -complete=help Help call OpenFullWindow("help", <f-args>)
+command! -nargs=* -complete=help H call OpenFullWindow("help", <f-args>)
 command! Vimrc edit $MYVIMRC
 command! -range StageLine call StageLines(<line1>, <line2>)
+command! -nargs=* -complete=customlist,man#completion#run M call OpenFullWindow("Man", <f-args>)
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
