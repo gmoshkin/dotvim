@@ -310,16 +310,18 @@ endfunction
 " Function called before entering multiple cursors' mode
 function! Multiple_cursors_before()
     if exists(':NeoCompleteLock') == 2
-        exe 'NeoCompleteLock'
+        execute 'NeoCompleteLock'
     endif
+    let g:in_multi_cursor_mode = 1
 endfunction
 
 " Function called after leaving multiple cursors' mode
 function! Multiple_cursors_after()
     if exists(':NeoCompleteUnlock') == 2
-        exe 'NeoCompleteUnlock'
+        execute 'NeoCompleteUnlock'
     endif
     set cursorline
+    let g:in_multi_cursor_mode = 0
 endfunction
 
 function! FoldArgumentsOntoMultipleLines()
@@ -586,6 +588,9 @@ function! AddREPToPath()
 endfunction
 
 function! SetCursorMode(mode)
+    if get(g:, 'in_multi_cursor_mode', 0)
+        return
+    endif
     let g:cursor_modes = {
       \ 'd' : '1',
       \ 'n' : '1',
