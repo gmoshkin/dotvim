@@ -658,36 +658,40 @@ function! GoToWindow(...)
     endif
 endfunction
 
+function! MatchPattern(pattern)
+    execute 'match TmpGroup /'.a:pattern.'/'
+endfunction
+
 function! MatchPositions(...)
     highlight! TmpGroup ctermbg=9 ctermfg=0
-    let match = ''
+    let pattern = ''
 
     let ls = get(a:, '1', 0)
     if ls > 0
-        let match = match.'\%'.ls.'l'
+        let pattern = pattern.'\%'.ls.'l'
     else
         return
     endif
 
     let cs = get(a:, '2', 0)
     if cs > 0
-        let match = match.'\%'.cs.'c'
+        let pattern = pattern.'\%'.cs.'c'
     endif
 
     let le = get(a:, '3', 0)
     if le > ls
-        let match = match.'.*'
+        let pattern = pattern.'.*'
         for l in range(ls + 1, le)
-            let match = match.'\|\%'.l.'l'
+            let pattern = pattern.'\|\%'.l.'l'
         endfor
     endif
 
     let ce = get(a:, '4', 0)
     if ce > 0
-        let match = match.'.*\%'.ce.'c'
+        let pattern = pattern.'.*\%'.ce.'c'
     endif
 
-    execute 'match TmpGroup /'.match.'/'
+    call MatchPattern(pattern)
 endfunction
 
 function! SelectPositions(mode, ...)
@@ -708,6 +712,21 @@ function! SelectPositions(mode, ...)
         endif
     else
         call call('MatchPositions', pos)
+    endif
+endfunction
+
+function! SelectPosOperatorFunc(type)
+    let ls = line("'[")
+    let cs = col("'[")
+    let le = line("']")
+    let ce = col("']")
+    if a:type == "line"
+        call SelectPositions('', ls, 0, le, 0)
+    elseif a:type == "char"
+        call SelectPositions('', ls, cs, le, ce + 1)
+    elseif a:type == "block"
+        " TODO: support block selection
+        call SelectPositions('', ls, cs, le, ce + 1)
     endif
 endfunction
 "}}}
@@ -940,6 +959,11 @@ noremap <leader>gF :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C
 
 vnoremap <leader>gp y:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR>
 noremap <leader>gp yi(:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR>
+
+noremap <silent> gs :<C-U>set operatorfunc=SelectPosOperatorFunc<CR>g@
+vnoremap <silent> gs :<C-U>call SelectPositions('', line("'<"), col("'<"), line("'>"), col("'>"))<CR>g@
+noremap <silent> gss :<C-U>set operatorfunc=SelectPosOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+noremap <silent> gsx :<C-U>call MatchPattern('')<CR>
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
