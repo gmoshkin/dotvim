@@ -651,8 +651,22 @@ function! Strip(input_string)
 endfunction
 
 function! GoToWindow(...)
-    if a:0 == 0 || a:1 == 0
+    if a:0 == 0 || a:1 =~ 0
         wincmd w
+    elseif a:1 < 0
+        wincmd W
+    elseif  a:1 ==? 'r'
+        if winnr() == winnr('$')
+            wincmd w
+        else
+            wincmd l
+        endif
+    elseif a:1 ==? 'l'
+        if winnr() == 1
+            wincmd W
+        else
+            wincmd h
+        endif
     else
         execute a:1."wincmd w"
     endif
@@ -729,6 +743,12 @@ function! SelectPosOperatorFunc(type)
         call SelectPositions('', ls, cs, le, ce + 1)
     endif
 endfunction
+
+function! ExecInWindow(cmd, ...)
+    let win = get(a:, '1', 0)
+    call GoToWindow(win)
+    execute a:cmd
+endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -760,6 +780,9 @@ command! -nargs=* -complete=help H call OpenFullWindow("help", <f-args>)
 command! Vimrc edit $MYVIMRC
 command! -range StageLine call StageLines(<line1>, <line2>)
 command! -nargs=* -complete=customlist,man#completion#run M call OpenFullWindow("Man", <f-args>)
+command! -nargs=* -complete=command W call ExecInWindow(<q-args>)
+command! -nargs=* -complete=command R call ExecInWindow(<q-args>, 'r')
+command! -nargs=* -complete=command L call ExecInWindow(<q-args>, 'l')
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
