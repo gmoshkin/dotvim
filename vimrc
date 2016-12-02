@@ -349,8 +349,11 @@ function! GoToError(errorNumber)
     execute 'cc '.a:errorNumber
 endfunction
 
-function! FooBar(type, ...)
-    echo a:type
+function! FooBar(...)
+    echo get(a:, '0', -1)
+    echo get(a:, '1', 'a:1')
+    echo get(a:, '2', 'a:2')
+    echo get(a:, '3', 'a:3')
 endfunction
 
 function! ShiftLine(linenr, spaces)
@@ -643,7 +646,47 @@ function! Strip(input_string)
     return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
 
-function! Visual(...)
+function! GoToWindow(...)
+    if a:0 == 0 || a:1 == 0
+        wincmd w
+    else
+        execute a:1."wincmd w"
+    endif
+endfunction
+
+function! MatchPositions(...)
+    highlight! TmpGroup ctermbg=9 ctermfg=0
+    let match = ''
+
+    let ls = get(a:, '1', 0)
+    if ls > 0
+        let match = match.'\%'.ls.'l'
+    else
+        return
+    endif
+
+    let cs = get(a:, '2', 0)
+    if cs > 0
+        let match = match.'\%'.cs.'c'
+    endif
+
+    let le = get(a:, '3', 0)
+    if le > ls
+        let match = match.'.*'
+        for l in range(ls + 1, le)
+            let match = match.'\|\%'.l.'l'
+        endfor
+    endif
+
+    let ce = get(a:, '4', 0)
+    if ce > 0
+        let match = match.'.*\%'.ce.'c'
+    endif
+
+    execute 'match TmpGroup /'.match.'/'
+endfunction
+
+function! SelectPositions(mode, ...)
     if a:0 == 0
         return
     elseif a:0 == 1
@@ -651,20 +694,16 @@ function! Visual(...)
     elseif a:0 == 4
         let pos = [a:1, a:2, a:3, a:4]
     endif
-    if len(pos) >= 2
-        call cursor(pos[0], pos[1])
-        normal v
-        if len(pos) >= 4
-            call cursor(pos[2], pos[3])
+    if a:mode == 'v'
+        if len(pos) >= 2
+            call cursor(pos[0], pos[1])
+            normal v
+            if len(pos) >= 4
+                call cursor(pos[2], pos[3])
+            endif
         endif
-    endif
-endfunction
-
-function! GoToWindow(...)
-    if a:0 == 0 || a:1 == 0
-        wincmd w
     else
-        execute a:1."wincmd w"
+        call call('MatchPositions', pos)
     endif
 endfunction
 "}}}
@@ -889,8 +928,8 @@ noremap g/ <ESC>/\c
 noremap <leader>gf :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-F><CR>
 noremap <leader>gF :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-A><CR>
 
-vnoremap <leader>gp y:<C-U>1wincmd w <BAR> call Visual(@")<CR>
-noremap <leader>gp yi(:<C-U>1wincmd w <BAR> call Visual(@")<CR>
+vnoremap <leader>gp y:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR>
+noremap <leader>gp yi(:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR>
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
