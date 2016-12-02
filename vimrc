@@ -987,6 +987,10 @@ noremap <silent> gs :<C-U>set operatorfunc=SelectPosOperatorFunc<CR>g@
 vnoremap <silent> gs :<C-U>call SelectPositions('', line("'<"), col("'<"), line("'>"), col("'>") + 1)<CR>
 noremap <silent> gss :<C-U>set operatorfunc=SelectPosOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
 noremap <silent> gsx :<C-U>call MatchPattern('')<CR>
+
+xnoremap <Leader>s <Plug>SlimeRegionSend
+nnoremap <Leader>s <Plug>SlimeMotionSend
+nnoremap <Leader>ss <Plug>SlimeLineSend
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
@@ -1003,9 +1007,6 @@ let g:pymode_lint_options_pep8 = {
 "{{{
 let g:slime_target = "tmux"
 let g:slime_no_mappings = 1
-xmap <Leader>s <Plug>SlimeRegionSend
-nmap <Leader>s <Plug>SlimeMotionSend
-nmap <Leader>ss <Plug>SlimeLineSend
 "}}}
 """"""""""""""""""""""""""""""""""" TAGBAR """""""""""""""""""""""""""""""""""""
 "{{{
