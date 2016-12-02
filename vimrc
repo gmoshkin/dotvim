@@ -984,7 +984,7 @@ vnoremap <leader>gp y:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR
 noremap <leader>gp yi(:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR>
 
 noremap <silent> gs :<C-U>set operatorfunc=SelectPosOperatorFunc<CR>g@
-vnoremap <silent> gs :<C-U>call SelectPositions('', line("'<"), col("'<"), line("'>"), col("'>"))<CR>g@
+vnoremap <silent> gs :<C-U>call SelectPositions('', line("'<"), col("'<"), line("'>"), col("'>") + 1)<CR>
 noremap <silent> gss :<C-U>set operatorfunc=SelectPosOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
 noremap <silent> gsx :<C-U>call MatchPattern('')<CR>
 "}}}
