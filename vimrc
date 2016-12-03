@@ -953,7 +953,16 @@ noremap <Leader>nj <Esc>:NERDTreeFocus<CR>
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
 noremap <Leader>qo <ESC>:belowright copen<CR>
-noremap <Leader>qc <ESC>:belowright cclose<CR>
+noremap <Leader>qc <ESC>:cclose<CR>
+noremap <Leader>ql <ESC>:clist<CR>
+noremap <Leader>q> <ESC>:colder<CR>
+noremap <Leader>q< <ESC>:cnewer<CR>
+
+noremap <Leader>lo <ESC>:belowright lopen<CR>
+noremap <Leader>lc <ESC>:lclose<CR>
+noremap <Leader>ll <ESC>:llist<CR>
+noremap <Leader>l> <ESC>:lolder<CR>
+noremap <Leader>l< <ESC>:lnewer<CR>
 
 noremap <Leader>cs <ESC>:CodeQuery Symbol<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
 noremap <Leader>cc <ESC>:CodeQuery Class<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
@@ -1019,7 +1028,7 @@ nnoremap <Leader>ss <Plug>SlimeLineSend
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
 let g:pymode_options_colorcolumn = 1
-let g:pymode_doc = 0
+let g:pymode_doc = 1
 let g:pymode_folding_regex = '^\s*\%(class\|def\|for\|if\|while\) \w\+'
 let g:pymode_rope = 0
 let g:pymode_lint_options_pep8 = {
