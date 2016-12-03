@@ -901,13 +901,6 @@ inoremap <S-Tab> <C-D>
 inoremap <ESC>e <C-O>e
 " inoremap <ESC>f <C-O>w
 
-noremap ZA zA
-noremap ZM zM
-noremap ZR zR
-noremap ZO zO
-noremap ZC zC
-noremap ZN zN
-
 noremap Q ZQ
 
 noremap Y y$
