@@ -11,12 +11,12 @@ endfunction
 
 command! -range ExecFunction call ExecLines(<line1>, <line2>)
 
-vnoremap <silent> <leader>e :ExecFunction<CR>
-noremap <silent> <leader>ee :<C-U>set operatorfunc=ExecuteOperatorFunc<BAR>:call feedkeys(v:count1.'g@_')<CR>
-noremap <silent> <leader>e :<C-U>set operatorfunc=ExecuteOperatorFunc<CR>g@
+vnoremap <buffer> <silent> <leader>e :ExecFunction<CR>
+noremap <buffer> <silent> <leader>ee :<C-U>set operatorfunc=ExecuteOperatorFunc<BAR>:call feedkeys(v:count1.'g@_')<CR>
+noremap <buffer> <silent> <leader>e :<C-U>set operatorfunc=ExecuteOperatorFunc<CR>g@
 
-noremap K <ESC>:help <C-R><C-W><CR>
-vnoremap K "hy:help <C-R>h<CR>
+noremap <buffer> K <ESC>:help <C-R><C-W><CR>
+vnoremap <buffer> K "hy:help <C-R>h<CR>
 
 setlocal foldmethod=marker
 let b:foldmethod_set = 1
