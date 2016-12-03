@@ -1,5 +1,8 @@
 function! ExecLines(ls, le) abort
     let lines = GetLines(a:ls, a:le)
+    if len(lines) > 0
+        let lines[0] = substitute(lines[0], '".*', '', '')
+    endif
     call filter(lines, 'v:val !~ "^\s*\""')
     let command = join(lines, "\n")
     exec command
