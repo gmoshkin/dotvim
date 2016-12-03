@@ -819,7 +819,6 @@ noremap <silent> <S-F9> :<C-U>echo 'S-F9 is not assigned'<CR>
 noremap <silent> <S-F10> :<C-U>echo 'S-F10 is not assigned'<CR>
 noremap <silent> <S-F11> :<C-U>echo 'S-F11 is not assigned'<CR>
 noremap <silent> <C-F11> :<C-U>echo 'C-F11 is not assigned'<CR>
-noremap <silent> <F12> :<C-U>echo 'F12 is not assigned'<CR>
 noremap <silent> <S-F12> :<C-U>echo 'S-F12 is not assigned'<CR>
 noremap <silent> <C-F12> :<C-U>echo 'C-F12 is not assigned'<CR>
 
@@ -827,6 +826,7 @@ noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
 noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
 
 noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
+noremap <F12> :<C-U>edit $MYVIMRC<CR>
 
 noremap <C-N> <ESC>:bnext<CR>
 noremap <C-P> <ESC>:bprev<CR>
