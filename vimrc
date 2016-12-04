@@ -1012,7 +1012,8 @@ vnoremap <silent> g2< :<C-U>call ShiftLines(line("'<"), line("'>"), -2)<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
 
-noremap g/ <ESC>/\c
+nnoremap g/ <ESC>/\C
+nnoremap <ESC>/ /\v
 
 noremap <leader>gf :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-F><CR>
 noremap <leader>gF :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-A><CR>
