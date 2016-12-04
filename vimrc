@@ -1182,5 +1182,9 @@ let g:rainbow_active = 0
 "{{{
 let g:codequery_trigger_build_db_when_db_not_found = 0
 "}}}
+""""""""""""""""""""""""""" VIM-TRAILING-WHITESPACE """"""""""""""""""""""""""""
+"{{{
+let g:extra_whitespace_ignored_filetypes = ['help', 'man']
+"}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
