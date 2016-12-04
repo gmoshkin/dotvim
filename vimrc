@@ -1020,10 +1020,10 @@ noremap <leader>gF :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C
 vnoremap <leader>gp y:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR>
 noremap <leader>gp yi(:<C-U>call GoToWindow()<BAR>call SelectPositions('', @")<CR>
 
-noremap <silent> gs :<C-U>set operatorfunc=SelectPosOperatorFunc<CR>g@
+nnoremap <silent> gs :<C-U>set operatorfunc=SelectPosOperatorFunc<CR>g@
 vnoremap <silent> gs :<C-U>call SelectPositions('', line("'<"), col("'<"), line("'>"), col("'>") + 1)<CR>
-noremap <silent> gss :<C-U>set operatorfunc=SelectPosOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-noremap <silent> gsx :<C-U>call MatchPattern('')<CR>
+nnoremap <silent> gss :<C-U>set operatorfunc=SelectPosOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
+nnoremap <silent> gsx :<C-U>call MatchPattern('')<CR>
 
 xnoremap <Leader>s <Plug>SlimeRegionSend
 nnoremap <Leader>s <Plug>SlimeMotionSend
