@@ -502,58 +502,7 @@ command! -nargs=* -complete=command L call windows#exec_in_window(<q-args>, 'l')
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
 
-noremap <C-N> <ESC>:bnext<CR>
-noremap <C-P> <ESC>:bprev<CR>
-
-"on ubuntu this one requires the following record in .bashrc file:
-"stty -ixon
-noremap <C-S> :<C-U>update<CR>
-
-nnoremap <C-@> :<C-U>nohlsearch<CR>
-
-noremap <silent> <S-Left> @='3zh'<CR>
-noremap <silent> <S-Right> @='3zl'<CR>
-
-noremap <S-Up> <C-Y>
-noremap <S-Down> <C-E>
-
-noremap <C-]> <ESC>:tjump <C-R><C-W><CR>
-
-noremap <M-Left> <C-W><
-noremap <M-Right> <C-W>>
-noremap <M-Up> <C-W>+
-noremap <M-Down> <C-W>-
-noremap <ESC>< <C-W><
-noremap <ESC>> <C-W>>
-noremap <ESC>+ <C-W>+
-noremap <ESC>- <C-W>-
-
-noremap gy "+y
-noremap gY "+Y
-noremap gp "+p
-noremap gP "+P
-vnoremap gy "+y
-vnoremap gY "+Y
-vnoremap gp "+p
-vnoremap gP "+P
-
-" remap the origianl gp and gP commands to <leader>p/P
-noremap <leader>p gp
-noremap <leader>P gP
-vnoremap <leader>p gp
-vnoremap <leader>P gP
-
-noremap <Leader>V <ESC>ggVG
-
-
-noremap <Leader>w <ESC>:Gwrite<CR>
-
-noremap Q ZQ
-
-noremap Y y$
-
-noremap ; :
-noremap : ;
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
@@ -567,9 +516,6 @@ noremap cop <ESC>:set paste!<CR>
 noremap coR <ESC>:RainbowToggle<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
-
-nnoremap g/ <ESC>/\C
-nnoremap <ESC>/ /\v
 
 vnoremap <leader>gp y:<C-U>call windows#go_to_window()<BAR>call spot#select_positions('', @")<CR>
 nnoremap <leader>gp yi(:<C-U>call windows#go_to_window()<BAR>call spot#select_positions('', @")<CR>
