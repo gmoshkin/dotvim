@@ -461,19 +461,6 @@ function! CodeQueryJump(...)
     endif
 endfunction
 
-function! OpenFullWindow(...)
-    execute join(a:000, " ")
-    if winnr('$') > 2
-        let wn = winnr()
-        wincmd j
-        if wn != winnr()
-            execute (winnr()) . "close"
-        endif
-    else
-        wincmd _
-    endif
-endfunction
-
 function! AddREPToPath()
     let filePath = expand("%:p")
     let subDir = matchstr(filePath, ".*REP/sources/[^/]*/")
@@ -512,34 +499,6 @@ function! StageLines(ls, le)
     silent write
     call cursor(orig_line, orig_col)
 endfunction
-
-function! GoToWindow(...)
-    if a:0 == 0 || a:1 =~ 0
-        wincmd w
-    elseif a:1 < 0
-        wincmd W
-    elseif  a:1 ==? 'r'
-        if winnr() == winnr('$')
-            wincmd w
-        else
-            wincmd l
-        endif
-    elseif a:1 ==? 'l'
-        if winnr() == 1
-            wincmd W
-        else
-            wincmd h
-        endif
-    else
-        execute a:1."wincmd w"
-    endif
-endfunction
-
-function! ExecInWindow(cmd, ...)
-    let win = get(a:, '1', 0)
-    call GoToWindow(win)
-    execute a:cmd
-endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -560,14 +519,14 @@ augroup END
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
 command! -nargs=* GoToFileLineColumn call GoToFileLineColumn(<q-args>)
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
-command! -nargs=* -complete=help Help call OpenFullWindow("help", <f-args>)
-command! -nargs=* -complete=help H call OpenFullWindow("help", <f-args>)
+command! -nargs=* -complete=help Help call windows#open_full_window("help", <f-args>)
+command! -nargs=* -complete=help H call windows#open_full_window("help", <f-args>)
 command! Vimrc edit $MYVIMRC
 command! -range StageLine call StageLines(<line1>, <line2>)
-command! -nargs=* -complete=customlist,man#completion#run M call OpenFullWindow("Man", <f-args>)
-command! -nargs=* -complete=command W call ExecInWindow(<q-args>)
-command! -nargs=* -complete=command R call ExecInWindow(<q-args>, 'r')
-command! -nargs=* -complete=command L call ExecInWindow(<q-args>, 'l')
+command! -nargs=* -complete=customlist,man#completion#run M call windows#open_full_window("Man", <f-args>)
+command! -nargs=* -complete=command W call windows#exec_in_window(<q-args>)
+command! -nargs=* -complete=command R call windows#exec_in_window(<q-args>, 'r')
+command! -nargs=* -complete=command L call windows#exec_in_window(<q-args>, 'l')
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
@@ -641,11 +600,11 @@ noremap K <ESC>:Man <C-R><C-W><CR>
 nnoremap g/ <ESC>/\C
 nnoremap <ESC>/ /\v
 
-noremap <leader>gf :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-F><CR>
-noremap <leader>gF :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C-A><CR>
+noremap <leader>gf :<C-U>call windows#go_to_window(v:count)<BAR>GoToFileLineColumn <C-R><C-F><CR>
+noremap <leader>gF :<C-U>call windows#go_to_window(v:count)<BAR>GoToFileLineColumn <C-R><C-A><CR>
 
-vnoremap <leader>gp y:<C-U>call GoToWindow()<BAR>call spot#select_positions('', @")<CR>
-nnoremap <leader>gp yi(:<C-U>call GoToWindow()<BAR>call spot#select_positions('', @")<CR>
+vnoremap <leader>gp y:<C-U>call windows#go_to_window()<BAR>call spot#select_positions('', @")<CR>
+nnoremap <leader>gp yi(:<C-U>call windows#go_to_window()<BAR>call spot#select_positions('', @")<CR>
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
