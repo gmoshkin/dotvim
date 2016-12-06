@@ -495,14 +495,6 @@ function! SetCursorMode(mode)
     redraw!
 endfunction
 
-function! GetLines(ls, le)
-    let result = []
-    for l in range(a:ls, a:le)
-        call add(result, getline(l))
-    endfor
-    return result
-endfunction
-
 function! StageLines(ls, le)
     let hunk = gitgutter#hunk#current_hunk()
     if len(hunk) != 4
@@ -512,11 +504,11 @@ function! StageLines(ls, le)
     let orig_line = line('.')
     let orig_col = col('.')
 
-    let lines_to_stage = GetLines(a:ls, a:le)
+    let lines_to_stage = utils#get_lines(a:ls, a:le)
 
     let [ols, oln, nls, nln] = hunk
     let nle = nls + nln - 1
-    let hunk_lines = GetLines(nls, nle)
+    let hunk_lines = utils#get_lines(nls, nle)
 
     " Delete the hunk
     silent execute nls.','.nle.'d'
@@ -531,10 +523,6 @@ function! StageLines(ls, le)
     silent undo
     silent write
     call cursor(orig_line, orig_col)
-endfunction
-
-function! Strip(input_string)
-    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
 
 function! GoToWindow(...)
