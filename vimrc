@@ -680,10 +680,6 @@ noremap <leader>gF :<C-U>call GoToWindow(v:count)<BAR>GoToFileLineColumn <C-R><C
 
 vnoremap <leader>gp y:<C-U>call GoToWindow()<BAR>call spot#select_positions('', @")<CR>
 nnoremap <leader>gp yi(:<C-U>call GoToWindow()<BAR>call spot#select_positions('', @")<CR>
-
-xnoremap <Leader>s <Plug>SlimeRegionSend
-nnoremap <Leader>s <Plug>SlimeMotionSend
-nnoremap <Leader>ss <Plug>SlimeLineSend
 "}}}
 """""""""""""""""""""""""""""""" PYTHON-MODE """""""""""""""""""""""""""""""""""
 "{{{
