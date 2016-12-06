@@ -659,11 +659,6 @@ map <Space> <Plug>(easymotion-prefix)
 noremap <Leader>t <Esc>:call TabularizeChar()<CR>
 noremap <Leader>T <Esc>:Tabularize<CR>
 
-noremap <Leader>to <Esc>:TagbarOpen<CR>
-noremap <Leader>tc <Esc>:TagbarClose<CR>
-noremap <Leader>tj <Esc>:TagbarOpen -j<CR>
-noremap <Leader>tO <Esc>:TagbarOpenAutoClose<CR>
-
 noremap <Leader>no <Esc>:NERDTree<CR>
 noremap <Leader>nt <Esc>:NERDTreeToggle<CR>
 noremap <Leader>nc <Esc>:NERDTreeClose<CR>
