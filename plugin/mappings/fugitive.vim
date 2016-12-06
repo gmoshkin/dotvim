@@ -9,3 +9,6 @@ noremap <Leader>gs <ESC>:Gstatus<CR>
 noremap <Leader>grs <ESC>:Git stash save<CR>
 noremap <Leader>grp <ESC>:Git stash pop<CR>
 noremap <Leader>gw <ESC>:Gwrite<CR>
+
+nnoremap <Leader>gg <ESC>:Ggrep <cword><CR>
+vnoremap <Leader>gg "gy<ESC>:Ggrep <C-R>g<CR>
