@@ -554,12 +554,6 @@ augroup REPPath
     autocmd!
     autocmd BufNew,BufRead */REP/sources/* call AddREPToPath()
 augroup END
-
-augroup SetCursor
-    autocmd VimEnter,InsertLeave * call SetCursorMode('n')
-    autocmd InsertEnter,InsertChange * call SetCursorMode(v:insertmode)
-    autocmd VimLeave * call SetCursorMode('d')
-augroup END
 "}}}
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
