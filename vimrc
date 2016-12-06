@@ -673,11 +673,6 @@ noremap <Leader>ll <ESC>:llist<CR>
 noremap <Leader>l> <ESC>:lolder<CR>
 noremap <Leader>l< <ESC>:lnewer<CR>
 
-noremap <Leader>cs <ESC>:CodeQuery Symbol<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-noremap <Leader>cc <ESC>:CodeQuery Class<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-noremap <Leader>cd <ESC>:CodeQuery Definition<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-noremap <Leader>cm <ESC>:CodeQuery Member<CR>:belowright copen<CR>:call CodeQueryJump()<CR>
-
 noremap <Leader>gb <ESC>:Gblame<CR>
 noremap <Leader>gcc <ESC>:Gcommit<CR>
 noremap <Leader>gca <ESC>:Gcommit --amend<CR>
