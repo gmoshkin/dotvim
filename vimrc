@@ -581,7 +581,7 @@ vnoremap <C-S> <C-C>:update<CR>
 "on ubuntu this one requires the following record in .bashrc file:
 "stty -ixon
 
-noremap <C-@> :<C-U>echo "nothing is mapped to <lt>C-Space> yet"<CR>
+nnoremap <C-@> :<C-U>nohlsearch<CR>
 inoremap <C-@> <C-O>:echo "nothing is mapped to <lt>C-Space> yet"<CR>
 vnoremap <C-@> :<C-U>echo "nothing is mapped to <lt>C-Space> yet"<CR>gv
 
