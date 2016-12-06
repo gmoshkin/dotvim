@@ -587,13 +587,6 @@ noremap <silent> <S-Right> @='3zl'<CR>
 noremap <S-Up> <C-Y>
 noremap <S-Down> <C-E>
 
-map <C-Up> [m
-map <C-Down> ]m
-vmap <C-Up> [m
-vmap <C-Down> ]m
-imap <C-Up> <C-O>[m
-imap <C-Down> <C-O>]m
-
 noremap <C-]> <ESC>:tjump <C-R><C-W><CR>
 
 noremap <M-Left> <C-W><
