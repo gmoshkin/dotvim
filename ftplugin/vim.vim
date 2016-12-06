@@ -3,6 +3,7 @@ function! s:execop(type)
 endfunction
 
 command! -range ExecLines call execlines#execlines(<line1>, <line2>)
+command! -range ExecLinesSimple execute join(utils#get_lines(<line1>, <line2>), "\n")
 
 vnoremap <buffer> <silent> <leader>e :ExecLines<CR>
 nnoremap <buffer> <silent> <leader>ee :<C-U>set operatorfunc=<SID>execop<BAR>:call feedkeys(v:count1.'g@_')<CR>
