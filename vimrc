@@ -353,45 +353,6 @@ function! FooBar(...)
     echo get(a:, '3', 'a:3')
 endfunction
 
-function! ShiftLine(linenr, spaces)
-    let line = getline(a:linenr)
-    let tmp = split(line, '\v^\s*\zs')
-    if len(tmp) < 2
-        if a:spaces > 0 && len(line) > 0
-            call setline(a:linenr, repeat(' ', a:spaces) . line)
-        endif
-    else
-        if a:spaces > 0
-            call setline(a:linenr, join(tmp, repeat(' ', a:spaces)))
-        else
-            let indent = substitute(tmp[0], '\v {-,' . -a:spaces . '}$', '', '')
-            call setline(a:linenr, indent . tmp[1])
-        endif
-    endif
-endfunction
-
-function! ShiftLines(ls, le, spaces)
-    for l in range(a:ls, a:le)
-        call ShiftLine(l, a:spaces)
-    endfor
-endfunction
-
-function! ShiftRightOperatorFunc(type)
-    call ShiftLines(line("'["), line("']"), 1)
-endfunction
-
-function! ShiftLeftOperatorFunc(type)
-    call ShiftLines(line("'["), line("']"), -1)
-endfunction
-
-function! ShiftRight2OperatorFunc(type)
-    call ShiftLines(line("'["), line("']"), 2)
-endfunction
-
-function! ShiftLeft2OperatorFunc(type)
-    call ShiftLines(line("'["), line("']"), -2)
-endfunction
-
 " Stole it from codequery plugin
 function! FilterQfResults(args) abort
     let args = split(a:args, ' ')
@@ -976,22 +937,6 @@ noremap cof <ESC>:call ToggleAutoFormat()<CR>
 noremap coa <ESC>:call ToggleColorColumn()<CR>
 noremap cop <ESC>:set paste!<CR>
 noremap coR <ESC>:RainbowToggle<CR>
-
-noremap <silent> g> :<C-U>set operatorfunc=ShiftRightOperatorFunc<CR>g@
-noremap <silent> g>> :<C-U>set operatorfunc=ShiftRightOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-noremap <silent> g< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<CR>g@
-noremap <silent> g<< :<C-U>set operatorfunc=ShiftLeftOperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-" TODO: think of a better way to do this
-noremap <silent> g2> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<CR>g@
-noremap <silent> g2>> :<C-U>set operatorfunc=ShiftRight2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-noremap <silent> g2< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<CR>g@
-noremap <silent> g2<< :<C-U>set operatorfunc=ShiftLeft2OperatorFunc<BAR>:execute 'normal '.v:count1.'g@_'<CR>
-
-vnoremap <silent> g> :<C-U>call ShiftLines(line("'<"), line("'>"), 1)<CR>
-vnoremap <silent> g< :<C-U>call ShiftLines(line("'<"), line("'>"), -1)<CR>
-
-vnoremap <silent> g2> :<C-U>call ShiftLines(line("'<"), line("'>"), 2)<CR>
-vnoremap <silent> g2< :<C-U>call ShiftLines(line("'<"), line("'>"), -2)<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
 
