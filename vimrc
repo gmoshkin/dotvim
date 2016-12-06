@@ -575,25 +575,17 @@ command! -nargs=* -complete=command L call ExecInWindow(<q-args>, 'l')
 noremap <C-N> <ESC>:bnext<CR>
 noremap <C-P> <ESC>:bprev<CR>
 
-noremap <C-S> <ESC>:update<CR>
-inoremap <C-S> <C-O>:update<CR>
-vnoremap <C-S> <C-C>:update<CR>
 "on ubuntu this one requires the following record in .bashrc file:
 "stty -ixon
+noremap <C-S> :<C-U>update<CR>
 
 nnoremap <C-@> :<C-U>nohlsearch<CR>
-inoremap <C-@> <C-O>:echo "nothing is mapped to <lt>C-Space> yet"<CR>
-vnoremap <C-@> :<C-U>echo "nothing is mapped to <lt>C-Space> yet"<CR>gv
 
 noremap <silent> <S-Left> @='3zh'<CR>
 noremap <silent> <S-Right> @='3zl'<CR>
-inoremap <S-Left> <C-O>3zh
-inoremap <S-Right> <C-O>3zl
 
 noremap <S-Up> <C-Y>
 noremap <S-Down> <C-E>
-inoremap <S-Up> <C-O><C-Y>
-inoremap <S-Down> <C-O><C-E>
 
 map <C-Up> [m
 map <C-Down> ]m
@@ -634,16 +626,6 @@ noremap <Leader>V <ESC>ggVG
 " vnoremap <Leader>g y<ESC>:Ggrep 0<CR>
 
 noremap <Leader>w <ESC>:Gwrite<CR>
-
-inoremap <C-A> <C-O>^
-inoremap <C-B> <Left>
-inoremap <C-D> <Del>
-inoremap <C-E> <C-O>$
-inoremap <C-F> <Right>
-inoremap <S-Tab> <C-D>
-" inoremap <ESC>b <C-O>b
-inoremap <ESC>e <C-O>e
-" inoremap <ESC>f <C-O>w
 
 noremap Q ZQ
 
