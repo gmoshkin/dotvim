@@ -410,34 +410,6 @@ function! SetRainbowColors()
     call SetRainbowColor(3, '4')
 endfunction
 
-function! GoToFileLineColumn(...)
-    if exists("a:1")
-        let str = a:1
-    else
-        let str = expand("<cWORD>")
-    endif
-    " echo 'str = '.str
-    let fileLineCol = matchstr(str, '\f\+\(:\d\+:\d\+\)\?')
-    " echo 'fileLineCol = '.fileLineCol
-    let vals = split(fileLineCol, ":")
-    if len(vals) > 0
-        let fileName = vals[0]
-        let path = findfile(fileName)
-        " echo 'path = '.path
-        if len(path) == 0
-            echom 'No such file "'.fileName.'" in path'
-            return
-        endif
-        execute "edit ".path
-        if len(vals) > 2
-            let l = vals[1]
-            let c = vals[2]
-            " echo 'l:c = '.l . ":" . c
-            call cursor(l, c)
-        endif
-    endif
-endfunction
-
 function! EchoArgs(...)
     if exists("a:000")
         echo a:000
@@ -517,7 +489,6 @@ augroup END
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
 command! -nargs=* QfFilter call FilterQfResults(<q-args>)
-command! -nargs=* GoToFileLineColumn call GoToFileLineColumn(<q-args>)
 command! -nargs=* EchoArgs call EchoArgs(<f-args>)
 command! -nargs=* -complete=help Help call windows#open_full_window("help", <f-args>)
 command! -nargs=* -complete=help H call windows#open_full_window("help", <f-args>)
@@ -599,9 +570,6 @@ noremap K <ESC>:Man <C-R><C-W><CR>
 
 nnoremap g/ <ESC>/\C
 nnoremap <ESC>/ /\v
-
-noremap <leader>gf :<C-U>call windows#go_to_window(v:count)<BAR>GoToFileLineColumn <C-R><C-F><CR>
-noremap <leader>gF :<C-U>call windows#go_to_window(v:count)<BAR>GoToFileLineColumn <C-R><C-A><CR>
 
 vnoremap <leader>gp y:<C-U>call windows#go_to_window()<BAR>call spot#select_positions('', @")<CR>
 nnoremap <leader>gp yi(:<C-U>call windows#go_to_window()<BAR>call spot#select_positions('', @")<CR>
