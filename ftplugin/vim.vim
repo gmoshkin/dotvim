@@ -1,22 +1,12 @@
-function! ExecLines(ls, le) abort
-    let lines = GetLines(a:ls, a:le)
-    if len(lines) > 0
-        let lines[0] = substitute(lines[0], '".*', '', '')
-    endif
-    call filter(lines, 'v:val !~ "^\s*\""')
-    let command = join(lines, "\n")
-    exec command
+function! s:execop(type)
+    call execlines#execlines(line("'["), line("']"))
 endfunction
 
-function! ExecuteOperatorFunc(type)
-    call ExecLines(line("'["), line("']"))
-endfunction
+command! -range ExecLines call execlines#execlines(<line1>, <line2>)
 
-command! -range ExecFunction call ExecLines(<line1>, <line2>)
-
-vnoremap <buffer> <silent> <leader>e :ExecFunction<CR>
-noremap <buffer> <silent> <leader>ee :<C-U>set operatorfunc=ExecuteOperatorFunc<BAR>:call feedkeys(v:count1.'g@_')<CR>
-noremap <buffer> <silent> <leader>e :<C-U>set operatorfunc=ExecuteOperatorFunc<CR>g@
+vnoremap <buffer> <silent> <leader>e :ExecLines<CR>
+nnoremap <buffer> <silent> <leader>ee :<C-U>set operatorfunc=<SID>execop<BAR>:call feedkeys(v:count1.'g@_')<CR>
+nnoremap <buffer> <silent> <leader>e :<C-U>set operatorfunc=<SID>execop<CR>g@
 
 noremap <buffer> K <ESC>:help <C-R><C-W><CR>
 vnoremap <buffer> K "hy:help <C-R>h<CR>
