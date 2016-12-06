@@ -216,23 +216,6 @@ if exists('$TMUX') || exists('$SSH_CLIENT') || exists('$SSH_TTY')
     "Vim's http://sunaku.github.io/vim-256color-bce.html
     set t_ut=
 
-    set <F2>=OQ
-    set <S-F2>=[1;2Q
-    set <xF2>=[1;5Q
-    set <F3>=OR
-    set <S-F3>=[1;2R
-    set <xF3>=[1;5R
-    set <F4>=OS
-    set <S-F4>=[1;2S
-    set <xF4>=[1;5S
-    set <F5>=[15;*~
-    set <F6>=[17;*~
-    set <F7>=[18;*~
-    set <F8>=[19;*~
-    set <F9>=[20;*~
-    set <F10>=[21;*~
-    set <F11>=[23;*~
-    set <F12>=[24;*~
     "allows to use modifiers (e.g. Shift, Ctrl) with these function keys
     set <xUp>=[1;*A
     set <xDown>=[1;*B
