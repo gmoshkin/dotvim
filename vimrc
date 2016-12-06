@@ -666,20 +666,6 @@ cnoremap <C-D> <Del>
 cnoremap <ESC>b <C-Left>
 cnoremap <ESC>f <C-Right>
 
-noremap <Leader>fb <ESC>:CtrlPBuffer<CR>
-noremap <Leader>fc <ESC>:CtrlPChange<CR>
-noremap <Leader>fd <ESC>:CtrlPDir<CR>
-noremap <Leader>ff <ESC>:CtrlP<CR>
-noremap <Leader>fl <ESC>:CtrlPLine<CR>
-noremap <Leader>fm <ESC>:CtrlPMRU<CR>
-noremap <Leader>ft <ESC>:CtrlPTag<CR>
-noremap <Leader>fq <ESC>:CtrlPQuickfix<CR>
-
-" noremap <Leader>b <Esc>:BuffergatorOpen<CR>
-noremap <Leader>B <Esc>:BuffergatorClose<CR>
-noremap [b <Esc>:BuffergatorMruCyclePrev<CR>
-noremap ]b <Esc>:BuffergatorMruCycleNext<CR>
-
 noremap <Leader>t <Esc>:call TabularizeChar()<CR>
 noremap <Leader>T <Esc>:Tabularize<CR>
 
