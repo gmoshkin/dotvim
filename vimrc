@@ -659,12 +659,6 @@ map <Space> <Plug>(easymotion-prefix)
 noremap <Leader>t <Esc>:call TabularizeChar()<CR>
 noremap <Leader>T <Esc>:Tabularize<CR>
 
-noremap <Leader>no <Esc>:NERDTree<CR>
-noremap <Leader>nt <Esc>:NERDTreeToggle<CR>
-noremap <Leader>nc <Esc>:NERDTreeClose<CR>
-noremap <Leader>nf <Esc>:NERDTreeFind<CR>
-noremap <Leader>nj <Esc>:NERDTreeFocus<CR>
-
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
 noremap <Leader>qo <ESC>:belowright copen<CR>
