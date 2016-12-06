@@ -625,10 +625,6 @@ noremap Y y$
 noremap ; :
 noremap : ;
 
-map <Space> <Plug>(easymotion-prefix)
-" map f <Plug>(easymotion-f)
-" map F <Plug>(easymotion-F)
-
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
 noremap <Leader>hl :StageLine<CR>:GitGutter<CR>
