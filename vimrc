@@ -629,9 +629,6 @@ map <Space> <Plug>(easymotion-prefix)
 " map f <Plug>(easymotion-f)
 " map F <Plug>(easymotion-F)
 
-noremap <Leader>t <Esc>:call TabularizeChar()<CR>
-noremap <Leader>T <Esc>:Tabularize<CR>
-
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
 noremap <Leader>hl :StageLine<CR>:GitGutter<CR>
