@@ -83,3 +83,8 @@ endif
 nnoremap <ESC>/ /\v
 nnoremap <ESC>? ?\v
 
+" open a man page for the word under cursor with the Man command if it exists
+if exists(':Man')
+    noremap K <ESC>:Man <C-R><C-W><CR>
+endif
+
