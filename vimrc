@@ -298,11 +298,6 @@ function! FoldArgumentsOntoMultipleLines()
     normal v``="
 endfunction
 
-function! TabularizeChar()
-    let c = getchar()
-    execute 'Tabularize/'.nr2char(c)
-endfunction
-
 function! SetVimDir()
     for f in split(&runtimepath, ',')
         if f =~ '.*/vimfiles$' && !exists('g:myVimDir')
