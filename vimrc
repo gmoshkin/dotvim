@@ -249,11 +249,6 @@ function! Multiple_cursors_after()
     let g:in_multi_cursor_mode = 0
 endfunction
 
-function! FoldArgumentsOntoMultipleLines()
-    substitute@,\s*@,\r@ge
-    normal v``="
-endfunction
-
 function! SetVimDir()
     for f in split(&runtimepath, ',')
         if f =~ '.*/vimfiles$' && !exists('g:myVimDir')
@@ -324,8 +319,6 @@ augroup END
 "{{{
 
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
-
-noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
 
