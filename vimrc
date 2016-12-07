@@ -376,15 +376,6 @@ function! CodeQueryJump(...)
     endif
 endfunction
 
-function! AddREPToPath()
-    let filePath = expand("%:p")
-    let subDir = matchstr(filePath, ".*REP/sources/[^/]*/")
-    if &path !~# subDir
-        let newEntry = ','.subDir.'**,'
-        let &path = &path . newEntry
-    endif
-endfunction
-
 function! StageLines(ls, le)
     let hunk = gitgutter#hunk#current_hunk()
     if len(hunk) != 4
@@ -422,11 +413,6 @@ endfunction
 augroup OpenFolds
     autocmd!
     autocmd BufEnter * normal zR
-augroup END
-
-augroup REPPath
-    autocmd!
-    autocmd BufNew,BufRead */REP/sources/* call AddREPToPath()
 augroup END
 "}}}
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
