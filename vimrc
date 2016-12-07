@@ -227,36 +227,6 @@ endif
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
-function! ToggleAutoFormat()
-    if !exists('b:auto_format_enabled')
-        let b:auto_format_enabled = 0
-    endif
-    if b:auto_format_enabled
-        setlocal formatoptions-=a
-        setlocal formatoptions-=t
-        echo 'autoformat disabled'
-    else
-        setlocal formatoptions+=a
-        setlocal formatoptions+=t
-        echo 'autoformat enabled'
-    endif
-    let b:auto_format_enabled = !b:auto_format_enabled
-endfunction
-
-function! ToggleColorColumn()
-    if !exists('b:colorcolumn_enabled')
-        let b:colorcolumn_enabled = 1
-    endif
-    if b:colorcolumn_enabled
-        setlocal colorcolumn=
-        echo 'colorcolumn disabled'
-    else
-        setlocal colorcolumn=+1
-        echo 'colorcolumn enabled'
-    endif
-    let b:colorcolumn_enabled = !b:colorcolumn_enabled
-endfunction
-
 function! GetSyntaxInfo()
     "let id = synID(line("."), col("."), 0)
     let stack = synstack(line("."), col("."))
@@ -508,12 +478,6 @@ noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
 
 noremap <Leader>hl :StageLine<CR>:GitGutter<CR>
 xnoremap <Leader>hl :StageLine<CR>:GitGutter<CR>
-
-noremap cog <ESC>:IndentGuidesToggle<CR>
-noremap cof <ESC>:call ToggleAutoFormat()<CR>
-noremap coa <ESC>:call ToggleColorColumn()<CR>
-noremap cop <ESC>:set paste!<CR>
-noremap coR <ESC>:RainbowToggle<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
 
