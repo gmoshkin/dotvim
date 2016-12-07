@@ -269,13 +269,6 @@ function! SetIndentGuideColors()
     hi indentguideseven ctermfg=12 ctermbg=23
 endfunction
 
-function! Crutch()
-    AirlineRefresh
-    " Fix color mixup after resourcing vimrc
-    call SetIndentGuideColors()
-    " Fix indent guides disapearing after resourcing vimrc
-endfunction
-
 " Function called before entering multiple cursors' mode
 function! Multiple_cursors_before()
     if exists(':NeoCompleteLock') == 2
@@ -307,17 +300,6 @@ function! SetVimDir()
             let g:myVimDir = f
         endif
     endfor
-endfunction
-
-function! GoToError(errorNumber)
-    execute 'cc '.a:errorNumber
-endfunction
-
-function! FooBar(...)
-    echo get(a:, '0', -1)
-    echo get(a:, '1', 'a:1')
-    echo get(a:, '2', 'a:2')
-    echo get(a:, '3', 'a:3')
 endfunction
 
 function! GetRainbowColors()
