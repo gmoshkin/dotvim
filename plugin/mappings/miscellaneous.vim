@@ -56,7 +56,7 @@ vnoremap <leader>p gp
 vnoremap <leader>P gP
 
 " visually select the whole file
-noremap <Leader>V <ESC>ggVG
+noremap <leader>V <ESC>ggVG
 
 " map Q to close the current window. will quit vim without saving if there's a
 " single window. looks dangerous but I've used this for a couple of years
@@ -88,3 +88,5 @@ if exists(':Man')
     noremap K <ESC>:Man <C-R><C-W><CR>
 endif
 
+" open current directory
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
