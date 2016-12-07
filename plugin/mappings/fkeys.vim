@@ -47,8 +47,8 @@ noremap <silent> <S-F12> :<C-U>echo 'S-F12 is not assigned'<CR>
 noremap <silent> <C-F12> :<C-U>echo 'C-F12 is not assigned'<CR>
 
 noremap <S-F7> <ESC>/\s\+$<CR>
-noremap <C-F9> :<C-U>call PutPrevChar()<CR>ga
-noremap <C-F10> :<C-U>call PutNextChar()<CR>ga
+noremap <C-F9> :<C-U>call misc#put_prev_char()<CR>ga
+noremap <C-F10> :<C-U>call misc#put_next_char()<CR>ga
 
-noremap <F10> <ESC>:echo GetSyntaxInfo()<CR>
+noremap <F10> <ESC>:echo misc#get_syntax_info()<CR>
 noremap <F12> :<C-U>edit $MYVIMRC<CR>

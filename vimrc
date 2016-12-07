@@ -227,43 +227,6 @@ endif
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
-function! GetSyntaxInfo()
-    "let id = synID(line("."), col("."), 0)
-    let stack = synstack(line("."), col("."))
-    "return join([synIDattr(id, "name"), synIDattr(id, "fg", "cterm"), synIDattr(id, "bg", "cterm")])
-    return join(map(stack, "synIDattr(v:val, \"name\")"))
-endfunction
-
-function! GetNextChar(c)
-    return nr2char(char2nr(a:c) + 1)
-endfunction
-
-function! GetPrevChar(c)
-    return nr2char(char2nr(a:c) - 1)
-endfunction
-
-function! PutNextChar()
-    let i = v:count1
-    normal mu
-    normal yl
-    while i > 0
-        execute 'normal r' . GetNextChar(@0)
-        normal `u
-        let i = i - 1
-    endwhile
-endfunction
-
-function! PutPrevChar()
-    let i = v:count1
-    normal mu
-    normal yl
-    while i > 0
-        execute 'normal r' . GetPrevChar(@0)
-        normal `u
-        let i = i - 1
-    endwhile
-endfunction
-
 function! SetIndentGuideColors()
     hi indentguidesodd  ctermfg=12 ctermbg=0
     hi indentguideseven ctermfg=12 ctermbg=23
