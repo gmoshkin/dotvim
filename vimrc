@@ -367,36 +367,6 @@ function! CodeQueryJump(...)
         belowright copen
     endif
 endfunction
-
-function! StageLines(ls, le)
-    let hunk = gitgutter#hunk#current_hunk()
-    if len(hunk) != 4
-        return
-    endif
-
-    let orig_line = line('.')
-    let orig_col = col('.')
-
-    let lines_to_stage = utils#get_lines(a:ls, a:le)
-
-    let [ols, oln, nls, nln] = hunk
-    let nle = nls + nln - 1
-    let hunk_lines = utils#get_lines(nls, nle)
-
-    " Delete the hunk
-    silent execute nls.','.nle.'d'
-    " Insert the lines to be staged
-    call append(nls - 1, lines_to_stage)
-
-    " Put the cursor inside the hunk and stage it
-    call cursor(nls, 0)
-    call gitgutter#stage_hunk()
-
-    " Undo file modifications
-    silent undo
-    silent write
-    call cursor(orig_line, orig_col)
-endfunction
 "}}}
 """""""""""""""""""""""""""""""" AUTOCOMMANDS """"""""""""""""""""""""""""""""""
 "{{{
@@ -409,7 +379,6 @@ augroup END
 "}}}
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
-command! -range StageLine call StageLines(<line1>, <line2>)
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
@@ -417,9 +386,6 @@ command! -range StageLine call StageLines(<line1>, <line2>)
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 
 noremap <Leader>( <ESC>:call FoldArgumentsOntoMultipleLines()<CR>
-
-noremap <Leader>hl :StageLine<CR>:GitGutter<CR>
-xnoremap <Leader>hl :StageLine<CR>:GitGutter<CR>
 
 noremap K <ESC>:Man <C-R><C-W><CR>
 
