@@ -353,14 +353,6 @@ function! SetRainbowColors()
     call SetRainbowColor(3, '4')
 endfunction
 
-function! EchoArgs(...)
-    if exists("a:000")
-        echo a:000
-    else
-        echo "no args"
-    endif
-endfunction
-
 function! CodeQueryJump(...)
     if a:0 > 0
         execute "CodeQuery ".a:1
@@ -417,15 +409,7 @@ augroup END
 "}}}
 """""""""""""""""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""
 "{{{
-command! -nargs=* EchoArgs call EchoArgs(<f-args>)
-command! -nargs=* -complete=help Help call windows#open_full_window("help", <f-args>)
-command! -nargs=* -complete=help H call windows#open_full_window("help", <f-args>)
-command! Vimrc edit $MYVIMRC
 command! -range StageLine call StageLines(<line1>, <line2>)
-command! -nargs=* -complete=customlist,man#completion#run M call windows#open_full_window("Man", <f-args>)
-command! -nargs=* -complete=command W call windows#exec_in_window(<q-args>)
-command! -nargs=* -complete=command R call windows#exec_in_window(<q-args>, 'r')
-command! -nargs=* -complete=command L call windows#exec_in_window(<q-args>, 'l')
 "}}}
 """""""""""""""""""""""""""""""""" KEY MAPS """"""""""""""""""""""""""""""""""""
 "{{{
