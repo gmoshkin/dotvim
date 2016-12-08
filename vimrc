@@ -76,7 +76,9 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kana/vim-textobj-function'
 Plugin 'kana/vim-textobj-user'
-Plugin 'klen/python-mode'
+if has("python") && g:has_python
+    Plugin 'klen/python-mode'
+endif
 Plugin 'libclang-vim/libclang-vim'
 Plugin 'libclang-vim/vim-textobj-function-clang'
 Plugin 'libclang-vim/vim-textobj-clang'
