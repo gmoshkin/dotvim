@@ -1,8 +1,9 @@
-noremap <Leader>fb <ESC>:CtrlPBuffer<CR>
-noremap <Leader>fc <ESC>:CtrlPChange<CR>
-noremap <Leader>fd <ESC>:CtrlPDir<CR>
-noremap <Leader>ff <ESC>:CtrlP<CR>
-noremap <Leader>fl <ESC>:CtrlPLine<CR>
-noremap <Leader>fm <ESC>:CtrlPMRU<CR>
-noremap <Leader>ft <ESC>:CtrlPTag<CR>
-noremap <Leader>fq <ESC>:CtrlPQuickfix<CR>
+noremap <leader>fa <ESC>:CtrlPBookmarkDir<CR>
+noremap <leader>fb <ESC>:CtrlPBuffer<CR>
+noremap <leader>fc <ESC>:CtrlPChange<CR>
+noremap <leader>fd <ESC>:CtrlPDir<CR>
+noremap <leader>ff <ESC>:CtrlP<CR>
+noremap <leader>fl <ESC>:CtrlPLine<CR>
+noremap <leader>fm <ESC>:CtrlPMRU<CR>
+noremap <leader>ft <ESC>:CtrlPTag<CR>
+noremap <leader>fq <ESC>:CtrlPQuickfix<CR>
