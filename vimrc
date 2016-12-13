@@ -484,7 +484,7 @@ let g:codequery_trigger_build_db_when_db_not_found = 0
 "}}}
 """"""""""""""""""""""""""" VIM-TRAILING-WHITESPACE """"""""""""""""""""""""""""
 "{{{
-let g:extra_whitespace_ignored_filetypes = ['help', 'man']
+let g:extra_whitespace_ignored_filetypes = ['help', 'man', 'csv']
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
