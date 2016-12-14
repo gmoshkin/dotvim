@@ -8,4 +8,4 @@ cnoremap <C-D> <Del>
 cnoremap <ESC>b <C-Left>
 cnoremap <ESC>f <C-Right>
 
-cnoremap <C-R><C-D> <C-R>=expand('%:h')<CR>/
+cnoremap <C-R><C-D> <C-R>=expand('%:p:h')<CR>/
