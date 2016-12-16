@@ -79,6 +79,12 @@ else
     nnoremap <C-?> ?\c
 endif
 
+" * and # should always search case sensitive
+if &ignorecase == 1
+    nnoremap * /\C\<<C-R><C-W>\><CR>
+    nnoremap # ?\C\<<C-R><C-W>\><CR>
+endif
+
 " very magical searching with alt + / and alt + ?
 nnoremap <ESC>/ /\v
 nnoremap <ESC>? ?\v
