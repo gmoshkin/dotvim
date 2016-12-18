@@ -1,6 +1,6 @@
 "on ubuntu this one requires the following record in .bashrc file:
 "stty -ixon
-inoremap <C-S> <C-O>:update<CR>
+inoremap <C-S> <ESC>:update<CR>
 
 inoremap <C-A> <C-O>^
 inoremap <C-B> <Left>
