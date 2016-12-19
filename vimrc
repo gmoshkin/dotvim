@@ -498,6 +498,10 @@ let g:kw_comments = {
     \ "Fix": "TP",
     \ "Not a problem": "FP",
     \ }
+
+augroup KWVim
+    autocmd BufWritePost kw.vim source %
+augroup END
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
