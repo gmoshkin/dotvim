@@ -486,5 +486,18 @@ let g:codequery_trigger_build_db_when_db_not_found = 0
 "{{{
 let g:extra_whitespace_ignored_filetypes = ['help', 'man', 'csv']
 "}}}
+""""""""""""""""""""""""""""""""""" KLOCWORK """""""""""""""""""""""""""""""""""
+"{{{
+let g:kw_settings = {
+    \ "host": "localhost",
+    \ "port": 9090,
+    \ "user": "gmoshkin",
+    \ "project": "cudafy",
+    \ }
+let g:kw_comments = {
+    \ "Fix": "TP",
+    \ "Not a problem": "FP",
+    \ }
+"}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
