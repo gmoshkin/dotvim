@@ -1,4 +1,4 @@
-function! windows#go_to_window(...)
+function! windows#go_to_window(...) abort
     if a:0 == 0 || a:1 =~ 0
         wincmd w
     elseif a:1 < 0
@@ -20,13 +20,13 @@ function! windows#go_to_window(...)
     endif
 endfunction
 
-function! windows#exec_in_window(cmd, ...)
+function! windows#exec_in_window(cmd, ...) abort
     let win = get(a:, '1', 0)
-    call utils#go_to_window(win)
+    call windows#go_to_window(win)
     execute a:cmd
 endfunction
 
-function! windows#open_full_window(...)
+function! windows#open_full_window(...) abort
     execute join(a:000, " ")
     if winnr('$') > 2
         let wn = winnr()
