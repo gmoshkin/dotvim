@@ -2,6 +2,6 @@
 " with 'm' for different file types. maybe I should come up with a better
 " mnemonic
 noremap <buffer> <leader>mc <ESC>:make<CR>
-noremap <buffer> <leader>me <ESC>:execute "!".expand("%:r").".exe"<CR>
+noremap <buffer> <leader>me <ESC>:execute "!".expand("%:p:r").".exe"<CR>
 setlocal makeprg=mcs\ %\ $*
 setlocal errorformat=%f(%l\\,%c):\ %trror\ %m
