@@ -56,13 +56,14 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'bronson/vim-visual-star-search'
 " Plugin 'benmills/vimux'
-Plugin 'gmoshkin/bufkill.vim'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'chrisbra/csv.vim'
 " Plugin 'davidhalter/jedi-vim'
 Plugin 'devjoe/vim-codequery'
 Plugin 'duff/vim-scratch'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'gmoshkin/bufkill.vim'
+Plugin 'gmoshkin/vim-kw'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
 if v:version > 703
@@ -485,6 +486,23 @@ let g:codequery_trigger_build_db_when_db_not_found = 0
 """"""""""""""""""""""""""" VIM-TRAILING-WHITESPACE """"""""""""""""""""""""""""
 "{{{
 let g:extra_whitespace_ignored_filetypes = ['help', 'man', 'csv']
+"}}}
+""""""""""""""""""""""""""""""""""" KLOCWORK """""""""""""""""""""""""""""""""""
+"{{{
+let g:kw_settings = {
+    \ "host": "localhost",
+    \ "port": 9090,
+    \ "user": "gmoshkin",
+    \ "project": "cudafy",
+    \ }
+let g:kw_comments = {
+    \ "Fix": "TP",
+    \ "Not a problem": "FP",
+    \ }
+
+augroup KWVim
+    autocmd BufWritePost kw.vim source %
+augroup END
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
