@@ -6,8 +6,11 @@ noremap <C-P> <ESC>:bprev<CR>
 "stty -ixon
 noremap <C-S> :<C-U>update<CR>
 
-" turn the search highlighting off
+" turn the search highlighting off (this is Ctrl+Space btw)
 nnoremap <C-@> :<C-U>nohlsearch<CR>
+
+" map Ctrl+Space to Esc. what else needs to be said?
+vnoremap <C-@> <ESC>
 
 " move screen horizontally in descent increments with shift + arrow keys
 noremap <silent> <S-Left> @='3zh'<CR>
