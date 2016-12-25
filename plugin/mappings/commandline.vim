@@ -9,3 +9,4 @@ cnoremap <ESC>b <C-Left>
 cnoremap <ESC>f <C-Right>
 
 cnoremap <C-R><C-D> <C-R>=expand('%:p:h')<CR>/
+cnoremap <C-R><C-]> <C-R>=expand('%:p')<CR>
