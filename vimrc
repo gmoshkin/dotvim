@@ -178,6 +178,7 @@ set showcmd
 "Display an incomplete command in the lower right corner of the Vim window,
 "left of the ruler.
 
+set spelllang=ru_yo,en_us
 " set spell
 "Spellcheck
 
