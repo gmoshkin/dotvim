@@ -1,17 +1,29 @@
-function! toggle#auto_format()
-    if !exists('b:auto_format_enabled')
-        let b:auto_format_enabled = 0
+function! toggle#auto_format(...) abort
+    if a:0 > 0
+        if a:1
+            let b:auto_format_enabled = 1
+        else
+            let b:auto_format_enabled = 0
+        endif
+    else
+        if !exists('b:auto_format_enabled')
+            let b:auto_format_enabled = 1
+        else
+            let b:auto_format_enabled = !b:auto_format_enabled
+        endif
     endif
     if b:auto_format_enabled
-        setlocal formatoptions-=a
-        setlocal formatoptions-=t
-        echo 'autoformat disabled'
-    else
         setlocal formatoptions+=a
         setlocal formatoptions+=t
-        echo 'autoformat enabled'
+        let message = 'autoformat enabled'
+    else
+        setlocal formatoptions-=a
+        setlocal formatoptions-=t
+        let message = 'autoformat disabled'
     endif
-    let b:auto_format_enabled = !b:auto_format_enabled
+    if a:0 < 2 || a:2 != 0
+        echo message
+    endif
 endfunction
 
 function! toggle#color_column()
