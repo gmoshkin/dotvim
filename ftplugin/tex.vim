@@ -5,3 +5,4 @@ noremap <buffer> <Leader>mb <ESC>:execute '!bibtex '.split(expand('%:p'), '\.')[
 " vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
 
 setlocal spell
+call toggle#auto_format(1, 0)
