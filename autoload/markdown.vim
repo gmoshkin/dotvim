@@ -1,5 +1,5 @@
 function! markdown#remove_heading(line) abort
-    execute a:line.'s/^#\+\s\+//e'
+    execute a:line.'s/^[#*]\+\s\+//e'
 endfunction
 
 function! markdown#put_heading(line, level) abort
@@ -12,4 +12,5 @@ function! markdown#change_to_heading() abort
     if level
         call markdown#put_heading(line('.'), level)
     endif
+    silent! call repeat#set("\<Plug>MarkdownChangeHeading".level)
 endfunction
