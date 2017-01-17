@@ -4,6 +4,8 @@ noremap <leader>gca :<C-U>Gcommit --amend<CR>
 " Mnemonic Git Push Up/Pull Down
 noremap <leader>gpu :<C-U>Gpush<CR>
 noremap <leader>gpd :<C-U>Gpull<CR>
+" The action is related to pushing so the prefix is the same
+noremap <leader>gpr :<C-U>Git review<CR>
 noremap <leader>gs :<C-U>Gstatus<CR>
 " Mnemonic Git Reserve Save/Pop
 noremap <leader>grs :<C-U>Git stash save<CR>
