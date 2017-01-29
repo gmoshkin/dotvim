@@ -154,9 +154,10 @@ set autoread
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" set autoindent
-" set smartindent
+
 "Indent stuff
+" set autoindent
+set smartindent
 
 set hlsearch
 set mouse=a
