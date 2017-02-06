@@ -501,16 +501,23 @@ let g:kw_settings = {
     \ "host": "localhost",
     \ "port": 9090,
     \ "user": "gmoshkin",
-    \ "project": "cudafy",
+    \ "project": "sharpdevelop",
     \ }
 let g:kw_comments = {
     \ "Fix": "TP",
     \ "Not a problem": "FP",
     \ }
+let g:kw_projects = [
+    \ "bettercms",
+    \ "blogengine",
+    \ "cudafy",
+    \ "sharpdevelop",
+    \ "wcell"
+    \ ]
 
-augroup KWVim
-    autocmd BufWritePost kw.vim source %
-augroup END
+" augroup KWVim
+"     autocmd BufWritePost vim-kw/**.vim source %
+" augroup END
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
