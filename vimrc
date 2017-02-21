@@ -25,7 +25,6 @@ endtry
 """""""""""""""""""""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""
 "{{{
 if has("win32")
-    cd C:\Users\ion
     language English
 
     set runtimepath+=~/vimfiles/bundle/Vundle.vim
@@ -88,6 +87,11 @@ Plugin 'luochen1990/rainbow'
 Plugin 'lucapette/vim-textobj-underscore'
 Plugin 'Konfekt/FastFold'
 Plugin 'majutsushi/tagbar'
+if has('packages')
+    packadd! matchit
+else
+    Plugin 'matchit.zip'
+endif
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
@@ -119,8 +123,6 @@ if (!exists("b:foldmethod_set"))
 endif
 
 let g:c_space_errors = 1
-
-packadd! matchit
 
 set cursorline
 "highlight the screen line of the cursor
@@ -214,7 +216,8 @@ else
 endif
 
 if has("win32") || has("gui")
-    set visualbell t_vb=
+    set novisualbell
+    set t_vb=
     "this stops the noisy beeping every time I press a button
 endif
 
