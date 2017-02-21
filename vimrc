@@ -201,6 +201,8 @@ set smartcase
 
 set virtualedit+=block
 
+set fileencodings=utf-8,cp1251,default,latin1
+
 let g:tex_flavor = 'tex'
 
 if has("win32")
