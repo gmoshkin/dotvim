@@ -25,7 +25,6 @@ endtry
 """""""""""""""""""""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""
 "{{{
 if has("win32")
-    cd C:\Users\ion
     language English
 
     set runtimepath+=~/vimfiles/bundle/Vundle.vim
@@ -212,7 +211,8 @@ else
 endif
 
 if has("win32") || has("gui")
-    set visualbell t_vb=
+    set novisualbell
+    set t_vb=
     "this stops the noisy beeping every time I press a button
 endif
 
