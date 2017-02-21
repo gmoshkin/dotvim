@@ -1,4 +1,4 @@
-if has('win32') || has('gui')
+if has('win32')
     finish
 endif
 
