@@ -18,3 +18,4 @@ inoremap <S-Up> <C-O><C-Y>
 inoremap <S-Down> <C-O><C-E>
 
 inoremap <C-@> <ESC>
+inoremap <C-Space> <ESC>

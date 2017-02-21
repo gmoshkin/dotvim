@@ -1,3 +1,7 @@
+if has('win32') || has('gui')
+    finish
+endif
+
 augroup CursorMode
     autocmd VimEnter,InsertLeave * call cursormode#set_cursor_mode('n')
     autocmd InsertEnter,InsertChange * call cursormode#set_cursor_mode(v:insertmode)
