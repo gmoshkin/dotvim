@@ -203,7 +203,7 @@ set smartcase
 
 set virtualedit+=block
 
-set fileencodings=utf-8,cp1251,default,latin1
+set fileencodings=utf-8,cp866,cp1251,default,latin1
 
 let g:tex_flavor = 'tex'
 
