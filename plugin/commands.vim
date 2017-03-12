@@ -18,3 +18,5 @@ command! -nargs=* EchoArgs call misc#echo_args(<f-args>)
 
 " show git diff --cached in a tmux pane
 command! GD SlimeSend1 git diff --cached
+
+command! V3 only <bar> vsplit <bar> vsplit <bar> 2wincmd w
