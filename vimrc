@@ -419,6 +419,11 @@ let g:ctrlp_map = ''
 let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(exe|so|dll|pyc|o)$'
     \ }
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtBS()':              ['<c-h>'],
+    \ 'PrtDeleteEnt()':       ['<c-x>'],
+    \ 'AcceptSelection("h")': ['<c-cr>', '<c-s>'],
+    \ }
 "}}}
 """"""""""""""""""""""""""""""""" INDENT GUIDE """""""""""""""""""""""""""""""""
 "{{{
