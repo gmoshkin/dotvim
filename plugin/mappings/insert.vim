@@ -19,3 +19,5 @@ inoremap <S-Down> <C-O><C-E>
 
 inoremap <C-@> <ESC>
 inoremap <C-Space> <ESC>
+
+inoremap <C-_> <C-O>u
