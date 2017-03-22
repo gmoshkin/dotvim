@@ -24,3 +24,13 @@ function! qffilter#filter_qf_results(args) abort
     endfor
     call setqflist(qf_list)
 endfunction
+
+function! qffilter#remove_line(line) abort
+    let oldLine = line('.')
+    let oldCol = col('.')
+    let qf_list = getqflist()
+    let index = a:line - 1
+    call remove(qf_list, index)
+    call setqflist(qf_list)
+    call cursor(oldLine, oldCol)
+endfunction
