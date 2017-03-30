@@ -71,6 +71,7 @@ endif
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-utils/vim-man'
 Plugin 'jpalardy/vim-slime'
+Plugin 'jrozner/vim-antlr'
 Plugin 'junegunn/goyo.vim'
 " Plugin 'junegunn/limelight.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
