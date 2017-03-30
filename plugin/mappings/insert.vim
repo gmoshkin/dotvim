@@ -21,3 +21,6 @@ inoremap <C-@> <ESC>
 inoremap <C-Space> <ESC>
 
 inoremap <C-_> <C-O>u
+
+inoremap <C-R>' <C-R>"
+lnoremap <C-R>' <C-R>"
