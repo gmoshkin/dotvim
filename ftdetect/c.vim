@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.ino setf c
+au BufNewFile,BufRead *.ino set filetype=c

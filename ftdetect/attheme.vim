@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.attheme setf attheme
+au BufNewFile,BufRead *.attheme set filetype=attheme
