@@ -506,29 +506,12 @@ let g:codequery_trigger_build_db_when_db_not_found = 0
 "{{{
 let g:extra_whitespace_ignored_filetypes = ['help', 'man', 'csv']
 "}}}
-""""""""""""""""""""""""""""""""""" KLOCWORK """""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
-let g:kw_settings = {
-    \ "host": "localhost",
-    \ "port": 9090,
-    \ "user": "gmoshkin",
-    \ "project": "sharpdevelop",
-    \ }
-let g:kw_comments = {
-    \ "Fix": "TP",
-    \ "Not a problem": "FP",
-    \ }
-let g:kw_projects = [
-    \ "bettercms",
-    \ "blogengine",
-    \ "cudafy",
-    \ "sharpdevelop",
-    \ "wcell"
-    \ ]
-
-" augroup KWVim
-"     autocmd BufWritePost vim-kw/**.vim source %
-" augroup END
+let g:local_vimrc = '~/.vim/vimrc-local'
+if filereadable(expand(g:local_vimrc))
+    execute "source ".expand(g:local_vimrc)
+endif
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
