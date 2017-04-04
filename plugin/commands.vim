@@ -21,4 +21,6 @@ command! GD SlimeSend1 git diff --cached
 
 command! V3 only <bar> vsplit <bar> vsplit <bar> 2wincmd w
 
-command! -count=150 Gitlog Git! log -<count>
+command! -nargs=* Gitlog Git! log <args>
+command! -nargs=* Gitdiff Git! diff <args>
+command! -nargs=* Gitshow Git! show <args>

@@ -13,7 +13,8 @@ noremap <leader>grp :<C-U>Git stash pop<CR>
 noremap <leader>gu :<C-U>Git reset %:p<CR>:edit<CR>:redraw<CR>:echo 'Git reset '.expand('%:p')<CR>
 noremap <leader>ge :<C-U>Ge<CR>
 noremap <leader>gw :<C-U>Gwrite<CR>
-noremap <leader>gl :Gitlog<CR>
+noremap <leader>gl :<C-U>Gitlog<CR>
+noremap <leader>gL :<C-U>Gitlog -150<CR>
 
 nnoremap <leader>gg :<C-U>Ggrep <cword><CR>
 vnoremap <leader>gg "gy:<C-U>Ggrep <C-R>g<CR>
