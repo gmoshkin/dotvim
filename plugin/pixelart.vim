@@ -37,6 +37,23 @@ let g:pixelart_mario = [
     \"   88"
 \]
 
+let g:pixelart_mario_hex = [
+\[ ' ', ' ', ' ', ' ', ' ', ' ', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', ' ', ' ', '#FFC89E', '#FFC89E', '#FFC89E', ' ' ],
+\[ ' ', ' ', ' ', ' ', ' ', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#FFC89E', '#FFC89E', ' ' ],
+\[ ' ', ' ', ' ', ' ', ' ', '#7f3300', '#7f3300', '#7f3300', '#FFC89E', '#FFC89E', '#000000', '#FFC89E', ' ', '#ff0000', '#ff0000', '#ff0000', ' ' ],
+\[ ' ', ' ', ' ', ' ', '#7f3300', '#FFC89E', '#7f3300', '#FFC89E', '#FFC89E', '#FFC89E', '#000000', '#FFC89E', '#FFC89E', '#FFC89E', '#ff0000', '#ff0000', ' ' ],
+\[ ' ', ' ', ' ', ' ', '#7f3300', '#FFC89E', '#7f3300', '#7f3300', '#FFC89E', '#FFC89E', '#FFC89E', '#000000', '#FFC89E', '#FFC89E', '#FFC89E', '#ff0000', ' ' ],
+\[ ' ', ' ', ' ', ' ', '#7f3300', '#7f3300', '#FFC89E', '#FFC89E', '#FFC89E', '#FFC89E', '#000000', '#000000', '#000000', '#000000', '#ff0000', ' ', ' ' ],
+\[ ' ', ' ', ' ', ' ', ' ', ' ', '#FFC89E', '#FFC89E', '#FFC89E', '#FFC89E', '#FFC89E', '#FFC89E', '#FFC89E', '#ff0000', '#ff0000', ' ', ' ' ],
+\[ '#FFC89E', '#FFC89E', '#FFC89E', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#0026ff', '#ff0000', '#ff0000', '#ff0000', '#0026ff', '#ff0000', '#ff0000', ' ', ' ', '#7f3300' ],
+\[ '#FFC89E', '#FFC89E', '#FFC89E', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#ff0000', '#0026ff', '#ff0000', '#ff0000', '#ff0000', '#0026ff', ' ', ' ', '#7f3300', '#7f3300' ],
+\[ ' ', '#FFC89E', ' ', ' ', ' ', '#ff0000', '#ff0000', '#ff0000', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#FFD800', '#0026ff', '#0026ff', '#7f3300', '#7f3300' ],
+\[ ' ', ' ', ' ', ' ', ' ', ' ', '#0026ff', '#0026ff', '#0026ff', '#FFD800', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#7f3300', '#7f3300' ],
+\[ ' ', ' ', ' ', ' ', '#7f3300', '#7f3300', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#7f3300', '#7f3300' ],
+\[ ' ', ' ', ' ', '#7f3300', '#7f3300', '#7f3300', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', '#0026ff', ' ', ' ', ' ', ' ', ' ' ],
+\[ ' ', ' ', ' ', '#7f3300', '#7f3300', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ]
+\]
+
 let g:pixelart_mario_2 = [
     \"   rrrrrr",
     \"  rrrrrrrrrr",
@@ -57,17 +74,21 @@ let g:pixelart_mario_2 = [
 \]
 
 function! Mario() abort
-    call pixelart#show(g:pixelart_mario, 16)
-    sleep 1
-    redraw
-    call pixelart#show(g:pixelart_mario_2, 16)
+    " call pixelart#show(g:pixelart_mario, 16)
+    " sleep 1
+    " redraw
+    " call pixelart#show(g:pixelart_mario_2, 16)
+    " sleep 1
+    " redraw
+    call pixelart#show(g:pixelart_mario_hex, 'hex')
 endfunction
 
 function! ShowColors() abort
+    call pixelart#init_highlights()
     let start = 16
     let step = 6
     let colors = []
-    for i in range(start, 256, step)
+    for i in range(start, start + 215, step)
         let tmp = []
         for j in range(i, i + step - 1)
             call add(tmp, j)
@@ -75,4 +96,13 @@ function! ShowColors() abort
         call add(colors, tmp)
     endfor
     call pixelart#show(colors, 256)
+endfunction
+
+function! Show(val, mode) abort
+    call pixelart#show(a:val, a:mode)
+endfunction
+
+function! Tmp() abort
+    call Show('b', 16)
+    call Show([g:solarized_hex_blue], 'hex')
 endfunction
