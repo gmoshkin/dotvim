@@ -95,4 +95,4 @@ nnoremap <ESC>/ /\v
 nnoremap <ESC>? ?\v
 
 " open current directory
-nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><bar>set bufhidden=wipe<CR>
