@@ -68,7 +68,7 @@ Plugin 'fatih/vim-go'
 if v:version > 703
     Plugin 'honza/vim-snippets'
 endif
-Plugin 'jeetsukumaran/vim-buffergator'
+" Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-utils/vim-man'
 Plugin 'jpalardy/vim-slime'
 Plugin 'jrozner/vim-antlr'
