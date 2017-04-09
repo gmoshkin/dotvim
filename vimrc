@@ -17,6 +17,10 @@ catch
     let g:has_python = 0
 endtry
 
+" check if we're a raspberrypi
+" XXX: maybe there's a better way of doing this?
+let g:its_a_pi = system("hostname") =~ "raspberrypi" ? 1 : 0
+
 """"""""""""""""""""""""""""""""""" PATHOGEN """""""""""""""""""""""""""""""""""
 "{{{
 "call pathogen#infect()
@@ -40,12 +44,12 @@ endif
 " Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
-if has("lua") && v:version > 703 && !has("win32")
+if has("lua") && v:version > 703 && !has("win32") && !g:its_a_pi
     Plugin 'Shougo/neocomplete.vim'
 endif
 " Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
-if v:version > 703 && has("python") && g:has_python
+if v:version > 703 && has("python") && g:has_python && !g:its_a_pi
     Plugin 'SirVer/ultisnips'
 endif
 Plugin 'altercation/vim-colors-solarized'
@@ -65,7 +69,7 @@ Plugin 'gmoshkin/bufkill.vim'
 Plugin 'gmoshkin/vim-kw'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
-if v:version > 703
+if v:version > 703 && !g:its_a_pi
     Plugin 'honza/vim-snippets'
 endif
 " Plugin 'jeetsukumaran/vim-buffergator'
@@ -514,4 +518,6 @@ if filereadable(expand(g:local_vimrc))
 endif
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable
+if !g:its_a_pi
+    syntax enable
+endif
