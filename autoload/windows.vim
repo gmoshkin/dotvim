@@ -35,6 +35,6 @@ function! windows#open_full_window(...) abort
             execute (winnr()) . "close"
         endif
     else
-        wincmd _
+        only
     endif
 endfunction
