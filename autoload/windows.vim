@@ -38,3 +38,12 @@ function! windows#open_full_window(...) abort
         only
     endif
 endfunction
+
+function! windows#for_each(wincmd) abort
+    let l:cur_win = winnr()
+    for i in range(winnr('$'))
+        wincmd b
+        execute "wincmd ".a:wincmd
+    endfor
+    execute l:cur_win."wincmd w"
+endfunction
