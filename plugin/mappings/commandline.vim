@@ -11,4 +11,5 @@ cnoremap <ESC>f <C-Right>
 cnoremap <C-R><C-D> <C-R>=expand('%:p:h')<CR>/
 cnoremap <C-R><C-]> <C-R>=expand('%:p')<CR>
 
+cnoremap <C-R>' <C-R>"
 cnoremap <C-Y> <C-R>"
