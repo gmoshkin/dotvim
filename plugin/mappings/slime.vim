@@ -1,3 +1,3 @@
-vnoremap <Leader>s <Plug>SlimeRegionSend
-nnoremap <Leader>s <Plug>SlimeMotionSend
-nnoremap <Leader>ss :<C-U>SlimeSendCurrentLine<CR>
+vmap <Leader>s <Plug>SlimeRegionSend
+nmap <Leader>s <Plug>SlimeMotionSend
+nmap <Leader>ss <Plug>SlimeLineSend
