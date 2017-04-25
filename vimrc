@@ -194,7 +194,9 @@ set spelllang=ru_yo,en_us
 set nowrap
 "Do not wrap lines, that exceed screen width
 
-set updatetime=250
+" Specifies the number of milliseconds to wait until issueing a CursorHold
+" autocmd. I don't know who told me to set it to 250 ms
+set updatetime=2000
 
 " Show a menu of alternatives when completing with <TAB> in the cmd line
 set wildmenu
