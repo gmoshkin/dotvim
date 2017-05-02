@@ -99,6 +99,7 @@ endif
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'sgur/vim-textobj-parameter'
 Plugin 'terryma/vim-multiple-cursors'
