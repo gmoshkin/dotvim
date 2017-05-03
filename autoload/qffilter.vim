@@ -25,12 +25,17 @@ function! qffilter#filter_qf_results(args) abort
     call setqflist(qf_list)
 endfunction
 
-function! qffilter#remove_line(line) abort
+function! qffilter#remove_line(line, ...) abort
     let oldLine = line('.')
     let oldCol = col('.')
     let qf_list = getqflist()
-    let index = a:line - 1
-    call remove(qf_list, index)
+    let start = a:line - 1
+    if a:0 > 0
+        let end = a:1 - 1
+    else
+        let end = start + 1
+    endif
+    call remove(qf_list, start, end)
     call setqflist(qf_list)
     call cursor(oldLine, oldCol)
 endfunction

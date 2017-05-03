@@ -5,3 +5,4 @@ noremap <buffer> <silent> <leader>/ <ESC>:QfFilter
 nnoremap <buffer> <silent> dd :<C-U>QfRemove<CR>
 nnoremap <buffer> <silent> u :<C-U>colder<CR>
 nnoremap <buffer> <silent> <C-R> :<C-U>cnewer<CR>
+vnoremap <buffer> <silent> d :<C-U>call qffilter#remove_line(line("'<"), line("'>"))<CR>
