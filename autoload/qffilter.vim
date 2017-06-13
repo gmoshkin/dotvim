@@ -33,7 +33,7 @@ function! qffilter#remove_line(line, ...) abort
     if a:0 > 0
         let end = a:1 - 1
     else
-        let end = start + 1
+        let end = start
     endif
     call remove(qf_list, start, end)
     call setqflist(qf_list)
