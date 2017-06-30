@@ -96,3 +96,7 @@ nnoremap <ESC>? ?\v
 
 " open current directory
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><bar>set bufhidden=wipe<CR>
+
+" jump to next search match and center screen
+nnoremap <ESC>n nzz
+nnoremap <ESC>N Nzz
