@@ -100,3 +100,7 @@ nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h'
 " jump to next search match and center screen
 nnoremap <ESC>n nzz
 nnoremap <ESC>N Nzz
+
+" search within visual selection
+vnoremap gv <ESC>/\%V
+vnoremap gV V<ESC>/\%V
