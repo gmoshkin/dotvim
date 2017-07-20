@@ -26,3 +26,5 @@ command! -nargs=* Gitdiff Git! diff <args>
 command! -nargs=* Gitshow Git! show <args>
 
 command! MakeExecutable !chmod +x %
+
+command! SudoWrite write !sudo tee %
