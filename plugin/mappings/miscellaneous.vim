@@ -104,3 +104,7 @@ nnoremap <ESC>N Nzz
 " search within visual selection
 vnoremap gv <ESC>/\%V
 vnoremap gV V<ESC>/\%V
+
+" open a split but select the opposite window
+nnoremap <C-W>S <C-W>s<C-W>j
+nnoremap <C-W>V <C-W>v<C-W>h
