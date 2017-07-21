@@ -23,7 +23,7 @@ noremap <S-Up> <C-Y>
 noremap <S-Down> <C-E>
 
 " when jumping to the tag prompt for selection if there are several matches
-noremap <C-]> <ESC>:tjump <C-R><C-W><CR>
+noremap <silent> <C-]> :<C-U>call utils#save_option_do("ignorecase", "tjump ".expand("<cword>"))<CR>
 
 " resize current window with alt + arrow keys
 noremap <M-Left> <C-W><
