@@ -1,3 +1,5 @@
+let g:ppp_specifiers = [ "public", "protected", "private" ]
+
 " Stolen from klen/python-mode
 function! cindent#search_parens_pair()
     let line = line('.')
@@ -39,7 +41,13 @@ function! cindent#search_parens_pair()
     return parlnum
 endfunction
 
-function! cindent#cindent(lnum)
+" public/private/protected: should match the class indent
+function! cindent#match_ppp(lnum) abort
+    let pattern = '^\s*\(' . join(g:ppp_specifiers, '\|') . '\s*:\)'
+    return match(getline(a:lnum), pattern) != -1
+endfunction
+
+function! cindent#cindent(lnum) abort
     " First line has indent 0
     if a:lnum == 1
         return 0
@@ -59,6 +67,8 @@ function! cindent#cindent(lnum)
         else
             return parcol
         endif
+    elseif cindent#match_ppp(a:lnum)
+        return cindent(a:lnum) - &shiftwidth
     endif
     " In all other cases, line up with the start of the previous statement.
     return cindent(a:lnum)
