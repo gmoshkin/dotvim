@@ -43,7 +43,7 @@ endfunction
 
 " public/private/protected: should match the class indent
 function! cindent#match_ppp(lnum) abort
-    let pattern = '^\s*\(' . join(g:ppp_specifiers, '\|') . '\s*:\)'
+    let pattern = '^\s*\(' . join(g:ppp_specifiers, '\|') . '\)\s*:'
     return match(getline(a:lnum), pattern) != -1
 endfunction
 
