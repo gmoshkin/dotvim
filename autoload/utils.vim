@@ -13,6 +13,9 @@ endfunction
 function! utils#save_option_do(optname, cmd) abort
     execute "let saved = &".a:optname
     execute "set no".a:optname
-    execute a:cmd
-    execute "let &".a:optname." = saved"
+    try
+        execute a:cmd
+    finally
+        execute "let &".a:optname." = saved"
+    endtry
 endfunction
