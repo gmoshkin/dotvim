@@ -28,3 +28,8 @@ command! -nargs=* Gitshow Git! show <args>
 command! MakeExecutable !chmod +x %
 
 command! SudoWrite write !sudo tee %
+
+command! -bang -nargs=* RAck           Ack           <bang> <args> %:p:h
+command! -bang -nargs=* RAckAdd        AckAdd        <bang> <args> %:p:h
+command! -bang -nargs=* RAckFile       AckFile       <bang> <args> %:p:h
+command! -bang -nargs=0 RAckFromSearch AckFromSearch <bang> %:p:h
