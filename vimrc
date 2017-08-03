@@ -352,6 +352,8 @@ let g:pymode_lint_options_pep8 = {
     \ 'max_line_length': 80,
     \ 'ignore': 'E104'
     \ }
+let g:pymode_python="python"
+let g:pymode_lint_ignore="E302,E201,E202,E203,E127,E741"
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
@@ -511,6 +513,14 @@ let g:codequery_trigger_build_db_when_db_not_found = 0
 """"""""""""""""""""""""""" VIM-TRAILING-WHITESPACE """"""""""""""""""""""""""""
 "{{{
 let g:extra_whitespace_ignored_filetypes = ['help', 'man', 'csv']
+"}}}
+""""""""""""""""""""""""""""""""""" ACK-VIM """"""""""""""""""""""""""""""""""""
+"{{{
+let g:ack_qhandler = "copen"
+let g:ack_lhandler = "lopen"
+let g:ackhighlight = 1
+let g:ack_autofold_results = 1
+let g:ackpreview = 1
 "}}}
 """"""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
