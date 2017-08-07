@@ -516,8 +516,8 @@ let g:extra_whitespace_ignored_filetypes = ['help', 'man', 'csv']
 "}}}
 """"""""""""""""""""""""""""""""""" ACK-VIM """"""""""""""""""""""""""""""""""""
 "{{{
-let g:ack_qhandler = "copen"
-let g:ack_lhandler = "lopen"
+let g:ack_qhandler = "below copen"
+let g:ack_lhandler = "below lopen"
 let g:ackhighlight = 1
 let g:ack_autofold_results = 1
 let g:ackpreview = 1
