@@ -10,7 +10,7 @@ noremap <leader>gs :<C-U>Gstatus<CR>
 " Mnemonic Git Reserve Save/Pop
 noremap <leader>grs :<C-U>Git stash save<CR>
 noremap <leader>grp :<C-U>Git stash pop<CR>
-noremap <leader>gu :<C-U>Git reset %:p<CR>:edit<CR>:redraw<CR>:echo 'Git reset '.expand('%:p')<CR>
+noremap <leader>gu :<C-U>Git reset %:p<CR>:edit<CR>:redraw<CR>:echo 'Git reset '.misc#curr_path()<CR>
 noremap <leader>ge :<C-U>Ge<CR>
 noremap <leader>gw :<C-U>Gwrite<CR>
 noremap <leader>gl :<C-U>Gitlog<CR>

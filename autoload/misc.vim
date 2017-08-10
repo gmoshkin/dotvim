@@ -42,3 +42,15 @@ function! misc#put_prev_char()
         let i = i - 1
     endwhile
 endfunction
+
+function! misc#curr_file() abort
+    return fnameescape(expand('%'))
+endfunction
+
+function! misc#curr_path() abort
+    return fnameescape(expand('%:p'))
+endfunction
+
+function! misc#curr_dir() abort
+    return fnameescape(expand('%:p:h'))
+endfunction

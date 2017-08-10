@@ -8,8 +8,8 @@ cnoremap <C-D> <Del>
 cnoremap <ESC>b <C-Left>
 cnoremap <ESC>f <C-Right>
 
-cnoremap <C-R><C-D> <C-R>=expand('%:p:h')<CR>/
-cnoremap <C-R><C-]> <C-R>=expand('%:p')<CR>
+cnoremap <C-R><C-D> <C-R>=misc#curr_dir()<CR>/
+cnoremap <C-R><C-]> <C-R>=misc#curr_path()<CR>
 
 cnoremap <C-R>' <C-R>"
 cnoremap <C-Y> <C-R>"
