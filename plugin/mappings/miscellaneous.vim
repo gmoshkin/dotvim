@@ -54,11 +54,12 @@ vnoremap gp "+p
 vnoremap gP "+P
 
 " remap the origianl gp and gP commands to <leader>p/P
-noremap <leader>p gp
-noremap <leader>P gP
+" actually, who needs them?
+" noremap <leader>p gp
+" noremap <leader>P gP
 
-vnoremap <leader>p gp
-vnoremap <leader>P gP
+" vnoremap <leader>p gp
+" vnoremap <leader>P gP
 
 " visually select the whole file
 noremap <leader>V <ESC>ggVG
@@ -108,3 +109,5 @@ vnoremap gV V<ESC>/\%V
 " open a split but select the opposite window
 nnoremap <C-W>S <C-W>s<C-W>j
 nnoremap <C-W>V <C-W>v<C-W>h
+
+nnoremap <leader>pc :<C-U>pclose<CR>
