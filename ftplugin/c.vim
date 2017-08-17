@@ -5,3 +5,5 @@ noremap <buffer> <leader>md <ESC>:make! depend<CR>
 noremap <buffer> <leader>M <ESC>:make!<CR>:make! install<CR>
 
 setlocal indentexpr=cindent#cindent(line('.'))
+set complete-=i
+set complete-=d

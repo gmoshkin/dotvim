@@ -16,3 +16,5 @@ noremap <buffer> <leader>bc <ESC>:!g++ %:p<CR>
 noremap <buffer> <leader>be <ESC>:execute "!".expand("%:r").".exe"<CR>
 
 setlocal indentexpr=cindent#cindent(line('.'))
+set complete-=i
+set complete-=d
