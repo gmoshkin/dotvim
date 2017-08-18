@@ -24,6 +24,10 @@ command! V3 only <bar> vsplit <bar> vsplit <bar> 2wincmd w
 command! -nargs=* Gitlog Git! log <args>
 command! -nargs=* Gitdiff Git! diff <args>
 command! -nargs=* Gitshow Git! show <args>
+command! -nargs=* Gshow Git! show <args>
+command! -nargs=* Grc Git rebase --continue <args>
+command! -nargs=* Gra Git rebase --abort <args>
+command! -nargs=* Gri Git rebase --interactive <args>
 
 command! MakeExecutable !chmod +x %
 
