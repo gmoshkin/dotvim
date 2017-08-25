@@ -3,6 +3,7 @@ function! spot#match_pattern(pattern)
 endfunction
 
 function! spot#match_positions(...)
+    " FIXME: replace all that matching bullshit with matchaddpos() calls
     highlight! TmpGroup ctermbg=9 ctermfg=0
     let pattern = ''
 
