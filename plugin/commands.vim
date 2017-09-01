@@ -27,7 +27,8 @@ command! -nargs=* Gitshow Git! show <args>
 command! -nargs=* Gshow Git! show <args>
 command! -nargs=* Grc Git rebase --continue <args>
 command! -nargs=* Gra Git rebase --abort <args>
-command! -nargs=* Gri Git rebase --interactive <args>
+
+command! -nargs=* Gri call git#run_command('rebase --interactive', git#process_argument(<q-args>))
 
 command! MakeExecutable !chmod +x %
 
