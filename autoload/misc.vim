@@ -54,3 +54,13 @@ endfunction
 function! misc#curr_dir() abort
     return fnameescape(expand('%:p:h'))
 endfunction
+
+function! misc#get_cursor_position() abort
+    let l = line(".")
+    let c = col(".")
+    return [l, c]
+endfunction
+
+function! misc#set_cursor_position(pos) abort
+    call cursor(a:pos[0], a:pos[1])
+endfunction
