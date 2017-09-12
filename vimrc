@@ -1,3 +1,6 @@
+"TODO:
+" write a plugin for compiling a single file and running the program in the tmux
+" pane
 "vimrc by gmoshkin
 
 if has("gui_win32")
