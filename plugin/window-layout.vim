@@ -1,4 +1,7 @@
 function! s:windows_fix_layout() abort
+    if winnr('$') > 3
+        return
+    endif
     wincmd =
     if &columns < 2 * &textwidth
         WindowsLayoutVertical
