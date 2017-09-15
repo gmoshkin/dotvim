@@ -358,6 +358,7 @@ let g:pymode_lint_options_pep8 = {
     \ }
 let g:pymode_python="python"
 let g:pymode_lint_ignore="E302,E201,E202,E203,E127,E741"
+let g:pymode_lint_cwindow = 0
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
