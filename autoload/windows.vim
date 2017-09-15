@@ -47,3 +47,32 @@ function! windows#for_each(wincmd) abort
     endfor
     execute l:cur_win."wincmd w"
 endfunction
+
+function! windows#move(ofs, ...) abort
+    let l:buf_name = bufname('%')
+    let l:curr_win = winnr()
+    let l:dst_win_nr = (l:curr_win + a:ofs) % winnr('$')
+    if l:dst_win_nr == 0
+        let l:dst_win_nr = winnr('$')
+    endif
+    let l:dst_win_id = win_getid(l:dst_win_nr)
+    let l:orientation = get(a:000, 0, 's')
+    let l:relation = get(a:000, 1, 'd')
+    if l:orientation == 'v'
+        let l:cmd = "vsplit"
+    elseif l:orientation == 's'
+        let l:cmd = "split"
+    else
+        return
+    endif
+    if l:relation == 'u'
+        let l:where = "aboveleft"
+    elseif l:relation == 'd'
+        let l:where = "belowright"
+    else
+        return
+    endif
+    close
+    call win_gotoid(l:dst_win_id)
+    execute join([l:where, l:cmd, l:buf_name])
+endfunction
