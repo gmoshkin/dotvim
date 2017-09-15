@@ -18,5 +18,5 @@ augroup WindowLayout
     autocmd! VimResized * WindowsFixLayout
 augroup END
 
-nnoremap <silent> <C-W>m :<c-u>call windows#move(1, 's')
-nnoremap <silent> <C-W>M :<c-u>call windows#move(-2, 's')
+nnoremap <silent> <C-W>m :<c-u>call windows#move(1, 's')<CR>
+nnoremap <silent> <C-W>M :<c-u>call windows#move(-2, 's')<CR>
