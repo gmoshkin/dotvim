@@ -47,10 +47,10 @@ endif
 " Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
-if has("lua") && v:version > 703 && !has("win32") && !g:its_a_pi
+if has("lua") && v:version > 703 && v:version < 800 && !has("win32") && !g:its_a_pi
     Plugin 'Shougo/neocomplete.vim'
 endif
-" Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 if v:version > 703 && has("python") && g:has_python && !g:its_a_pi
     Plugin 'SirVer/ultisnips'
@@ -76,6 +76,7 @@ if v:version > 703 && !g:its_a_pi
 endif
 " Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-utils/vim-man'
+Plugin 'idanarye/vim-vebugger'
 Plugin 'jpalardy/vim-slime'
 Plugin 'jrozner/vim-antlr'
 Plugin 'junegunn/goyo.vim'
@@ -94,6 +95,9 @@ Plugin 'luochen1990/rainbow'
 Plugin 'lucapette/vim-textobj-underscore'
 Plugin 'Konfekt/FastFold'
 Plugin 'majutsushi/tagbar'
+if v:version >= 800
+    Plugin 'maralla/completor.vim'
+endif
 if has('packages')
     packadd! matchit
 else
