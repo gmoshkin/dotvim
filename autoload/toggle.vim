@@ -13,7 +13,7 @@ function! toggle#auto_format(...) abort
         endif
     endif
     if b:auto_format_enabled
-        setlocal formatoptions+=a
+        " setlocal formatoptions+=a
         setlocal formatoptions+=t
         let message = 'autoformat enabled'
     else
