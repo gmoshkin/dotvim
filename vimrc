@@ -105,6 +105,7 @@ else
 endif
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Rip-Rip/clang_complete'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 " Plugin 'vim-syntastic/syntastic'
@@ -530,6 +531,10 @@ let g:ack_lhandler = "below lopen"
 let g:ackhighlight = 1
 let g:ack_autofold_results = 1
 let g:ackpreview = 1
+"}}}
+"""""""""""""""""""""""""""""""" CLANG_COMPLETE """"""""""""""""""""""""""""""""
+"{{{
+let g:clang_library_path = '/usr/lib/llvm-4.0/lib/libclang.so.1'
 "}}}
 """"""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
