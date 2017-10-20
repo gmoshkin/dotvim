@@ -26,6 +26,11 @@ let g:digraphs_subscripts = {
     \ "7" : { "number" : 8327  , "unicode" : "₇" },
     \ "8" : { "number" : 8328  , "unicode" : "₈" },
     \ "9" : { "number" : 8329  , "unicode" : "₉" },
+    \ "+" : { "number" : 8330  , "unicode" : "₊" },
+    \ "-" : { "number" : 8331  , "unicode" : "₋" },
+    \ "=" : { "number" : 8332  , "unicode" : "₌" },
+    \ "(" : { "number" : 8333  , "unicode" : "₍" },
+    \ ")" : { "number" : 8334  , "unicode" : "₎" },
 \ }
 
 let g:digraphs_superscripts = {
@@ -83,6 +88,11 @@ let g:digraphs_superscripts = {
     \ "7" : { "number" : 8311  , "unicode" : "⁷" },
     \ "8" : { "number" : 8312  , "unicode" : "⁸" },
     \ "9" : { "number" : 8313  , "unicode" : "⁹" },
+    \ "+" : { "number" : 8314  , "unicode" : "⁺" },
+    \ "-" : { "number" : 8315  , "unicode" : "⁻" },
+    \ "=" : { "number" : 8316  , "unicode" : "⁼" },
+    \ "(" : { "number" : 8317  , "unicode" : "⁽" },
+    \ ")" : { "number" : 8318  , "unicode" : "⁾" },
 \ }
 
 "TODO: add digraphs for small +-() and so on
