@@ -97,7 +97,7 @@ let g:digraphs_superscripts = {
 
 "TODO: add digraphs for small +-() and so on
 
-let g:digraph_postfixes = [[g:digraphs_subscripts, 'b'], [g:digraphs_superscripts, 't']]
+let g:digraph_postfixes = [[g:digraphs_subscripts, '_'], [g:digraphs_superscripts, '^']]
 
 for [digraphs, postfix] in g:digraph_postfixes
     for [letter, dict] in items(digraphs)
