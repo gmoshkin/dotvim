@@ -40,3 +40,4 @@ command! -bang -nargs=* RAckFile       AckFile       <bang> <args> %:p:h
 command! -bang -nargs=0 RAckFromSearch AckFromSearch <bang> %:p:h
 
 command! FindConflict /^<<<<<<<\|^=======\|^>>>>>>>
+command! SourceBashrc SlimeSend1 source ~/.bashrc

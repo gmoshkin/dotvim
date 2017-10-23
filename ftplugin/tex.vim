@@ -5,6 +5,7 @@ noremap <buffer> <Leader>mb <ESC>:execute '!bibtex '.split(expand('%:p'), '\.')[
 " vnoremap <buffer> <C-S> <C-C>:update<CR>:!pdflatex %:p<CR>
 
 setlocal spell
+<<<<<<< Updated upstream
 setlocal formatoptions+=t
 " call toggle#auto_format(1, 0)
 
@@ -42,3 +43,10 @@ endfunction
 augroup MakeLatex
     autocmd BufWritePost *.tex call s:auto_make()
 augroup END
+=======
+
+" augroup LatexAutoFormat
+"     autocmd! InsertEnter <buffer> call toggle#auto_format(1, 0)
+"     autocmd! InsertLeave <buffer> call toggle#auto_format(0, 0)
+" augroup END
+>>>>>>> Stashed changes
