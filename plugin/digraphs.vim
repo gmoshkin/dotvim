@@ -106,3 +106,7 @@ for [digraphs, postfix] in g:digraph_postfixes
         let digraphs[letter].digraph = s:digraph
     endfor
 endfor
+
+digraph :( 9785 "☹
+digraph :) 9786 "☺
+digraph (: 9787 "☻
