@@ -1,0 +1,1 @@
+let &formatprg='xmllint --format -'
