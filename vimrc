@@ -542,6 +542,10 @@ let g:ackpreview = 1
 "{{{
 let g:clang_library_path = '/usr/lib/llvm-4.0/lib/libclang.so.1'
 "}}}
+""""""""""""""""""""""""""""""""""" ULTISNIPS """"""""""""""""""""""""""""""""""
+"{{{
+let g:ultisnips_python_quoting_style = 'single'
+"}}}
 """"""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
 let g:local_vimrc = '~/.vim/vimrc-local'
