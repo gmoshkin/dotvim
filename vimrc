@@ -52,7 +52,7 @@ if has("lua") && v:version > 703 && v:version < 800 && !has("win32") && !g:its_a
 endif
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
-if v:version > 703 && has("python") && g:has_python && !g:its_a_pi
+if v:version > 703 && (has("python") && g:has_python || has("python3")) && !g:its_a_pi
     Plugin 'SirVer/ultisnips'
 endif
 Plugin 'altercation/vim-colors-solarized'
@@ -85,7 +85,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kana/vim-textobj-function'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-user'
-if has("python") && g:has_python
+if (has("python") && g:has_python || has("python3"))
     Plugin 'klen/python-mode'
 endif
 Plugin 'libclang-vim/libclang-vim'
@@ -361,9 +361,14 @@ let g:pymode_lint_options_pep8 = {
     \ 'max_line_length': 80,
     \ 'ignore': 'E104'
     \ }
-let g:pymode_python="python"
+if g:has_python || has('python')
+    let g:pymode_python="python"
+else
+    let g:pymode_python="python3"
+endif
 let g:pymode_lint_ignore="E302,E201,E202,E203,E127,E741"
 let g:pymode_lint_cwindow = 0
+" let g:pymode_lint_on_write = 0
 "}}}
 """""""""""""""""""""""""""""""""""" SLIME """""""""""""""""""""""""""""""""""""
 "{{{
