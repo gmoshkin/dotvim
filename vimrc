@@ -367,7 +367,7 @@ if g:has_python || has('python')
 else
     let g:pymode_python="python3"
 endif
-let g:pymode_lint_ignore="E302,E201,E202,E203,E127,E741"
+let g:pymode_lint_ignore = ['E302', 'E201', 'E202', 'E203', 'E127', 'E741']
 let g:pymode_lint_cwindow = 0
 " let g:pymode_lint_on_write = 0
 "}}}
