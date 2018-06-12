@@ -542,6 +542,7 @@ let g:ackpreview = 1
 "{{{
 let g:clang_library_path = '/usr/lib/llvm-4.0/lib/libclang.so.1'
 let g:clang_jumpto_declaration_key = '<leader><C-]>'
+let g:clang_jumpto_back_key = '<leader><C-T>'
 "}}}
 """"""""""""""""""""""""""""""""""" ULTISNIPS """"""""""""""""""""""""""""""""""
 "{{{
