@@ -6,5 +6,6 @@ noremap <leader>ff :<c-u>CtrlP<CR>
 noremap <leader>fl :<c-u>CtrlPLine<CR>
 noremap <leader>fm :<c-u>CtrlPMRU<CR>
 noremap <leader>fr :<c-u>CtrlP <C-R>=misc#curr_dir()<CR><CR>
+noremap <leader>fg :<c-u>CtrlP <C-R>=misc#git_dir()<CR><CR>
 noremap <leader>ft :<c-u>CtrlPTag<CR>
 noremap <leader>fq :<c-u>CtrlPQuickfix<CR>

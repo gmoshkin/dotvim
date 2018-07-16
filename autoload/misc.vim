@@ -64,3 +64,13 @@ endfunction
 function! misc#set_cursor_position(pos) abort
     call cursor(a:pos[0], a:pos[1])
 endfunction
+
+function! misc#git_dir() abort
+    let l:git_dir = misc#curr_dir()
+    if exists('b:git_dir')
+        let l:git_dir = b:git_dir
+    elseif exists('*FugitiveExtractGitDir()')
+        let l:git_dir = FugitiveExtractGitDir(expand('%'))
+    endif
+    return substitute(l:git_dir, '.git$', '', '')
+endfunction
