@@ -116,7 +116,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
@@ -208,7 +208,7 @@ set nowrap
 
 " Specifies the number of milliseconds to wait until issueing a CursorHold
 " autocmd. I don't know who told me to set it to 250 ms
-set updatetime=2000
+set updatetime=100
 
 " Show a menu of alternatives when completing with <TAB> in the cmd line
 set wildmenu
@@ -405,6 +405,7 @@ let g:airline_mode_map = {
             \ 's'  : 'S',
             \ 'S'  : 'S',
             \ '' : 'S',
+            \ 't' : 'T',
             \ }
 
 if !exists('g:airline_symbols')
