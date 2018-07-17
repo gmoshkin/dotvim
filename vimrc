@@ -551,6 +551,10 @@ let g:clang_jumpto_back_key = '<leader><C-T>'
 "{{{
 let g:ultisnips_python_quoting_style = 'single'
 "}}}
+""""""""""""""""""""""""""""""""""" COMPLETOR """"""""""""""""""""""""""""""""""
+"{{{
+let g:completor_complete_options = 'menuone,noselect'
+"}}}
 """"""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
 let g:local_vimrc = '~/.vim/vimrc-local'
