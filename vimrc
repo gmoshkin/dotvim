@@ -452,6 +452,11 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtDeleteEnt()':       ['<c-x>'],
     \ 'AcceptSelection("h")': ['<c-cr>', '<c-s>'],
     \ }
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_lazy_update = 100
+let g:ctrlp_mruf_exclude = 'COMMIT_EDITMSG'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
+    \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir', 'autoignore']
 "}}}
 """"""""""""""""""""""""""""""""" INDENT GUIDE """""""""""""""""""""""""""""""""
 "{{{
