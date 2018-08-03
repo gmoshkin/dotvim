@@ -19,3 +19,10 @@ function! utils#save_option_do(optname, cmd) abort
         execute "let &".a:optname." = saved"
     endtry
 endfunction
+
+function! utils#get_vword() abort
+    if line("'<") != line("'>")
+        return ''
+    endif
+    return getline(line("'<"))[col("'<") - 1:col("'>") - 1]
+endfunction

@@ -111,3 +111,6 @@ nnoremap <C-W>S <C-W>s<C-W>j
 nnoremap <C-W>V <C-W>v<C-W>h
 
 nnoremap <leader>pc :<C-U>pclose<CR>
+
+nnoremap gx :<c-u>echo pyxeval('hex('.(expand('<cword>')+0).')')<cr>
+vnoremap gx :<c-u>echo pyxeval('hex('.(utils#get_vword()+0).')')<cr>
