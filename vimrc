@@ -561,6 +561,10 @@ let g:ultisnips_python_quoting_style = 'single'
 "{{{
 let g:completor_complete_options = 'menuone,noselect'
 "}}}
+""""""""""""""""""""""""""""""""""" ASYNCRUN """""""""""""""""""""""""""""""""""
+"{{{
+command! Make AsyncRun -program=make
+"}}}
 """"""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
 let g:local_vimrc = '~/.vim/vimrc-local'
