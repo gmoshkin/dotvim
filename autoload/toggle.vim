@@ -39,3 +39,14 @@ function! toggle#color_column()
     endif
     let b:colorcolumn_enabled = !b:colorcolumn_enabled
 endfunction
+
+function! toggle#tabstop() abort
+    if !exists('b:last_tabstop')
+        if &tabstop == 8
+            let b:last_tabstop = 4
+        else
+            let b:last_tabstop = 8
+        endif
+    endif
+    let [&tabstop, b:last_tabstop] = [b:last_tabstop, &tabstop]
+endfunction
