@@ -241,6 +241,8 @@ if has("win32") || has("gui")
     "this stops the noisy beeping every time I press a button
 endif
 
+set errorformat+=%f:%l\ %m
+
 set backspace=indent,eol,start
 "This specifies where in Insert mode the <BS>> is allowed to delete the
 "character in front of the cursor.  The threee items, separated by commas, tell
