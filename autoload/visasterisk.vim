@@ -18,8 +18,28 @@ function! visasterisk#set_pat(cmdtype, ...) abort
     let @" = l:saved_reg
 endfunction
 
-function! visasterisk#grep(pat) abort
+function! visasterisk#grep(pat, dir) abort
+    let g:visasterisk_last_pat = a:pat
+    let @/ = a:pat
+    let g:visasterisk_last_dir = a:dir
     execute printf('noautocmd vimgrep /\C%s/ %s/**',
-                 \ visasterisk#escape_pat(a:pat),
-                 \ misc#curr_dir())
+                 \ visasterisk#escape_pat(a:pat), a:dir)
+endfunction
+
+function! visasterisk#grep_curr(pat) abort
+    call visasterisk#grep(a:pat, misc#curr_dir())
+endfunction
+
+function! visasterisk#grep_higher(...) abort
+    if a:0
+        let l:pat = a:1
+    else
+        let l:pat = get(g:,  'visasterisk_last_pat')
+        if empty(l:pat)
+            echom "don't know what to grep for ☹"
+            return
+        endif
+    endif
+    let l:last_dir = get(g:, 'visasterisk_last_dir', misc#curr_dir())
+    call visasterisk#grep(l:pat, fnamemodify(l:last_dir, ':h'))
 endfunction
