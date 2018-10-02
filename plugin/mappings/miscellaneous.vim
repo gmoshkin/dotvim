@@ -114,3 +114,9 @@ nnoremap <leader>pc :<C-U>pclose<CR>
 
 nnoremap gx :<c-u>echo pyxeval('hex('.(expand('<cword>')+0).')')<cr>
 vnoremap gx :<c-u>echo pyxeval('hex('.(utils#get_vword()+0).')')<cr>
+
+" j/k move over visible lines (in case of wrapped text) instead of actual lines
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
