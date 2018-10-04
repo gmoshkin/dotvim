@@ -22,9 +22,6 @@ noremap <silent> <S-Right> @='3zl'<CR>
 noremap <S-Up> <C-Y>
 noremap <S-Down> <C-E>
 
-" when jumping to the tag prompt for selection if there are several matches
-nnoremap <silent> <C-]> :<C-U>call utils#save_option_do("ignorecase", "tjump ".expand("<cword>"))<CR>
-
 " resize current window with alt + arrow keys
 noremap <M-Left> <C-W><
 noremap <M-Right> <C-W>>
@@ -75,21 +72,6 @@ nnoremap Y y$
 " this one saves a like a billion years worth of time spent on pressing shift
 noremap ; :
 noremap : ;
-
-" case (in)sensitive searching with ctrl + / and ctrl + ?
-if &ignorecase == 1
-    nnoremap <C-_> /\C
-    nnoremap <C-?> ?\C
-else
-    nnoremap <C-_> /\c
-    nnoremap <C-?> ?\c
-endif
-
-" * and # should always search case sensitive
-if &ignorecase == 1
-    nnoremap * /\C\<<C-R><C-W>\><CR>
-    nnoremap # ?\C\<<C-R><C-W>\><CR>
-endif
 
 " very magical searching with alt + / and alt + ?
 nnoremap <ESC>/ /\v
