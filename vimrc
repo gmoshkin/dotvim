@@ -95,8 +95,9 @@ Plugin 'luochen1990/rainbow'
 Plugin 'lucapette/vim-textobj-underscore'
 Plugin 'Konfekt/FastFold'
 Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
 if v:version >= 800
-    Plugin 'maralla/completor.vim'
+    " Plugin 'maralla/completor.vim'
 endif
 if has('packages')
     packadd! matchit
@@ -565,6 +566,12 @@ let g:completor_complete_options = 'menuone,noselect'
 """"""""""""""""""""""""""""""""""" ASYNCRUN """""""""""""""""""""""""""""""""""
 "{{{
 command! Make AsyncRun -program=make
+"}}}
+""""""""""""""""""""""""""""""""" YOUCOMPLETEME """"""""""""""""""""""""""""""""
+"{{{
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_key_list_stop_completion = []
 "}}}
 """"""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
