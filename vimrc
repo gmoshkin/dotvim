@@ -569,6 +569,7 @@ command! Make AsyncRun -program=make
 "}}}
 """"""""""""""""""""""""""""""""" YOUCOMPLETEME """"""""""""""""""""""""""""""""
 "{{{
+let g:ycm_python_binary_path='/usr/bin/python3'
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_list_stop_completion = []
