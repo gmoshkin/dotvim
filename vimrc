@@ -65,6 +65,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'calebsmith/vim-lambdify'
 Plugin 'chrisbra/csv.vim'
 " Plugin 'davidhalter/jedi-vim'
+Plugin 'dbeniamine/cheat.sh-vim'
 Plugin 'devjoe/vim-codequery'
 Plugin 'duff/vim-scratch'
 Plugin 'gmoshkin/bufkill.vim'
@@ -261,6 +262,9 @@ if exists('$TMUX') || exists('$SSH_CLIENT') || exists('$SSH_TTY')
     set <xRight>=[1;*C
     set <xLeft>=[1;*D
 endif
+
+" '~' behaves like an operator
+set tildeop
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -475,12 +479,19 @@ augroup END
 """"""""""""""""""""""""""""""" MULTIPLE CURSORS """""""""""""""""""""""""""""""
 "{{{
 let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_start_key = 'g<C-J>'
 let g:multi_cursor_next_key = '<C-J>'
 let g:multi_cursor_prev_key = '<C-K>'
 let g:multi_cursor_skip_key = '<C-L>'
 let g:multi_cursor_quit_key = '<Esc>'
 let g:multi_cursor_exit_from_visual_mode = 1
 let g:multi_cursor_exit_from_insert_mode = 0
+
+let g:multi_cursor_normal_maps = {
+    \ '@': 1, 'F': 1, 'T': 1, '[': 1, '\': 1, ']': 1, '!': 1, 'c': 1, 'd': 1,
+    \ 'f': 1, 'g': 1, 'm': 1, 'q': 1, 'r': 1, 't': 1, 'y': 1, 'z': 1, '<': 1,
+    \ '=': 1, '>': 1
+    \ }
 "}}}
 """"""""""""""""""""""""""""""""" NEOCOMPLETE """"""""""""""""""""""""""""""""""
 "{{{
@@ -581,6 +592,10 @@ let g:local_vimrc = '~/.vim/vimrc-local'
 if filereadable(expand(g:local_vimrc))
     execute "source ".expand(g:local_vimrc)
 endif
+"}}}
+""""""""""""""""""""""""""""""""""" CHEAT.SH """""""""""""""""""""""""""""""""""
+"{{{
+" let g:CheatSheetProviders = ['quickfix', 'syntastic', '']
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
