@@ -105,6 +105,7 @@ if has('packages')
 else
     Plugin 'matchit.zip'
 endif
+Plugin 'vim-perl/vim-perl6'
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Rip-Rip/clang_complete'
@@ -137,9 +138,9 @@ call vundle#end()
 "{{{
 filetype plugin indent on
 
-if (!exists("b:foldmethod_set"))
-    set foldmethod=syntax
-endif
+" if (!exists("b:foldmethod_set"))
+"     set foldmethod=syntax
+" endif
 
 let g:c_space_errors = 1
 
@@ -219,8 +220,9 @@ set wildmenu
 set completeopt-=preview
 
 " Trying out this thing
-set ignorecase
-set smartcase
+" Update: It fucking sucks
+set noignorecase
+set nosmartcase
 
 set virtualedit+=block
 
