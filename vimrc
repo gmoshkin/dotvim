@@ -1,6 +1,25 @@
-"TODO:
-" write a plugin for compiling a single file and running the program in the tmux
-" pane
+"TODO:  write a plugin for compiling a single file and running the program in
+"       the tmux pane
+"TODO:  command to do ":verbose command <CMD>" with "redir => <VAR>", and
+"       jump to declaration of the command
+"TODO:  command to "redir => <VAR> | <CMD> | redir END" some command and open
+"       the output in a "Scratch" buffer
+"    "e.g":
+"function! TabMessage(cmd)
+"   redir => message
+"   silent execute a:cmd
+"   redir END
+"   if empty(message)
+"     echoerr "no output"
+"   else
+"     " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+"     tabnew
+"     setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+"     silent put=message
+"   endif
+" endfunction
+" command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
 "vimrc by gmoshkin
 
 if has("gui_win32")
