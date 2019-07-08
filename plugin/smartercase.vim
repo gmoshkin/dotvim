@@ -20,3 +20,5 @@
 "     nnoremap <C-_> /\c
 "     nnoremap <C-?> ?\c
 " endif
+"
+nnoremap / /\c
