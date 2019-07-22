@@ -100,6 +100,7 @@ Plugin 'idanarye/vim-vebugger'
 Plugin 'jpalardy/vim-slime'
 Plugin 'jrozner/vim-antlr'
 Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/fzf.vim'
 " Plugin 'junegunn/limelight.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kana/vim-textobj-function'
@@ -286,6 +287,9 @@ endif
 
 " '~' behaves like an operator
 set tildeop
+
+" history size
+set history=10000
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
@@ -617,6 +621,10 @@ endif
 """"""""""""""""""""""""""""""""""" CHEAT.SH """""""""""""""""""""""""""""""""""
 "{{{
 " let g:CheatSheetProviders = ['quickfix', 'syntastic', '']
+"}}}
+""""""""""""""""""""""""""""""""""""" PERL6 """"""""""""""""""""""""""""""""""""
+"{{{
+let g:perl6_unicode_abbrevs = 1
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
