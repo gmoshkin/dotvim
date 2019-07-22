@@ -34,7 +34,8 @@ function! windows#open_full_window(...) abort
         if wn != winnr()
             execute (winnr()) . "close"
         endif
-    else
+    elseif winnr('$') == 2 &&
+            \win_screenpos(winnr())[0] != win_screenpos(3 - winnr())[0]
         only
     endif
 endfunction
