@@ -13,5 +13,7 @@ nnoremap <buffer> <silent> <leader>E :<C-U>source %<CR>
 nnoremap <buffer> K <ESC>:help <C-R><C-W><CR>
 vnoremap <buffer> K "hy:help <C-R>h<CR>
 
+nnoremap <buffer> <silent> <C-]> :<C-U>call vimldef#try_goto_def(expand('<cword>'))<CR>
+
 setlocal foldmethod=marker
 let b:foldmethod_set = 1
