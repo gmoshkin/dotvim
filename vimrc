@@ -169,6 +169,8 @@ set cursorline
 set splitright
 "opens new windows to the right from the old ones
 
+set splitbelow
+
 set scrolloff=1
 "number of screen lines to show around the cursor
 
