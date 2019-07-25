@@ -58,7 +58,6 @@ endif
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bohlender/vim-smt2'
 Plugin 'bronson/vim-trailing-whitespace'
 " Plugin 'benmills/vimux'
@@ -398,7 +397,7 @@ let g:tagbar_width = 30
 "}}}
 """"""""""""""""""""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""
 "{{{
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'mine'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
@@ -603,10 +602,6 @@ endif
 """"""""""""""""""""""""""""""""""" CHEAT.SH """""""""""""""""""""""""""""""""""
 "{{{
 " let g:CheatSheetProviders = ['quickfix', 'syntastic', '']
-"}}}
-""""""""""""""""""""""""""""""""""""" PERL6 """"""""""""""""""""""""""""""""""""
-"{{{
-let g:perl6_unicode_abbrevs = 1
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
