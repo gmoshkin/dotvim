@@ -5,8 +5,12 @@ function! s:cmd(file, hashbang) abort
     return a:hashbang[2:].' '.a:file
 endfunction
 
-function! run#run_file() abort
-    let l:cmd = s:cmd(expand('%'), getline(1))
+function! run#run_file(...) abort
+    if a:0 && !empty(a:1)
+        let l:cmd = a:1.' '.expand('%')
+    else
+        let l:cmd = s:cmd(expand('%'), getline(1))
+    endif
     if exists('b:term') && !empty(term_getstatus(b:term))
         let l:win = bufwinnr(b:term)
         if l:win > 0
