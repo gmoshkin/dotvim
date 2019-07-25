@@ -11,6 +11,7 @@ function! run#run_file(...) abort
     else
         let l:cmd = s:cmd(expand('%'), getline(1))
     endif
+    let l:job = term_getjob(b:term)
     if exists('b:term') && !empty(term_getstatus(b:term))
         let l:win = bufwinnr(b:term)
         if l:win > 0
@@ -20,6 +21,9 @@ function! run#run_file(...) abort
         endif
     else
         below new
+    endif
+    if job_info(l:job).status !=# 'run'
+        call job_stop(l:job)
     endif
     let l:term = term_start(l:cmd, {'curwin': v:true})
     wincmd p
