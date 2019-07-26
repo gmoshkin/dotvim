@@ -25,26 +25,33 @@ endfunction
 
 function! run#run_file(...) abort
     let l:origin = bufnr('%')
-    if exists('b:creator')
-        call s:gotobuf(b:creator, 'above')
-    endif
-    if a:0 && !empty(a:1)
-        let l:cmd = a:1.' '.expand('%')
-    else
-        let l:cmd = s:cmd(expand('%'), getline(1))
-    endif
-    let l:creator = bufnr('%')
-    if exists('b:term') && !empty(term_getstatus(b:term))
-        let l:job = term_getjob(b:term)
-        if !empty(job_info(l:job)) && job_info(l:job).status !=# 'run'
-            call job_stop(l:job)
+    if exists('b:creator') && !exists('b:term')
+        let l:creator = b:creator
+    elseif !exists('b:creator')
+        let l:creator = bufnr('%')
+        if exists('b:term') && !empty(term_getstatus(b:term))
+            let l:job = term_getjob(b:term)
+            if !empty(job_info(l:job)) && job_info(l:job).status !=# 'run'
+                call job_stop(l:job)
+            endif
+            call s:gotobuf(b:term, 'below')
+        elseif exists('b:term') && empty(term_getstatus(b:term))
+            unlet b:term
+            below new
+        else
+            below new
         endif
-        call s:gotobuf(b:term, 'below')
     else
-        below new
+        echoerr 'WHAT'
+    endif
+    let l:filename = bufname(l:creator)
+    if a:0 && !empty(a:1)
+        let l:cmd = a:1.' '.l:filename
+    else
+        let l:cmd = s:cmd(l:filename, getbufline(l:creator, 1)[0])
     endif
     let l:term = term_start(l:cmd, {'curwin': v:true})
     call setbufvar(l:term, 'creator', l:creator)
+    call setbufvar(l:creator, 'term', l:term)
     call s:gotobuf(l:origin)
-    let b:term = l:term
 endfunction
