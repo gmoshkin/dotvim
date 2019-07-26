@@ -41,3 +41,8 @@ command! -bang -nargs=0 RAckFromSearch AckFromSearch <bang> %:p:h
 
 command! FindConflict /^<<<<<<<\|^=======\|^>>>>>>>
 command! SourceBashrc SlimeSend1 source ~/.bashrc
+
+if has('terminal')
+    command! Gitpush call term_start(['sh', '-c',
+                            \'cd '.FugitiveWorkTree().'; git push'])
+endif
