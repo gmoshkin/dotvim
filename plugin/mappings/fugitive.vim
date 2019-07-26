@@ -2,7 +2,7 @@ noremap <leader>gb :<C-U>Gblame<CR>
 noremap <leader>gcc :<C-U>above Gcommit<CR>
 noremap <leader>gca :<C-U>above Gcommit --amend<CR>
 " Mnemonic Git Push Up/Pull Down
-noremap <leader>gpu :<C-U>Gpush<CR>
+noremap <leader>gpu :<C-U>Gitpush<CR>
 noremap <leader>gpd :<C-U>Gpull<CR>
 " The action is related to pushing so the prefix is the same
 noremap <leader>gpr :<C-U>Git review<CR>
