@@ -24,6 +24,8 @@ function! s:gotobuf(bufnr, ...) abort
 endfunction
 
 function! run#run_file(...) abort
+    " TODO: fuck me in the ass the terminals are left with dead jobs after I
+    " kill em, those buffers should be wiped somehow
     let l:origin = bufnr('%')
     if exists('b:creator') && !exists('b:term')
         let l:creator = b:creator
@@ -31,8 +33,12 @@ function! run#run_file(...) abort
         let l:creator = bufnr('%')
         if exists('b:term') && !empty(term_getstatus(b:term))
             let l:job = term_getjob(b:term)
-            if !empty(job_info(l:job)) && job_info(l:job).status !=# 'run'
+            if !empty(job_info(l:job)) && job_info(l:job).status ==# 'run'
                 call job_stop(l:job)
+                if job_info(l:job).status ==# 'run'
+                    echom 'killing job '.l:job
+                    call job_stop(l:job, 'kill')
+                endif
             endif
             call s:gotobuf(b:term, 'below')
         elseif exists('b:term') && empty(term_getstatus(b:term))
