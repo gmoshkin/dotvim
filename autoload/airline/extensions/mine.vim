@@ -11,19 +11,31 @@ function! airline#extensions#mine#apply(...)
         call a:1.add_section('airline_b', '')
         call a:1.add_section('airline_term', l:s.s:termname())
         call a:1.split()
-        call a:1.add_section('airline_x', s:job_info().tty_out.l:s)
-        call a:1.add_section('airline_y', l:s.'%{airline#extensions#mine#pid_or_dead()}'.l:s)
+        call a:1.add_section('airline_x', s:tty())
+        call a:1.add_section('airline_y', l:s.'%{airline#extensions#mine#pid_or_dead()}')
         call a:1.add_section('airline_z', l:s.'%#__accent_bold#%l/%L :%3v'.l:s)
         return 1
     endif
 endfunction
 
-function! s:job_info()
-    return job_info(term_getjob(bufnr('%')))
+function! s:job()
+    return term_getjob(bufnr('%'))
+endfunction
+
+function! s:tty()
+    let l:job = s:job()
+    if empty(l:job)
+        return ''
+    endif
+    return job_info(l:job).tty_out
 endfunction
 
 function! airline#extensions#mine#pid_or_dead()
-    let l:job_info = job_info(term_getjob(bufnr('%')))
+    let l:job = s:job()
+    if empty(l:job)
+        return ''
+    endif
+    let l:job_info = job_info(l:job)
     if l:job_info.status ==# 'run'
         return l:job_info.process
     else
