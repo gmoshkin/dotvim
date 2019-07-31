@@ -4,42 +4,44 @@ scriptencoding utf-8
 
 function! airline#extensions#mine#apply(...)
     if &buftype == 'terminal' || bufname('%')[0] == '!'
-        let l:s = g:airline_symbols.space
-
         let name=get(g:airline_mode_map, 't', 't')
-        call a:1.add_section('airline_a', l:s.name.l:s)
+        call a:1.add_section('airline_a', ' '.name.' ')
         call a:1.add_section('airline_b', '')
-        call a:1.add_section('airline_term', l:s.s:termname())
+        call a:1.add_section('airline_term', ' '.s:termname())
         call a:1.split()
-        call a:1.add_section('airline_x', s:tty())
-        call a:1.add_section('airline_y', l:s.'%{airline#extensions#mine#pid_or_dead()}')
-        call a:1.add_section('airline_z', l:s.'%#__accent_bold#%l/%L :%3v'.l:s)
+        let l:tty = s:tty()
+        call a:1.add_section('airline_x', s:tty().' ')
+        call a:1.add_section('airline_y', '%{airline#extensions#mine#pid_or_dead()}')
+        call a:1.add_section('airline_z', ' '.'%#__accent_bold#%l/%L :%3v'.' ')
         return 1
     endif
 endfunction
 
-function! s:job()
-    return term_getjob(bufnr('%'))
+function! s:job_info()
+    try
+        return job_info(term_getjob(bufnr('%')))
+    catch //
+        return 0
+    endtry
 endfunction
 
 function! s:tty()
-    let l:job = s:job()
-    if empty(l:job)
+    let l:job_info = s:job_info()
+    if empty(l:job_info)
         return ''
     endif
-    return job_info(l:job).tty_out
+    return l:job_info.tty_out
 endfunction
 
 function! airline#extensions#mine#pid_or_dead()
-    let l:job = s:job()
-    if empty(l:job)
+    let l:job_info = s:job_info()
+    if empty(l:job_info)
         return ''
     endif
-    let l:job_info = job_info(l:job)
     if l:job_info.status ==# 'run'
-        return l:job_info.process
+        return ' '.l:job_info.process.' '
     else
-        return l:job_info.status
+        return ' '.l:job_info.status.' '
     endif
 endfunction
 
