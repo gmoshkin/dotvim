@@ -24,8 +24,6 @@ function! s:gotobuf(bufnr, ...) abort
 endfunction
 
 function! run#run_file(...) abort
-    " TODO: fuck me in the ass the terminals are left with dead jobs after I
-    " kill em, those buffers should be wiped somehow
     let l:origin = bufnr('%')
     if exists('b:creator') && !exists('b:term')
         let l:creator = b:creator
@@ -54,6 +52,10 @@ function! run#run_file(...) abort
     if a:0 && !empty(a:1)
         let l:cmd = a:1.' '.l:filename
     else
+        " TODO: add shit for running
+        " * "cargo build" if it's "rust" and there's "Cargo.toml" somewhere up
+        " * "rustc" and then run the executable if no "Cargo.toml"
+        " * "clang++" for c++ etc....
         let l:cmd = s:cmd(l:filename, getbufline(l:creator, 1)[0])
     endif
     let l:term = term_start(l:cmd, {'curwin': v:true})
