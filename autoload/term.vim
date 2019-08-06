@@ -23,7 +23,7 @@ function! term#sendkeys(keys) abort
 endfunction
 
 function! term#job(...) abort
-    let l:term = term#get(a:000)
+    let l:term = term#get(a:0 ? a:1 : v:none)
     if empty(l:term)
         return v:none
     endif
@@ -31,8 +31,8 @@ function! term#job(...) abort
 endfunction
 
 function! term#job_info(...) abort
-    let l:job = term#job(a:000)
-    if empty(l:job)
+    let l:job = term#job(a:0 ? a:1 : v:none)
+    if type(l:job) != v:t_job
         return v:none
     endif
     return job_info(l:job)

@@ -23,6 +23,14 @@ function! s:gotobuf(bufnr, ...) abort
     endif
 endfunction
 
+function! s:kill(job) abort
+    call job_stop(a:job)
+    if job_info(a:job).status ==# 'run'
+        echom 'killing job '.a:job
+        call job_stop(a:job, 'kill')
+    endif
+endfunction
+
 function! run#run_file(...) abort
     let l:origin = bufnr('%')
     if exists('b:creator') && !exists('b:term')
@@ -32,11 +40,7 @@ function! run#run_file(...) abort
         if exists('b:term') && !empty(term_getstatus(b:term))
             let l:job = term_getjob(b:term)
             if !empty(job_info(l:job)) && job_info(l:job).status ==# 'run'
-                call job_stop(l:job)
-                if job_info(l:job).status ==# 'run'
-                    echom 'killing job '.l:job
-                    call job_stop(l:job, 'kill')
-                endif
+                call s:kill(l:job)
             endif
             call s:gotobuf(b:term, 'below')
         elseif exists('b:term') && empty(term_getstatus(b:term))
@@ -62,4 +66,12 @@ function! run#run_file(...) abort
     call setbufvar(l:term, 'creator', l:creator)
     call setbufvar(l:creator, 'term', l:term)
     call s:gotobuf(l:origin)
+endfunction
+
+function! run#restart(...) abort
+    if &bt == 'terminal'
+        let l:old_term = term#get()
+        call s:kill(term#job())
+        call term_start(term#job_info().cmd, {'curwin': v:true})
+    endif
 endfunction
