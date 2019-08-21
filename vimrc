@@ -592,6 +592,10 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_list_stop_completion = []
 let g:ycm_global_ycm_extra_conf = $HOME . '/.vim/ycm_extra_conf.py'
 "}}}
+""""""""""""""""""""""""""""""""""" GITGUTTER """"""""""""""""""""""""""""""""""
+"{{{
+let g:gitgutter_preview_win_location = 'belowright'
+"}}}
 """"""""""""""""""""""""""""""""" LOCAL-CONFIG """""""""""""""""""""""""""""""""
 "{{{
 let g:local_vimrc = '~/.vim/vimrc-local'
