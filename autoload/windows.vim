@@ -27,7 +27,7 @@ function! windows#exec_in_window(cmd, ...) abort
 endfunction
 
 function! windows#open_full_window(...) abort
-    execute join(a:000, " ")
+    execute join(['above'] + a:000, " ")
     if winnr('$') > 2
         let wn = winnr()
         wincmd j
