@@ -79,8 +79,8 @@ Plug 'idanarye/vim-vebugger'
 Plug 'jpalardy/vim-slime'
 Plug 'jrozner/vim-antlr'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug '~/.fzf'
 " Plug 'junegunn/limelight.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kana/vim-textobj-function'
@@ -96,7 +96,7 @@ Plug 'luochen1990/rainbow'
 Plug 'lucapette/vim-textobj-underscore'
 Plug 'Konfekt/FastFold'
 Plug 'majutsushi/tagbar'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
 if v:version >= 800
     " Plug 'maralla/completor.vim'
 endif
