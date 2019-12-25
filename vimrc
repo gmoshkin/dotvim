@@ -80,7 +80,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'jrozner/vim-antlr'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf.vim'
-Plug '~/.fzf'
+Plug '~/.fzf' " on bop I just linked ~/.vim/plugin/fzf.vim -> ~/.fzf/plugin/fzf.vim
 " Plug 'junegunn/limelight.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kana/vim-textobj-function'
