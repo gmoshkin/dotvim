@@ -21,7 +21,12 @@ function! vimldef#func2qf(func) abort
     try
         call vimldef#set_qf(execute('verbose function '.l:func))
     catch /Undefined/
-        call vimldef#try_find_autoload(l:func)
+        try
+            call vimldef#try_find_autoload(l:func)
+        catch /Undefined/
+            call vimldef#set_qf(execute('verbose function /'.l:func.'/'))
+            " TODO: find definition in current file
+        endtry
     endtry
     cfirst
 endfunction
