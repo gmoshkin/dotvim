@@ -34,12 +34,14 @@ function! visasterisk#grep_higher(...) abort
     if a:0
         let l:pat = a:1
     else
-        let l:pat = get(g:,  'visasterisk_last_pat')
+        let l:pat = get(g:, 'visasterisk_last_pat')
         if empty(l:pat)
             echom "don't know what to grep for ☹"
             return
         endif
     endif
     let l:last_dir = get(g:, 'visasterisk_last_dir', misc#curr_dir())
-    call visasterisk#grep(l:pat, fnamemodify(l:last_dir, ':h'))
+    let l:parent_dir = fnamemodify(l:last_dir, ':h')
+    echo 'Grepping in '.l:parent_dir.'...'
+    call visasterisk#grep(l:pat, l:parent_dir)
 endfunction
