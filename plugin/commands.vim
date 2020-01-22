@@ -46,3 +46,5 @@ if has('terminal')
     command! Gitpush call term_start(['sh', '-c',
                             \'cd '.FugitiveWorkTree().'; git push'])
 endif
+
+command SubCppLogicOps %s/\v\C<(and|or|not)>/\={ 'and': '&&', 'or': '||', 'not': '!' }[submatch(1)]/g
