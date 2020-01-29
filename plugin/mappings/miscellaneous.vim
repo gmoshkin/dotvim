@@ -102,3 +102,6 @@ noremap j gj
 noremap gj j
 noremap k gk
 noremap gk k
+
+" thanks to dog457
+vnoremap v iw
