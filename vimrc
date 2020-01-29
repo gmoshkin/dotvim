@@ -608,6 +608,10 @@ endif
 "{{{
 " let g:CheatSheetProviders = ['quickfix', 'syntastic', '']
 "}}}
+""""""""""""""""""""""""""""""""" VIM-SURROUND """""""""""""""""""""""""""""""""
+"{{{
+let g:surround_{char2nr('t')} = "\1template: \1<\r>"
+"}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
     syntax enable
