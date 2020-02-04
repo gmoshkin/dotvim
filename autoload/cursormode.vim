@@ -7,6 +7,7 @@ function! cursormode#set_cursor_mode(mode)
       \ 'n' : '1',
       \ 'i' : '5',
       \ 'r' : '3',
+      \ 'v' : '3',
       \ }
     silent execute '!echo -ne "\e['.g:cursor_modes[a:mode].' q"'
     redraw!
