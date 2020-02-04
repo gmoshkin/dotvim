@@ -55,7 +55,7 @@ Plug 'Shougo/unite.vim'
 if v:version > 703 && (has("python") && g:has_python || has("python3")) && !g:its_a_pi
     Plug 'SirVer/ultisnips'
 endif
-Plug 'altercation/vim-colors-solarized'
+Plug 'gmoshkin/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'bohlender/vim-smt2'
@@ -272,6 +272,9 @@ set tildeop
 
 " history size
 set history=10000
+
+let &t_TI = "\<Esc>[>4;2m"
+let &t_TE = "\<Esc>[>4;m"
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
