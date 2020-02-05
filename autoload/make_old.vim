@@ -1,7 +1,7 @@
 function make_old#output_handler(chan, output) abort
     eval g:make_old_output->add(a:output)
     let g:make_old_output_lines += a:output->count("\n") + 1
-    echo g:make_old_cmd .. ': ' .. g:make_old_output_lines .. '...'
+    echo g:make_old_cmd .. ': ' .. g:make_old_output_lines .. ': ' .. a:output->split("\n")[-1]
 endfunction
 
 function make_old#close_handler(chan) abort
