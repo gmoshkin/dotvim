@@ -17,3 +17,8 @@ function! Type2Str(type) abort
         \ v:t_blob    : 'blob',
     \ }->get(a:type, 'excuse me?')
 endfunction
+
+function! Debug(obj) abort
+    let l:obj_str = a:obj->type() == v:t_string ? printf("'%s'", a:obj) : a:obj
+    return printf("%s(%s)", a:obj->Type(), l:obj_str)
+endfunction
