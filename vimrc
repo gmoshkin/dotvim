@@ -102,6 +102,7 @@ if v:version >= 800
 endif
 if has('packages')
     packadd! matchit
+    packadd! termdebug
 else
     Plug 'matchit.zip'
 endif
