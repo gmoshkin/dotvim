@@ -273,6 +273,9 @@ set tildeop
 " history size
 set history=10000
 
+set wildignore=*.o,*.ldf
+
+" more complex bindings?
 let &t_TI = "\<Esc>[>4;2m"
 let &t_TE = "\<Esc>[>4;m"
 "}}}
