@@ -50,6 +50,9 @@ vnoremap gY "+Y
 vnoremap gp "+p
 vnoremap gP "+P
 
+" put the yanked thing (not the deleted one)
+xnoremap <ESC>p "0p
+
 " remap the origianl gp and gP commands to <leader>p/P
 " actually, who needs them?
 " noremap <leader>p gp
