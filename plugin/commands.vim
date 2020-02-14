@@ -47,4 +47,8 @@ if has('terminal')
                             \'cd '.FugitiveWorkTree().'; git push'])
 endif
 
-command SubCppLogicOps %s/\v\C<(and|or|not)>/\={ 'and': '&&', 'or': '||', 'not': '!' }[submatch(1)]/g
+command! SubCppLogicOps %s/\v\C<(and|or|not)>/\={ 'and': '&&', 'or': '||', 'not': '!' }[submatch(1)]/g
+
+command! YR YcmRestartServer
+
+command! -nargs=* A call append('.', "<args>")
