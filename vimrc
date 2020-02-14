@@ -108,6 +108,7 @@ else
 endif
 Plug 'vim-perl/vim-perl6'
 Plug 'mileszs/ack.vim'
+Plug 'mg979/vim-visual-multi'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
@@ -115,7 +116,7 @@ Plug 'sheerun/vim-polyglot'
 " Plug 'vim-syntastic/syntastic'
 Plug 'sgur/vim-textobj-parameter'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 " Plug 'terryma/vim-expand-region'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
@@ -620,6 +621,21 @@ endif
 "{{{
 let g:surround_{char2nr('t')} = "\1template: \1<\r>"
 let g:surround_{char2nr('s')} = "\1struct: \1{\r}"
+"}}}
+""""""""""""""""""""""""""""""" VIM-VISUAL-MULTI """""""""""""""""""""""""""""""
+"{{{
+let g:VM_maps = {
+    \ 'Find Under'         : '<c-j>',
+    \ 'Find Subword Under' : '<c-j>',
+    \ 'Add Cursor Down'    : '<esc><c-j>',
+    \ 'Add Cursor Up'      : '<esc><c-k>',
+    \ 'Skip Region'        : '<c-l>',
+    \ 'Remove Region'      : '<c-h>',
+    \ 'Undo'               : 'u',
+    \ 'Redo'               : '<c-r>',
+    \ 'Visual Cursors'     : '<c-j>',
+\ }
+let g:VM_exit_on_1_cursor_left = v:true
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
