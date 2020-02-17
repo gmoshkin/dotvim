@@ -89,9 +89,6 @@ Plug 'kana/vim-textobj-user'
 if (has("python") && g:has_python || has("python3"))
     Plug 'klen/python-mode'
 endif
-Plug 'libclang-vim/libclang-vim'
-Plug 'libclang-vim/vim-textobj-function-clang'
-Plug 'libclang-vim/vim-textobj-clang'
 Plug 'luochen1990/rainbow'
 Plug 'lucapette/vim-textobj-underscore'
 Plug 'Konfekt/FastFold'
