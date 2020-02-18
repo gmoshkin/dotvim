@@ -106,6 +106,7 @@ endif
 Plug 'vim-perl/vim-perl6'
 Plug 'mileszs/ack.vim'
 Plug 'mg979/vim-visual-multi'
+Plug 'mg979/gv.vim', #{ branch: 'mg979' }
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
@@ -631,6 +632,7 @@ let g:VM_maps = {
     \ 'Undo'               : 'u',
     \ 'Redo'               : '<c-r>',
     \ 'Visual Cursors'     : '<c-j>',
+    \ 'Align'              : '\t',
 \ }
 let g:VM_exit_on_1_cursor_left = v:true
 "}}}
