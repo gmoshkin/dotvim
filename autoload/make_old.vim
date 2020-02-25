@@ -8,10 +8,11 @@ endfunction
 
 function make_old#close_handler(chan) abort
     if g:make_old_job->job_info().exitval
-        cexpr g:make_old_output->join("\n")
+        echo g:make_old_cmd .. ': ' .. g:make_old_output_lines .. ' failed'
     else
         echo g:make_old_cmd .. ': ' .. g:make_old_output_lines .. ' finished ok'
     endif
+    cexpr g:make_old_output->join("\n")
 endfunction
 
 function make_old#run_make(cmd, cwd) abort

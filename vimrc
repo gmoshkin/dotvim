@@ -631,7 +631,7 @@ let g:VM_maps = {
     \ 'Remove Region'      : '<c-h>',
     \ 'Undo'               : 'u',
     \ 'Redo'               : '<c-r>',
-    \ 'Visual Cursors'     : '<c-j>',
+    \ 'Visual Cursors'     : '<c-s>',
     \ 'Align'              : '\t',
 \ }
 let g:VM_exit_on_1_cursor_left = v:true
