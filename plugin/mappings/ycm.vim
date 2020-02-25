@@ -9,4 +9,5 @@ nnoremap <leader>yg :<C-U>YcmCompleter GoTo<CR>
 nnoremap <leader>yI :<C-U>YcmCompleter GoToImprecise<CR>
 nnoremap <leader>yi :<C-U>YcmCompleter GoToInclude<CR>
 nnoremap <leader>yr :<C-U>YcmCompleter GoToReferences<CR>
+nnoremap <leader>yf :<C-U>YcmCompleter FixIt<CR>
 xnoremap <leader>yf :YcmCompleter FixIt<CR>
