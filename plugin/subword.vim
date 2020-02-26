@@ -1,3 +1,6 @@
-nnoremap <ESC>b :<C-U>call subword#subword_move("b")<CR>
-nnoremap <ESC>w :<C-U>call subword#subword_move("w")<CR>
-nnoremap <ESC>e :<C-U>call subword#subword_move("e")<CR>
+nnoremap <silent> <ESC>b :<C-U>call subword#subword_move("b", 'n')<CR>
+nnoremap <silent> <ESC>w :<C-U>call subword#subword_move("w", 'n')<CR>
+nnoremap <silent> <ESC>e :<C-U>call subword#subword_move("e", 'n')<CR>
+vnoremap <silent> <ESC>b :<C-U>call subword#subword_move("b", 'v')<CR>
+vnoremap <silent> <ESC>w :<C-U>call subword#subword_move("w", 'v')<CR>
+vnoremap <silent> <ESC>e :<C-U>call subword#subword_move("e", 'v')<CR>
