@@ -633,6 +633,7 @@ let g:VM_maps = {
     \ 'Redo'               : '<c-r>',
     \ 'Visual Cursors'     : '<c-s>',
     \ 'Align'              : '\t',
+    \ 'Select Operator'    : 'v',
 \ }
 let g:VM_exit_on_1_cursor_left = v:true
 "}}}
