@@ -1,10 +1,11 @@
 cnoremap <C-A> <Home>
+cnoremap <C-X><C-A> <C-A>
 cnoremap <C-B> <Space><BS><Left>
-cnoremap <C-Z> <S-Left>
+cnoremap <C-X><C-B> <C-B>
 cnoremap <C-F> <Space><BS><Right>
-cnoremap <C-X> <S-Right>
-cnoremap <C-G> <C-F>
+cnoremap <C-X><C-F> <C-F>
 cnoremap <C-D> <Del>
+cnoremap <C-X><C-D> <C-D>
 cnoremap <ESC>b <C-Left>
 cnoremap <ESC>f <C-Right>
 
