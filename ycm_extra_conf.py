@@ -111,3 +111,6 @@ def FlagsForFile( filename, **kwargs ):
     'flags': list( compilation_info.compiler_flags_ ),
     'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
   }
+
+def Settings(**kwargs):
+  return { 'flags': flags }
