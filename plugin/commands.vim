@@ -50,5 +50,7 @@ endif
 command! SubCppLogicOps %s/\v\C<(and|or|not)>/\={ 'and': '&&', 'or': '||', 'not': '!' }[submatch(1)]/g
 
 command! YR YcmRestartServer
+command! YD YcmDiags
+command! YF YcmForceCompileAndDiagnostics
 
 command! -nargs=* A call append('.', "<args>")
