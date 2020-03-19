@@ -26,3 +26,8 @@ function! utils#get_vword() abort
     endif
     return getline(line("'<"))[col("'<") - 1:col("'>") - 1]
 endfunction
+
+function! utils#ceil(v) abort
+    let l:f = float2nr(a:v)
+    return l:f + (a:v - l:f > 0)
+endfunction

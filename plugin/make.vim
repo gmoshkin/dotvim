@@ -21,3 +21,7 @@ function! s:parse_args_and_run(...) abort
     call make_old#run_make(l:cmd, l:cwd)
 endfunction
 command! -nargs=* Build call s:parse_args_and_run(<f-args>)
+
+command! -nargs=* TestDiff      call s:parse_args_and_run("-cd", "build", "make", "-j" .. utils#ceil(system('nproc') * 0.6), "ut-ed-diff", "&&", "./bin/ut-ed-diff")
+command! -nargs=* BuildFatty    call s:parse_args_and_run("-cd", "build", "make", "-j" .. utils#ceil(system('nproc') * 0.6), "fatty")
+command! -nargs=* BuildDiffTool call s:parse_args_and_run("-cd", "build", "make", "-j" .. utils#ceil(system('nproc') * 0.6), "ed-diff-tool")
