@@ -26,19 +26,27 @@ function! s:n_jobs() abort
     return +system('nproc')
 endfunction
 
-command! -nargs=* TestDiff          call s:parse_args_and_run("-cd", "build", "make", "-j" .. s:n_jobs(), "ed-diff-ut", "&&", "./bin/ed-diff-ut")
-command! -nargs=* BuildUTDiff       call s:parse_args_and_run("-cd", "build", "make", "-j" .. s:n_jobs(), "ed-diff-ut")
-command! -nargs=* BuildFatty        call s:parse_args_and_run("-cd", "build", "make", "-j" .. s:n_jobs(), "fatty")
-command! -nargs=* BuildDiffTool     call s:parse_args_and_run("-cd", "build", "make", "-j" .. s:n_jobs(), "ed-diff-tool")
-command! -nargs=* BuildAll          call s:parse_args_and_run("-cd", "build", "make", "-j" .. s:n_jobs())
-command! -nargs=* TestRelDiff       call s:parse_args_and_run("-cd", "build-rel", "make", "-j" .. s:n_jobs(), "ed-diff-ut", "&&", "./bin/ed-diff-ut")
-command! -nargs=* BuildRelUTDiff    call s:parse_args_and_run("-cd", "build-rel", "make", "-j" .. s:n_jobs(), "ed-diff-ut")
-command! -nargs=* BuildRelFatty     call s:parse_args_and_run("-cd", "build-rel", "make", "-j" .. s:n_jobs(), "fatty")
-command! -nargs=* BuildRelDiffTool  call s:parse_args_and_run("-cd", "build-rel", "make", "-j" .. s:n_jobs(), "ed-diff-tool")
-command! -nargs=* BuildRelAll       call s:parse_args_and_run("-cd", "build-rel", "make", "-j" .. s:n_jobs())
-command! -nargs=* TestDRelDiff      call s:parse_args_and_run("-cd", "build-rel-deb", "make", "-j" .. s:n_jobs(), "ed-diff-ut", "&&", "./bin/ed-diff-ut")
-command! -nargs=* BuildDRelUTDiff   call s:parse_args_and_run("-cd", "build-rel-deb", "make", "-j" .. s:n_jobs(), "ed-diff-ut")
-command! -nargs=* BuildDRelFatty    call s:parse_args_and_run("-cd", "build-rel-deb", "make", "-j" .. s:n_jobs(), "fatty")
-command! -nargs=* BuildDRelDiffTool call s:parse_args_and_run("-cd", "build-rel-deb", "make", "-j" .. s:n_jobs(), "ed-diff-tool")
-command! -nargs=* BuildDRelAll      call s:parse_args_and_run("-cd", "build-rel-deb", "make", "-j" .. s:n_jobs())
+function! s:build_target_in_dir(dir, target) abort
+    call s:parse_args_and_run("-cd", a:dir, "make", "-j" .. s:n_jobs(), a:target)
+endfunction
+
+function! s:build_target_in_dir_and_run(dir, target, cmd) abort
+    call s:parse_args_and_run("-cd", a:dir, "make", "-j" .. s:n_jobs(), a:target, "&&", a:cmd)
+endfunction
+
+command! -nargs=* TestDiff          call s:build_target_in_dir_and_run("build", "ed-diff-ut", "./bin/ed-diff-ut")
+command! -nargs=* BuildUTDiff       call s:build_target_in_dir("build", "ed-diff-ut")
+command! -nargs=* BuildFatty        call s:build_target_in_dir("build", "fatty")
+command! -nargs=* BuildDiffTool     call s:build_target_in_dir("build", "ed-diff-tool")
+command! -nargs=* BuildAll          call s:build_target_in_dir("build", "all")
+command! -nargs=* TestRelDiff       call s:build_target_in_dir_and_run("build-rel", "ed-diff-ut", "./bin/ed-diff-ut")
+command! -nargs=* BuildRelUTDiff    call s:build_target_in_dir("build-rel", "ed-diff-ut")
+command! -nargs=* BuildRelFatty     call s:build_target_in_dir("build-rel", "fatty")
+command! -nargs=* BuildRelDiffTool  call s:build_target_in_dir("build-rel", "ed-diff-tool")
+command! -nargs=* BuildRelAll       call s:build_target_in_dir("build-rel", "all")
+command! -nargs=* TestDRelDiff      call s:build_target_in_dir_and_run("build-rel-deb", "ed-diff-ut", "./bin/ed-diff-ut")
+command! -nargs=* BuildDRelUTDiff   call s:build_target_in_dir("build-rel-deb", "ed-diff-ut")
+command! -nargs=* BuildDRelFatty    call s:build_target_in_dir("build-rel-deb", "fatty")
+command! -nargs=* BuildDRelDiffTool call s:build_target_in_dir("build-rel-deb", "ed-diff-tool")
+command! -nargs=* BuildDRelAll      call s:build_target_in_dir("build-rel-deb", "all")
 command! -nargs=* Tidy              call s:parse_args_and_run("clang-tidy", "-p" , "build", expand('%:p'))
