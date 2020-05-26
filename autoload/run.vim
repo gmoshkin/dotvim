@@ -60,9 +60,14 @@ function! run#run_file(...) abort
         " * "cargo build" if it's "rust" and there's "Cargo.toml" somewhere up
         " * "rustc" and then run the executable if no "Cargo.toml"
         " * "clang++" for c++ etc....
-        let l:cmd = s:cmd(l:filename, getbufline(l:creator, 1)[0])
+        if getbufvar(l:creator, '&ft') == 'cpp'
+            let l:exe = fnamemodify(l:filename, ':r')
+            let l:cmd = printf('clang++ -std=c++2a %s -o %s && %s; echo "exit status: $?"', l:filename, l:exe, l:exe)
+        else
+            let l:cmd = s:cmd(l:filename, getbufline(l:creator, 1)[0])
+        endif
     endif
-    let l:term = term_start(l:cmd, {'curwin': v:true})
+    let l:term = term_start(['sh', '-c', l:cmd], {'curwin': v:true})
     call setbufvar(l:term, 'creator', l:creator)
     call setbufvar(l:creator, 'term', l:term)
     call s:gotobuf(l:origin)
