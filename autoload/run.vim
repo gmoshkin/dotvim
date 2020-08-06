@@ -31,6 +31,13 @@ function! s:kill(job) abort
     endif
 endfunction
 
+function! run#compiled(filename, ft) abort
+    let l:exe = fnamemodify(a:filename, ':r')
+    let l:compile = printf(g:run_compiled[a:ft], a:filename, l:exe)
+    let l:run = printf('%s; echo "exit status: $?"', l:exe)
+    return l:compile .. ' && ' .. l:run
+endfunction
+
 function! run#run_file(...) abort
     let l:origin = bufnr('%')
     if exists('b:creator') && !exists('b:term')
@@ -60,9 +67,9 @@ function! run#run_file(...) abort
         " * "cargo build" if it's "rust" and there's "Cargo.toml" somewhere up
         " * "rustc" and then run the executable if no "Cargo.toml"
         " * "clang++" for c++ etc....
-        if getbufvar(l:creator, '&ft') == 'cpp'
-            let l:exe = fnamemodify(l:filename, ':r')
-            let l:cmd = printf('clang++ -std=c++2a %s -o %s && %s; echo "exit status: $?"', l:filename, l:exe, l:exe)
+        let l:buf_ft = getbufvar(l:creator, '&ft')
+        if index(keys(get(g:, 'run_compiled', {})), l:buf_ft) >= 0
+            let l:cmd = run#compiled(l:filename, l:buf_ft)
         else
             let l:cmd = s:cmd(l:filename, getbufline(l:creator, 1)[0])
         endif

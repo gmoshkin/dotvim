@@ -642,6 +642,14 @@ let g:VM_maps = {
 \ }
 let g:VM_exit_on_1_cursor_left = v:true
 "}}}
+"""""""""""""""""""""""""""""""""""" RUN """""""""""""""""""""""""""""""""""""""
+"{{{
+let g:run_compiled = #{
+\   c:    'clang %s -o %s',
+\   cpp:  'clang++ -std=c++2a %s -o %s',
+\   rust: 'rustc %s -o %s',
+\}
+"}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
     syntax enable
