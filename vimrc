@@ -654,3 +654,6 @@ let g:run_compiled = #{
 if !g:its_a_pi
     syntax enable
 endif
+
+" Does neovim have this kind of shit?
+highlight! link SignColumn LineNr
