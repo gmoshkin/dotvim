@@ -93,7 +93,7 @@ Plug 'luochen1990/rainbow'
 Plug 'lucapette/vim-textobj-underscore'
 Plug 'Konfekt/FastFold'
 Plug 'majutsushi/tagbar'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
+" Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
 if v:version >= 800
     " Plug 'maralla/completor.vim'
 endif
@@ -108,6 +108,7 @@ Plug 'mileszs/ack.vim'
 Plug 'mg979/vim-visual-multi'
 Plug 'mg979/gv.vim', #{ branch: 'mg979' }
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'neoclide/coc.nvim', #{ branch: 'release' }
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -604,6 +605,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_key_list_stop_completion = []
 let g:ycm_global_ycm_extra_conf = $HOME . '/.vim/ycm_extra_conf.py'
 let g:ycm_use_clangd = 1
+let g:ycm_open_loclist_on_ycm_diags = v:false
 let g:ycm_auto_hover = ''
 "}}}
 """"""""""""""""""""""""""""""""""" GITGUTTER """"""""""""""""""""""""""""""""""
