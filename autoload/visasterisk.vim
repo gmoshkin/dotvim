@@ -1,8 +1,12 @@
 " Stolen from http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
 " TODO: there's a bug with raw mode.  since we're using @/ to return an unescaped
 " search string, vim's search highlight will be wrong.  Refactor plz.
-function! visasterisk#escape_pat(pat) abort
-    let l:pat = substitute(a:pat, '\_s\+', '\\_s\\+', 'g')
+function! visasterisk#escape_pat(pat, ...) abort
+    if a:0 && a:1
+        let l:pat = substitute(a:pat, '\_s\+', '\\_s\\+', 'g')
+    else
+        let l:pat = substitute(a:pat, '\_s\+', '\\_s*', 'g')
+    endif
     let l:pat = substitute(l:pat, '\[', '\\[', 'g')
     let l:pat = substitute(l:pat, '\~', '\\~', 'g')
     return l:pat
@@ -14,7 +18,8 @@ function! visasterisk#set_pat(cmdtype, ...) abort
     if !a:0 || a:1 != 'raw'
         let @" = escape(@", a:cmdtype.'\*')
     endif
-    let @/ = visasterisk#escape_pat(@")
+    let l:keep_space = a:0 && a:1->type() == v:t_bool ? a:1 : v:true
+    let @/ = visasterisk#escape_pat(@", l:keep_space)
     let @" = l:saved_reg
 endfunction
 
