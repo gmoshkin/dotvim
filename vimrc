@@ -106,9 +106,9 @@ endif
 Plug 'vim-perl/vim-perl6'
 Plug 'mileszs/ack.vim'
 Plug 'mg979/vim-visual-multi'
-Plug 'mg979/gv.vim', #{ branch: 'mg979' }
+Plug 'mg979/gv.vim', { 'branch': 'mg979' }
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'neoclide/coc.nvim', #{ branch: 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -281,8 +281,12 @@ let &t_TI = "\<Esc>[>4;2m"
 let &t_TE = "\<Esc>[>4;m"
 
 " RIP grep
-if system('hash rg')->len() == 0
+if len(system('hash rg')) == 0
     let &grepprg = 'rg --vimgrep $*'
+endif
+
+if exists('&inccommand')
+    set inccommand=nosplit
 endif
 "}}}
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
@@ -647,10 +651,10 @@ let g:VM_exit_on_1_cursor_left = v:true
 "}}}
 """""""""""""""""""""""""""""""""""" RUN """""""""""""""""""""""""""""""""""""""
 "{{{
-let g:run_compiled = #{
-\   c:    'clang %s -o %s',
-\   cpp:  'clang++ -std=c++2a %s -o %s',
-\   rust: 'rustc %s -o %s',
+let g:run_compiled = {
+\   'c':    'clang %s -o %s',
+\   'cpp':  'clang++ -std=c++2a %s -o %s',
+\   'rust': 'rustc %s -o %s',
 \}
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
