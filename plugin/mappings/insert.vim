@@ -9,7 +9,7 @@ inoremap <C-E> <C-O>$
 inoremap <C-F> <Right>
 inoremap <S-Tab> <C-D>
 " inoremap <ESC>b <C-O>b
-inoremap <ESC>e <C-O>e
+" inoremap <ESC>e <C-O>e
 " inoremap <ESC>f <C-O>w
 
 inoremap <S-Left> <C-O>3zh

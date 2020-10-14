@@ -46,7 +46,9 @@ endif
 " Plug 'DrawIt'
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'Raimondi/delimitMate'
+if !exists('g:vscode')
+    Plug 'Raimondi/delimitMate'
+endif
 if has("lua") && v:version > 703 && v:version < 800 && !has("win32") && !g:its_a_pi
     Plug 'Shougo/neocomplete.vim'
 endif
@@ -59,14 +61,18 @@ Plug 'gmoshkin/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'bohlender/vim-smt2'
-Plug 'bronson/vim-trailing-whitespace'
+if !exists('g:vscode')
+    Plug 'bronson/vim-trailing-whitespace'
+endif
 " Plug 'benmills/vimux'
 Plug 'calebsmith/vim-lambdify'
 Plug 'chrisbra/csv.vim'
 " Plug 'davidhalter/jedi-vim'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'devjoe/vim-codequery'
-Plug 'gmoshkin/bufkill.vim'
+if !exists('g:vscode')
+    Plug 'gmoshkin/bufkill.vim'
+endif
 Plug 'gmoshkin/vim-kw'
 Plug 'godlygeek/tabular'
 " Plug 'fatih/vim-go'
@@ -105,9 +111,13 @@ else
 endif
 Plug 'vim-perl/vim-perl6'
 Plug 'mileszs/ack.vim'
-Plug 'mg979/vim-visual-multi'
+if !exists('g:vscode')
+    Plug 'mg979/vim-visual-multi'
+endif
 Plug 'mg979/gv.vim', { 'branch': 'mg979' }
-Plug 'nathanaelkane/vim-indent-guides'
+if !exists('g:vscode')
+    Plug 'nathanaelkane/vim-indent-guides'
+endif
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
@@ -234,7 +244,7 @@ set fileencodings=utf-8,cp1251,cp866,default,latin1
 let g:tex_flavor = 'tex'
 
 if has("win32")
-    set langmap=éq,öw,óe,êr,åt,íy,ãu,øi,ùo,çp,õ[,ú],ôa,ûs,âd,àf,ïg,ğh,îj,ëk,äl,æ\\;,ı',ÿz,÷x,ñc,ìv,èb,òn,üm,á\\,,ş.,ÉQ,ÖW,ÓE,ÊR,ÅT,ÍY,ÃU,ØI,ÙO,ÇP,Õ{,Ú},ÔA,ÛS,ÂD,ÀF,ÏG,ĞH,ÎJ,ËK,ÄL,Æ\:,İ\",ßZ,×X,ÑC,ÌV,ÈB,ÒN,ÜM,Á<,Ş>
+    set langmap=ï¿½q,ï¿½w,ï¿½e,ï¿½r,ï¿½t,ï¿½y,ï¿½u,ï¿½i,ï¿½o,ï¿½p,ï¿½[,ï¿½],ï¿½a,ï¿½s,ï¿½d,ï¿½f,ï¿½g,ï¿½h,ï¿½j,ï¿½k,ï¿½l,ï¿½\\;,ï¿½',ï¿½z,ï¿½x,ï¿½c,ï¿½v,ï¿½b,ï¿½n,ï¿½m,ï¿½\\,,ï¿½.,ï¿½Q,ï¿½W,ï¿½E,ï¿½R,ï¿½T,ï¿½Y,ï¿½U,ï¿½I,ï¿½O,ï¿½P,ï¿½{,ï¿½},ï¿½A,ï¿½S,ï¿½D,ï¿½F,ï¿½G,ï¿½H,ï¿½J,ï¿½K,ï¿½L,ï¿½\:,ï¿½\",ï¿½Z,ï¿½X,ï¿½C,ï¿½V,ï¿½B,ï¿½N,ï¿½M,ï¿½<,ï¿½>
 else
     if (&term != 'xterm' && &term != 'xterm-color')
         set langmap=Ğ¹q,Ñ†w,Ñƒe,Ğºr,Ğµt,Ğ½y,Ğ³u,Ñˆi,Ñ‰o,Ğ·p,Ñ…[,ÑŠ],Ñ„a,Ñ‹s,Ğ²d,Ğ°f,Ğ¿g,Ñ€h,Ğ¾j,Ğ»k,Ğ´l,Ğ¶\\;,Ñ',Ñz,Ñ‡x,Ñc,Ğ¼v,Ğ¸b,Ñ‚n,ÑŒm,Ğ±\\,,Ñ.,Ğ™Q,Ğ¦W,Ğ£E,ĞšR,Ğ•T,ĞY,Ğ“U,Ğ¨I,Ğ©O,Ğ—P,Ğ¥{,Ğª},Ğ¤A,Ğ«S,Ğ’D,ĞF,ĞŸG,Ğ H,ĞJ,Ğ›K,Ğ”L,Ğ–\:,Ğ­\",Ğ¯Z,Ğ§X,Ğ¡C,ĞœV,Ğ˜B,Ğ¢N,Ğ¬M,Ğ‘<,Ğ®>
@@ -490,7 +500,7 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 "}}}
 """"""""""""""""""""""""""""""""" INDENT GUIDE """""""""""""""""""""""""""""""""
 "{{{
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = !exists('g:vscode')
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 let g:indent_guides_exclude_filetypes = ['help', 'neoman', 'csv', 'man']

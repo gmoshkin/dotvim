@@ -82,7 +82,9 @@ nnoremap <ESC>/ /\v
 nnoremap <ESC>? ?\v
 
 " open current directory
-nnoremap <silent> - :silent edit <C-R>=empty(misc#curr_file()) ? '.' : misc#curr_dir()<CR><bar>set bufhidden=wipe<CR>
+if !exists('g:vscode')
+    nnoremap <silent> - :silent edit <C-R>=empty(misc#curr_file()) ? '.' : misc#curr_dir()<CR><bar>set bufhidden=wipe<CR>
+endif
 
 " jump to next search match and center screen
 nnoremap <ESC>n nzz

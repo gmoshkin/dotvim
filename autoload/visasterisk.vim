@@ -18,7 +18,7 @@ function! visasterisk#set_pat(cmdtype, ...) abort
     if !a:0 || a:1 != 'raw'
         let @" = escape(@", a:cmdtype.'\*')
     endif
-    let l:keep_space = a:0 && a:1->type() == v:t_bool ? a:1 : v:true
+    let l:keep_space = a:0 && type(a:1) == v:t_bool ? a:1 : v:true
     let @/ = visasterisk#escape_pat(@", l:keep_space)
     let @" = l:saved_reg
 endfunction
