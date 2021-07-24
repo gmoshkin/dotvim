@@ -14,7 +14,9 @@ function s:prepend(key, mapping, mode)
         let mapdict = maparg(a:key, a:mode, 0, 1)
         let mapping = get(mapdict, "rhs", mapping)
     endif
-    execute a:mode."map ".a:key." ".a:mapping.mapping
+    if mapping[:len(a:mapping) - 1] !=# a:mapping
+        execute a:mode."map ".a:key." ".a:mapping.mapping
+    endif
 endfunction
 
 let s:keys = [
