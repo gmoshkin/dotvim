@@ -667,6 +667,8 @@ let g:run_compiled = {
 \   'rust': 'rustc %s -o %s',
 \}
 "}}}
+"""""""""""""""""""""""""""""""""" POLYGLOT """"""""""""""""""""""""""""""""""""
+let g:rust_recommended_style = 0
 """"""""""""""""""""""""""""""""""""" WSL """"""""""""""""""""""""""""""""""""""
 if is_wsl#is_wsl() && 0
     color default
