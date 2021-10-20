@@ -667,6 +667,24 @@ let g:run_compiled = {
 \   'rust': 'rustc %s -o %s',
 \}
 "}}}
+""""""""""""""""""""""""""""""""""""" WSL """"""""""""""""""""""""""""""""""""""
+if is_wsl#is_wsl() && 0
+    color default
+    let g:airline_theme = 'default'
+
+    hi ColorColumn ctermbg=235
+
+    function! SetIndentGuideColors()
+        hi indentguidesodd  ctermbg=235 ctermfg=12
+        hi indentguideseven ctermbg=236 ctermfg=12
+
+        " vim is fucking shit
+        hi ColorColumn ctermbg=235
+    endfunction
+
+    set visualbell
+    set t_vb=
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
     syntax enable
