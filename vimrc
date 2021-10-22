@@ -1,5 +1,7 @@
-"TODO:  write a plugin for compiling a single file and running the program in
+"TODO:
+" * [x] write a plugin for compiling a single file and running the program in
 "       the tmux pane
+" * [ ] port plugin/run.vim for nvim
 
 "vimrc by gmoshkin
 
