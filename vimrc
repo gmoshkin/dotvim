@@ -60,6 +60,7 @@ endif
 Plug 'gmoshkin/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bohlender/vim-smt2'
 if !exists('g:vscode')
     Plug 'bronson/vim-trailing-whitespace'
@@ -128,6 +129,7 @@ Plug 'skywind3000/asyncrun.vim'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'terryma/vim-expand-region'
 Plug 'tommcdo/vim-exchange'
+Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-dispatch'
@@ -670,9 +672,9 @@ let g:run_compiled = {
 """""""""""""""""""""""""""""""""" POLYGLOT """"""""""""""""""""""""""""""""""""
 let g:rust_recommended_style = 0
 """"""""""""""""""""""""""""""""""""" WSL """"""""""""""""""""""""""""""""""""""
-if is_wsl#is_wsl() && 0
-    color default
-    let g:airline_theme = 'default'
+if is_wsl#is_wsl()
+    color codedark
+    let g:airline_theme = 'zenburn'
 
     hi ColorColumn ctermbg=235
 
