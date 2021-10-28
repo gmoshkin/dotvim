@@ -1,4 +1,4 @@
-noremap <leader>gb :<C-U>Gblame<CR>
+noremap <leader>gb :<C-U>Git blame<CR>
 noremap <leader>gcc :<C-U>above Git commit<CR>
 noremap <leader>gca :<C-U>above Git commit --amend<CR>
 " Mnemonic Git Push Up/Pull Down
