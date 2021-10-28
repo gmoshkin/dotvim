@@ -3,6 +3,8 @@
 "       the tmux pane
 " * [ ] port plugin/run.vim for nvim
 " * [ ] make rls work with a single rust file
+" * [ ] alt-* mappings in nvim
+" * [ ] add support for clip.exe on wsl
 
 "vimrc by gmoshkin
 
