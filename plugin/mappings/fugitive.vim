@@ -7,7 +7,11 @@ if exists(':Gitpush')
 else
     noremap <leader>gpu :<C-U>Git push<CR>
 endif
-noremap <leader>gpd :<C-U>Gpull<CR>
+if exists(':Gitpull')
+    noremap <leader>gpd :<C-U>Gpull<CR>
+else
+    noremap <leader>gpd :<C-U>Git pull<CR>
+endif
 " The action is related to pushing so the prefix is the same
 noremap <leader>gpr :<C-U>Git review<CR>
 noremap <leader>gs :<C-U>aboveleft Git!<CR>
