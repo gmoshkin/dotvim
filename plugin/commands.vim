@@ -54,3 +54,5 @@ command! YD YcmDiags
 command! YF YcmForceCompileAndDiagnostics
 
 command! -nargs=* A call append('.', "<args>")
+
+command! RlsRestart CocCommand rls.restart
