@@ -27,7 +27,7 @@ function! visasterisk#grep(pat, dir) abort
     let g:visasterisk_last_pat = a:pat
     let @/ = a:pat
     let g:visasterisk_last_dir = a:dir
-    execute printf('noautocmd vimgrep /\C%s/ %s/**',
+    execute printf('noautocmd grep ' .. "'" .. '%s' .. "'" .. ' %s',
                  \ visasterisk#escape_pat(a:pat), a:dir)
 endfunction
 
