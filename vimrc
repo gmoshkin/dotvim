@@ -677,7 +677,7 @@ let g:run_compiled = {
 """""""""""""""""""""""""""""""""" POLYGLOT """"""""""""""""""""""""""""""""""""
 let g:rust_recommended_style = 0
 """"""""""""""""""""""""""""""""""""" WSL """"""""""""""""""""""""""""""""""""""
-if is_wsl#is_wsl()
+if has('macunix') || is_wsl#is_wsl()
     color codedark
     let g:airline_theme = 'zenburn'
 
