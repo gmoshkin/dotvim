@@ -694,6 +694,32 @@ if has('macunix') || is_wsl#is_wsl()
     set visualbell
     set t_vb=
 endif
+
+if is_wsl#is_wsl()
+    lua << LUA
+        function set_clip(lines, regtype)
+            vim.g.clip_plus = { lines, regtype }
+            local p = io.popen('/mnt/c/Windows/system32/clip.exe', 'w')
+            p:write(table.concat(lines, '\n'))
+            p:close()
+        end
+LUA
+
+    let g:clipboard = {
+    \   'name': 'clip.exe',
+    \   'copy': {
+    \        '+': {
+    \           lines, kind -> luaeval('set_clip(_A[1], _A[2])', [lines, kind])
+    \        },
+    \        '*': { lines, kind -> extend(g:, {'clip_star': [lines, kind]}) },
+    \   },
+    \   'paste': {
+    \        '+': { -> ["not supported ☺"] },
+    \        '*': { -> get(g:, 'clip_star', []) },
+    \   },
+    \   'cache_enabled': v:true,
+    \ }
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
     syntax enable
