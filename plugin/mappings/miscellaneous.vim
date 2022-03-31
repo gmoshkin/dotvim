@@ -1,6 +1,6 @@
 " switching between buffers
-noremap <C-N> <ESC>:bnext<CR>
-noremap <C-P> <ESC>:bprev<CR>
+noremap <silent> <C-N> <ESC>:bnext<CR>
+noremap <silent> <C-P> <ESC>:bprev<CR>
 
 "on ubuntu this one requires the following entry in .bashrc file:
 "stty -ixon
