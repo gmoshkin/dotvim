@@ -2,6 +2,11 @@
 " * [x] write a plugin for compiling a single file and running the program in
 "       the tmux pane
 " * [ ] port plugin/run.vim for nvim
+"   - for hashbang:
+"       - split | terminal <cmd> %
+"   - for rust:
+"       - find Cargo.toml in starting from current file's directory going up
+"       - split | terminal cargo run --manifest-path <Cargo.toml>
 " * [ ] make rls work with a single rust file
 " * [ ] alt-* mappings in nvim
 " * [ ] add support for clip.exe on wsl

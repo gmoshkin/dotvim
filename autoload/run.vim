@@ -87,3 +87,8 @@ function! run#restart(...) abort
         call term_start(term#job_info().cmd, {'curwin': v:true})
     endif
 endfunction
+
+function! run#cargo(...) abort
+    split
+    execute 'terminal cd %:h && cargo ' .. a:000->join(' ')
+endfunction
