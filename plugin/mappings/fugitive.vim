@@ -12,8 +12,8 @@ noremap <leader>gpd :<C-U>Git pull<CR>
 noremap <leader>gpr :<C-U>Git review<CR>
 noremap <leader>gs :<C-U>aboveleft Git!<CR>
 " Mnemonic Git Reserve Save/Pop
-noremap <leader>grs :<C-U>Git stash save<CR>
-noremap <leader>grp :<C-U>Git stash pop<CR>
+" noremap <leader>grs :<C-U>Git stash save<CR>
+" noremap <leader>grp :<C-U>Git stash pop<CR>
 noremap <leader>gu :<C-U>Git reset %:p<CR>:edit<CR>:redraw<CR>:echo 'Git reset '.misc#curr_path()<CR>
 noremap <leader>ge :<C-U>Ge<CR>
 noremap <leader>gw :<C-U>Gwrite<CR>
