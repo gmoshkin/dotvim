@@ -96,7 +96,7 @@ Plug 'idanarye/vim-vebugger'
 Plug 'jpalardy/vim-slime'
 Plug 'jrozner/vim-antlr'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/limelight.vim'
 Plug 'ctrlpvim/ctrlp.vim'
