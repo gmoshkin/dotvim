@@ -62,8 +62,6 @@ endif
 if has("lua") && v:version > 703 && v:version < 800 && !has("win32") && !g:its_a_pi
     Plug 'Shougo/neocomplete.vim'
 endif
-Plug 'Shougo/vimproc.vim'
-Plug 'Shougo/unite.vim'
 if v:version > 703 && (has("python") && g:has_python || has("python3")) && !g:its_a_pi
     Plug 'SirVer/ultisnips'
 endif
@@ -71,34 +69,24 @@ Plug 'gmoshkin/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bohlender/vim-smt2'
+" Plug 'bohlender/vim-smt2'
 if !exists('g:vscode')
     Plug 'bronson/vim-trailing-whitespace'
 endif
-" Plug 'benmills/vimux'
-Plug 'calebsmith/vim-lambdify'
-Plug 'chrisbra/csv.vim'
-" Plug 'davidhalter/jedi-vim'
-Plug 'dbeniamine/cheat.sh-vim'
-Plug 'devjoe/vim-codequery'
+" Plug 'chrisbra/csv.vim'
 if !exists('g:vscode')
     Plug 'gmoshkin/bufkill.vim'
 endif
-Plug 'gmoshkin/vim-kw'
 Plug 'godlygeek/tabular'
 " Plug 'fatih/vim-go'
 if v:version > 703 && !g:its_a_pi
     Plug 'honza/vim-snippets'
 endif
-" Plug 'jeetsukumaran/vim-buffergator'
-Plug 'vim-utils/vim-man'
+" Plug 'vim-utils/vim-man' " doesn't work with neovim
 Plug 'idanarye/vim-vebugger'
-Plug 'jpalardy/vim-slime'
-Plug 'jrozner/vim-antlr'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-" Plug 'junegunn/limelight.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-line'
@@ -108,20 +96,14 @@ if (has("python") && g:has_python || has("python3"))
 endif
 Plug 'luochen1990/rainbow'
 Plug 'lucapette/vim-textobj-underscore'
-Plug 'Konfekt/FastFold'
-Plug 'majutsushi/tagbar'
-" Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
-if v:version >= 800
-    " Plug 'maralla/completor.vim'
-endif
+" Plug 'Konfekt/FastFold'
 if has('packages')
     packadd! matchit
     packadd! termdebug
 else
     Plug 'matchit.zip'
 endif
-Plug 'vim-perl/vim-perl6'
-Plug 'mileszs/ack.vim'
+" Plug 'vim-perl/vim-perl6'
 if !exists('g:vscode')
     Plug 'mg979/vim-visual-multi'
 endif
@@ -130,19 +112,13 @@ if !exists('g:vscode')
     Plug 'nathanaelkane/vim-indent-guides'
 endif
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-" Plug 'vim-syntastic/syntastic'
 Plug 'sgur/vim-textobj-parameter'
-Plug 'skywind3000/asyncrun.vim'
-" Plug 'terryma/vim-multiple-cursors'
-" Plug 'terryma/vim-expand-region'
 Plug 'tommcdo/vim-exchange'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -152,8 +128,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'VundleVim/Vundle.vim'
-" Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
 
 call plug#end()
 "}}}
