@@ -56,3 +56,5 @@ command! YF YcmForceCompileAndDiagnostics
 command! -nargs=* A call append('.', "<args>")
 
 command! RlsRestart CocCommand rls.restart
+
+command! TmuxCaptureLastPane new | %!tmux capture-pane -JpS- -t {bottom-right}
