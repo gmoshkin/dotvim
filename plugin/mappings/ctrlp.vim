@@ -1,5 +1,5 @@
 noremap <leader>fa :<c-u>CtrlPBookmarkDir<CR>
-" noremap <leader>fb :<c-u>CtrlPBuffer<CR>
+noremap <leader>fb :<c-u>CtrlPBuffer<CR>
 noremap <leader>fc :<c-u>CtrlPChange<CR>
 noremap <leader>fd :<c-u>CtrlPBufTag<CR>
 noremap <leader>fD :<c-u>CtrlPBufTagAll<CR>
