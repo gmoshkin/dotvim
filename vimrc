@@ -288,8 +288,11 @@ endif
 """""""""""""""""""""""""""""""""" FUNCTIONS """""""""""""""""""""""""""""""""""
 "{{{
 function! SetIndentGuideColors()
-    hi indentguidesodd  ctermfg=12 ctermbg=0
-    hi indentguideseven ctermfg=12 ctermbg=23
+    hi indentguidesodd  ctermbg=235 ctermfg=12
+    hi indentguideseven ctermbg=236 ctermfg=12
+
+    " vim is fucking shit
+    hi ColorColumn ctermbg=235
 endfunction
 
 " Function called before entering multiple cursors' mode
@@ -410,7 +413,7 @@ let g:tagbar_width = 30
 "}}}
 """"""""""""""""""""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""
 "{{{
-let g:airline_theme = 'mine'
+let g:airline_theme = 'zenburn'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
@@ -448,10 +451,11 @@ let g:airline#extensions#default#section_truncate_width = {
     \ 'error': 80,
     \ }
 "}}}
-"""""""""""""""""""""""""""""""""" SOLARIZED """""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""" VIM-CODE-DARK """""""""""""""""""""""""""""""""
 "{{{
 if (&term != 'xterm' && &term != 'xterm-color')
-    colorscheme solarized
+    colorscheme codedark
+    hi ColorColumn ctermbg=235
     "let g:solarized_termcolors = 256
     "let g:solarized_contrast="low"
     set background=dark
@@ -657,19 +661,6 @@ let g:run_compiled = {
 let g:rust_recommended_style = 0
 """"""""""""""""""""""""""""""""""""" WSL """"""""""""""""""""""""""""""""""""""
 if has('macunix') || is_wsl#is_wsl()
-    color codedark
-    let g:airline_theme = 'zenburn'
-
-    hi ColorColumn ctermbg=235
-
-    function! SetIndentGuideColors()
-        hi indentguidesodd  ctermbg=235 ctermfg=12
-        hi indentguideseven ctermbg=236 ctermfg=12
-
-        " vim is fucking shit
-        hi ColorColumn ctermbg=235
-    endfunction
-
     set visualbell
     set t_vb=
 endif
