@@ -418,6 +418,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#csv#column_display = 'Name'
+let g:airline_left_sep = "▄"
+let g:airline_left_alt_sep = "⠢"
+let g:airline_right_sep = "▄"
+let g:airline_right_alt_sep = "⠔"
 if !has("win32")
     let g:airline_powerline_fonts = 1
 endif
