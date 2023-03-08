@@ -1,4 +1,4 @@
-if exists(':CocActionAsync')
+if exists('*CocActionAsync')
     autocmd CursorHold * silent call CocActionAsync('highlight')
 endif
 highlight! link CocInlayHint NonText
