@@ -565,7 +565,7 @@ let g:buffergator_suppress_keymaps = 1
 """"""""""""""""""""""""""""""""""" BUFFKILL """""""""""""""""""""""""""""""""""
 "{{{
 let g:BufKillKeyMappings = 0
-let g:BufKillBdKey = 'ZB'
+let g:BufKillBwKey = 'ZB'
 "}}}
 """"""""""""""""""""""""""""""""""" RAINBOW """"""""""""""""""""""""""""""""""""
 "{{{
