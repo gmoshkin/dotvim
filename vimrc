@@ -84,6 +84,7 @@ if v:version > 703 && !g:its_a_pi
 endif
 " Plug 'vim-utils/vim-man' " doesn't work with neovim
 Plug 'idanarye/vim-vebugger'
+Plug 'jansedivy/jai.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
