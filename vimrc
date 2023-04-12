@@ -444,7 +444,8 @@ let g:airline_mode_map = {
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.linenr = ''
+let g:airline_symbols.linenr = ' '
+let g:airline_symbols.colnr = ':'
 let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#default#section_truncate_width = {
     \ 'b': 100,
