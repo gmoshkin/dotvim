@@ -3,6 +3,9 @@ function get_flc_under_cursor()
     local file = vim.api.nvim_eval('expand("<cfile>")')
     local curr_line = vim.api.nvim_get_current_line()
     local start, fin = curr_line:find(file)
+    if start == nil or fin == nil then
+        return file
+    end
     local cursor = vim.api.nvim_win_get_cursor('.')
     cursor = { line = cursor[1], column = cursor[2] + 1 }
     while fin <= #curr_line do
