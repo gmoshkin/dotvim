@@ -671,7 +671,7 @@ if has('macunix') || is_wsl#is_wsl()
     set t_vb=
 endif
 
-if is_wsl#is_wsl()
+if is_wsl#is_wsl() && has('nvim')
     lua << LUA
         function set_clip(lines, regtype)
             vim.g.clip_plus = { lines, regtype }

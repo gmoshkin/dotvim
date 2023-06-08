@@ -1,3 +1,7 @@
+if !has('nvim')
+    finish
+endif
+
 lua <<END
 function get_flc_under_cursor()
     local file = vim.api.nvim_eval('expand("<cfile>")')
