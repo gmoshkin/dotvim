@@ -112,5 +112,5 @@ noremap gk k
 " thanks to dog457
 vnoremap v iw
 
-nnoremap ]gc /<C-U>^<<<<<<<\\|^=======\\|^>>>>>>><CR>
-nnoremap [gc /<C-U>^<<<<<<<\\|^=======\\|^>>>>>>><CR>
+nnoremap ]gc /<C-U>^<<<<<<<\\|^=======$\\|^>>>>>>><CR>
+nnoremap [gc /<C-U>^<<<<<<<\\|^=======$\\|^>>>>>>><CR>
