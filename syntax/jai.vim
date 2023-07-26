@@ -13,6 +13,7 @@ syntax keyword jaiStruct struct
 syntax keyword jaiEnum enum
 
 syntax keyword jaiIf if
+syntax keyword jaiIfx ifx
 syntax keyword jaiThen then
 syntax keyword jaiElse else
 syntax keyword jaiFor for
@@ -84,6 +85,7 @@ highlight def link jaiDynamicFunction Function
 
 highlight def link jaiMacro Macro
 highlight def link jaiIf Conditional
+highlight def link jaiIfx Conditional
 highlight def link jaiThen Conditional
 highlight def link jaiElse Conditional
 highlight def link jaiFor Repeat
