@@ -28,3 +28,5 @@ function! Run_jai_goto_def(mode, ...) abort
     execute(l:vim_cmd)
 endfunction
 
+command! JaiFiles Files ~/code/jai
+noremap <leader>fj :<c-u>JaiFiles<cr>
