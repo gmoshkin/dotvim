@@ -224,6 +224,9 @@ set completeopt-=preview
 set noignorecase
 set nosmartcase
 
+" Turn off the fucking bell, who the fuck uses that shit, oh my god bro
+set belloff=all
+
 set virtualedit+=block
 
 set fileencodings=utf-8,cp1251,cp866,default,latin1
