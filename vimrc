@@ -675,29 +675,63 @@ if has('macunix') || is_wsl#is_wsl()
 endif
 
 if is_wsl#is_wsl() && has('nvim')
-    lua << LUA
-        function set_clip(lines, regtype)
-            vim.g.clip_plus = { lines, regtype }
-            local p = io.popen('/mnt/c/Windows/system32/clip.exe', 'w')
-            p:write(table.concat(lines, '\n'))
-            p:close()
-        end
+    " XXX: is there a less ugly ass way to check for an executable?
+    if len(system('hash clipboard.exe')) == 0
+        lua << LUA
+            function set_clip(lines, regtype)
+                vim.g.clip_plus = { lines, regtype }
+                local p = io.popen('clipboard.exe copy-stdin', 'w')
+                p:write(table.concat(lines, '\n'))
+                p:close()
+            end
+            function get_clip()
+                local p = io.popen('clipboard.exe paste', 'r')
+                local data = p:read('*all')
+                p:close()
+                return vim.split(data, "\n")
+            end
+LUA
+        let g:clipboard = {
+        \   'name': 'clipboard.exe',
+        \   'copy': {
+        \        '+': {
+        \           lines, kind -> luaeval('set_clip(_A[1], _A[2])', [lines, kind])
+        \        },
+        \        '*': { lines, kind -> extend(g:, {'clip_star': [lines, kind]}) },
+        \   },
+        \   'paste': {
+        \        '+': { -> luaeval('get_clip()') },
+        \        '*': { -> get(g:, 'clip_star', []) },
+        \   },
+        \   'cache_enabled': v:true,
+        \ }
+
+    else " fallback to clip.exe, but really you should get clipboard.exe though
+
+        lua << LUA
+            function set_clip(lines, regtype)
+                vim.g.clip_plus = { lines, regtype }
+                local p = io.popen('/mnt/c/Windows/system32/clip.exe', 'w')
+                p:write(table.concat(lines, '\n'))
+                p:close()
+            end
 LUA
 
-    let g:clipboard = {
-    \   'name': 'clip.exe',
-    \   'copy': {
-    \        '+': {
-    \           lines, kind -> luaeval('set_clip(_A[1], _A[2])', [lines, kind])
-    \        },
-    \        '*': { lines, kind -> extend(g:, {'clip_star': [lines, kind]}) },
-    \   },
-    \   'paste': {
-    \        '+': { -> ["not supported ☺"] },
-    \        '*': { -> get(g:, 'clip_star', []) },
-    \   },
-    \   'cache_enabled': v:true,
-    \ }
+        let g:clipboard = {
+        \   'name': 'clip.exe',
+        \   'copy': {
+        \        '+': {
+        \           lines, kind -> luaeval('set_clip(_A[1], _A[2])', [lines, kind])
+        \        },
+        \        '*': { lines, kind -> extend(g:, {'clip_star': [lines, kind]}) },
+        \   },
+        \   'paste': {
+        \        '+': { -> ["not supported ☺"] },
+        \        '*': { -> get(g:, 'clip_star', []) },
+        \   },
+        \   'cache_enabled': v:true,
+        \ }
+    endif
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
