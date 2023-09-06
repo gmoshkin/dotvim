@@ -30,3 +30,6 @@ endfunction
 
 command! JaiFiles Files ~/code/jai
 noremap <leader>fj :<c-u>JaiFiles<cr>
+
+" TODO: escape stuff which breaks grep, e.g. #
+command! -nargs=1 JaiGrepDecl call execute("grep '\\b" .. <q-args> .. '\b\s*::' .. "' " .. misc#git_dir() .. " ~/code/jai")
