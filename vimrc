@@ -54,7 +54,6 @@ endif
 
 " Plug 'AnsiEsc.vim'
 " Plug 'DrawIt'
-" Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'Lokaltog/vim-easymotion'
 if !exists('g:vscode')
     Plug 'Raimondi/delimitMate'
@@ -112,7 +111,9 @@ Plug 'mg979/gv.vim', { 'branch': 'mg979' }
 if !exists('g:vscode')
     Plug 'nathanaelkane/vim-indent-guides'
 endif
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+if has('nvim')
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+endif
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'sgur/vim-textobj-parameter'
@@ -125,7 +126,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'VundleVim/Vundle.vim'
@@ -543,15 +544,6 @@ let g:jedi#use_tabs_not_buffers=0
 " this is a crtoch for the cursor not going to end of line in insert mode bug
 if version < 704 && g:jedi#show_call_signatures != 1
     autocmd! InsertEnter
-endif
-"}}}
-"""""""""""""""""""""""""""""""""" LATEX-BOX """""""""""""""""""""""""""""""""""
-"{{{
-let g:LatexBox_quickfix = 4
-let g:LatexBox_show_warnings = 0
-if len(serverlist())
-    let g:LatexBox_latexmk_async = 1
-    let g:LatexBox_latexmk_preview_continuously = 1
 endif
 "}}}
 """""""""""""""""""""""""""""""""""" VIM-GO """"""""""""""""""""""""""""""""""""
