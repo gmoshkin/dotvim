@@ -36,3 +36,22 @@ function! Debug(obj) abort
         return printf("%s(%s)", Type(a:obj), a:obj)
     endif
 endfunction
+
+function! Hex(v) abort
+    if type(a:v) == v:t_number
+        return printf("0x%02x", a:v)
+    elseif type(a:v) == v:t_string
+        let l:res = '"'
+        for l:i in range(len(a:v))
+            let l:res = printf('%s\x%02x', l:res, char2nr(a:v[l:i]))
+        endfor
+        let l:res = l:res .. '"'
+        return l:res
+    elseif type(a:v) == v:t_list
+        let l:elems = []
+        for l:e in a:v
+            call add(l:elems, Hex(l:e))
+        endfor
+        return printf('[%s]', join(l:elems, ', '))
+    endif
+endfunction
