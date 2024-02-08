@@ -724,6 +724,17 @@ LUA
         \   'cache_enabled': v:true,
         \ }
     endif
+elseif has('nvim')
+    let g:clipboard = {
+    \   'name': 'xsel',
+    \   'copy': {
+    \        '+': ['xsel', '--clipboard', '-i'],
+    \   },
+    \   'paste': {
+    \        '+': ['xsel', '--clipboard', '-o'],
+    \   },
+    \   'cache_enabled': v:true,
+    \ }
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !g:its_a_pi
