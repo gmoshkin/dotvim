@@ -18,6 +18,7 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 inoremap <expr> <c-f> coc#pum#visible() ? coc#pum#confirm() : "<right>"
+inoremap <expr> <right> coc#pum#visible() ? coc#pum#confirm() : "<right>"
 
 function GotoPopupOrNextWindow() abort
     try
