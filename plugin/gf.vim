@@ -10,7 +10,8 @@ function get_flc_under_cursor()
     if start == nil or fin == nil then
         return file
     end
-    local cursor = vim.api.nvim_win_get_cursor('.')
+    local current_window = vim.api.nvim_get_current_win()
+    local cursor = vim.api.nvim_win_get_cursor(current_window)
     cursor = { line = cursor[1], column = cursor[2] + 1 }
     while fin <= #curr_line do
         local c = curr_line:sub(fin + 1, fin + 1)
