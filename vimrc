@@ -91,9 +91,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
-if (has("python") && g:has_python || has("python3"))
-    Plug 'klen/python-mode'
-endif
 Plug 'luochen1990/rainbow'
 Plug 'lucapette/vim-textobj-underscore'
 " Plug 'Konfekt/FastFold'
