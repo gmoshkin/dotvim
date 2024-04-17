@@ -65,7 +65,7 @@ if v:version > 703 && (has("python") && g:has_python || has("python3")) && !g:it
     Plug 'SirVer/ultisnips'
 endif
 Plug 'gmoshkin/vim-colors-solarized'
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'bohlender/vim-smt2'
