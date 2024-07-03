@@ -127,6 +127,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'VundleVim/Vundle.vim'
+" This is for ANSI colorization, don't know how you supposed to use it though...
+" Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
 
 call plug#end()
 "}}}
