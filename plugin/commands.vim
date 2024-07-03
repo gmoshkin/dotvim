@@ -60,3 +60,5 @@ command! RlsRestart CocCommand rls.restart
 command! TmuxCaptureLastPane new | %!tmux capture-pane -JpS- -t {bottom-right}
 
 command! -nargs=1 Hex echo Hex(<args>)
+
+command! ANSIColorize call ansi_colorize#do_current_buffer()
