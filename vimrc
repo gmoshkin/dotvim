@@ -722,10 +722,22 @@ LUA
         \ }
     endif
 elseif has('nvim')
+    lua << LUA
+        function set_xsel_and_tmux(lines, regtype)
+            vim.g.clip_plus = { lines, regtype }
+            local text = table.concat(lines, '\n')
+            local p = io.popen('xsel --clipboard -i', 'w')
+            p:write(text) p:close()
+            local p = io.popen('tmux load-buffer -', 'w')
+            p:write(text) p:close()
+        end
+LUA
     let g:clipboard = {
     \   'name': 'xsel',
     \   'copy': {
-    \        '+': ['xsel', '--clipboard', '-i'],
+    \        '+': {
+    \           lines, kind -> luaeval('set_xsel_and_tmux(_A[1], _A[2])', [lines, kind])
+    \        },
     \   },
     \   'paste': {
     \        '+': ['xsel', '--clipboard', '-o'],
