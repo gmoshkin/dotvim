@@ -43,7 +43,6 @@ syntax region jaiString start=/\v"/ skip=/\v\\./ end=/\v"/
 syntax keyword jaiAutoCast xx
 
 syntax match jaiFunction "\v<\w*>(\s*::\s*)@="
-syntax match jaiDynamicFunction "\v<\w*(\s*:\=\s*\(.*\))@="
 
 syntax match jaiTagNote "@\<\w\+\>" display
 
@@ -86,7 +85,6 @@ highlight def link jaiEnum Structure
 highlight def link jaiEnumFlags Structure
 
 highlight def link jaiFunction Function
-highlight def link jaiDynamicFunction Function
 
 highlight def link jaiMacro Macro
 highlight def link jaiIf Conditional
