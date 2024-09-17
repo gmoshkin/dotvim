@@ -22,5 +22,8 @@ inoremap <C-Space> <ESC>
 
 inoremap <C-_> <C-O>u
 
+inoremap <C-R><C-D> <C-R>=misc#curr_dir()<CR>/
+inoremap <C-R><C-]> <C-R>=misc#curr_path()<CR>
+
 inoremap <C-R>' <C-R>"
 inoremap <C-Y> <C-R>"
