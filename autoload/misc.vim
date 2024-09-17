@@ -74,3 +74,15 @@ function! misc#git_dir() abort
     endif
     return substitute(l:git_dir, '.git$', '', '')
 endfunction
+
+function! misc#print_file_and_location() abort
+    redir => l:command_output
+    silent file
+    redir END
+
+    let l:command_output = trim(l:command_output)
+    let l:full_file_path = fnameescape(expand('%:p'))
+    let l:line = line(".")
+    let l:col = col(".")
+    echo printf("%s | %s:%s,%s", l:command_output, l:full_file_path, l:line, l:col)
+endfunction

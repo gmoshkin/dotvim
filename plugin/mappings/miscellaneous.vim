@@ -114,3 +114,5 @@ vnoremap v iw
 
 nnoremap ]gc /<C-U>^<<<<<<<\\|^=======$\\|^>>>>>>><CR>
 nnoremap [gc /<C-U>^<<<<<<<\\|^=======$\\|^>>>>>>><CR>
+
+nnoremap <c-g> :<c-u>call misc#print_file_and_location()<cr>
