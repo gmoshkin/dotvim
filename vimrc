@@ -426,9 +426,7 @@ let g:airline_left_sep = "▄"
 let g:airline_left_alt_sep = "⠢"
 let g:airline_right_sep = "▄"
 let g:airline_right_alt_sep = "⠔"
-if !has("win32")
-    let g:airline_powerline_fonts = 1
-endif
+let g:airline_powerline_fonts = 0
 
 let g:airline_mode_map = {
             \ '__' : '-',
@@ -451,6 +449,7 @@ endif
 let g:airline_symbols.linenr = ' '
 let g:airline_symbols.colnr = ':'
 let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = ''
 let g:airline#extensions#default#section_truncate_width = {
     \ 'b': 100,
     \ 'x': 90,
