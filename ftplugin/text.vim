@@ -1,2 +1,2 @@
-setlocal spell
-call toggle#auto_format(1, 0)
+" setlocal spell
+" call toggle#auto_format(1, 0)
