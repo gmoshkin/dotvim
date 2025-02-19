@@ -12,6 +12,7 @@ syntax keyword jaiCast cast
 syntax keyword jaiStruct struct
 syntax keyword jaiEnum enum
 syntax keyword jaiEnumFlags enum_flags
+syntax keyword jaiUnion union
 
 syntax keyword jaiIf if
 syntax keyword jaiIfx ifx
@@ -83,6 +84,7 @@ highlight def link jaiString String
 highlight def link jaiStruct Structure
 highlight def link jaiEnum Structure
 highlight def link jaiEnumFlags Structure
+highlight def link jaiUnion Structure
 
 highlight def link jaiFunction Function
 
