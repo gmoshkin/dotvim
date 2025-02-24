@@ -56,7 +56,8 @@ syntax match jaiHex "\<0x[0-9A-Fa-f_]\+\>" display
 
 syntax match jaiMacro "#\<\w\+\>" display
 
-syntax match jaiTemplate "$\<\w\+\>"
+syntax match jaiAutoBake "$\<\w\+\>"
+syntax match jaiOptionalAutoBake "$$\<\w\+\>"
 
 syntax match jaiCommentNote "@\<\w\+\>" contained display
 syntax keyword jaiCommentTODO contained TODO FIXME XXX
@@ -103,7 +104,8 @@ highlight def link jaiCommentNote Todo
 
 highlight def link jaiClass Type
 
-highlight def link jaiTemplate Constant
+highlight def link jaiAutoBake Constant
+highlight def link jaiOptionalAutoBake Constant
 
 highlight def link jaiTagNote Identifier
 highlight def link jaiDataType Type
