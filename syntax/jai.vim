@@ -39,6 +39,8 @@ syntax keyword jaiNoInline no_inline
 syntax keyword jaiIt it
 syntax keyword jaiItIndex it_index
 
+syntax keyword jaiContext context
+
 syntax region jaiString start=/\v"/ skip=/\v\\./ end=/\v"/
 
 syntax keyword jaiAutoCast xx
@@ -66,6 +68,7 @@ syntax region jaiBlockComment start=/\v\/\*/ end=/\v\*\// contains=jaiCommentNot
 
 highlight def link jaiIt Keyword
 highlight def link jaiItIndex Keyword
+highlight def link jaiContext Keyword
 highlight def link jaiUsing Keyword
 highlight def link jaiCast Keyword
 highlight def link jaiAutoCast Keyword
