@@ -38,10 +38,15 @@ syntax keyword jaiNoInline no_inline
 
 syntax keyword jaiIt it
 syntax keyword jaiItIndex it_index
-
 syntax keyword jaiContext context
 
-syntax region jaiString start=/\v"/ skip=/\v\\./ end=/\v"/
+syntax match jaiMacro "#\<\w\+\>" display
+
+syntax match jaiStringTemplate "\v(\\)?\%(\d)?" contained
+
+syntax region jaiString start=/\v"/ skip=/\v\\./ end=/\v"/ keepend contains=jaiStringTemplate
+" This must go after jaiMacro
+syntax region jaiHereString start=/\v#string\s+\z(<\w+>)/ end=/\v<\z1>/ keepend contains=jaiMacro,jaiStringTemplate
 
 syntax keyword jaiAutoCast xx
 
@@ -55,10 +60,6 @@ syntax match jaiConstant "\v<[A-Z_][A-Z0-9_]+>" display
 syntax match jaiInteger "\<[0-9_]\+\>" display
 syntax match jaiFloat "\<[0-9][0-9_]*\%(\.[0-9][0-9_]*\)\%([eE][+-]\=[0-9_]\+\)\=" display
 syntax match jaiHex "\<0x[0-9A-Fa-f_]\+\>" display
-
-syntax match jaiMacro "#\<\w\+\>" display
-
-syntax region jaiHereString start=/\v#string\s+\z(<\w+>)/ end=/\v<\z1>/ keepend contains=jaiMacro
 
 syntax match jaiAutoBake "$\<\w\+\>"
 syntax match jaiOptionalAutoBake "$$\<\w\+\>"
@@ -87,6 +88,7 @@ highlight def link jaiRemove Keyword
 
 highlight def link jaiString String
 highlight def link jaiHereString String
+highlight def link jaiStringTemplate Special
 
 highlight def link jaiStruct Structure
 highlight def link jaiEnum Structure
