@@ -60,6 +60,7 @@ syntax match jaiConstant "\v<[A-Z_][A-Z0-9_]+>" display
 syntax match jaiInteger "\<[0-9_]\+\>" display
 syntax match jaiFloat "\<[0-9][0-9_]*\%(\.[0-9][0-9_]*\)\%([eE][+-]\=[0-9_]\+\)\=" display
 syntax match jaiHex "\<0x[0-9A-Fa-f_]\+\>" display
+syntax match jaiBin "\<0b[01_]\+\>" display
 
 syntax match jaiAutoBake "$\<\w\+\>"
 syntax match jaiOptionalAutoBake "$$\<\w\+\>"
@@ -123,5 +124,6 @@ highlight def link jaiNull Type
 highlight def link jaiInteger Number
 highlight def link jaiFloat Float
 highlight def link jaiHex Number
+highlight def link jaiBin Number
 
 let b:current_syntax = "jai"
