@@ -58,6 +58,8 @@ syntax match jaiHex "\<0x[0-9A-Fa-f_]\+\>" display
 
 syntax match jaiMacro "#\<\w\+\>" display
 
+syntax region jaiHereString start=/\v#string\s+\z(<\w+>)/ end=/\v<\z1>/ keepend contains=jaiMacro
+
 syntax match jaiAutoBake "$\<\w\+\>"
 syntax match jaiOptionalAutoBake "$$\<\w\+\>"
 
@@ -84,6 +86,7 @@ highlight def link jaiContinue Keyword
 highlight def link jaiRemove Keyword
 
 highlight def link jaiString String
+highlight def link jaiHereString String
 
 highlight def link jaiStruct Structure
 highlight def link jaiEnum Structure
