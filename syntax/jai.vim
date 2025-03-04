@@ -45,8 +45,11 @@ syntax match jaiMacro "#\<\w\+\>" display
 syntax match jaiStringTemplate "\v(\\)?\%(\d)?" contained
 
 syntax region jaiString start=/\v"/ skip=/\v\\./ end=/\v"/ keepend contains=jaiStringTemplate
-" This must go after jaiMacro
-syntax region jaiHereString start=/\v#string\s+\z(<\w+>)/ end=/\v<\z1>/ keepend contains=jaiMacro,jaiStringTemplate
+
+" These must go after jaiMacro
+" A special rule to match `#string`
+syntax match jaiStringDirective "#string\>" contained
+syntax region jaiHereString start=/\v#string\s+\z(<\w+>)/ end=/\v<\z1>/ keepend contains=jaiStringDirective,jaiStringTemplate
 
 syntax keyword jaiAutoCast xx
 
@@ -99,6 +102,7 @@ highlight def link jaiUnion Structure
 highlight def link jaiFunction Function
 
 highlight def link jaiMacro Macro
+highlight def link jaiStringDirective Macro
 highlight def link jaiIf Conditional
 highlight def link jaiIfx Conditional
 highlight def link jaiCase Conditional
