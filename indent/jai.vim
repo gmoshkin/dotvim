@@ -1,0 +1,72 @@
+" I started from jansedivy/jai.vim but then I changed pretty much everything, so...
+if exists("b:did_indent")
+  finish
+endif
+let b:did_indent = 1
+
+setlocal nosmartindent
+setlocal nolisp
+setlocal autoindent
+
+setlocal indentexpr=GetJaiIndent(v:lnum)
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,=case
+
+function! GetJaiIndent(lnum)
+    let l:prev_lineno = prevnonblank(a:lnum-1)
+
+    if l:prev_lineno == 0
+        return 0
+    endif
+
+    let l:this_line = trim(getline(a:lnum))
+
+    " RIP Bram, but you're fucking retarded, look at this fucking indexing jesus fucking christ...
+    if l:this_line[:3] == 'case'
+        let l:cursor = prevnonblank(a:lnum-1)
+        while l:cursor > 0
+            let l:cur_line = trim(getline(l:cursor))
+            if l:cur_line[0] == '}'
+                return indent(l:cursor) - &sw
+            elseif l:cur_line[:3] == 'case'
+                return indent(l:cursor)
+            " Yeah, -1 doesn't work with indexing by single character, only by slice...
+            elseif (l:cur_line[:1] == 'if' || l:cur_line[:2] == '#if') && l:cur_line[-1:] == '{'
+                return indent(l:cursor)
+            endif
+            let l:cursor -= 1
+        endwhile
+        " Some weird case, just return whatever
+        return 0
+    endif
+
+    let l:prev_line = trim(getline(l:prev_lineno))
+
+    if l:prev_line[-1:] == ';'
+        if l:prev_line[:3] == 'case'
+            return indent(l:prev_lineno) + &sw
+        endif
+        return indent(l:prev_lineno)
+    endif
+
+    let l:prev_end = l:prev_line[-1:]
+    let l:open_brackets = l:prev_end == '[' || l:prev_end == '(' || l:prev_end == '{'
+
+    if l:open_brackets
+        let l:this_start = l:this_line[0]
+        let l:closed_brackets = l:this_start == ']' || l:this_start == ')' || l:this_start == '}'
+
+        if l:closed_brackets
+            return indent(l:prev_lineno)
+        endif
+
+        return indent(l:prev_lineno) + &sw
+    endif
+
+    if l:prev_line[:1] == 'if' || l:prev_line[:2] == 'for' || l:prev_line[:4] == 'while'
+        return indent(l:prev_lineno) + &sw
+    elseif l:prev_line =~ '\v<ifx>'
+        return indent(l:prev_lineno) + &sw
+    endif
+
+    return indent(l:prev_lineno)
+endfunction
