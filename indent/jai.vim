@@ -43,6 +43,7 @@ function! GetJaiIndent(lnum)
 
     let l:prev_end = l:prev_line[-1:]
     let l:open_brackets = l:prev_end == '[' || l:prev_end == '(' || l:prev_end == '{'
+    let l:prev_closed = l:prev_end == ';' || l:prev_end == '}'
 
     let l:this_start = l:this_line[0]
     let l:closed_brackets = l:this_start == ']' || l:this_start == ')' || l:this_start == '}'
@@ -59,17 +60,21 @@ function! GetJaiIndent(lnum)
         return indent(l:prev_lineno) - &sw
     endif
 
-    if l:prev_line[:1] == 'if' || l:prev_line[:2] == 'for' || l:prev_line[:4] == 'while'
-        return indent(l:prev_lineno) + &sw
-    elseif l:prev_line =~ '\v<ifx>'
-        return indent(l:prev_lineno) + &sw
-    endif
-
-    if l:prev_line[-1:] == ';'
+    if l:prev_closed
         if l:prev_line[:3] == 'case'
             return indent(l:prev_lineno) + &sw
         else
             return indent(l:prev_lineno)
+        endif
+    else
+        if l:prev_line[:1] == 'if' || l:prev_line[:2] == 'for' || l:prev_line[:4] == 'while'
+            if l:this_line[0] == '{'
+                return indent(l:prev_lineno)
+            else
+                return indent(l:prev_lineno) + &sw
+            endif
+        elseif l:prev_line =~ '\v<ifx>'
+            return indent(l:prev_lineno) + &sw
         endif
     endif
 
