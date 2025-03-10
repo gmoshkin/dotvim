@@ -103,7 +103,7 @@ endif
 if !exists('g:vscode')
     Plug 'mg979/vim-visual-multi'
 endif
-Plug 'mg979/gv.vim', { 'branch': 'mg979' }
+Plug 'junegunn/gv.vim'
 if !exists('g:vscode')
     Plug 'nathanaelkane/vim-indent-guides'
 endif
