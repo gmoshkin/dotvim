@@ -63,6 +63,8 @@ function! GetJaiIndent(lnum)
     if l:prev_closed
         if l:prev_line[:3] == 'case'
             return indent(l:prev_lineno) + &sw
+        elseif l:prev_line[:3] == 'else'
+            return indent(prevnonblank(l:prev_lineno - 1))
         else
             return indent(l:prev_lineno)
         endif
@@ -74,7 +76,12 @@ function! GetJaiIndent(lnum)
                 return indent(l:prev_lineno) + &sw
             endif
         elseif l:prev_line =~ '\v<ifx>'
-            return indent(l:prev_lineno) + &sw
+            let l:then_offset = stridx(getline(l:prev_lineno), 'then')
+            if l:then_offset != -1
+                return l:then_offset
+            else
+                return indent(l:prev_lineno) + &sw
+            endif
         endif
     endif
 
