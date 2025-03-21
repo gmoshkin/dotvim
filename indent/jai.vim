@@ -18,13 +18,13 @@ function! GetJaiIndent(lnum)
         return 0
     endif
 
-    let l:this_line = trim(getline(a:lnum))
+    let l:this_line = F_strip_comment_and_trim(getline(a:lnum))
 
     " RIP Bram, but you're fucking retarded, look at this fucking indexing jesus fucking christ...
     if l:this_line[:3] == 'case'
         let l:cursor = prevnonblank(a:lnum-1)
         while l:cursor > 0
-            let l:cur_line = trim(getline(l:cursor))
+            let l:cur_line = F_strip_comment_and_trim(getline(l:cursor))
             if l:cur_line[0] == '}'
                 return indent(l:cursor) - &sw
             elseif l:cur_line[:3] == 'case'
@@ -39,7 +39,7 @@ function! GetJaiIndent(lnum)
         return 0
     endif
 
-    let l:prev_line = trim(getline(l:prev_lineno))
+    let l:prev_line = F_strip_comment_and_trim(getline(l:prev_lineno))
 
     let l:prev_end = l:prev_line[-1:]
     let l:open_brackets = l:prev_end == '[' || l:prev_end == '(' || l:prev_end == '{'
@@ -86,4 +86,13 @@ function! GetJaiIndent(lnum)
     endif
 
     return indent(l:prev_lineno)
+endfunction
+
+function! F_strip_comment(line) abort
+    let l:comment_start = stridx(a:line, '//')
+    if l:comment_start != -1
+        return trim(a:line[0:l:comment_start - 1])
+    endif
+
+    return a:line
 endfunction
