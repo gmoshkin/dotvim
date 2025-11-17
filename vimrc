@@ -131,6 +131,17 @@ Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
 
 call plug#end()
 "}}}
+
+"""""""""""""""""""""""""""""""""" SETUP SERVER """"""""""""""""""""""""""""""""
+"{{{
+
+if len($TMUX) != 0
+    let g:tmux_session = system(["tmux", "display", "-p", "#S"])->trim()
+    let g:server_file_name = '/tmp/nvim-server_' .. g:tmux_session
+    call writefile(serverlist(), g:server_file_name)
+endif
+
+"}}}
 """""""""""""""""""""""""""""""""""" OPTIONS """""""""""""""""""""""""""""""""""
 "{{{
 filetype plugin indent on
