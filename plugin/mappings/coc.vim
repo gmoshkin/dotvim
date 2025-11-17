@@ -2,6 +2,7 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <leader>gt :<c-u>call CocActionAsync('doHover')<cr>
+nnoremap <leader>gh :<c-u>call CocActionAsync('doHover')<cr>
 nnoremap <leader>gT <Plug>(coc-type-definition)
 nnoremap <leader>gu <Plug>(coc-references-used)
 
