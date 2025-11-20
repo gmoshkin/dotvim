@@ -6,6 +6,8 @@ nnoremap <leader>gh :<c-u>call CocActionAsync('doHover')<cr>
 nnoremap <leader>gT <Plug>(coc-type-definition)
 nnoremap <leader>gu <Plug>(coc-references-used)
 
+nnoremap <leader>fs :<c-u>CocList symbols<cr>
+
 nmap [d <Plug>(coc-diagnostic-prev)
 nmap ]d <Plug>(coc-diagnostic-next)
 
