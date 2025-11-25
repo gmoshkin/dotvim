@@ -15,6 +15,7 @@ function! GetJaiIndent(lnum)
     let l:prev_lineno = prevnonblank(a:lnum-1)
 
     if l:prev_lineno == 0
+        " echom 18
         return 0
     endif
 
@@ -26,16 +27,20 @@ function! GetJaiIndent(lnum)
         while l:cursor > 0
             let l:cur_line = F_strip_comment_and_trim(getline(l:cursor))
             if l:cur_line[0] == '}'
+                " echom 30
                 return indent(l:cursor) - &sw
             elseif l:cur_line[:3] == 'case'
+                " echom 33
                 return indent(l:cursor)
             " Yeah, -1 doesn't work with indexing by single character, only by slice...
             elseif (l:cur_line[:1] == 'if' || l:cur_line[:2] == '#if') && l:cur_line[-1:] == '{'
+                " echom 37
                 return indent(l:cursor)
             endif
             let l:cursor -= 1
         endwhile
         " Some weird case, just return whatever
+        " echom 43
         return 0
     endif
 
@@ -50,49 +55,60 @@ function! GetJaiIndent(lnum)
 
     if l:open_brackets
         if l:closed_brackets
+            " echom 58
             return indent(l:prev_lineno)
         else
+            " echom 61 .. ' ^' .. l:this_line
             return indent(l:prev_lineno) + &sw
         endif
     endif
 
     if l:closed_brackets
+        " echom 67
         return indent(l:prev_lineno) - &sw
     endif
 
     if l:prev_closed
         if l:prev_line[:3] == 'case'
+            " echom 73
             return indent(l:prev_lineno) + &sw
         elseif l:prev_line[:3] == 'else'
+            " echom 76
             return indent(prevnonblank(l:prev_lineno - 1))
         else
+            " echom 79
             return indent(l:prev_lineno)
         endif
     else
         if l:prev_line[:1] == 'if' || l:prev_line[:2] == 'for' || l:prev_line[:4] == 'while'
             if l:this_line[0] == '{'
+                " echom 85
                 return indent(l:prev_lineno)
             else
+                " echom 88
                 return indent(l:prev_lineno) + &sw
             endif
         elseif l:prev_line =~ '\v<ifx>'
             let l:then_offset = stridx(getline(l:prev_lineno), 'then')
             if l:then_offset != -1
+                " echom 94
                 return l:then_offset
             else
+                " echom 97
                 return indent(l:prev_lineno) + &sw
             endif
         endif
     endif
 
+    " echom 103
     return indent(l:prev_lineno)
 endfunction
 
-function! F_strip_comment(line) abort
+function! F_strip_comment_and_trim(line) abort
     let l:comment_start = stridx(a:line, '//')
     if l:comment_start != -1
         return trim(a:line[0:l:comment_start - 1])
     endif
 
-    return a:line
+    return trim(a:line)
 endfunction
