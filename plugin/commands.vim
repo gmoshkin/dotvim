@@ -65,3 +65,5 @@ command! -nargs=1 Hex echo Hex(<args>)
 command! ANSIColorize call ansi_colorize#do_current_buffer()
 
 command! BigFile syntax off | set nohlsearch noincsearch
+
+command! CrawlLocations call setqflist(json_decode(system('/home/gmoshkin/dotfiles/tmux/tmux-util-linux crawl-locations --json --need-line "{last}"'))) | cfirst
