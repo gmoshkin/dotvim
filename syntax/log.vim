@@ -28,4 +28,16 @@ syntax match logErroDetected /Error detected\./
 highlight logSignal ctermbg=1
 syntax match logSignal /SIG[A-Z]\+/
 
+highlight logGovernorLoopStatus ctermfg=blue
+syntax match logGovernorLoopStatus "governor_loop_status\s\+=\s\+#\d\+\s\+['"][^'"]\+['"]" contained
+
+highlight logVerboseLine ctermfg=gray
+syntax match logVerboseLine "^.* V> .*$" display contains=logGovernorLoopStatus
+
+highlight logErrorLine ctermfg=red
+syntax match logErrorLine "^.* E> .*$" display
+
+highlight logWarningLine ctermfg=yellow
+syntax match logWarningLine "^.* W> .*$" display
+
 let b:current_syntax = "log"
