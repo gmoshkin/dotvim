@@ -429,7 +429,7 @@ let g:tagbar_width = 30
 "{{{
 let g:airline_theme = 'zenburn'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#whitespace#checks = [ 'trailing' ]
+let g:airline#extensions#whitespace#checks = [ ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#csv#column_display = 'Name'
 let g:airline_left_sep = "▄"
