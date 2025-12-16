@@ -59,6 +59,8 @@ command! RlsRestart CocCommand rls.restart
 
 command! TmuxCaptureLastPane new | %!tmux capture-pane -JpS- -t {bottom-right}
 command! TmuxShowBuffer .!tmux show-buffer
+command! TmuxPaste TmuxShowBuffer
+command! TP TmuxShowBuffer
 
 command! -nargs=1 Hex echo Hex(<args>)
 
