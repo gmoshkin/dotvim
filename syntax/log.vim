@@ -35,7 +35,7 @@ highlight logVerboseLine ctermfg=gray
 syntax match logVerboseLine "^.* V> .*$" display contains=logGovernorLoopStatus
 
 highlight logErrorLine ctermfg=red
-syntax match logErrorLine "^.* E> .*$" display
+syntax match logErrorLine "^.* [CE]> .*$" display
 
 highlight logWarningLine ctermfg=yellow
 syntax match logWarningLine "^.* W> .*$" display
