@@ -31,6 +31,9 @@ syntax match logSignal /SIG[A-Z]\+/
 highlight logGovernorLoopStatus ctermfg=blue
 syntax match logGovernorLoopStatus "governor_loop_status\s\+=\s\+#\d\+\s\+['"][^'"]\+['"]" contained
 
+highlight logReshardingLoopStatus ctermfg=blue
+syntax match logReshardingLoopStatus /resharding_loop_status\s\+=\(\s\+#\d\+\)\?\s\+['"][^'"]\+['"]/
+
 highlight logVerboseLine ctermfg=gray
 syntax match logVerboseLine "^.* V> .*$" display contains=logGovernorLoopStatus
 
