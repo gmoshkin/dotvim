@@ -68,4 +68,4 @@ command! ANSIColorize call ansi_colorize#do_current_buffer()
 
 command! BigFile syntax off | set nohlsearch noincsearch
 
-command! CrawlLocations call setqflist(json_decode(system('/home/gmoshkin/dotfiles/tmux/tmux-util-linux crawl-locations --json --need-line "{last}"'))) | cfirst
+command! SourceVim call fzf#run(fzf#wrap({'source': 'find ~/.vim -name *.vim -not -path "*/bundle/*"', 'sink': 'source', 'options': []}))
