@@ -10,6 +10,7 @@ nnoremap <leader>fs :<c-u>CocList symbols<cr>
 
 nmap [d <Plug>(coc-diagnostic-prev)
 nmap ]d <Plug>(coc-diagnostic-next)
+nnoremap <leader>od :<c-u>CocDiagnostics 5<cr>
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
