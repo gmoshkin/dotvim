@@ -8,3 +8,4 @@ noremap <leader>ft :<c-u>BTags<CR>
 noremap <leader>fT :<c-u>Tags<CR>
 noremap <leader>fv :<c-u>Files ~/.vim<CR>
 noremap <leader>fe :<c-u>SourceVim<CR>
+noremap <leader>fd :<c-u>Files ~/dotfiles<CR>
