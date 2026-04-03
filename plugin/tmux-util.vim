@@ -1,3 +1,7 @@
+if has('nvim')
+    luafile <sfile>:h/tmux-util.lua
+endif
+
 function! GetCrawlLocations() abort
     return json_decode(system('/home/gmoshkin/dotfiles/tmux/tmux-util-linux crawl-locations --json --need-line "{last}"'))
 endfunction
@@ -11,9 +15,15 @@ function! SetQfListFromCrawlLocations(go) abort
         execute 'cfirst ' . (l:first_error + 1)
     elseif a:go
         cfirst
+        if exists(':QFShowInfo')
+            QFShowInfo
+        endif
     endif
 endfunction
 
 command! CrawlLocations call SetQfListFromCrawlLocations(v:true)
 
 nnoremap <leader>qt :<c-u>CrawlLocations<cr>
+
+nnoremap [q :<c-u>silent cprev<cr>:<c-u>silent QFShowInfo<cr>
+nnoremap ]q :<c-u>silent cnext<cr>:<c-u>silent QFShowInfo<cr>
