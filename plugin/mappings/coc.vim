@@ -36,3 +36,4 @@ function GotoPopupOrNextWindow() abort
 endfunction
 
 nnoremap <c-w><c-w> :<c-u>call GotoPopupOrNextWindow()<cr>
+nnoremap yot :<c-u>CocCommand document.toggleInlayHint<cr>
