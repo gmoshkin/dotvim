@@ -3,7 +3,7 @@ if has('nvim')
 endif
 
 function! GetCrawlLocations() abort
-    return json_decode(system('/home/gmoshkin/dotfiles/tmux/tmux-util-linux crawl-locations --json --need-line "{last}"'))
+    return json_decode(system('~/dotfiles/tmux/tmux-util crawl-locations --json --need-line "{last}"'))
 endfunction
 
 function! SetQfListFromCrawlLocations(go) abort
