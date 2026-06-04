@@ -26,7 +26,7 @@ local function show_floating_info(lines)
     })
 
     -- Auto-close on cursor move
-    vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI'}, {
+    vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI', 'BufLeave'}, {
         buffer = vim.api.nvim_get_current_buf(),
         once = true,
         callback = function()
@@ -51,11 +51,23 @@ local function get_current_qf_item()
     return item
 end
 
+TMUX_UTIL_DEBUG = nil
+
 local function command_QFShowInfo()
     local info = get_current_qf_item()
     if not info then
         return
     end
+
+    local buffer_line = vim.fn.getline(info.lnum)
+    if vim.endswith(info.text, buffer_line) then
+        return
+    end
+
+    TMUX_UTIL_DEBUG = {
+        buffer_line = buffer_line,
+        info_text = info.text,
+    }
 
     local info_lines = vim.split(info.text, '\n')
     show_floating_info(info_lines)

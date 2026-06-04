@@ -25,5 +25,5 @@ command! CrawlLocations call SetQfListFromCrawlLocations(v:true)
 
 nnoremap <leader>qt :<c-u>CrawlLocations<cr>
 
-nnoremap [q :<c-u>silent cprev<cr>:<c-u>silent QFShowInfo<cr>
-nnoremap ]q :<c-u>silent cnext<cr>:<c-u>silent QFShowInfo<cr>
+nnoremap <silent> [q :<c-u>cprev<cr>:<c-u>silent QFShowInfo<cr>
+nnoremap <silent> ]q :<c-u>cnext<cr>:<c-u>silent QFShowInfo<cr>
