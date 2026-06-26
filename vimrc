@@ -128,6 +128,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'VundleVim/Vundle.vim'
 " This is for ANSI colorization, don't know how you supposed to use it though...
 Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
+if has('nvim')
+    Plug 'lukas-reineke/indent-blankline.nvim'
+endif
 
 call plug#end()
 "}}}
