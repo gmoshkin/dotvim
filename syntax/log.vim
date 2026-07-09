@@ -34,8 +34,11 @@ syntax match logGovernorLoopStatus "governor_loop_status\s\+=\s\+#\d\+\s\+['"][^
 highlight logReshardingLoopStatus ctermfg=blue
 syntax match logReshardingLoopStatus /resharding_loop_status\s\+=\(\s\+#\d\+\)\?\s\+['"][^'"]\+['"]/
 
+highlight logReshardingLoopStatusContained ctermfg=blue
+syntax match logReshardingLoopStatusContained /resharding_loop_status\s\+=\(\s\+#\d\+\)\?\s\+['"][^'"]\+['"]/ contained
+
 highlight logVerboseLine ctermfg=gray
-syntax match logVerboseLine "^.* V> .*$" display contains=logGovernorLoopStatus
+syntax match logVerboseLine "^.* V> .*$" display contains=logGovernorLoopStatus,logReshardingLoopStatusContained
 
 highlight logErrorLine ctermfg=red
 syntax match logErrorLine "^.* [CE]> .*$" display
