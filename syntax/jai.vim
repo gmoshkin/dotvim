@@ -43,8 +43,10 @@ syntax keyword jaiContext context
 syntax match jaiMacro "#\<\w\+\>" display
 
 syntax match jaiStringTemplate "\v(\\)?\%(\d)?" contained
+syntax match jaiHexEscape "\v\\x\d\d" contained
+syntax match jaiSpecialEscape "\v\\[nrte]" contained
 
-syntax region jaiString start=/\v"/ skip=/\v\\./ end=/\v"/ keepend contains=jaiStringTemplate
+syntax region jaiString start=/\v"/ skip=/\v\\./ end=/\v"/ keepend contains=jaiStringTemplate,jaiHexEscape,jaiSpecialEscape
 
 " These must go after jaiMacro
 " A special rule to match `#string`
@@ -93,6 +95,8 @@ highlight def link jaiRemove Keyword
 highlight def link jaiString String
 highlight def link jaiHereString String
 highlight def link jaiStringTemplate Special
+highlight def link jaiHexEscape Special
+highlight def link jaiSpecialEscape Special
 
 highlight def link jaiStruct Structure
 highlight def link jaiEnum Structure
