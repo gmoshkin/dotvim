@@ -131,6 +131,7 @@ Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
 if has('nvim')
     Plug 'lukas-reineke/indent-blankline.nvim'
 endif
+Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
 
 call plug#end()
 "}}}
