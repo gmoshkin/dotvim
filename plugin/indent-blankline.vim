@@ -1,5 +1,5 @@
 if !has('nvim')
-    exit
+    finish
 endif
 
 lua require('ibl').setup()
