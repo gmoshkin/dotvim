@@ -206,8 +206,12 @@ set colorcolumn=+1
 
 set formatoptions-=t
 
-set laststatus=2
-"always display status line
+" Only display one status line per all window panes.
+" This has started being mandatory as of some neovim version, because otherwise
+" coc-nvim's completion menus (which are apparently window panes for some
+" reason) start having a status line right outside them and overlapping the line
+" I'm currently typing on which is incredibly irritating
+set laststatus=3
 
 set incsearch
 "Display the match for a search pattern when halfway typing it.
