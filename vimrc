@@ -113,7 +113,7 @@ if has('nvim')
     " plugin/fzf-lua.lua.
     Plug 'neovim/nvim-lspconfig'
     Plug 'saghen/blink.cmp', { 'tag': '*' }
-    Plug 'ibhagwan/fzf-lua'
+    Plug 'ibhagwan/fzf-lua', { 'branch': 'main' }
 endif
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -252,6 +252,9 @@ set belloff=all
 set virtualedit+=block
 
 set fileencodings=utf-8,cp1251,cp866,default,latin1
+
+" I use alacritty so this is fine... How do I let tmux/nvim figure this out automatically???
+set termguicolors
 
 let g:tex_flavor = 'tex'
 
