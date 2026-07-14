@@ -108,7 +108,12 @@ if !exists('g:vscode')
     Plug 'nathanaelkane/vim-indent-guides'
 endif
 if has('nvim')
-    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    " LSP: native vim.lsp client (Neovim 0.11+) configured via these plugins.
+    " Replaced coc.nvim. See plugin/lsp.lua, plugin/completion.lua,
+    " plugin/fzf-lua.lua.
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'saghen/blink.cmp', { 'tag': '*' }
+    Plug 'ibhagwan/fzf-lua'
 endif
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -207,10 +212,9 @@ set colorcolumn=+1
 set formatoptions-=t
 
 " Only display one status line per all window panes.
-" This has started being mandatory as of some neovim version, because otherwise
-" coc-nvim's completion menus (which are apparently window panes for some
-" reason) start having a status line right outside them and overlapping the line
-" I'm currently typing on which is incredibly irritating
+" (Originally made mandatory to work around coc-nvim's completion menus getting
+" their own status line; coc is gone now, but a single global status line is
+" nicer anyway.)
 set laststatus=3
 
 set incsearch
@@ -437,6 +441,9 @@ let g:tagbar_width = 30
 "{{{
 let g:airline_theme = 'zenburn'
 let g:airline#extensions#tabline#enabled = 1
+" Show native vim.lsp diagnostics count in the statusline (replaces the coc
+" extension airline used to auto-enable).
+let g:airline#extensions#nvimlsp#enabled = 1
 let g:airline#extensions#whitespace#checks = [ ]
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#csv#column_display = 'Name'
