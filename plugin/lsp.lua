@@ -5,10 +5,9 @@
 -- (or, for pyrefly, may not yet — a full config is harmless either way).
 
 -- clangd: overriding `cmd` replaces nvim-lspconfig's default, so include the
--- binary plus our flags. `--compile-commands-dir=build` carries over the old
--- coc-settings.json `clangd.compilationDatabasePath: build`.
+-- binary plus our flags.
 vim.lsp.config('clangd', {
-    cmd = { 'clangd', '--compile-commands-dir=build', '--background-index' },
+    cmd = { 'clangd', '--background-index' },
 })
 
 -- rust_analyzer: settings ported from ~/dotfiles/nvim/coc-settings.json.
