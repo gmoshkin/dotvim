@@ -174,6 +174,7 @@ end
 -- Dim inlay hints / virtual-text hints like the old coc highlight links did.
 local function set_lsp_highlights()
     vim.cmd('highlight! link LspInlayHint NonText')
+    vim.cmd('highlight! link NormalFloat Pmenu')
 end
 set_lsp_highlights()
 vim.api.nvim_create_autocmd('ColorScheme', { callback = set_lsp_highlights })
