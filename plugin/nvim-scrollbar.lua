@@ -9,4 +9,8 @@ require('scrollbar').setup {
     handlers = {
         cursor = false,
     },
+    marks = {
+        Error = { color = '#ff5555' },
+        Warn = { color = '#f1fa4c' },
+    },
 }

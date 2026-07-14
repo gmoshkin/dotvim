@@ -30,7 +30,12 @@ vim.lsp.config('rust_analyzer', {
 vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
-            workspace = { preloadFileSize = 1000 },
+            workspace = {
+                preloadFileSize = 1000,
+                -- Makes the server aware of Neovim runtime files and APIs
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
             runtime = { version = 'LuaJIT' },
             diagnostics = {
                 disable = { 'redefined-local', 'lowercase-global' },
@@ -172,9 +177,17 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Dim inlay hints / virtual-text hints like the old coc highlight links did.
+-- Also brighten diagnostic colors: codedark doesn't define Diagnostic* groups,
+-- so nvim falls back to its rather muted built-in defaults. DiagnosticError/
+-- Warn/Info/Hint are the base groups that VirtualText/Sign/Floating all link
+-- to, so overriding just these four recolors diagnostics everywhere at once.
 local function set_lsp_highlights()
     vim.cmd('highlight! link LspInlayHint NonText')
     vim.cmd('highlight! link NormalFloat Pmenu')
+    vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#ff5555' })
+    vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = '#f1fa4c' })
+    vim.api.nvim_set_hl(0, 'DiagnosticInfo', { fg = '#8be9fd' })
+    vim.api.nvim_set_hl(0, 'DiagnosticHint', { fg = '#50fa7b' })
 end
 set_lsp_highlights()
 vim.api.nvim_create_autocmd('ColorScheme', { callback = set_lsp_highlights })
