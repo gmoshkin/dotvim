@@ -34,7 +34,7 @@ vim.lsp.config('lua_ls', {
             runtime = { version = 'LuaJIT' },
             diagnostics = {
                 disable = { 'redefined-local', 'lowercase-global' },
-                globals = { 'vim' },
+                globals = { 'vim', 'box' },
             },
         },
     },
