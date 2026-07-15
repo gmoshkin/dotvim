@@ -254,7 +254,9 @@ set virtualedit+=block
 set fileencodings=utf-8,cp1251,cp866,default,latin1
 
 " I use alacritty so this is fine... How do I let tmux/nvim figure this out automatically???
-set termguicolors
+if has("nvim")
+    set termguicolors
+endif
 
 let g:tex_flavor = 'tex'
 
